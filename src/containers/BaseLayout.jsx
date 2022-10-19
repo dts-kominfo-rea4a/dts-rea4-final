@@ -1,13 +1,17 @@
 import { useEffect, useState } from "react";
-import logo from "../logo.svg";
+import logo from "../logo.png";
 import imageProfile from "../profile.png";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth, signOutMe } from "../authentication/firebase";
-import { LogOut, Home, FileMinus, Calendar } from "react-feather";
-import { Link, Outlet } from "react-router-dom";
+import { LogOut, Home, FileMinus, Calendar, ChevronDown } from "react-feather";
+import { Link } from "react-router-dom";
 import ModalConfirm from "../components/ModalConfirm";
 
-const Layout = () => {
+const BaseLayout = ({ children, title }) => {
+  useEffect(() => {
+    document.title = title;
+  }, [title]);
+
   const [user] = useAuthState(auth);
   const [menus, setMenus] = useState({
     menu1: false,
@@ -30,7 +34,7 @@ const Layout = () => {
   return (
     <>
       <header className="fixed top-0 z-10 w-full">
-        <nav className="px-4 py-3 bg-white border-b border-gray-200 dark:bg-gray-800 dark:border-gray-600">
+        <nav className="px-4 py-3 bg-white border-b border-gray-200">
           <div className="flex flex-wrap items-center justify-between">
             <button
               onClick={() => {
@@ -43,15 +47,15 @@ const Layout = () => {
                 className="w-7 h-7"
               >
                 <path
-                  className="fill-cyan-400"
+                  className="fill-primary"
                   d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h6a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
                 ></path>
               </svg>
             </button>
             <div className="flex items-center">
-              <img src={logo} className="w-14" alt="logo" />
-              <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white">
-                React App
+              <img src={logo} className="w-10 h-10 mr-2" alt="logo" />
+              <span className="self-center text-xl font-semibold whitespace-nowrap">
+                COOKNOW
               </span>
             </div>
             <div className="flex items-center lg:order-2">
@@ -70,18 +74,18 @@ const Layout = () => {
           sidebar ? "w-56 " : "w-18"
         } fixed top-0 left-0 h-full duration-300`}
       >
-        <div className="flex flex-col justify-between h-full px-3 py-5 overflow-y-auto bg-white border-r border-gray-200 mt-14 dark:bg-gray-800 dark:border-gray-700">
+        <div className="flex flex-col justify-between h-full px-3 py-5 overflow-y-auto bg-white border-r border-gray-200 mt-14">
           <ul className="space-y-2">
             <li>
               <Link
                 to="/"
-                className="flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-300 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-white group"
+                className="flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-300 rounded-xl hover:bg-gray-100 group"
               >
-                <Home className="flex-shrink-0 text-gray-500 transition duration-75 w-7 h-7 dark:text-gray-500 group-hover:text-gray-900 dark:group-hover:text-white" />
+                <Home className="flex-shrink-0 text-gray-500 transition duration-75 w-7 h-7 group-hover:text-primary" />
                 <span
                   className={`${
                     sidebar ? "" : "hidden"
-                  } ml-3 font-semibold whitespace-nowrap`}
+                  } ml-3 font-semibold whitespace-nowrap text-gray-700 group-hover:text-gray-900`}
                 >
                   Home Page
                 </span>
@@ -90,33 +94,21 @@ const Layout = () => {
             <li>
               <button
                 type="button"
-                className="flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-xl group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+                className="flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-xl group hover:bg-gray-100"
                 aria-controls="dropdown-pages"
                 data-collapse-toggle="dropdown-pages"
                 name="menu1"
                 onClick={menuHandler1}
               >
-                <FileMinus className="flex-shrink-0 text-gray-500 transition duration-75 w-7 h-7 group-hover:text-gray-900 dark:text-gray-500 dark:group-hover:text-white" />
+                <FileMinus className="flex-shrink-0 text-gray-500 transition duration-75 w-7 h-7 group-hover:text-primary" />
                 <span
                   className={`${
                     sidebar ? "" : "hidden "
-                  }flex-1 ml-3 font-semibold text-left whitespace-nowrap`}
+                  }flex-1 ml-3 font-semibold text-left whitespace-nowrap text-gray-700 group-hover:text-gray-900`}
                 >
                   Pages
                 </span>
-                <svg
-                  aria-hidden="true"
-                  className="w-6 h-6"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                    clipRule="evenodd"
-                  ></path>
-                </svg>
+                <ChevronDown className={`${sidebar ? "" : "hidden "}w-6 h-6`} />
               </button>
               <ul
                 id="dropdown-pages"
@@ -125,13 +117,13 @@ const Layout = () => {
                 <li>
                   <Link
                     to="/jadwal-sholat"
-                    className="flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-300 rounded-xl group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+                    className="flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-300 rounded-xl group hover:bg-gray-100"
                   >
-                    <Calendar className="flex-shrink-0 text-gray-500 transition duration-75 w-7 h-7 group-hover:text-gray-900 dark:text-gray-500 dark:group-hover:text-white" />
+                    <Calendar className="flex-shrink-0 text-gray-500 duration-75 w-7 h-7 group-hover:text-primary" />
                     <span
                       className={`${
                         sidebar ? "" : "hidden"
-                      } ml-3 font-semibold whitespace-nowrap`}
+                      } ml-3 font-semibold whitespace-nowrap text-gray-700 group-hover:text-gray-900`}
                     >
                       Jadwal Sholat
                     </span>
@@ -139,20 +131,6 @@ const Layout = () => {
                 </li>
               </ul>
             </li>
-            {/* <li>
-              <a
-                href="#"
-                className="flex items-center p-2 text-base font-normal text-gray-900 rounded-xl dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
-              >
-                <Mail className="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-500 group-hover:text-gray-900 dark:group-hover:text-white" />
-                <span className="flex-1 hidden ml-3 font-semibold whitespace-nowrap lg:flex">
-                  Messages
-                </span>
-                <span className="items-center justify-center hidden w-5 h-5 text-xs font-semibold rounded-full text-cyan-800 bg-cyan-400 dark:bg-cyan-200 dark:text-cyan-800 lg:inline-flex">
-                  6
-                </span>
-              </a>
-            </li> */}
           </ul>
           <ul className="pt-5 mt-5 mb-12 space-y-2">
             <li>
@@ -160,13 +138,13 @@ const Layout = () => {
                 onClick={() => {
                   setDisplayModal(true);
                 }}
-                className="flex items-center p-2 text-base font-normal text-gray-900 transition duration-75 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-white group"
+                className="flex items-center p-2 text-base font-normal text-gray-900 transition duration-75 rounded-xl hover:bg-gray-100 group"
               >
-                <LogOut className="flex-shrink-0 text-gray-500 transition duration-75 w-7 h-7 dark:text-gray-500 group-hover:text-gray-900 dark:group-hover:text-white" />
+                <LogOut className="flex-shrink-0 text-gray-500 transition duration-75 w-7 h-7 group-hover:text-primary" />
                 <span
                   className={`${
                     sidebar ? "" : "hidden"
-                  } ml-3 font-semibold whitespace-nowrap`}
+                  } ml-3 font-semibold whitespace-nowrap text-gray-700 group-hover:text-gray-900`}
                 >
                   Logout
                 </span>
@@ -178,9 +156,9 @@ const Layout = () => {
       <section
         className={`${
           sidebar ? "ml-56 " : "ml-16 "
-        }mt-16 bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-gray-400 duration-300`}
+        }mt-16 bg-gray-100 text-gray-800`}
       >
-        <Outlet />
+        {children}
       </section>
       {displayModal && (
         <ModalConfirm
@@ -192,4 +170,4 @@ const Layout = () => {
   );
 };
 
-export default Layout;
+export default BaseLayout;

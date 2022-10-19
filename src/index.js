@@ -35,15 +35,12 @@ root.render(
           path="/"
           element={
             <ProtectedComponent>
-              <BaseLayout>
+              <BaseLayout title="Home Page">
                 <HomePage />
               </BaseLayout>
             </ProtectedComponent>
           }
-        >
-          <Route index element={<HomePage />} />
-          <Route path="pages" element={<SecondPage />} />
-        </Route>
+        />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </BrowserRouter>
