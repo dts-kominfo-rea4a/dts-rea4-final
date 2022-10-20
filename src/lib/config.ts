@@ -10,10 +10,10 @@ export const PWAConfig: Partial<VitePWAOptions> = {
     'apple-touch-icon.png',
   ],
   manifest: {
-    name: 'React Query Zustand Boilerplate',
-    short_name: 'boilerplate',
-    description: 'Boilerplate with React, Zustand, and Vite',
-    theme_color: '#ffffff',
+    name: 'Pokemon Trading Card Game Deck App',
+    short_name: 'PokeTCGDeckApp',
+    description: 'Pokemon Trade Center Game Deck Information Web App',
+    theme_color: '#000000',
     start_url: '/',
     scope: '/',
     icons: [
