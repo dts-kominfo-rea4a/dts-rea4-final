@@ -1,7 +1,5 @@
 import type { VitePWAOptions } from 'vite-plugin-pwa';
 
-export const newsApiKey = 'pub_97975dc870625c92568f10bdbf1cb8a0f9a9';
-
 export const PWAConfig: Partial<VitePWAOptions> = {
   includeAssets: [
     'favicon.svg',
@@ -10,9 +8,9 @@ export const PWAConfig: Partial<VitePWAOptions> = {
     'apple-touch-icon.png',
   ],
   manifest: {
-    name: 'Pokemon Trading Card Game Deck App',
-    short_name: 'PokeTCGDeckApp',
-    description: 'Pokemon Trade Center Game Deck Information Web App',
+    name: 'Steam Market Web App',
+    short_name: 'Steam Market Web App',
+    description: 'Steam Market Information Web App',
     theme_color: '#000000',
     start_url: '/',
     scope: '/',

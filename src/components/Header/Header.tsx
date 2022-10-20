@@ -12,7 +12,7 @@ const Header = () => {
             <div>
               <a href="#" className="flex items-center px-2 py-4">
                 <span className="text-lg font-semibold text-gray-500">
-                  Pokemon Trading Card Game Deck
+                  Free Games App
                 </span>
               </a>
             </div>
@@ -27,7 +27,10 @@ const Header = () => {
             )}
           </div>
           <div className="flex items-center md:hidden">
-            <button className="outline-none mobile-menu-button" title="menu">
+            <button
+              className="outline-none mobile-menu-button"
+              title="mobile menu"
+            >
               <svg
                 className="w-6 h-6 text-gray-500 hover:text-blue-500"
                 fill="none"
