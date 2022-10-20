@@ -1,58 +1,19 @@
-import React, { useState } from "react";
+import React from "react";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import SearchIcon from "@mui/icons-material/Search";
-import CloseIcon from "@mui/icons-material/Close";
 import IconButton from "@mui/material/IconButton";
 import Button from "@mui/material/Button";
 import InputBase from "@mui/material/InputBase";
-import { styled, alpha } from "@mui/material/styles";
 import { Box } from "@mui/system";
-import MenuItem from "@mui/material/MenuItem";
-import Menu from "@mui/material/Menu";
-import AccountCircle from "@mui/icons-material/AccountCircle";
-
-const Search = styled("div")(({ theme }) => ({
-  borderRadius: "20px",
-  backgroundColor: alpha(theme.palette.common.black, 0.15),
-  "&:hover": {
-    backgroundColor: alpha(theme.palette.common.black, 0.25),
-  },
-  position: "absolute",
-  transform: `translateY(-50%)`,
-  top: "50%",
-  right: "0px",
-  width: "300px",
-  transition: `.5s`,
-}));
-
-const StyledInputBase = styled(InputBase)(({ theme }) => ({
-  color: "inherit",
-  "& .MuiInputBase-input": {
-    padding: theme.spacing(1, 1, 1, 0),
-    paddingRight: `calc(1em + ${theme.spacing(4)})`,
-    paddingLeft: `calc(1em + ${theme.spacing(4)})`,
-  },
-}));
+import LogoutIcon from "@mui/icons-material/Logout";
+import FilterListIcon from "@mui/icons-material/FilterList";
+import FilterAltOutlinedIcon from "@mui/icons-material/FilterAltOutlined";
 
 const Header = () => {
-  const [showSearch, setshowSearch] = useState(false);
-  const [anchorEl, setAnchorEl] = React.useState(null);
   const [auth, setAuth] = React.useState(false);
-
-  const searchToggle = () => {
-    setshowSearch(!showSearch);
-  };
-
-  const handleMenu = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
 
   return (
     <Box sx={{ position: "relative" }}>
@@ -76,84 +37,64 @@ const Header = () => {
             >
               <img src="/logo.png" alt="News Portal" />
             </Typography>
-            <Box sx={{ position: "relative" }}>
-              {showSearch ? (
-                <Search>
-                  <StyledInputBase
-                    placeholder="Search…"
-                    inputProps={{ "aria-label": "search" }}
-                    sx={{ width: "100%" }}
-                  />
-                  <IconButton
-                    size="large"
-                    aria-label="display more actions"
-                    edge="end"
-                    color="inherit"
-                    sx={{
-                      position: "absolute",
-                      top: `-4px`,
-                      display: "flex",
-                    }}
-                    className="active"
-                  >
-                    <SearchIcon />
-                  </IconButton>
-                </Search>
-              ) : (
-                ""
-              )}
-
-              <IconButton
-                size="large"
-                aria-label="display more actions"
-                edge="end"
-                color="inherit"
+            <Button
+              color="inherit"
+              onClick={() => setAuth(false)}
+              sx={{
+                fontSize: "16px",
+                fontWeight: "bold",
+                textTransform: "none",
+              }}
+            >
+              <LogoutIcon sx={{ marginRight: "10px", color: "#B673C0" }} />
+              <Typography
+                variant="body1"
+                component="span"
                 sx={{
-                  marginRight: "2px",
+                  color: "#5D2D68",
+                  fontSize: "16px",
+                  fontWeight: "bold",
                 }}
-                onClick={searchToggle}
-                className="active"
               >
-                {showSearch ? <CloseIcon /> : <SearchIcon />}
+                Logout
+              </Typography>
+            </Button>
+          </Toolbar>
+          <Box
+            sx={{
+              display: "flex",
+            }}
+          >
+            <IconButton type="button" sx={{ p: "10px" }} aria-label="search">
+              <FilterListIcon sx={{ color: "#F3CD0F" }} />
+            </IconButton>
+
+            <IconButton
+              type="button"
+              sx={{ p: "10px", mr: "10px" }}
+              aria-label="search"
+            >
+              <FilterAltOutlinedIcon sx={{ color: "#F3CD0F" }} />
+            </IconButton>
+
+            <Box
+              sx={{
+                border: "3px solid #F3CD0F",
+                borderRadius: "10px",
+                flex: 1,
+                display: "flex",
+              }}
+            >
+              <InputBase
+                sx={{ ml: 1, flex: 1 }}
+                placeholder="Search"
+                inputProps={{ "aria-label": "search" }}
+              />
+              <IconButton type="button" sx={{ p: "10px" }} aria-label="search">
+                <SearchIcon sx={{ color: "#DAB70A" }} />
               </IconButton>
             </Box>
-            {auth ? (
-              <div>
-                <IconButton
-                  size="large"
-                  aria-label="account of current user"
-                  aria-controls="menu-appbar"
-                  aria-haspopup="true"
-                  onClick={handleMenu}
-                  color="inherit"
-                >
-                  <AccountCircle />
-                </IconButton>
-                <Menu
-                  id="menu-appbar"
-                  anchorEl={anchorEl}
-                  anchorOrigin={{
-                    vertical: "top",
-                    horizontal: "right",
-                  }}
-                  keepMounted
-                  transformOrigin={{
-                    vertical: "top",
-                    horizontal: "right",
-                  }}
-                  open={Boolean(anchorEl)}
-                  onClose={handleClose}
-                >
-                  <MenuItem>My account</MenuItem>
-                  <MenuItem onClick={() => setAuth(false)}>Logout</MenuItem>
-                </Menu>
-              </div>
-            ) : (
-              <Button color="inherit" onClick={() => setAuth(true)}>
-                Login
-              </Button>
-            )}
-          </Toolbar>
+          </Box>
         </Container>
       </AppBar>
     </Box>
