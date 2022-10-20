@@ -1,13 +1,16 @@
-import SliderComponent from "./SliderComponent";
-
 const HomePage = () => {
   return (
     <>
-      <section className="grid grid-cols-1 gap-2 px-4 py-6 md:grid-cols-2 lg:grid-cols-3 ">
-        <div className="w-full bg-blue-500 aspect-[9/3] md:aspect-[8/3] rounded-lg overflow-hidden group relative hover:scale-95 transition-all duration-500">
-          <div className="flex bg-slate-900/50 bg-[url('https://source.unsplash.com/600x200?programing')] w-full h-full bg-cover bg-center absolute group-hover:scale-110 transition-all duration-500 text-white">
-            <div className="self-center mx-auto text-2xl font-bold text-white drop-shadow-lg bg-slate-900/30">
-              DESSERT
+      <section className="px-4 py-6">
+        <h1 className="mb-3 text-3xl font-bold uppercase text-dark">
+          Kategori Resep
+        </h1>
+        <div className="grid grid-cols-1 gap-2 md:grid-cols-2 lg:grid-cols-3 ">
+          <div className="w-full bg-blue-500 aspect-[9/3] md:aspect-[8/3] rounded-lg overflow-hidden group relative hover:scale-95 transition-all duration-500">
+            <div className="flex bg-slate-900/50 bg-[url('https://source.unsplash.com/600x200?programing')] w-full h-full bg-cover bg-center absolute group-hover:scale-110 transition-all duration-500 text-white">
+              <div className="self-center mx-auto text-2xl font-bold text-white uppercase drop-shadow-lg bg-slate-900/30">
+                DESSERT
+              </div>
             </div>
           </div>
         </div>

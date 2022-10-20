@@ -153,13 +153,13 @@ const BaseLayout = ({ children, title }) => {
           </ul>
         </div>
       </aside>
-      <section
+      <div
         className={`${
           sidebar ? "ml-56 " : "ml-16 "
-        }mt-16 bg-gray-100 text-gray-800`}
+        }mt-16 bg-gray-100 text-gray-800 h-screen`}
       >
         {children}
-      </section>
+      </div>
       {displayModal && (
         <ModalConfirm
           message="Apakah kamu yakin akan keluar?"

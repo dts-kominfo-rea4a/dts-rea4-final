@@ -5,10 +5,10 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import LoginPage from "./containers/LoginPage";
 import RegisterPage from "./containers/RegisterPage";
 import HomePage from "./containers/HomePage";
-import SecondPage from "./containers/SecondPage";
 import ProtectedComponent from "./components/ProtectedComponent";
 import NotFoundPage from "./containers/NotFoundPage";
 import BaseLayout from "./containers/BaseLayout";
+import ListDomainPage from "./containers/ListDomainPage";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -37,6 +37,16 @@ root.render(
             <ProtectedComponent>
               <BaseLayout title="Home Page">
                 <HomePage />
+              </BaseLayout>
+            </ProtectedComponent>
+          }
+        />
+        <Route
+          path="/domain"
+          element={
+            <ProtectedComponent>
+              <BaseLayout title="List Domain">
+                <ListDomainPage />
               </BaseLayout>
             </ProtectedComponent>
           }
