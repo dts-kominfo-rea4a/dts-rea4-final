@@ -1,0 +1,46 @@
+import React from 'react'
+import { useEffect } from 'react';
+import useMovies, {
+  selectFetchMostPopularMovies,
+  selectMovies,
+} from '../apis/imdb';
+
+const Main = () => {
+
+  const storePopularMovies = useMovies(selectFetchMostPopularMovies);
+  const movies = useMovies(selectMovies);
+  const movie = movies[Math.floor(Math.random() * movies.length)];
+  const baseUrlMovies = "https://image.tmdb.org/t/p/original";
+
+  useEffect(() => {
+    storePopularMovies();
+  }, [])
+
+  const truncateOverview = (overview, n) => {
+    if (overview?.length > n) {
+      return overview.slice(0, n) + '...';
+    } else {
+      return overview;
+    }
+  };
+
+  return (
+    <div className='w-full h-[550px] text-white '>
+      <div className='w-full h-full'>
+        <div className='absolute w-full h-[550px] bg-gradient-to-r from-black'></div>
+        <img loading='lazy' className='w-full h-full object-cover' src={baseUrlMovies+movie?.backdrop_path} alt={movie?.title} />
+        <div className='absolute w-full top-[20%] p-4 md:p-8'> 
+          <h1 className='text-3xl md:text-5xl font-bold'>{movie?.title}</h1>
+          <div className='my-4'>
+            <button className='border bg-gray-300 text-black border-gray-300 py-2 px-5'>Play</button>
+            <button className='border text-white border-gray-300 py-2 px-5 ml-4'>Watch Later</button>
+          </div>
+            <p className='text-sm text-gray-400'>Released: {movie?.release_date} </p>
+            <p className='w-full md:max-w-[70%] lg:max-w-[50%] xl:max-w-[35%]'>{truncateOverview(movie?.overview, 200)}</p>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+export default Main
