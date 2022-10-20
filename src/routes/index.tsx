@@ -1,5 +1,5 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Articles from '../pages/Articles';
+import Apps from '../pages/Games';
 import Home from '../pages/Home';
 import PrivateRoute from './PrivateRoute';
 import PublicRoute from './PublicRoute';
@@ -16,10 +16,10 @@ const Router = () => (
         }
       />
       <Route
-        path="/articles"
+        path="/games"
         element={
           <PrivateRoute>
-            <Articles />
+            <Apps />
           </PrivateRoute>
         }
       />
