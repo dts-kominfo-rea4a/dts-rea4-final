@@ -3,11 +3,12 @@ import { createTheme } from "@mui/material/styles";
 export const Colors = {
   primary: "#5f2c3e",
   secondary: "#d1adcc",
-  success: "",
-  info: "",
-  danger: "",
-  warning: "",
-  dark: "",
+  success: "#4CAF50",
+  info: "#00a2ff",
+  danger: "#FF5722",
+  warning: "#FFC107",
+  dark: "#0e1b20",
+  light: "#aaa",
 };
 
 const theme = createTheme({
