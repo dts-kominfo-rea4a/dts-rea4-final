@@ -1,21 +1,13 @@
-import { Box } from "@mui/material";
 import React from "react";
+import Box from "@mui/material/Box";
 import HotTopics from "../components/HotTopics";
+import LatestNews from "../components/LatestNews";
 
 const HomePage = () => {
   return (
-    <Box
-      sx={{
-        margin: {
-          xs: 5,
-          sm: 5,
-          md: 10,
-          lg: 10,
-          xl: 10,
-        },
-      }}
-    >
+    <Box sx={{ marginBottom: 20 }}>
       <HotTopics />
+      <LatestNews />
     </Box>
   );
 };

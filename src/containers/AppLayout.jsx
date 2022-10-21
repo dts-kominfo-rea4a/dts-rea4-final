@@ -6,11 +6,23 @@ import AppNavbar from "../components/AppNavbar";
 
 const AppLayout = () => {
   return (
-    <Box>
+    <>
       <AppNavbar />
-      <Outlet />
+      <Box
+        sx={{
+          margin: {
+            xs: 5,
+            sm: 5,
+            md: 10,
+            lg: 10,
+            xl: 10,
+          },
+        }}
+      >
+        <Outlet />
+      </Box>
       <AppFooter />
-    </Box>
+    </>
   );
 };
 
