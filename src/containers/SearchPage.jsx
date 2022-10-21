@@ -83,9 +83,12 @@ const SearchPage = () => {
         <div className="">
           <div className="flex flex-wrap">
             {dataBooks.items?.map((book) => (
-              <div className="flex flex-col w-full px-4 sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5 group">
+              <div
+                key={book.id}
+                className="flex flex-col w-full px-4 sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5 group"
+              >
                 <div className="flex-1 mb-10 overflow-hidden bg-white shadow-lg rounded-xl">
-                  <Link to={`/detail/${book.id}`}>
+                  <Link to={`/details/${book.id}`}>
                     <img
                       src={
                         book.volumeInfo.imageLinks

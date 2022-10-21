@@ -5,6 +5,7 @@ import create from "zustand";
 const sliceBooks = (set) => ({
   // state
   books: {},
+  bookDetail: {},
   isLoading: false,
   error: null,
   // action
@@ -22,13 +23,32 @@ const sliceBooks = (set) => ({
       set({ error: err, isLoading: false });
     }
   },
+  fetchBookDetail: async (bookid) => {
+    try {
+      set({ isLoading: true });
+      const data = await axios.get(
+        `https://www.googleapis.com/books/v1/volumes/${bookid}`
+      );
+      console.log(data.data.volumeInfo);
+      console.log(data.data);
+      set((state) => ({
+        ...state,
+        bookDetail: data.data.volumeInfo,
+        isLoading: false,
+      }));
+    } catch (err) {
+      set({ error: err.message, isLoading: false });
+    }
+  },
 });
 // hooks
 const useBooksStore = create(sliceBooks);
 // selector
 export const selectBooks = (state) => state.books;
+export const selectFetchBooks = (state) => state.fetchBooks;
+export const selectBookDetail = (state) => state.bookDetail;
+export const selectFetchBookDetail = (state) => state.fetchBookDetail;
 export const selectIsLoading = (state) => state.isLoading;
 export const selectError = (state) => state.error;
-export const selectFetchBooks = (state) => state.fetchBooks;
 //export
 export default useBooksStore;

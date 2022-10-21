@@ -3,14 +3,7 @@ import logo from "../logo.png";
 import imageProfile from "../profile.png";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth, signOutMe } from "../authentication/firebase";
-import {
-  LogOut,
-  Home,
-  FileMinus,
-  Calendar,
-  ChevronDown,
-  Bookmark,
-} from "react-feather";
+import { LogOut, Home, Bookmark } from "react-feather";
 import { Link } from "react-router-dom";
 import ModalConfirm from "../components/ModalConfirm";
 
@@ -59,7 +52,7 @@ const BaseLayout = ({ children, title }) => {
                 ></path>
               </svg>
             </button>
-            <div className="flex items-center">
+            <div className="flex items-center ml-14">
               <img src={logo} className="w-10 h-10 mr-2" alt="logo" />
               <span className="self-center text-xl font-bold whitespace-nowrap">
                 <span className="text-primary">GO</span>
@@ -89,7 +82,7 @@ const BaseLayout = ({ children, title }) => {
                 to="/"
                 className="flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-300 rounded-xl hover:bg-gray-100 group"
               >
-                <Home className="flex-shrink-0 text-gray-500 transition duration-75 w-7 h-7 group-hover:text-primary" />
+                <Home className="flex-shrink-0 text-gray-500 transition duration-300 w-7 h-7 group-hover:text-primary" />
                 <span
                   className={`${
                     sidebar ? "" : "hidden"
@@ -104,7 +97,7 @@ const BaseLayout = ({ children, title }) => {
                 to="/bookmark"
                 className="flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-300 rounded-xl hover:bg-gray-100 group"
               >
-                <Bookmark className="flex-shrink-0 text-gray-500 transition duration-75 w-7 h-7 group-hover:text-primary" />
+                <Bookmark className="flex-shrink-0 text-gray-500 transition duration-300 w-7 h-7 group-hover:text-primary" />
                 <span
                   className={`${
                     sidebar ? "" : "hidden"
@@ -117,13 +110,13 @@ const BaseLayout = ({ children, title }) => {
             {/* <li>
               <button
                 type="button"
-                className="flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-xl group hover:bg-gray-100"
+                className="flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-300 rounded-xl group hover:bg-gray-100"
                 aria-controls="dropdown-pages"
                 data-collapse-toggle="dropdown-pages"
                 name="menu1"
                 onClick={menuHandler1}
               >
-                <FileMinus className="flex-shrink-0 text-gray-500 transition duration-75 w-7 h-7 group-hover:text-primary" />
+                <FileMinus className="flex-shrink-0 text-gray-500 transition duration-300 w-7 h-7 group-hover:text-primary" />
                 <span
                   className={`${
                     sidebar ? "" : "hidden "
@@ -142,7 +135,7 @@ const BaseLayout = ({ children, title }) => {
                     to="/jadwal-sholat"
                     className="flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-300 rounded-xl group hover:bg-gray-100"
                   >
-                    <Calendar className="flex-shrink-0 text-gray-500 duration-75 w-7 h-7 group-hover:text-primary" />
+                    <Calendar className="flex-shrink-0 text-gray-500 duration-300 w-7 h-7 group-hover:text-primary" />
                     <span
                       className={`${
                         sidebar ? "" : "hidden"
@@ -161,9 +154,9 @@ const BaseLayout = ({ children, title }) => {
                 onClick={() => {
                   setDisplayModal(true);
                 }}
-                className="flex items-center p-2 text-base font-normal text-gray-900 transition duration-75 rounded-xl hover:bg-gray-100 group"
+                className="flex items-center p-2 text-base font-normal text-gray-900 transition duration-300 rounded-xl hover:bg-gray-100 group"
               >
-                <LogOut className="flex-shrink-0 text-gray-500 transition duration-75 w-7 h-7 group-hover:text-primary" />
+                <LogOut className="flex-shrink-0 text-gray-500 transition duration-300 w-7 h-7 group-hover:text-primary" />
                 <span
                   className={`${
                     sidebar ? "" : "hidden"
