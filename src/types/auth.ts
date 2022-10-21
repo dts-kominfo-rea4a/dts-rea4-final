@@ -1,4 +1,9 @@
 export interface LoginBody {
-  username: string;
+  email: string;
+  password: string;
+}
+
+export interface RegisterBody {
+  email: string;
   password: string;
 }
