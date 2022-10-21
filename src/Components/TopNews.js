@@ -5,19 +5,28 @@ import Carousel from "react-material-ui-carousel";
 import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 
-import newsApiInstance from "../Apis/newsApiInstance";
+import inshortNewsApiInstance from "../Apis/InshortNewsApiInstance";
+import Typography from "@mui/material/Typography";
+import CardMedia from "@mui/material/CardMedia";
+import CardContent from "@mui/material/CardContent";
+import Card from "@mui/material/Card";
+import CardNews from "./CardNews";
+import {Divider} from "@mui/material";
 
 const TopNews = () => {
     const [topNews, setTopNews] = useState([]);
+    const [content, setContent] = useState("");
 
     useEffect(() => {
         const fetchDataNews = async () => {
             try {
-                const responseNewsApi = await newsApiInstance.get(
-                    "/top-headlines"
-                )
+                const responseNewsApi = await inshortNewsApiInstance.get("/news", {
+                    params: {
+                        category: "world"
+                    }
+                })
 
-                setTopNews(responseNewsApi.data.articles)
+                setTopNews(responseNewsApi.data.data)
             } catch (err) {
                 console.log(err)
             }
@@ -29,31 +38,35 @@ const TopNews = () => {
     function Item(props) {
         return (
             <>
-                <img src={props.item.urlToImage} alt="" width={"100%"} height={"600"}/>
+                <img src={props.item.imageUrl} alt="" width={"100%"} height={"350"}/>
             </>
         )
     }
 
     return (
         <Box sx={{flexGrow: 1, mt: 3}}>
-            <Grid container spacing={1}>
+            <Grid container spacing={5}>
                 <Grid item xs={4}>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                    labore
-                    et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
-                    ut
-                    aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-                    culpa qui officia deserunt mollit anim id est laborum.
+                    <Typography gutterBottom variant="h5" component="div" sx={{textAlign: "justify"}}>
+                        {content.title}
+                    </Typography>
+                    <Typography variant="body2" color="text.secondary" sx={{textAlign: "justify"}}>
+                        {content.content}
+                    </Typography>
+                    <Divider sx={{mt: 1, mb: 1}}/>
+                    <Typography gutterBottom variant="body2" color="text.secondary" sx={{textAlign: "justify"}}>
+                        {content.author} - {content.date}
+                    </Typography>
                 </Grid>
                 <Grid item xs={8}>
                     <Carousel
                         navButtonsAlwaysVisible={true}
                         NextIcon={<NavigateNextIcon/>}
                         PrevIcon={<NavigateBeforeIcon/>}
+                        onChange={(e) => setContent(topNews[e])}
                     >
                         {
-                            topNews.map((news, i) => <Item key={i} item={news}/>)
+                            topNews.filter((item, i) => i < 10).map((news, i) => <Item key={i} item={news}/>)
                         }
                     </Carousel>
                 </Grid>

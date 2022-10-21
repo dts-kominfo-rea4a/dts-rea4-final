@@ -8,7 +8,8 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 
-import newsApiInstance from "../Apis/newsApiInstance";
+import inshortNewsApiInstance from "../Apis/InshortNewsApiInstance";
+import CardNews from "./CardNews";
 
 const TopNews = () => {
     const [news, setNews] = useState([]);
@@ -16,11 +17,13 @@ const TopNews = () => {
     useEffect(() => {
         const fetchDataNews = async () => {
             try {
-                const responseNewsApi = await newsApiInstance.get(
-                    "/top-headlines"
-                )
+                const responseNewsApi = await inshortNewsApiInstance.get("/news", {
+                    params: {
+                        category: "all"
+                    }
+                })
 
-                setNews(responseNewsApi.data.articles)
+                setNews(responseNewsApi.data.data)
             } catch (err) {
                 console.log(err)
             }
@@ -36,23 +39,8 @@ const TopNews = () => {
                 {
                     news.map((item, i) => {
                         return (
-                            <Grid key={i} item xs={4}>
-                                <Card elevation={0}>
-                                    <CardMedia
-                                        component="img"
-                                        height="140"
-                                        image={item.urlToImage}
-                                        alt="green iguana"
-                                    />
-                                    <CardContent>
-                                        <Typography gutterBottom variant="h5" component="div">
-                                            {item.title}
-                                        </Typography>
-                                        <Typography variant="body2" color="text.secondary">
-                                            {item.description}
-                                        </Typography>
-                                    </CardContent>
-                                </Card>
+                            <Grid key={i} item xs={3}>
+                                <CardNews item={item}/>
                             </Grid>
                         )
                     })
