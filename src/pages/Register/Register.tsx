@@ -2,23 +2,28 @@ import { useForm, SubmitHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import Button from '@/components/Button';
 import Input from '@/components/Input/Input';
-import { LoginBody } from '@/types/auth';
-import { loginSchema } from '@/lib/validation';
-import { useLoginQuery } from '@/services/queries/auth.query';
+import { RegisterBody } from '@/types/auth';
+import { registerSchema } from '@/lib/validation';
+import { useRegisterQuery } from '@/services/queries/auth.query';
 import { useStore } from '@/store/index';
 import { useEffect } from 'react';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 
-const Login = () => {
+const Register = () => {
   const navigate = useNavigate();
   const { setIsAuthenticated } = useStore((state) => state);
-  const { isLoading, mutateAsync: login, isError, error } = useLoginQuery();
+  const {
+    isLoading,
+    mutateAsync: registerUser,
+    isError,
+    error,
+  } = useRegisterQuery();
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<LoginBody>({ resolver: yupResolver(loginSchema) });
+  } = useForm<RegisterBody>({ resolver: yupResolver(registerSchema) });
 
   useEffect(() => {
     if (isError) {
@@ -26,9 +31,9 @@ const Login = () => {
     }
   }, [isError]);
 
-  const onSubmit: SubmitHandler<LoginBody> = async (data) => {
-    const isLogin = await login(data);
-    setIsAuthenticated(isLogin);
+  const onSubmit: SubmitHandler<RegisterBody> = async (data) => {
+    const isRegistered = await registerUser(data);
+    setIsAuthenticated(isRegistered);
   };
 
   return (
@@ -53,18 +58,18 @@ const Login = () => {
         register={register}
         name="password"
       />
-      <Button text="Login" type="submit" isLoading={isLoading} />
+      <Button text="Register" type="submit" isLoading={isLoading} />
       <p className="mb-2 text-sm text-center">
-        Doesn&apos;t have a account? go to{' '}
+        Have an account? go to{' '}
         <span
           className="underline cursor-pointer"
-          onClick={() => navigate('/register')}
+          onClick={() => navigate('/')}
         >
-          register page
+          login page
         </span>
       </p>
     </form>
   );
 };
 
-export default Login;
+export default Register;

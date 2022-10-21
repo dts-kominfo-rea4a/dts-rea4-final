@@ -8,9 +8,10 @@ interface Props {
 
 const PrivateRoute: React.FC<Props> = ({ children }) => {
   // Replace with your auth condition
+  const authToken = sessionStorage.getItem('Auth Token');
   const { isAuthenticated } = useStore((state) => state);
 
-  return isAuthenticated ? children : <Navigate to="/" />;
+  return authToken && isAuthenticated ? children : <Navigate to="/" />;
 };
 
 export default PrivateRoute;

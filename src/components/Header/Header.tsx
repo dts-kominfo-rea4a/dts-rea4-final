@@ -4,6 +4,11 @@ import { useStore } from '@/store/index';
 const Header = () => {
   const { isAuthenticated, setIsAuthenticated } = useStore((state) => state);
 
+  const handleLogout = () => {
+    sessionStorage.removeItem('Auth Token');
+    setIsAuthenticated(false);
+  };
+
   return (
     <nav className="bg-white shadow-lg">
       <div className="max-w-6xl px-4 mx-auto">
@@ -22,7 +27,7 @@ const Header = () => {
               <Button
                 text="Logout"
                 className="px-3 py-3 text-xs font-medium text-white transition duration-300 bg-blue-500 rounded hover:bg-blue-400"
-                onClick={() => setIsAuthenticated(false)}
+                onClick={handleLogout}
               />
             )}
           </div>

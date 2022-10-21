@@ -11,7 +11,15 @@ const Router = () => (
         path="/"
         element={
           <PublicRoute>
-            <Home />
+            <Home login={true} />
+          </PublicRoute>
+        }
+      />
+      <Route
+        path="/register"
+        element={
+          <PublicRoute>
+            <Home login={false} />
           </PublicRoute>
         }
       />

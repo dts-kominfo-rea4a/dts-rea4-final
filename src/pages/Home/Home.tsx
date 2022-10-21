@@ -1,9 +1,14 @@
 import Login from '@/pages/Login';
+import Register from '@/pages/Register';
 
-const Home = () => {
+export type HomeProps = {
+  login: boolean;
+};
+
+const Home = ({ login }: HomeProps) => {
   return (
-    <div className="h-screen flex items-center justify-center">
-      <Login />
+    <div className="flex items-center justify-center h-screen">
+      {login ? <Login /> : <Register />}
     </div>
   );
 };
