@@ -1,0 +1,25 @@
+.boxy {
+  /* border: 1px dashed grey; */
+  padding: 1em;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  gap: 1em;
+  align-items:center;
+  justify-content:center;
+  align-content:center;
+  border-radius: 10px;
+  opacity: 90%;
+}
+
+.form {
+  display: flex;
+  gap: 1em;
+  flex-direction: column;
+}
+
+.otherSignin {
+  gap: 1em;
+  flex-direction: row;
+  margin: 1;
+}
