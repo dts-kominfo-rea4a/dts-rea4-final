@@ -54,7 +54,7 @@ const HotTopics = () => {
                   gutterBottom
                   sx={{
                     fontWeight: 600,
-                    fontSize: { xs: 16, sm: 16, md: 16, lg: 32, xl: 32 },
+                    fontSize: { xs: 16, sm: 32, md: 32, lg: 32, xl: 32 },
                   }}
                 >
                   Massa tortor nibh nulla condimentum imperdiet scelerisque...
