@@ -7,6 +7,7 @@ import {
 
 import Home from "../Screens/Home";
 import NewsMenu from "../Components/NewsMenu";
+import NewsDetail from "../Components/NewsDetail";
 
 const Routes = () => {
     return (
@@ -15,6 +16,7 @@ const Routes = () => {
             <Router>
                 <Switch>
                     <Route path="/" element={<Home/>}/>
+                    <Route path="/:id" element={<NewsDetail />} />
                 </Switch>
             </Router>
         </>

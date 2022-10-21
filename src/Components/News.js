@@ -1,18 +1,15 @@
 import React, {useEffect, useState} from 'react';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
-import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
+import { Link } from 'react-router-dom'
 
 import inshortNewsApiInstance from "../Apis/InshortNewsApiInstance";
 import CardNews from "./CardNews";
+import {CardActionArea} from "@mui/material";
 
 const TopNews = () => {
     const [news, setNews] = useState([]);
+    const [category, setCategory] = useState("");
 
     useEffect(() => {
         const fetchDataNews = async () => {
@@ -24,6 +21,7 @@ const TopNews = () => {
                 })
 
                 setNews(responseNewsApi.data.data)
+                setCategory(responseNewsApi.data.category)
             } catch (err) {
                 console.log(err)
             }
@@ -40,7 +38,9 @@ const TopNews = () => {
                     news.map((item, i) => {
                         return (
                             <Grid key={i} item xs={3}>
-                                <CardNews item={item}/>
+                                <CardActionArea component={Link} to={`${i}?category=${category}`}>
+                                    <CardNews item={item}/>
+                                </CardActionArea>
                             </Grid>
                         )
                     })

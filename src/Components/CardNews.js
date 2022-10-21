@@ -2,12 +2,11 @@ import Card from "@mui/material/Card";
 import CardMedia from "@mui/material/CardMedia";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
-import {CardActionArea, Divider} from "@mui/material";
+import {Divider} from "@mui/material";
 
 const CardNews = ({item}) => {
     return (
         <Card elevation={0}>
-            <CardActionArea>
                 <CardMedia
                     component="img"
                     height="140"
@@ -23,7 +22,6 @@ const CardNews = ({item}) => {
                         {item.author} - {item.date}
                     </Typography>
                 </CardContent>
-            </CardActionArea>
         </Card>
     )
 }

@@ -7,10 +7,6 @@ import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 
 import inshortNewsApiInstance from "../Apis/InshortNewsApiInstance";
 import Typography from "@mui/material/Typography";
-import CardMedia from "@mui/material/CardMedia";
-import CardContent from "@mui/material/CardContent";
-import Card from "@mui/material/Card";
-import CardNews from "./CardNews";
 import {Divider} from "@mui/material";
 
 const TopNews = () => {
