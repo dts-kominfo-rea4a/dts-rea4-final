@@ -12,7 +12,7 @@ import { useNavigate } from 'react-router-dom';
 
 const Register = () => {
   const navigate = useNavigate();
-  const { setIsAuthenticated } = useStore((state) => state);
+  const { setIsAuthenticated, setUser } = useStore((state) => state);
   const {
     isLoading,
     mutateAsync: registerUser,
@@ -33,7 +33,8 @@ const Register = () => {
 
   const onSubmit: SubmitHandler<RegisterBody> = async (data) => {
     const isRegistered = await registerUser(data);
-    setIsAuthenticated(isRegistered);
+    setUser(isRegistered);
+    setIsAuthenticated(!!isRegistered);
   };
 
   return (

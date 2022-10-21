@@ -12,7 +12,7 @@ import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
   const navigate = useNavigate();
-  const { setIsAuthenticated } = useStore((state) => state);
+  const { setIsAuthenticated, setUser } = useStore((state) => state);
   const { isLoading, mutateAsync: login, isError, error } = useLoginQuery();
   const {
     register,
@@ -28,7 +28,8 @@ const Login = () => {
 
   const onSubmit: SubmitHandler<LoginBody> = async (data) => {
     const isLogin = await login(data);
-    setIsAuthenticated(isLogin);
+    setUser(isLogin);
+    setIsAuthenticated(!!isLogin);
   };
 
   return (

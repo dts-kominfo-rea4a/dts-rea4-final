@@ -1,17 +1,17 @@
 import type { ReactElement } from 'react';
 import { Navigate } from 'react-router';
-import { useStore } from '../store';
+import { useStore } from '@/store/index';
 
 interface Props {
   children: ReactElement;
 }
 
 const PublicRoute: React.FC<Props> = ({ children }) => {
-  // Replace with your auth condition
-  const authToken = sessionStorage.getItem('Auth Token');
-  const { isAuthenticated } = useStore((state) => state);
+  const { user } = useStore((state) => state);
 
-  return authToken && isAuthenticated ? <Navigate to="/games" /> : children;
+  if (user && !user.emailVerified) return <Navigate to="/verify-email" />;
+  else if (user && user.emailVerified) return <Navigate to="/games" />;
+  return children;
 };
 
 export default PublicRoute;

@@ -1,12 +1,15 @@
 import Button from '@/components/Button';
+import { useLogoutQuery } from '@/services/queries/auth.query';
 import { useStore } from '@/store/index';
 
 const Header = () => {
-  const { isAuthenticated, setIsAuthenticated } = useStore((state) => state);
+  const { setIsAuthenticated, user, setUser } = useStore((state) => state);
+  const { mutateAsync: logout } = useLogoutQuery();
 
   const handleLogout = () => {
-    sessionStorage.removeItem('Auth Token');
     setIsAuthenticated(false);
+    setUser(null);
+    logout();
   };
 
   return (
@@ -23,7 +26,7 @@ const Header = () => {
             </div>
           </div>
           <div className="items-center hidden space-x-3 md:flex ">
-            {isAuthenticated && (
+            {user && (
               <Button
                 text="Logout"
                 className="px-3 py-3 text-xs font-medium text-white transition duration-300 bg-blue-500 rounded hover:bg-blue-400"
