@@ -9,15 +9,14 @@ export default function AppFooter() {
         width: "100%",
         position: "fixed",
         bottom: 0,
-        padding: 4,
-        textAlign: "center",
         backgroundColor: "#F8F8F8",
       }}
     >
       <Typography
+        textAlign="center"
         variant="subtitle1"
         gutterBottom
-        sx={{ color: "#949494" }}
+        sx={{ color: "#949494", padding: 3 }}
       >
         Copyright 2022 News Portal
       </Typography>
