@@ -1,3 +1,4 @@
+import VerifyEmail from '@/pages/VerifyEmail';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Apps from '../pages/Games';
 import Home from '../pages/Home';
@@ -23,6 +24,7 @@ const Router = () => (
           </PublicRoute>
         }
       />
+      <Route path="/verify-email" element={<VerifyEmail />} />
       <Route
         path="/games"
         element={
