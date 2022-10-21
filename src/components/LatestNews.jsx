@@ -6,7 +6,6 @@ import CardActionArea from "@mui/material/CardActionArea";
 import CardMedia from "@mui/material/CardMedia";
 import CardContent from "@mui/material/CardContent";
 import CardActions from "@mui/material/CardActions";
-import Button from "@mui/material/Button";
 
 const LatestNews = () => {
   return (
@@ -37,11 +36,23 @@ const LatestNews = () => {
             News Title Lorem Ipsum Dolor Sit Amet
           </Typography>
         </CardContent>
-        <CardActions>
-          <Box sx={{ color: "grey" }}>
-            <Button size="small">1 Hour Ago</Button>
-            <Button size="small">CNN Indonesia</Button>
-          </Box>
+        <CardActions sx={{ color: "grey" }}>
+          <Typography
+            gutterBottom
+            variant="body2"
+            component="div"
+            sx={{ color: "grey", fontWeight: 700 }}
+          >
+            1 Hour Ago
+          </Typography>
+          <Typography
+            gutterBottom
+            variant="body2"
+            component="div"
+            sx={{ color: "grey", fontWeight: 700 }}
+          >
+            CNN Indonesia
+          </Typography>
         </CardActions>
       </Card>
     </Box>

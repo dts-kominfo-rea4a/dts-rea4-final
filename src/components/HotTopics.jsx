@@ -4,7 +4,6 @@ import Typography from "@mui/material/Typography";
 import Card from "@mui/material/Card";
 import CardMedia from "@mui/material/CardMedia";
 import CardActions from "@mui/material/CardActions";
-import Button from "@mui/material/Button";
 import Grid from "@mui/material/Grid";
 
 const HotTopics = () => {
@@ -61,8 +60,22 @@ const HotTopics = () => {
                   Massa tortor nibh nulla condimentum imperdiet scelerisque...
                 </Typography>
                 <CardActions>
-                  <Button size="small">2 Hours Ago</Button>
-                  <Button size="small">CNN Indonesia</Button>
+                  <Typography
+                    gutterBottom
+                    variant="body2"
+                    component="div"
+                    sx={{ fontWeight: 700 }}
+                  >
+                    2 Hour Ago
+                  </Typography>
+                  <Typography
+                    gutterBottom
+                    variant="body2"
+                    component="div"
+                    sx={{ fontWeight: 700 }}
+                  >
+                    CNN Indonesia
+                  </Typography>
                 </CardActions>
               </Box>
             </Box>
