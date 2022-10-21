@@ -8,8 +8,8 @@ import HomePage from "./containers/HomePage";
 import ProtectedComponent from "./components/ProtectedComponent";
 import NotFoundPage from "./containers/NotFoundPage";
 import BaseLayout from "./containers/BaseLayout";
-import ListDomainPage from "./containers/ListDomainPage";
 import SearchPage from "./containers/SearchPage";
+import DetailsPage from "./containers/DetailsPage";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -52,18 +52,18 @@ root.render(
             </ProtectedComponent>
           }
         />
-        {/* <Route path="search">
+        <Route path="details">
           <Route
-            path=":query"
+            path=":bookId"
             element={
               <ProtectedComponent>
-                <BaseLayout title={query}>
-                  <SearchPage />
+                <BaseLayout title="Hasil pencarian">
+                  <DetailsPage />
                 </BaseLayout>
               </ProtectedComponent>
             }
           />
-        </Route> */}
+        </Route>
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </BrowserRouter>

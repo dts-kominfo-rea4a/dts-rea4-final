@@ -3,7 +3,14 @@ import logo from "../logo.png";
 import imageProfile from "../profile.png";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth, signOutMe } from "../authentication/firebase";
-import { LogOut, Home, FileMinus, Calendar, ChevronDown } from "react-feather";
+import {
+  LogOut,
+  Home,
+  FileMinus,
+  Calendar,
+  ChevronDown,
+  Bookmark,
+} from "react-feather";
 import { Link } from "react-router-dom";
 import ModalConfirm from "../components/ModalConfirm";
 
@@ -93,6 +100,21 @@ const BaseLayout = ({ children, title }) => {
               </Link>
             </li>
             <li>
+              <Link
+                to="/bookmark"
+                className="flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-300 rounded-xl hover:bg-gray-100 group"
+              >
+                <Bookmark className="flex-shrink-0 text-gray-500 transition duration-75 w-7 h-7 group-hover:text-primary" />
+                <span
+                  className={`${
+                    sidebar ? "" : "hidden"
+                  } ml-3 font-semibold whitespace-nowrap text-gray-700 group-hover:text-gray-900`}
+                >
+                  Bookmark
+                </span>
+              </Link>
+            </li>
+            {/* <li>
               <button
                 type="button"
                 className="flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-xl group hover:bg-gray-100"
@@ -131,7 +153,7 @@ const BaseLayout = ({ children, title }) => {
                   </Link>
                 </li>
               </ul>
-            </li>
+            </li> */}
           </ul>
           <ul className="pt-5 mt-5 mb-12 space-y-2">
             <li>
