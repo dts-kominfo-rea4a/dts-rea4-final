@@ -7,7 +7,9 @@ import inshortNewsApiInstance from "../Apis/InshortNewsApiInstance";
 import CardNews from "./CardNews";
 import {CardActionArea} from "@mui/material";
 
-const TopNews = () => {
+const News = (props) => {
+    console.log(props.category)
+
     const [news, setNews] = useState([]);
     const [category, setCategory] = useState("");
 
@@ -16,7 +18,7 @@ const TopNews = () => {
             try {
                 const responseNewsApi = await inshortNewsApiInstance.get("/news", {
                     params: {
-                        category: "all"
+                        category: props.category
                     }
                 })
 
@@ -28,7 +30,7 @@ const TopNews = () => {
         }
 
         fetchDataNews()
-    }, []);
+    }, [props.category]);
 
     return (
         <Box sx={{flexGrow: 1, mt: 3}}>
@@ -51,4 +53,4 @@ const TopNews = () => {
     );
 }
 
-export default TopNews
+export default News

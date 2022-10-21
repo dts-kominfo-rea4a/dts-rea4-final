@@ -4,13 +4,13 @@ import Container from '@mui/material/Container';
 import TopNews from "../Components/TopNews";
 import News from "../Components/News";
 
-export default function SimpleContainer() {
+export default function SimpleContainer({ category }) {
     return (
         <React.Fragment>
             <CssBaseline/>
             <Container maxWidth={'xl'}>
                 <TopNews />
-                <News />
+                <News category={category} />
             </Container>
         </React.Fragment>
     );

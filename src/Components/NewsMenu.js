@@ -15,8 +15,9 @@ import MenuItem from '@mui/material/MenuItem';
 import NewspaperIcon from '@mui/icons-material/Newspaper';
 import InputBase from '@mui/material/InputBase';
 import SearchIcon from '@mui/icons-material/Search';
+import {useNavigate} from "react-router-dom";
 
-const pages = ['News', 'Sport', 'Entertainment', 'Business', 'Health', 'Science', 'Technology'];
+const pages = ['News', 'Sport', 'Entertainment', 'Business', 'Politic', 'Science', 'Technology'];
 const settings = ['Profile', 'Logout'];
 
 const Search = styled('div')(({theme}) => ({
@@ -81,6 +82,8 @@ function NewsMenu() {
     const handleCloseUserMenu = () => {
         setAnchorElUser(null);
     };
+
+    let navigate = useNavigate();
 
     return (
         <AppBar position="static" style={{background: '#2E3B55'}}>
@@ -164,7 +167,7 @@ function NewsMenu() {
                         {pages.map((page) => (
                             <Button
                                 key={page}
-                                onClick={handleCloseNavMenu}
+                                onClick={() => navigate(`/${page}`)}
                                 sx={{my: 2, color: 'white', display: 'block'}}
                             >
                                 {page}

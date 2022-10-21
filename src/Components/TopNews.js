@@ -44,14 +44,14 @@ const TopNews = () => {
             <Grid container spacing={5}>
                 <Grid item xs={4}>
                     <Typography gutterBottom variant="h5" component="div" sx={{textAlign: "justify"}}>
-                        {content.title}
+                        {content?.title}
                     </Typography>
                     <Typography variant="body2" color="text.secondary" sx={{textAlign: "justify"}}>
-                        {content.content}
+                        {content?.content}
                     </Typography>
                     <Divider sx={{mt: 1, mb: 1}}/>
                     <Typography gutterBottom variant="body2" color="text.secondary" sx={{textAlign: "justify"}}>
-                        {content.author} - {content.date}
+                        {content?.author} - {content?.date}
                     </Typography>
                 </Grid>
                 <Grid item xs={8}>
