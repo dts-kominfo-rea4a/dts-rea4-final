@@ -16,9 +16,31 @@ function App() {
   const firebaseObserver = ReactObserver();
 
   useEffect(() => {
-    authentication.onAuthStateChanged((user) => {
-      firebaseObserver.publish('authStateChanged', user);
-    });
+    // reload firebase authentication
+    authentication.currentUser?.reload();
+
+    const onAuthStateChangedUnsubscribe = authentication.onAuthStateChanged(
+      async (user) => {
+        if (user) {
+          const onIdTokenChangedUnsubscribe = authentication.onIdTokenChanged(
+            (user) => {
+              const unsubscribeSetInterval = setTimeout(() => {
+                authentication.currentUser?.reload();
+                authentication.currentUser?.getIdToken(/* forceRefresh */ true);
+              }, 100);
+
+              console.log('user', user);
+              if (user && user.emailVerified) {
+                firebaseObserver.publish('authStateChanged', user);
+                clearInterval(unsubscribeSetInterval); //delete interval
+                onAuthStateChangedUnsubscribe(); //unsubscribe onAuthStateChanged
+                return onIdTokenChangedUnsubscribe(); //unsubscribe onIdTokenChanged
+              }
+            }
+          );
+        }
+      }
+    );
 
     firebaseObserver.subscribe('authStateChanged', (user: User | null) => {
       if (user) setUser(user);
