@@ -1,8 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { signInWithEmail, signInWithGoogle } from "../authentication/firebase";
 
-const LoginPage = () => {
+const LoginPage = ({ title }) => {
+  useEffect(() => {
+    document.title = title;
+  }, [title]);
   const [credential, setCredential] = useState({
     email: "",
     password: "",

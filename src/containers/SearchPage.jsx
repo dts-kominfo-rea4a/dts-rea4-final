@@ -18,6 +18,7 @@ const SearchPage = () => {
 
   useEffect(() => {
     fetchBook(query);
+    document.title = `Search result for: ${query}`;
   }, [query]);
   //   console.log(dataBooks.items.length);
   const searchInputHandle = (event) => {
@@ -67,15 +68,14 @@ const SearchPage = () => {
                 type="submit"
                 className="text-white absolute right-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2"
               >
-                Cari
+                Search
               </button>
             </div>
           </form>
           <div className="px-6 py-2 italic font-semibold">
             {isLoading
               ? "Loading ..."
-              : `Menampilkan dari ${dataBooks.items?.length} total ${dataBooks?.totalItems} hasil
-            penelusuran...`}
+              : `Showing  ${dataBooks.items?.length} of ${dataBooks?.totalItems} total result...`}
           </div>
         </div>
       </section>

@@ -1,5 +1,5 @@
-import { useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 import useBooksStore, {
   selectFetchBookDetail,
   selectBookDetail,
@@ -7,21 +7,35 @@ import useBooksStore, {
   selectError,
 } from "../stores/book";
 import { Bookmark, BookOpen, Users, ExternalLink } from "react-feather";
-import { data } from "autoprefixer";
+import ModalInfo from "../components/ModalInfo";
 
 const DetailsPage = () => {
   let { bookId } = useParams();
-
+  const [displayModal, setDisplayModal] = useState(true);
   const fetchBookDetail = useBooksStore(selectFetchBookDetail);
   const dataBook = useBooksStore(selectBookDetail);
   const isLoading = useBooksStore(selectIsLoading);
   const isError = useBooksStore(selectError);
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetchBookDetail(bookId);
   }, [bookId]);
 
-  return (
+  const modalData = (data) => {
+    setDisplayModal(false);
+    navigate(-1);
+  };
+
+  return isError ? (
+    <>
+      {displayModal ? (
+        <ModalInfo message={isError} modalData={modalData} />
+      ) : (
+        ""
+      )}
+    </>
+  ) : (
     <>
       <section className="max-w-screen-lg px-2 py-6 bg-slate-100 text-slate-800">
         <div className="flex flex-wrap">
@@ -34,7 +48,7 @@ const DetailsPage = () => {
           </div>
           <div className="flex flex-col w-full px-2 mt-6 md:mt-0 md:w-2/3">
             <div className="flex-1">
-              <h1 className="text-2xl font-bold md:text-3xl">
+              <h1 className="mb-2 text-2xl font-bold md:text-3xl">
                 {dataBook.title}
               </h1>
               <h4 className="flex flex-wrap font-semibold text-md">

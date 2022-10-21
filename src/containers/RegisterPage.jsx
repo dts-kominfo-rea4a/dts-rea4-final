@@ -1,8 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { signUpWithEmail } from "../authentication/firebase";
 
-const RegisterPage = () => {
+const RegisterPage = ({ title }) => {
+  useEffect(() => {
+    document.title = title;
+  }, [title]);
   const [credential, setCredential] = useState({
     email: "",
     password: "",
@@ -51,7 +54,7 @@ const RegisterPage = () => {
 
   return (
     <section className="h-screen bg-gray-100">
-      <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto h-screen lg:py-0">
+      <div className="flex flex-col items-center justify-center h-screen px-6 py-8 mx-auto lg:py-0">
         {errorMessage ? (
           <div className="block w-full max-w-md p-4 mb-4 text-white bg-red-500 rounded-lg text-md">
             <span className="font-medium">Oops!</span> {errorMessage}

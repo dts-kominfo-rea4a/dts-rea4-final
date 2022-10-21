@@ -20,7 +20,7 @@ root.render(
           path="login"
           element={
             <ProtectedComponent loginOnly={false}>
-              <LoginPage />
+              <LoginPage title="Sign in" />
             </ProtectedComponent>
           }
         />
@@ -28,7 +28,7 @@ root.render(
           path="register"
           element={
             <ProtectedComponent loginOnly={false}>
-              <RegisterPage />
+              <RegisterPage title="Sign up" />
             </ProtectedComponent>
           }
         />
@@ -46,25 +46,29 @@ root.render(
           path="search"
           element={
             <ProtectedComponent>
-              <BaseLayout title="Hasil pencarian">
+              <BaseLayout title="Search Result">
                 <SearchPage />
               </BaseLayout>
             </ProtectedComponent>
           }
         />
         <Route path="details">
+          <Route index element={<NotFoundPage />} />
           <Route
             path=":bookId"
             element={
               <ProtectedComponent>
-                <BaseLayout title="Hasil pencarian">
+                <BaseLayout title="Book Details">
                   <DetailsPage />
                 </BaseLayout>
               </ProtectedComponent>
             }
           />
         </Route>
-        <Route path="*" element={<NotFoundPage />} />
+        <Route
+          path="*"
+          element={<NotFoundPage title="Something's missing" />}
+        />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>

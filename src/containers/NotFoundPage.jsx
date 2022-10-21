@@ -1,6 +1,10 @@
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 
-const NotFoundPage = () => {
+const NotFoundPage = ({ title }) => {
+  useEffect(() => {
+    document.title = title;
+  }, [title]);
   return (
     <section className="bg-white">
       <div className="max-w-screen-xl px-4 py-8 mx-auto lg:py-16 lg:px-6">
@@ -8,8 +12,10 @@ const NotFoundPage = () => {
           <h1 className="mb-4 font-extrabold tracking-tight text-7xl lg:text-9xl text-primary">
             404
           </h1>
-          <p className="mb-4 text-3xl font-bold tracking-tight text-gray-900 md:text-4xl">
-            Something's missing.
+          <p className="mb-1 text-xl font-bold tracking-tight text-gray-900 md:text-3xl">
+            THE <span className="text-blue-500">EARTH</span> WITHOUT{" "}
+            <span className="text-blue-500">ART</span> IS JUST{" "}
+            <span className="text-blue-500">EH</span>
           </p>
           <p className="mb-4 text-lg font-light text-gray-500">
             Sorry, we can't find that page. You'll find lots to explore on the

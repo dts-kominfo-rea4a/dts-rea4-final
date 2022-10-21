@@ -13,19 +13,19 @@ const BaseLayout = ({ children, title }) => {
   }, [title]);
 
   const [user] = useAuthState(auth);
-  const [menus, setMenus] = useState({
-    menu1: false,
-    menu2: false,
-    menu3: false,
-  });
+  // const [menus, setMenus] = useState({
+  //   menu1: false,
+  //   menu2: false,
+  //   menu3: false,
+  // });
   const [displayModal, setDisplayModal] = useState(false);
   const [sidebar, setSidebar] = useState(false);
 
-  const menuHandler1 = () => {
-    menus.menu1
-      ? setMenus({ ...menus, menu1: false })
-      : setMenus({ ...menus, menu1: true });
-  };
+  // const menuHandler1 = () => {
+  //   menus.menu1
+  //     ? setMenus({ ...menus, menu1: false })
+  //     : setMenus({ ...menus, menu1: true });
+  // };
 
   const modalData = (data) => {
     data ? signOutMe() : setDisplayModal(false);
@@ -52,7 +52,7 @@ const BaseLayout = ({ children, title }) => {
                 ></path>
               </svg>
             </button>
-            <div className="flex items-center ml-14">
+            <div className="flex items-center ml-16">
               <img src={logo} className="w-10 h-10 mr-2" alt="logo" />
               <span className="self-center text-xl font-bold whitespace-nowrap">
                 <span className="text-primary">GO</span>
@@ -177,10 +177,7 @@ const BaseLayout = ({ children, title }) => {
         {children}
       </div>
       {displayModal && (
-        <ModalConfirm
-          message="Apakah kamu yakin akan keluar?"
-          modalData={modalData}
-        />
+        <ModalConfirm message="Are you sure to Logout?" modalData={modalData} />
       )}
     </>
   );

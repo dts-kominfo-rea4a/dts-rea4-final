@@ -1,11 +1,7 @@
 import { X, AlertCircle } from "react-feather";
-const ModalConfirm = ({ message, modalData }) => {
+const ModalInfo = ({ message, modalData }) => {
   const buttonHandler = (event) => {
-    if (event.target.name === "yes") {
-      modalData(true);
-    } else {
-      modalData(false);
-    }
+    modalData(false);
   };
   return (
     <>
@@ -22,25 +18,9 @@ const ModalConfirm = ({ message, modalData }) => {
             </button>
             <div className="p-6 text-center">
               <AlertCircle className="mx-auto mb-4 text-gray-400 w-14 h-14" />
-              <h3 className="mb-5 text-lg font-normal text-gray-500">
+              <h3 className="mb-5 text-lg font-semibold text-gray-600">
                 {message}
               </h3>
-              <button
-                onClick={buttonHandler}
-                type="button"
-                name="yes"
-                className="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2"
-              >
-                Yes, sure
-              </button>
-              <button
-                onClick={buttonHandler}
-                type="button"
-                name="no"
-                className="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10"
-              >
-                No, cancel
-              </button>
             </div>
           </div>
         </div>
@@ -50,4 +30,4 @@ const ModalConfirm = ({ message, modalData }) => {
   );
 };
 
-export default ModalConfirm;
+export default ModalInfo;
