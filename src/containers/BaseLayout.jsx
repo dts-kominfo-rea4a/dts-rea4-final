@@ -54,8 +54,9 @@ const BaseLayout = ({ children, title }) => {
             </button>
             <div className="flex items-center">
               <img src={logo} className="w-10 h-10 mr-2" alt="logo" />
-              <span className="self-center text-xl font-semibold whitespace-nowrap">
-                COOKNOW
+              <span className="self-center text-xl font-bold whitespace-nowrap">
+                <span className="text-primary">GO</span>
+                <span className="text-blue-400">BOOKS</span>
               </span>
             </div>
             <div className="flex items-center lg:order-2">

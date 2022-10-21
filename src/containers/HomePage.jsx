@@ -1,123 +1,78 @@
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 const HomePage = () => {
+  const [searchQuery, setSearchQuery] = useState("");
+
+  const searchInputHandle = (event) => {
+    setSearchQuery(event.target.value);
+  };
+
+  const navigate = useNavigate();
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    navigate(`/search?q=${searchQuery}`);
+  };
+
   return (
     <>
-      <section className="px-4 py-6">
-        <h1 className="mb-3 text-3xl font-bold uppercase text-dark">
-          Kategori Resep
-        </h1>
-        <div className="grid grid-cols-1 gap-2 md:grid-cols-2 lg:grid-cols-3 ">
-          <div className="w-full bg-blue-500 aspect-[9/3] md:aspect-[8/3] rounded-lg overflow-hidden group relative hover:scale-95 transition-all duration-500">
-            <div className="flex bg-slate-900/50 bg-[url('https://source.unsplash.com/600x200?programing')] w-full h-full bg-cover bg-center absolute group-hover:scale-110 transition-all duration-500 text-white">
-              <div className="self-center mx-auto text-2xl font-bold text-white uppercase drop-shadow-lg bg-slate-900/30">
-                DESSERT
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      <section className="pb-32 pt-36 bg-slate-100">
+      <section className="pt-24 pb-10 bg-slate-100">
         <div className="container">
-          <div className="w-full px-4">
-            <div className="max-w-full mx-auto mb-16 text-center">
-              <h4 className="mb-3 text-lg font-bold uppercase text-primary">
-                Blog
-              </h4>
-              <h2 className="mb-4 text-3xl font-bold text-dark md:text-4xl">
-                Tulisan Terkini
+          <div className="w-full px-4 mb-8">
+            <div className="max-w-full mx-auto text-center">
+              <h2 className="mb-4 text-3xl font-bold text-dark md:text-4xl text-primary">
+                GoBooks
               </h2>
-              <p className="font-medium text-md text-secondary lg:text-lg">
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                Aliquid doloribus et laudantium!
-              </p>
             </div>
           </div>
-          <div className="flex flex-wrap">
-            <div className="w-full px-4 md:w-1/2 lg:w-1/3">
-              <div className="mb-10 overflow-hidden bg-white shadow-lg rounded-xl">
-                <img
-                  src="https://source.unsplash.com/360x200?programing"
-                  alt="programing"
-                  className="w-full"
-                />
-                <div className="px-6 py-8">
-                  <h3>
-                    <a
-                      href="#"
-                      className="block mb-3 text-xl font-semibold truncate text-dark hover:text-primary"
-                    >
-                      Tips Belajar Programing
-                    </a>
-                  </h3>
-                  <p className="mb-4 font-medium text-md text-secondary lg:text-lg">
-                    Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                    Molestiae, ducimus!
-                  </p>
-                  <a
-                    href="#"
-                    className="px-4 py-2 text-sm font-semibold text-white rounded-lg bg-primary hover:opacity-80"
-                  >
-                    Baca Slengkapnya
-                  </a>
-                </div>
+          <form className="mx-6" onSubmit={handleSubmit}>
+            <label
+              htmlFor="default-search"
+              className="mb-2 text-sm font-medium text-gray-900 sr-only"
+            >
+              Search
+            </label>
+            <div className="relative">
+              <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                <svg
+                  aria-hidden="true"
+                  className="w-5 h-5 text-gray-500"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                  ></path>
+                </svg>
               </div>
+              <input
+                onChange={searchInputHandle}
+                type="search"
+                className="block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
+                placeholder="Search Comics, Romance..."
+              />
+              <button
+                type="submit"
+                className="text-white absolute right-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2"
+              >
+                Cari
+              </button>
             </div>
-            <div className="w-full px-4 md:w-1/2 lg:w-1/3">
-              <div className="mb-10 overflow-hidden bg-white shadow-lg rounded-xl">
-                <img
-                  src="https://source.unsplash.com/360x200?mechanical+keyboard"
-                  alt="programing"
-                  className="w-full"
-                />
-                <div className="px-6 py-8">
-                  <h3>
-                    <a
-                      href="#"
-                      className="block mb-3 text-xl font-semibold truncate text-dark hover:text-primary"
-                    >
-                      Jenis Keyboard Mechanical
-                    </a>
-                  </h3>
-                  <p className="mb-4 font-medium text-md text-secondary lg:text-lg">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Officia dolorum odit facere?
-                  </p>
-                  <a
-                    href="#"
-                    className="px-4 py-2 text-sm font-semibold text-white rounded-lg bg-primary hover:opacity-80"
-                  >
-                    Baca Slengkapnya
-                  </a>
-                </div>
-              </div>
-            </div>
-            <div className="w-full px-4 md:w-1/2 lg:w-1/3">
-              <div className="mb-10 overflow-hidden bg-white shadow-lg rounded-xl">
-                <img
-                  src="https://source.unsplash.com/360x200?coffee"
-                  alt="programing"
-                  className="w-full"
-                />
-                <div className="px-6 py-8">
-                  <h3>
-                    <a
-                      href="#"
-                      className="block mb-3 text-xl font-semibold truncate text-dark hover:text-primary"
-                    >
-                      Menikmati Secangkir Coffee
-                    </a>
-                  </h3>
-                  <p className="mb-4 font-medium text-md text-secondary lg:text-lg">
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                    Necessitatibus voluptatum dicta possimus!
-                  </p>
-                  <a
-                    href="#"
-                    className="px-4 py-2 text-sm font-semibold text-white rounded-lg bg-primary hover:opacity-80"
-                  >
-                    Baca Slengkapnya
-                  </a>
-                </div>
-              </div>
+          </form>
+          <div className="w-full px-4 py-8">
+            <div className="max-w-full mx-auto mb-16 text-center">
+              <p className="max-w-xl mx-auto font-medium text-md text-secondary lg:text-lg">
+                GoBooks is a service that searches the full text of books and
+                magazines that Google has scanned, converted to text using
+                optical character recognition, and stored in its digital
+                database.
+              </p>
             </div>
           </div>
         </div>

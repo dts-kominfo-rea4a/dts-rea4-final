@@ -19,7 +19,6 @@ const sliceJadwalSholat = (set) => ({
       const data = await axios.get(
         `https://raw.githubusercontent.com/lakuapik/jadwalsholatorg/master/adzan/${kota}/${year}/${month}.json`
       );
-
       // kalo ini ada beberapa level didalam data
       set((state) => ({ ...state, jadwalSholat: data.data, isLoading: false }));
     } catch (err) {
@@ -31,14 +30,9 @@ const sliceJadwalSholat = (set) => ({
       // dalam zustand jika hanya 1 level dapat langung di set
       // set((state) => ({...state, isLoading: false }));
       set({ isLoading: true });
-      const options = {
-        headers: {
-          "X-Auth-Email": "react@tunnel.id",
-          "X-Auth-Key": "0ee4c1a3cdc6b900fc396fcf15a9db26d2a2f",
-          "Content-Type": "application/json",
-        },
-      };
-      const data = await axios.get("https://paybizapi.paydia.id");
+      const data = await axios.get(
+        "https://raw.githubusercontent.com/lakuapik/jadwalsholatorg/master/kota.json"
+      );
       console.log(data);
       // kalo ini ada beberapa level didalam data
       set((state) => ({ ...state, listKota: data.data, isLoading: false }));

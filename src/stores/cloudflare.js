@@ -10,17 +10,9 @@ const sliceCF = (set) => ({
     try {
       // dalam zustand jika hanya 1 level dapat langung di set
       // set((state) => ({...state, isLoading: false }));
-      const options = {
-        headers: {
-          "X-Auth-Email": process.env.REACT_APP_CF_EMAIL,
-          "X-Auth-Key": process.env.REACT_APP_CF_KEY,
-          "Content-Type": "application/json",
-          "Access-Control-Allow-Origin": "*",
-        },
-      };
       set({ isLoading: true });
       const data = await axios.get(
-        "https://api.cloudflare.com/client/v4/zones?match=all"
+        `https://serpapi.com/search.json?engine=google_play&store=books&hl=id&gl=id&api_key=${process.env.REACT_APP_API_KEY}`
       );
       console.log(data);
       // kalo ini ada beberapa level didalam data

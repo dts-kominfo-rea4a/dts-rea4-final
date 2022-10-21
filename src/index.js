@@ -9,6 +9,7 @@ import ProtectedComponent from "./components/ProtectedComponent";
 import NotFoundPage from "./containers/NotFoundPage";
 import BaseLayout from "./containers/BaseLayout";
 import ListDomainPage from "./containers/ListDomainPage";
+import SearchPage from "./containers/SearchPage";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -42,15 +43,27 @@ root.render(
           }
         />
         <Route
-          path="/domain"
+          path="search"
           element={
             <ProtectedComponent>
-              <BaseLayout title="List Domain">
-                <ListDomainPage />
+              <BaseLayout title="Hasil pencarian">
+                <SearchPage />
               </BaseLayout>
             </ProtectedComponent>
           }
         />
+        {/* <Route path="search">
+          <Route
+            path=":query"
+            element={
+              <ProtectedComponent>
+                <BaseLayout title={query}>
+                  <SearchPage />
+                </BaseLayout>
+              </ProtectedComponent>
+            }
+          />
+        </Route> */}
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </BrowserRouter>
