@@ -6,8 +6,10 @@ import type {
   UseFormRegister,
 } from 'react-hook-form';
 
-export interface Props<T = unknown, U extends FieldValues = FieldValues>
-  extends InputHTMLAttributes<HTMLInputElement> {
+export interface Props<
+  T extends FieldValues,
+  U extends FieldValues = FieldValues
+> extends InputHTMLAttributes<HTMLInputElement> {
   name: string;
   label?: string;
   disabled?: boolean;
@@ -15,7 +17,7 @@ export interface Props<T = unknown, U extends FieldValues = FieldValues>
   errors?: FieldErrors<U>;
 }
 
-const Input = <T, U>({
+const Input = <T extends FieldValues, U extends FieldValues>({
   disabled = false,
   placeholder,
   errors,
@@ -31,7 +33,11 @@ const Input = <T, U>({
         {label ?? ''}
       </label>
       <input
-        className="border rounded-lg p-2 w-full mb-2"
+        className={`w-full p-2 mb-2 border focus:ring focus:ring-blue-500 focus:border-blue-500 rounded-lg ${
+          errors && errors[name as keyof U]
+            ? 'border-red-500 focus:ring-red-500 focus:border-red-500'
+            : ''
+        }`}
         placeholder={placeholder}
         disabled={disabled}
         value={value}
@@ -39,7 +45,9 @@ const Input = <T, U>({
         {...rest}
       />
       {errors && errors[name as keyof U] && (
-        <span className="">{errors[name as keyof U]?.message as string}</span>
+        <span className="mb-2 text-xs text-red-500">
+          {errors[name as keyof U]?.message as string}
+        </span>
       )}
     </div>
   );
