@@ -19,7 +19,7 @@ const Header = () => {
           <div className="flex space-x-7">
             <div>
               <a href="#" className="flex items-center px-2 py-4">
-                <span className="text-lg font-semibold text-gray-500">
+                <span className="text-lg font-bold text-gray-500">
                   Free Games App
                 </span>
               </a>

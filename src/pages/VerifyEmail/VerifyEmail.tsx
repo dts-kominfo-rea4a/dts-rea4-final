@@ -12,7 +12,7 @@ const VerifyEmail = () => {
   }, [user]);
 
   return (
-    <div className="h-screen font-mono App">
+    <div className="h-screen App">
       <p className="m-4 font-normal text-center text-gray-800">
         You need verified before access. Please check your email for
         verification process.

@@ -51,7 +51,7 @@ function App() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <div className="h-screen font-mono App">
+      <div className="h-screen App">
         <Header />
         <Router />
       </div>

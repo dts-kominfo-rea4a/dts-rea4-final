@@ -47,7 +47,7 @@ const AppList: React.FC<CarListProps> = ({ apps }) => {
           </a>
           <div className="p-5">
             <a href={app.game_url} target="_blank" rel="noreferrer noopener">
-              <h1 className="mb-4 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+              <h1 className="mb-4 text-2xl font-bold tracking-tight text-gray-900 font-play dark:text-white">
                 {app.title}
               </h1>
             </a>
