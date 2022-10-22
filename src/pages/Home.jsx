@@ -26,7 +26,7 @@ const Home = ({ isLoggedIn }) => {
     // fetchMovie();
     fetchMovieTrending("movie", "week");
     fetchMovieTrending("tv", "week");
-  }, []);
+  }, [fetchMovieTrending]);
 
   // Fungsi ini akan menjadi async await
   // Karena keluarDariApps bersifat async, dan kita harus menunggu
