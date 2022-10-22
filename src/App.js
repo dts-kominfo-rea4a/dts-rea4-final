@@ -1,18 +1,17 @@
 import CssBaseline from "@mui/material/CssBaseline";
-import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import { Typography } from "@mui/material";
+import Header from "./components/header/Header";
 
 export default function App() {
   return (
     <>
+      <Header />
       <CssBaseline />
       <Container>
-        <Box alignItems="center">
-          <Typography variant="h1" gutterBottom>
-            Final Project Init
-          </Typography>
-        </Box>
+        <Typography variant="h1" gutterBottom>
+          Final Project Init
+        </Typography>
       </Container>
     </>
   );
