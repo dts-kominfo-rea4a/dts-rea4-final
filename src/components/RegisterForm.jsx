@@ -1,21 +1,35 @@
 import { useState, useEffect } from "react";
 
 import { Link } from "react-router-dom";
-import { Grid, Box, Button, TextField, Typography } from "@mui/material";
-import { 
-  auth,
-  registerWithEmailAndPass
+import { Grid, Box, Button, TextField, Typography, Snackbar } from "@mui/material";
+import IconButton from '@mui/material/IconButton';
+import CloseIcon from "@mui/icons-material/Close";
+import useFirebaseStore,{
+  selectAuth,
+  selectError,
+  selectIsLoading,
+  selectResetError,
+  selectRegisterWithEmailAndPass
 } from "../authentication/firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useNavigate } from "react-router-dom";
+
+import SimpleBackdrop from "./SimpleBackdrop";
 
 import styles from "./LoginOrRegisterForm.module.css";
 
 const RegisterForm = () => {
   const navigate = useNavigate();
+  const auth  = useFirebaseStore(selectAuth);
+  const registerWithEmailAndPass = useFirebaseStore(selectRegisterWithEmailAndPass);
+  const statusError = useFirebaseStore(selectError);
+  const resetError = useFirebaseStore(selectResetError);
+  const isFirebaseLoading = useFirebaseStore(selectIsLoading);
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [user, isLoading, error] = useAuthState(auth);
+  const [open, setOpen] = useState(false);
 
   const buttonOnCLickHanler = (evt) => {
     evt.preventDefault();
@@ -28,6 +42,14 @@ const RegisterForm = () => {
 
   const inputPasswordOnChangeHandler = (evt) => {
     setPassword(evt.target.value);
+  };
+
+  const handleClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+    resetError();
+    setOpen(false);
   };
 
   // Kita gunakan.... useEffect !
@@ -50,9 +72,17 @@ const RegisterForm = () => {
     // Sekarang dependency kita tergantung pada user dan isLoading dari useAuthState
     [user, isLoading, navigate]
   );
+  useEffect(
+    () => {
+      if (statusError){
+        setOpen(true);
+      }
+    },[isFirebaseLoading]
+  )
 
   return (
     <>
+    <SimpleBackdrop open={isLoading || isFirebaseLoading} />
       <div
         style={{
           backgroundImage: `url("images/background.jpeg")`,
@@ -110,6 +140,22 @@ const RegisterForm = () => {
             </Box>
           </Grid>
         </Grid>
+        <Snackbar
+          open={open}
+          autoHideDuration={6000}
+          onClose={handleClose}
+          message={statusError&&statusError.message?statusError.message:"Error"}
+          action={
+            <IconButton
+              size="small"
+              aria-label="close"
+              color="inherit"
+              onClick={handleClose}
+            >
+              <CloseIcon fontSize="small" />
+            </IconButton>
+          }
+        />
       </div>
     </>
   );

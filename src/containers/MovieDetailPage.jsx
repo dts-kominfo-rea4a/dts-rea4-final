@@ -1,23 +1,23 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import useMovieStore, {
-  selectResetSearchedMovies,
   selectedMovie,
   selectDetailMovie,
+  selectIsLoading
 } from "../stores/movie";
 
 import NavBar from "../components/NavBar";
 import Movie from "../components/Movie";
-import NoMatch from "./NoMatchPage";
+import NotFound from "../components/NotFound";
+import SimpleBackdrop from "../components/SimpleBackdrop";
 
-const MovieDetail = () => {
+const MovieDetailPage = () => {
   const params = useParams();
   const [loaded, setLoaded] = useState(false);
   const selectMovie = useMovieStore(selectDetailMovie);
   const detailMovie = useMovieStore(selectedMovie);
-  const resetSearchedMovie = useMovieStore(selectResetSearchedMovies);
+  const isLoading   = useMovieStore(selectIsLoading);
   useEffect(() => {
-    resetSearchedMovie();
     selectMovie(params.id)
     setLoaded(true);
   }, [params.id]);
@@ -25,10 +25,10 @@ const MovieDetail = () => {
     <>
       <div className="App">
         <NavBar />
-        {loaded?<Movie movie={detailMovie} />:""}
+        {isLoading?<SimpleBackdrop open={isLoading} /> :detailMovie?<Movie movie={detailMovie} />:<NotFound/>}
       </div>
     </>
   );
 };
 
-export default MovieDetail;
+export default MovieDetailPage;

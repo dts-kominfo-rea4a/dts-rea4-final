@@ -7,24 +7,41 @@ import {
   Button,
   TextField,
   Typography,
+  Snackbar,
 } from "@mui/material";
 
-import {
-  auth,
-  signInWithEmailAndPass,
-  signInWithGoogle,
-  signInWithGithub,
+import IconButton from '@mui/material/IconButton';
+import CloseIcon from "@mui/icons-material/Close";
+
+import useFirebaseStore,{
+  selectAuth,
+  selectError,
+  selectResetError,
+  selectSignInWithEmailAndPass,
+  selectSignInWithGoogle,
+  selectSignInWithGithub,
+  selectIsLoading
 } from "../authentication/firebase";
 
 import styles from "./LoginOrRegisterForm.module.css";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useNavigate } from "react-router-dom";
+import SimpleBackdrop from "./SimpleBackdrop";
 
 const LoginForm = () => {
   const navigate = useNavigate();
+  const auth = useFirebaseStore(selectAuth);
+  const signInWithEmailAndPass = useFirebaseStore(selectSignInWithEmailAndPass);
+  const signInWithGithub = useFirebaseStore(selectSignInWithGithub);
+  const signInWithGoogle = useFirebaseStore(selectSignInWithGoogle);
+  const statusError = useFirebaseStore(selectError);
+  const resetError = useFirebaseStore(selectResetError);
+  const isFirebaseLoading = useFirebaseStore(selectIsLoading);
+
   const [user, isLoading, error] = useAuthState(auth);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [open, setOpen] = useState(false);
 
   // Kita gunakan.... useEffect !
   useEffect(
@@ -44,8 +61,16 @@ const LoginForm = () => {
       }
     },
     // Sekarang dependency kita tergantung pada user dan isLoading dari useAuthState
-    [user, isLoading, navigate]
+    [user, isLoading, error, navigate]
   );
+
+  useEffect(
+    () => {
+      if (statusError){
+        setOpen(true);
+      }
+    },[isFirebaseLoading]
+  )
 
   const inputEmailOnChangeHandler = (evt) => {
     setEmail(evt.target.value);
@@ -53,6 +78,12 @@ const LoginForm = () => {
 
   const inputPasswordOnChangeHandler = (evt) => {
     setPassword(evt.target.value);
+  };
+
+  const keyPressHandler = (evt) => {
+    if (evt.key === "Enter") {
+      signInWithEmailAndPass(email, password);
+    }
   };
 
   const buttonOnCLickHanler = (evt) => {
@@ -68,8 +99,17 @@ const LoginForm = () => {
     signInWithGoogle();
   };
 
+  const handleClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+    resetError();
+    setOpen(false);
+  };
+
   return (
     <>
+      <SimpleBackdrop open={isLoading || isFirebaseLoading} />
       <div
         style={{
           backgroundImage: `url("images/background.jpeg")`,
@@ -100,6 +140,7 @@ const LoginForm = () => {
                   fullWidth
                   value={email}
                   onChange={inputEmailOnChangeHandler}
+                  onKeyPress={keyPressHandler}
                 />
 
                 <TextField
@@ -111,9 +152,12 @@ const LoginForm = () => {
                   value={password}
                   width={100}
                   onChange={inputPasswordOnChangeHandler}
+                  onKeyPress={keyPressHandler}
                 />
 
-                <Button variant="contained" onClick={buttonOnCLickHanler}>Login</Button>
+                <Button variant="contained" onClick={buttonOnCLickHanler}>
+                  Login
+                </Button>
               </Box>
               <Link to="/register">
                 <Typography variant="body1">
@@ -144,6 +188,22 @@ const LoginForm = () => {
             </Box>
           </Grid>
         </Grid>
+        <Snackbar
+          open={open}
+          autoHideDuration={6000}
+          onClose={handleClose}
+          message={statusError&&statusError.message?statusError.message:"Error"}
+          action={
+            <IconButton
+              size="small"
+              aria-label="close"
+              color="inherit"
+              onClick={handleClose}
+            >
+              <CloseIcon fontSize="small" />
+            </IconButton>
+          }
+        />
       </div>
     </>
   );

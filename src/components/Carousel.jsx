@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { selectMovies } from "../stores/movie";
+import { useNavigate } from "react-router-dom";
 
 import styles from "./Carousel.module.css";
 const Carousel = ({ movies }) => {
   // show the movie with this index
   const [currentIndex, setCurrentIndex] = useState(0);
   const [data, setData] = useState(movies.length);
+
+  const navigate = useNavigate();
 
   // move to the next movie
   // if we are at the end, go to the first movie
@@ -18,9 +20,11 @@ const Carousel = ({ movies }) => {
   const prev = () => {
     setCurrentIndex((currentIndex - 1 + movies.length) % movies.length);
   };
-
-  const dotClicked = (event) => {
-    setCurrentIndex(event.target.key);
+  const imageClicked = (id) => {
+    navigate(`/movie/${id}`);
+  };
+  const dotClicked = (id) => {
+    setCurrentIndex(id);
   };
   let timer;
   const updateCount = () => {
@@ -57,6 +61,7 @@ const Carousel = ({ movies }) => {
                   }
                   alt={movie.title}
                   className={styles.movie}
+                  onClick={() => imageClicked(movie.id)}
                 />
                 <div className={styles.caption}>{movie.title}</div>
               </div>
@@ -79,7 +84,7 @@ const Carousel = ({ movies }) => {
         {movies
           ? movies.map((movie) => (
               <span
-                key={movies.indexOf(movie)}
+                key={movie.id}
                 // highlight the dot that corresponds to the current movie
                 className={
                   movies[currentIndex]
@@ -89,7 +94,7 @@ const Carousel = ({ movies }) => {
                     : styles.dot
                 }
                 // when the user clicks on a dot, go to the corresponding movie
-                onClick={dotClicked}
+                onClick={() => dotClicked(movie.id)}
               />
             ))
           : ""}

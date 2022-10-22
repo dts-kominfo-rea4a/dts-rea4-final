@@ -1,7 +1,7 @@
 
 /* Slideshow container */
 .slidercontainer {
-    position: central;
+    position: relative;
     margin: auto;
     width: 100vw;
     max-height: 60vh;
@@ -34,7 +34,7 @@
   .next {
     cursor: pointer;
     position: absolute;
-    top: 35%;
+    top: 50%;
     /* align-content: center; */
     width: auto;
     padding: 16px;
@@ -68,8 +68,6 @@
     font-size: 25px;
     font-weight: bold;
     color: #fff;
-    top: 62%;
-    /* align-content: center; */
     align-items: center;
   }
 
@@ -88,6 +86,8 @@
     border-radius: 50%;
     display: inline-block;
     transition: 0.5s;
+    bottom: 5px;
+    z-index: 1;
   }
   
   .active,
@@ -104,6 +104,8 @@
     border-radius: 50%;
     display: inline-block;
     transition: 0.5s;
+    bottom: 5px;
+    z-index: 2;
   }
   
   /* Fading animation */

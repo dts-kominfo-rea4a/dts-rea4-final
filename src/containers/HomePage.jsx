@@ -12,7 +12,7 @@ import MovieVertical from "../components/MovieVertical";
 
 import { Grid } from "@mui/material";
 import Carousel from "../components/Carousel";
-// import Carousel from "react-responsive-carousel";
+import SimpleBackdrop from "../components/SimpleBackdrop";
 
 function HomePage() {
   // select action
@@ -30,9 +30,7 @@ function HomePage() {
     <>
       <Carousel movies={trendingMovies}/>
       {movieLoading ? (
-        <div>
-          <p className="font-semibold">Sedang menunggu data ...</p>
-        </div>
+        <SimpleBackdrop open={movieLoading}/>
       ) : (
         <Grid container rowSpacing={2} alignContent={"center"} margin={"auto"}>
           {movies.map((movie) => (

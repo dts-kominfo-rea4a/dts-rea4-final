@@ -19,18 +19,21 @@ import {
   alpha,
   Divider,
   Container,
+  ListItem,
+  ListItemText,
 } from "@mui/material";
 
 import AdbIcon from "@mui/icons-material/Adb";
 import MenuIcon from "@mui/icons-material/Menu";
 import { Logout } from "@mui/icons-material";
 import SearchIcon from "@mui/icons-material/Search";
+import AccountCircle from "@mui/icons-material/AccountCircle";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate, useLocation, NavLink } from "react-router-dom";
 
 // Import fungsi untuk melakukan Logout
-import { keluarDariApps } from "../authentication/firebase";
+import useFirebaseStore, { selectKeluarDariApps } from "../authentication/firebase";
 
 import styles from "./NavBar.module.css";
 import SearchItemMovie from "./SearchItemMovie";
@@ -41,6 +44,8 @@ import useMovieStore, {
   searchedMovies,
   selectResetSearchedMovies,
 } from "../stores/movie";
+
+import useComponentVisible from "../functions/useComponentVisible";
 
 const darkTheme = createTheme({
   palette: {
@@ -94,7 +99,6 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
-
 const NavBar = () => {
   const navigate = useNavigate();
   const location = useLocation();
@@ -103,13 +107,15 @@ const NavBar = () => {
   const searchMovies = useMovieStore(selectSearchMovies);
   const searchResult = useMovieStore(searchedMovies);
   const resetResult = useMovieStore(selectResetSearchedMovies);
+  const resetSearchedMovie = useMovieStore(selectResetSearchedMovies);
   const [searchKey, setSearcKey] = useState("");
+  const { ref, isComponentVisible, setIsComponentVisible } = useComponentVisible(true);
+  const keluarDariApps = useFirebaseStore(selectKeluarDariApps);
 
-  useEffect(
-    ()=>{
-      setSearcKey("");
-    },[location.pathname]
-  )
+  useEffect(() => {
+    setSearcKey("");
+    resetSearchedMovie();
+  }, [location.pathname]);
 
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -125,6 +131,10 @@ const NavBar = () => {
     if (key) await searchMovies(key);
     else resetResult();
   };
+
+  const searchFocusHander = () => {
+    setIsComponentVisible(true);
+  }
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -165,7 +175,6 @@ const NavBar = () => {
                     color: "inherit",
                     textDecoration: "none",
                   }}
-                  
                 >
                   <img
                     src="/images/logo.png"
@@ -212,7 +221,7 @@ const NavBar = () => {
                   variant="h5"
                   noWrap
                   component="a"
-                  href=""
+                  href="/"
                   sx={{
                     display: { xs: "flex", md: "none" },
                     flexGrow: 1,
@@ -240,9 +249,10 @@ const NavBar = () => {
                     //   </Button>
                     // ))
                     //todo add page here
+                    // <Button onClick={() =>navigate("/movies")}>Movies</Button>
                   }
                 </Box>
-                <Search style={{ maxWidth:"30vw" }}>
+                <Search style={{ maxWidth: "30vw" }}>
                   <SearchIconWrapper>
                     <SearchIcon />
                   </SearchIconWrapper>
@@ -251,6 +261,7 @@ const NavBar = () => {
                     placeholder="Search…"
                     inputProps={{ "aria-label": "search" }}
                     value={searchKey}
+                    onFocus={searchFocusHander}
                   />
                 </Search>
                 <Tooltip title="Account settings">
@@ -262,7 +273,7 @@ const NavBar = () => {
                     aria-haspopup="true"
                     aria-expanded={open ? "true" : undefined}
                   >
-                    <Avatar sx={{ width: 32, height: 32 }}>M</Avatar>
+                    <AccountCircle />
                   </IconButton>
                 </Tooltip>
                 <Menu
@@ -314,34 +325,42 @@ const NavBar = () => {
           </AppBar>
         </ThemeProvider>
       </Box>
-      {searchResult.length > 0 ? (
-        <Box>
-          <Card>
-            <List
-              style={{
-                position: "absolute" /* Sit on top of the page content */,
-                top: "8v",
-                right: 0,
-                zIndex: 2 /* Specify a stack order in case you're using a different order for other elements */,
-              }}
-            >
-              {searchResult.map((result) =>
-                result.media_type === "movie" ? (
-                  <SearchItemMovie movie={result} key={result.id} />
-                ) : 
-                result.media_type === "tv" ? (
-                  <SearchItemTv tv={result} key={result.id} />
-                ) : (
-                  ""
-                )
-              )}
-              <Divider />
-            </List>
-          </Card>
-        </Box>
-      ) : (
-        ""
-      )}
+
+      <Box ref={ref}>
+        {isComponentVisible ? (
+          <List
+            style={{
+              position: "absolute" /* Sit on top of the page content */,
+              top: "8v",
+              right: 0,
+              width: "100vw",
+              zIndex: 2 /* Specify a stack order in case you're using a different order for other elements */,
+            }}
+          >
+            { searchResult.length > 0 ? (
+              <Card>
+                {searchResult.map((result) =>
+                  result.media_type === "movie" ? (
+                    <SearchItemMovie movie={result} key={result.id} />
+                  ) : result.media_type === "tv" ? (
+                    <SearchItemTv tv={result} key={result.id} />
+                  ) : (
+                    ""
+                  )
+                )}
+              </Card>
+            ) : (
+              searchKey.length>0?<Card>
+                <ListItem>
+                  <ListItemText primary={"Not Found"} />
+                </ListItem>
+              </Card>:""
+            )}
+          </List>
+        ) : (
+          ""
+        )}
+      </Box>
     </>
   );
 };

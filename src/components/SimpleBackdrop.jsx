@@ -1,15 +1,7 @@
-import * as React from 'react';
-import {Backdrop, CircularProgress, Button} from '@mui/material';
+import React from 'react';
+import {Backdrop, CircularProgress} from '@mui/material';
 
-const SimpleBackdrop = () => {
-  const [open, setOpen] = React.useState(false);
-  const handleClose = () => {
-    setOpen(false);
-  };
-  const handleToggle = () => {
-    setOpen(!open);
-  };
-
+const SimpleBackdrop = ({open}) => {
   return (
     <div>
       {/* <Button onClick={handleToggle}>Show backdrop</Button> */}

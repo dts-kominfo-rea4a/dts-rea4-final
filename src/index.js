@@ -13,6 +13,7 @@ import ProtectedComponent from "./components/ProtectedComponent";
 import MovieDetailPage from './containers/MovieDetailPage';
 import NoMatchPage from './containers/NoMatchPage';
 import MoviesPage from './containers/MoviesPage';
+import Movie from './components/Movie';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -25,10 +26,8 @@ root.render(
               <App />
             </ProtectedComponent>
           } />        
-        <Route path="movies/" element={<MoviesPage />} >
-          <Route path=":id" element={<MovieDetailPage />} />
-        </Route>
-        <Route path="movie/:id" element={<MovieDetailPage />} />
+        <Route path="movies/:id" element={<ProtectedComponent><MoviesPage /></ProtectedComponent>} />
+        <Route path="movie/:id" element={<ProtectedComponent><MovieDetailPage /></ProtectedComponent>} />
         <Route path="login" element={<LoginPage />} />
         <Route path="register" element={<RegisterPage />} />
         <Route path="*" element={<NoMatchPage/>}/>

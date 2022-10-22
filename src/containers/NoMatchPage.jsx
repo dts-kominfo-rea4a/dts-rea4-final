@@ -2,7 +2,7 @@ import React from "react";
 import NavBar from "../components/NavBar";
 import NotFound from "../components/NotFound";
 
-const NoMatch = () => {
+const NoMatchPage = () => {
   return (
     <>
     <NavBar/>
@@ -11,4 +11,4 @@ const NoMatch = () => {
   );
 };
 
-export default NoMatch;
+export default NoMatchPage;

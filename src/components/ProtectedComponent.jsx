@@ -6,20 +6,23 @@ import { useNavigate } from "react-router-dom";
 import { useAuthState } from "react-firebase-hooks/auth";
 
 // Untuk bisa menggunakan useAuthState, kita membutuhkan auth dari authentication/firebase
-import { auth } from "../authentication/firebase";
+import useFirebaseStore, { selectAuth } from "../authentication/firebase";
+
+import SimpleBackdrop from "./SimpleBackdrop";
 
 // Karena di sini akan nge-slot, maka harus menerima props children
 const ProtectedComponent = ({ children }) => {
   // Kita gunakan hooksnya di sini
   const navigate = useNavigate();
 
+  const auth = useFirebaseStore(selectAuth);
   // Karena di sini kita hanya mengecek dari user, kita hanya gunakan [user] saja
   const [user, isLoading] = useAuthState(auth);
 
   useEffect(() => {
     // Di sini kita akan membuat logic, apabila user tidak ada (null), maka akan kita
     // "paksa" ke halaman login
-    if (!user) {
+    if (!user && !isLoading) {
       navigate("/login");
       return;
     }
@@ -27,7 +30,9 @@ const ProtectedComponent = ({ children }) => {
 
   // Apabila kondisinya masih dalam tahap loading, kita berikan halaman kosong
   if (isLoading) {
-    return;
+    return (  
+      <SimpleBackdrop open={isLoading} />
+    )
   } else {
     // Bila tidak isLoading (berarti sudah selesai)
     // Kita kembalikan children yang ingin dirender

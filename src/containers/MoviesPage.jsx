@@ -11,8 +11,9 @@ import { Grid } from "@mui/material";
 // Import Link dan Outlet di sini
 import { Link, Outlet, useSearchParams } from 'react-router-dom';
 import NavBar from "../components/NavBar";
+import SimpleBackdrop from "../components/SimpleBackdrop";
 
-function Movies() {
+function MoviesPage() {
   // select action
   const fetchMovies = useMovieStore(selectFetchMovies);
   const movieLoading = useMovieStore(selectIsLoading);
@@ -29,9 +30,7 @@ function Movies() {
         <Outlet />
       </div>
       {movieLoading ? (
-        <div>
-          <p className="font-semibold">Sedang menunggu data ...</p>
-        </div>
+        <SimpleBackdrop open={movieLoading}/>
       ) : (
         <Grid container rowSpacing={2} alignContent={"center"} margin={"auto"}>
           {movies.map((movie) => (
@@ -46,4 +45,4 @@ function Movies() {
     </>
   );
 }
-export default Movies;
+export default MoviesPage;
