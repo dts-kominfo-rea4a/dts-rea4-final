@@ -6,6 +6,7 @@ import LandingContainer from "./containers/LandingContainer";
 import { Routes, Route } from "react-router-dom";
 import SignInContainer from "./containers/SignInContainer";
 import RegisterContainer from "./containers/RegisterContainer";
+import LogoutContainer from "./containers/Logout Container";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Route path="/" element={<LandingContainer />} />
           <Route path="/signin" element={<SignInContainer />} />
           <Route path="/register" element={<RegisterContainer />} />
+          <Route path="/logout" element={<LogoutContainer />} />
         </Routes>
       </ThemeProvider>
     </>
