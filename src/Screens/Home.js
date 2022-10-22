@@ -5,8 +5,9 @@ import TopNews from "../Components/TopNews";
 import News from "../Components/News";
 import NewsMenu from '../Components/NewsMenu';
 
-export default function SimpleContainer({ category }) {
+
     return (
+<<<<<<< HEAD
       <React.Fragment>
         <NewsMenu />
         <CssBaseline />
@@ -15,5 +16,19 @@ export default function SimpleContainer({ category }) {
           <News category={category} />
         </Container>
       </React.Fragment>
+=======
+        <React.Fragment>
+            <CssBaseline/>
+            {
+                loading ? (<Loading/>) : (
+                    <Container maxWidth={'xl'}>
+                        <TopNews news={news} category={category} />
+                        <SortSelect/>
+                        <News news={news} category={category}/>
+                    </Container>
+                )
+            }
+        </React.Fragment>
+>>>>>>> dicky-dev
     );
 }
