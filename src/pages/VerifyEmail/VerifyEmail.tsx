@@ -12,7 +12,7 @@ const VerifyEmail = () => {
   }, [user]);
 
   return (
-    <div className="flex items-center justify-center h-screen text-gray-800 bg-white dark:bg-gray-800 dark:text-gray-200">
+    <div className="flex items-center justify-center order-2 h-screen text-gray-800 bg-white -z-50 dark:bg-gray-800 dark:text-gray-200">
       <p className="m-4 font-normal text-center">
         You need verified before access. Please check your email for
         verification process.

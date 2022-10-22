@@ -1,4 +1,5 @@
 import Button from '@/components/Button';
+import ToggleModeSwitch from '@/components/Button/ToggleModeSwitch';
 import { useLogoutQuery } from '@/services/queries/auth.query';
 import { useStore } from '@/store/index';
 import { Link } from 'react-router-dom';
@@ -34,6 +35,7 @@ const Header = () => {
                 onClick={handleLogout}
               />
             )}
+            <ToggleModeSwitch size={56} />
           </div>
           <div className="flex items-center md:hidden">
             {user && (

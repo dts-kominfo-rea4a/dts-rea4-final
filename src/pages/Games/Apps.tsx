@@ -88,7 +88,7 @@ const Apps = () => {
   const { isLoading, data } = useAppsQuery(filter);
 
   return (
-    <div className="container px-4 py-12 mx-auto text-gray-800 bg-white md:px-12 dark:bg-gray-800 dark:text-gray-200">
+    <div className="order-2 px-4 py-12 mx-auto text-gray-800 bg-white -z-50 md:px-12 dark:bg-gray-800 dark:text-gray-200">
       <div className="flex justify-center w-full">
         <div className="mb-3 xl:w-[40%]">
           <div className="relative flex flex-wrap items-baseline justify-start w-full mb-4 space-y-4 input-group">
