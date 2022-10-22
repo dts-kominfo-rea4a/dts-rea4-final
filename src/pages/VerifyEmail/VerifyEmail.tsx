@@ -12,8 +12,8 @@ const VerifyEmail = () => {
   }, [user]);
 
   return (
-    <div className="h-screen App">
-      <p className="m-4 font-normal text-center text-gray-800">
+    <div className="flex items-center justify-center h-screen text-gray-800 bg-white dark:bg-gray-800 dark:text-gray-200">
+      <p className="m-4 font-normal text-center">
         You need verified before access. Please check your email for
         verification process.
       </p>

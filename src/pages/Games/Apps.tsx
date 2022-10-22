@@ -4,6 +4,7 @@ import { useAppsQuery } from '@/services/queries/app.query';
 import type { App, GetAppsProps } from '@/types/app';
 import { formatDate } from '@/lib/helper';
 import './App.css';
+import Input from '@/components/Input';
 
 export interface CarListProps {
   apps: App[];
@@ -19,7 +20,7 @@ const AppList: React.FC<CarListProps> = ({ apps }) => {
       {apps.map((app) => (
         <div
           key={app.id}
-          className="flex flex-col col-span-1 overflow-hidden bg-white rounded-t-lg rounded-b-lg shadow-lg dark:bg-gray-800 dark:border-gray-700 hover:shadow-sky-500 dark:hover:shadow-sky-700 mobile-tap-highlight"
+          className="flex flex-col col-span-1 overflow-hidden bg-white rounded-t-lg rounded-b-lg shadow-lg dark:shadow-2xl dark:bg-gray-700 dark:border-gray-700 hover:shadow-sky-500 dark:hover:shadow-sky-700 mobile-tap-highlight"
         >
           <a href={app.game_url} target="_blank" rel="noreferrer noopener">
             {app.thumbnail ? (
@@ -87,17 +88,18 @@ const Apps = () => {
   const { isLoading, data } = useAppsQuery(filter);
 
   return (
-    <div className="container px-4 mx-auto my-12 md:px-12">
+    <div className="container px-4 py-12 mx-auto text-gray-800 bg-white md:px-12 dark:bg-gray-800 dark:text-gray-200">
       <div className="flex justify-center w-full">
         <div className="mb-3 xl:w-[40%]">
           <div className="relative flex flex-wrap items-baseline justify-start w-full mb-4 space-y-4 input-group">
-            <input
+            <Input
+              name="search"
               type="search"
-              className="relative flex-auto block w-auto min-w-0 px-3 py-2 m-0 mr-2 text-base font-normal text-gray-700 transition ease-in-out bg-white border border-gray-300 border-solid rounded form-control bg-clip-padding focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+              className="relative flex-auto block w-auto min-w-0 px-3 py-2 m-2 mr-2 text-base font-normal text-gray-700 transition ease-in-out border border-gray-300 border-solid rounded-lg dark:border-2 bg-gray-50 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white md:m-0 form-control bg-clip-padding focus:border-blue-600 focus:outline-none"
               placeholder="Enter search term"
               aria-label="Search"
               aria-describedby="button-addon3"
-              onChange={(e) => setSearchTerm(e.target.value)}
+              onChange={(e) => setSearchTerm(e.currentTarget.value)}
               value={searchTerm}
             />
             <div className="relative flex-auto block w-auto min-w-0 px-3 m-0 mr-2">
@@ -120,7 +122,11 @@ const Apps = () => {
         </div>
       </div>
       <div className="flex flex-wrap -mx-1 lg:-mx-4">
-        {isLoading ? <div>Loading...</div> : <AppList apps={data ?? []} />}
+        {isLoading ? (
+          <div className="h-screen">Loading...</div>
+        ) : (
+          <AppList apps={data ?? []} />
+        )}
       </div>
     </div>
   );
