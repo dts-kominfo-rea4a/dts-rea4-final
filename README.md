@@ -4,15 +4,14 @@ Ketentuan lengkap bisa dilihat di [Final Project Guidelines](https://docs.google
 
 ## Daftar pair
 
-Tugas dikerjakan secara berpasangan, untuk daftar kelompok bisa dilihat pada masing-masing Classroom atau Discord Class.
+1. Agung Trisnandar (1523649113101394)
+2. Dwi Hosanna Bangkalang (1523649113100448)
 
 ## Fork and Clone
 
 Mohon perwakilan dari pair bisa melakukan fork repo ini dan clone, untuk repositori yang di fork menggunakan penamaan:
 
-`dts4[a/b/c]-[nomor pair]-final`
-
-Contoh: `dts4a-01-final`
+`dts4s-03-final`
 
 ## Branching, commit
 
