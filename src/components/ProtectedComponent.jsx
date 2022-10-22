@@ -33,6 +33,9 @@ const ProtectedComponent = ({ children }) => {
     return (  
       <SimpleBackdrop open={isLoading} />
     )
+  } else if (!user) {
+    navigate("/login");
+    return;
   } else {
     // Bila tidak isLoading (berarti sudah selesai)
     // Kita kembalikan children yang ingin dirender
