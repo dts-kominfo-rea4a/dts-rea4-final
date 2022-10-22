@@ -5,9 +5,9 @@ import CardMovieBanner from "./CardMovieBanner";
 
 const MovieBanner = ({movies}) => {
     return (
-        <Carousel indicators={false} sx={{width:'90%'}}>
+        <Carousel indicators={false} sx={{width:'90%', marginTop:'114px'}}>
             {
-                movies.map((movie) => (
+                movies?.map((movie) => (
                     <CardMovieBanner movie={movie} key={movie.id} />
                 ))
             }

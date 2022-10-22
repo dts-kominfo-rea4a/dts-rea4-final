@@ -1,29 +1,23 @@
 import React from "react";
 
 import {
-    useGetNowPlayingQuery,
     useGetPopularQuery,
     useGetTopRatedQuery,
     useGetTrendingQuery,
-    useGetTvPopularQuery,
-    useGetTvOnAirQuery
+    useGetTvOnAirQuery,
+    useGetMovieByIdQuery
 } from "../services/tmdbAPI";
 import loading from '../assets/loading.gif';
 import NavBar from "../components/NavBar";
-import MovieBanner from "../components/MovieBanner";
 import MovieList from "../components/MovieList";
+import CardViewMovie from "../components/CardViewMovie";
+import CardPlayMovie from "../components/CardPlayMovie";
 import Footer from "../components/Footer";
+import {Grid} from "@mui/material";
+import { useLocation } from "react-router-dom";
 
-import { 
-    Grid
-} from "@mui/material";
-
-const HomePage = () => {
-    const {
-        data: nowplay_movie,
-        error: error_nowplay,
-        isLoading: nowplay_movie_loading
-    } = useGetNowPlayingQuery();
+const ViewMovie = ({path}) => {
+    const location = useLocation();
     const {
         data: toprate_movie,
         error: error_toprate,
@@ -40,15 +34,15 @@ const HomePage = () => {
         isLoading: trend_movie_loading
     } = useGetTrendingQuery();
     const {
-        data: tvpop_movie,
-        error: error_tvpop,
-        isLoading: tvpop_movie_loading
-    } = useGetTvPopularQuery();
-    const {
         data: tvonair_movie,
         error: error_tvonair,
         isLoading: tvonair_movie_loading
     } = useGetTvOnAirQuery();
+    const {
+        data: getbyid_movie,
+        error: error_getbyid,
+        isLoading: getbyid_movie_loading
+    } = useGetMovieByIdQuery(location.state.movieid);
 
     return (
         <Grid
@@ -61,9 +55,13 @@ const HomePage = () => {
         >
             <NavBar />
             {
-                nowplay_movie_loading ? (<img src={loading} alt="loading" />) : (
-                    error_nowplay ? (console.log("error: ", error_nowplay)) : (
-                        <MovieBanner movies={nowplay_movie.results} />
+                getbyid_movie_loading ? (<img src={loading} alt="loading" />) : (
+                    error_getbyid ? (console.log("error: ", error_getbyid)) : (
+                        path === "view" ? (
+                            <CardViewMovie movie={getbyid_movie} />
+                        ) : (
+                            <CardPlayMovie movie={getbyid_movie} />
+                        )
                     )
                 )
             }
@@ -95,16 +93,9 @@ const HomePage = () => {
                     )
                 )
             }
-            {
-                tvpop_movie_loading ? (<img src={loading} alt="loading" />) : (
-                    error_tvpop ? (console.log("error: ", error_tvpop)) : (
-                        <MovieList movies={tvpop_movie.results} title="Top Picks For You" />
-                    )
-                )
-            }
             <Footer />
         </Grid>
     )
-}
+};
 
-export default HomePage;
+export default ViewMovie;

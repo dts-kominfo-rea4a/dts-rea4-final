@@ -21,11 +21,14 @@ export const tmdbAPI = createApi({
         getNowPlaying: builder.query({
             query: () => "/movie/now_playing?api_key=" + token
         }),
-        getLatest: builder.query({
-            query: () => "/movie/latest?api_key=" + token
+        getTvPopular: builder.query({
+            query: () => "/tv/popular?api_key=" + token
         }),
-        getUpcoming: builder.query({
-            query: () => "/movie/upcoming?api_key=" + token
+        getTvOnAir: builder.query({
+            query: () => "/tv/on_the_air?api_key=" + token
+        }),
+        getMovieById: builder.query({
+            query: (id) => `/movie/${id}?api_key=` + token
         })
     })
 })
@@ -35,6 +38,7 @@ export const {
     useGetTopRatedQuery,
     useGetTrendingQuery,
     useGetNowPlayingQuery,
-    useGetLatestQuery,
-    useGetUpcomingQuery
+    useGetTvPopularQuery,
+    useGetTvOnAirQuery,
+    useGetMovieByIdQuery
 } = tmdbAPI;

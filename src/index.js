@@ -8,6 +8,8 @@ import ProtectedComponent from "./components/ProtectedComponent";
 import HomePage from "./containers/HomePage";
 import LoginPage from "./containers/LoginPage";
 import RegisterPage from "./containers/RegisterPage";
+import ViewMoviePage from './containers/ViewMoviePage';
+import PlayMoviePage from "./containers/PlayMoviePage";
 
 import { Provider } from "react-redux";
 import { store } from "./app/store";
@@ -19,6 +21,8 @@ root.render(
       <BrowserRouter>
         <Routes>
           <Route path='/' element={<ProtectedComponent><HomePage /></ProtectedComponent>} />
+          <Route path='/viewmovie' element={<ProtectedComponent><ViewMoviePage /></ProtectedComponent>} />
+          <Route path='/playmovie' element={<ProtectedComponent><PlayMoviePage /></ProtectedComponent>} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
         </Routes>

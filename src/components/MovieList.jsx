@@ -17,24 +17,24 @@ const MovieList = ({movies, title}) => {
         },
         desktop: {
             breakpoint: { max: 3000, min: 1024 },
-            items: 6,
+            items: 8,
             slidesToSlide: 3
         },
         tablet: {
             breakpoint: { max: 1024, min: 464 },
-            items: 5,
+            items: 7,
             slidesToSlide: 2
         },
         mobile: {
             breakpoint: { max: 464, min: 0 },
-            items: 3,
+            items: 6,
             slidesToSlide: 1
         }
     };
 
     return (
-        <Box sx={{width:'90%', marginTop:'20px'}}>
-            <Typography variant="h5">{title}</Typography>
+        <Box sx={{width:'90%', marginTop:'20px', bgcolor:'inherit'}}>
+            <Typography variant="h5" sx={{color:'white'}}>{title}</Typography>
             <Carousel showDots={false}
                 arrows={true}
                 infinite={true}
@@ -46,7 +46,7 @@ const MovieList = ({movies, title}) => {
                 removeArrowOnDeviceType={["tablet", "mobile"]}
                 itemClass="carousel-item-padding-40-px">
                 {
-                    movies.map((movie) => (
+                    movies?.map((movie) => (
                         <CardMovieList movie={movie} key={movie.id} />
                     ))
                 }

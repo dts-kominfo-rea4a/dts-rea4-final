@@ -15,7 +15,7 @@ useEffect(() => {
     }
 
     if (!user) {
-        //navigate("/login");
+        navigate("/login");
     }
 }, [user, loading, navigate]);
 

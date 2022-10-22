@@ -1,8 +1,9 @@
-
+import React from "react";
+import LoginAndRegisterForm from "../components/LoginAndRegisterForm";
 
 const RegisterPage = () => {
     return (
-        <>register page</>
+        <LoginAndRegisterForm path={"register"} />
     )
 }
 
