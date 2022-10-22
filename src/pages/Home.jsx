@@ -7,7 +7,7 @@ import useMovieStore, {
   // selectFetchMovie,
   selectFetchMovieTrending,
   // selectMovieTrendingDay,
-  // selectMovieTrendingWeek,
+  selectMovieTrendingWeek,
   selectTvTrendingWeek,
 } from "../stores/movie";
 
@@ -15,7 +15,7 @@ const Home = ({ isLoggedIn }) => {
   const navigate = useNavigate();
   // const movie = useMovieStore(selectMovie);
   // const movieTrendingDay = useMovieStore(selectMovieTrendingDay);
-  // const movieTrendingWeek = useMovieStore(selectMovieTrendingWeek);
+  const movieTrendingWeek = useMovieStore(selectMovieTrendingWeek);
   const TvTrendingWeek = useMovieStore(selectTvTrendingWeek);
   // const fetchMovie = useMovieStore(selectFetchMovie);
   const fetchMovieTrending = useMovieStore(selectFetchMovieTrending);
