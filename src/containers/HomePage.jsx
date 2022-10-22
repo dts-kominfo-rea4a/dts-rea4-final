@@ -54,7 +54,7 @@ const HomePage = () => {
               onChange={searchInputHandle}
               type="search"
               className="block w-full p-4 pl-10 text-sm text-gray-900 bg-white border border-gray-300 rounded-lg focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
-              placeholder="Search Comics, Romance..."
+              placeholder="Search Comics, Stories..."
             />
             <button
               type="submit"

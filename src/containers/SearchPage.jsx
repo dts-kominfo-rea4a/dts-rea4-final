@@ -6,20 +6,22 @@ import useBooksStore, {
   selectIsLoading,
 } from "../stores/book";
 import noimage from "../noimage.png";
+import Paginate from "../components/Paginate";
 
 const SearchPage = () => {
   const [searchQuery, setSearchQuery] = useState("");
   let [searchParams, setSearchParams] = useSearchParams();
   const query = searchParams.get("q");
+  const page = searchParams.get("page");
 
   const fetchBook = useBooksStore(selectFetchBooks);
   const dataBooks = useBooksStore(selectBooks);
   const isLoading = useBooksStore(selectIsLoading);
 
   useEffect(() => {
-    fetchBook(query);
+    fetchBook(query, page);
     document.title = `Search result for: ${query}`;
-  }, [query]);
+  }, [query, page]);
   //   console.log(dataBooks.items.length);
   const searchInputHandle = (event) => {
     setSearchQuery(event.target.value);
@@ -116,6 +118,13 @@ const SearchPage = () => {
             </div>
           ))}
         </div>
+      </section>
+      <section className="px-4 py-2 bg-slate-100 text-center">
+        {dataBooks.totalItems ? (
+          <Paginate totalItems={dataBooks.totalItems} query={query} />
+        ) : (
+          ""
+        )}
       </section>
     </>
   );
