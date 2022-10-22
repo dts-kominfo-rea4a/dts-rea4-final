@@ -23,14 +23,14 @@ function App() {
         if (user) {
           const onIdTokenChangedUnsubscribe = authentication.onIdTokenChanged(
             (user) => {
-              const unsubscribeSetInterval = setTimeout(() => {
+              const unsubscribeSetTimeout = setTimeout(() => {
                 authentication.currentUser?.reload();
                 authentication.currentUser?.getIdToken(/* forceRefresh */ true);
-              }, 5000);
+              }, 2500);
 
               if (user && user.emailVerified) {
                 firebaseObserver.publish('authStateChanged', user);
-                clearInterval(unsubscribeSetInterval); //delete interval
+                clearTimeout(unsubscribeSetTimeout); //delete interval
                 onAuthStateChangedUnsubscribe(); //unsubscribe onAuthStateChanged
                 return onIdTokenChangedUnsubscribe(); //unsubscribe onIdTokenChanged
               }
