@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Header from "../components/Header";
+import Footer from "../components/Footer";
 import Loading from "../components/Loading";
 import Container from "@mui/material/Container";
 import DialogTitle from "@mui/material/DialogTitle";
@@ -34,9 +35,14 @@ const DetailPage = () => {
 
   return (
     <>
-      <div className="p-4">
+      <Box>
         <Header typeHeader="back" />
-        <Container maxWidth="xl">
+        <Container
+          maxWidth="xl"
+          sx={{
+            minHeight: "100vh",
+          }}
+        >
           {newsLoadingDetailNews ? (
             <Loading />
           ) : (
@@ -111,7 +117,9 @@ const DetailPage = () => {
             ""
           )}
         </Container>
-      </div>
+
+        <Footer />
+      </Box>
     </>
   );
 };

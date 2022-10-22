@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import Header from "../components/Header";
+import Footer from "../components/Footer";
 import GridNews from "../components/GridNews";
 import HotNews from "../components/HotNews";
 import Loading from "../components/Loading";
@@ -7,6 +8,7 @@ import Container from "@mui/material/Container";
 import DialogTitle from "@mui/material/DialogTitle";
 import DialogContent from "@mui/material/DialogContent";
 import Dialog from "@mui/material/Dialog";
+import { Box } from "@mui/system";
 
 import useNewsStore, {
   selectNews,
@@ -42,7 +44,7 @@ const HomePage = () => {
 
   return (
     <>
-      <div className="p-4">
+      <Box>
         <Header typeHeader="search" />
         <Container maxWidth="xl">
           <h1>Hot Topics</h1>
@@ -63,7 +65,9 @@ const HomePage = () => {
             ""
           )}
         </Container>
-      </div>
+
+        <Footer />
+      </Box>
     </>
   );
 };
