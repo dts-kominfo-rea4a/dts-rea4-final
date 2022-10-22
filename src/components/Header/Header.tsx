@@ -41,26 +41,11 @@ const Header = () => {
             {user && (
               <Button
                 text="Logout"
-                className="px-3 py-3 text-xs font-medium text-white transition duration-300 bg-blue-500 rounded hover:bg-blue-400"
+                className="px-3 py-3 text-xs font-medium text-white transition duration-300 bg-blue-500 rounded h-9 hover:bg-blue-400"
                 onClick={handleLogout}
               />
             )}
-            {/* <button
-              className="outline-none mobile-menu-button"
-              title="mobile menu"
-            >
-              <svg
-                className="w-6 h-6 text-gray-500 hover:text-blue-500"
-                fill="none"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path d="M4 6h16M4 12h16M4 18h16"></path>
-              </svg>
-            </button> */}
+            <ToggleModeSwitch size={42} />
           </div>
         </div>
       </div>
