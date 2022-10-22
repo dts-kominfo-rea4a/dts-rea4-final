@@ -30,6 +30,9 @@ const DetailPage = () => {
   };
 
   useEffect(() => {
+    //auto top
+    window.scrollTo(0, 0);
+
     fetchDetailNews(Object.values(params)[0]);
   }, []);
 
