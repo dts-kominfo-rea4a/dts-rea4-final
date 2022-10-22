@@ -15,7 +15,7 @@ const Header = () => {
   };
 
   return (
-    <nav className="bg-white shadow-lg dark:bg-gray-900">
+    <nav className="z-50 order-1 w-full drop-shadow-lg dark:drop-shadow-2xl bg-slate-300 dark:bg-gray-900">
       <div className="max-w-6xl px-4 mx-auto">
         <div className="flex justify-between">
           <div className="flex space-x-7">

@@ -16,7 +16,7 @@ const AppList: React.FC<CarListProps> = ({ apps }) => {
   }
 
   return (
-    <div className="container grid grid-cols-1 gap-4 p-6 mx-auto md:grid-cols-2 lg:grid-cols-3">
+    <div className="grid grid-cols-1 gap-6 p-6 mx-auto md:grid-cols-2 lg:grid-cols-3">
       {apps.map((app) => (
         <div
           key={app.id}
@@ -96,7 +96,7 @@ const Apps = () => {
               name="search"
               type="search"
               className="relative flex-auto block w-auto min-w-0 px-3 py-2 m-2 mr-2 text-base font-normal text-gray-700 transition ease-in-out border border-gray-300 border-solid rounded-lg dark:border-2 bg-gray-50 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white md:m-0 form-control bg-clip-padding focus:border-blue-600 focus:outline-none"
-              placeholder="Enter search term"
+              placeholder="Search games"
               aria-label="Search"
               aria-describedby="button-addon3"
               onChange={(e) => setSearchTerm(e.currentTarget.value)}
@@ -110,10 +110,9 @@ const Apps = () => {
                 onChange={(e) =>
                   setPlatformTerm(e.target.value as GetAppsProps['platform'])
                 }
+                value={platformTerm}
               >
-                <option selected value="all">
-                  All platforms
-                </option>
+                <option value="all">All platforms</option>
                 <option value="pc">PC Games</option>
                 <option value="browser">Browser Games</option>
               </select>
