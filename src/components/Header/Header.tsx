@@ -35,7 +35,14 @@ const Header = () => {
             )}
           </div>
           <div className="flex items-center md:hidden">
-            <button
+            {user && (
+              <Button
+                text="Logout"
+                className="px-3 py-3 text-xs font-medium text-white transition duration-300 bg-blue-500 rounded hover:bg-blue-400"
+                onClick={handleLogout}
+              />
+            )}
+            {/* <button
               className="outline-none mobile-menu-button"
               title="mobile menu"
             >
@@ -50,7 +57,7 @@ const Header = () => {
               >
                 <path d="M4 6h16M4 12h16M4 18h16"></path>
               </svg>
-            </button>
+            </button> */}
           </div>
         </div>
       </div>

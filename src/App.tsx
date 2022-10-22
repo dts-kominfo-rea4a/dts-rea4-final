@@ -29,7 +29,6 @@ function App() {
                 authentication.currentUser?.getIdToken(/* forceRefresh */ true);
               }, 100);
 
-              console.log('user', user);
               if (user && user.emailVerified) {
                 firebaseObserver.publish('authStateChanged', user);
                 clearInterval(unsubscribeSetInterval); //delete interval
