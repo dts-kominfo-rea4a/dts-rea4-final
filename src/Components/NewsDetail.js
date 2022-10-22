@@ -7,10 +7,10 @@ import {
     Typography,
     Divider, Backdrop, CircularProgress
 } from "@mui/material";
-import {useDispatch, useSelector} from "react-redux";
 
 import CardNewsNoImg from "./CardNewsNoImg";
-import {getNews} from "../Features/newsSlice";
+import {useDispatch, useSelector} from "react-redux";
+import {getNewsDetail} from "../Features/newsSlice";
 
 const Loading = () => {
     return (
@@ -25,65 +25,60 @@ const Loading = () => {
 
 const NewsDetail = () => {
     let params = useParams()
+    const {id} = params
     const [searchParams] = useSearchParams()
     const category = searchParams.get('category')
 
-    const {loading, news} = useSelector((state) => ({...state.app}))
+    const {loading, newsDetail} = useSelector((state) => ({...state.app}))
     const dispatch = useDispatch()
 
     useEffect(() => {
-        dispatch(getNews({category}))
+        dispatch(getNewsDetail({category, id}))
+
+        console.log(newsDetail)
     }, [category]);
 
     return (
-        <>
+        <Container maxWidth={'xl'}>
             {
                 loading ? (<Loading/>) : (
-                    <Container maxWidth={'xl'}>
-                        <Box sx={{flexGrow: 1, mt: 3}}>
-                            <Grid container spacing={5}>
-                                <Grid item xs={8}>
-                                    {
-                                        news.length > 0 ? (<img src={news[0][params.id].imageUrl} alt="" width={"100%"} height={"350"}/>) : undefined
-                                    }
-                                </Grid>
-                                <Grid item xs={4}>
-                                    <Typography gutterBottom variant="h5" component="div" sx={{textAlign: "justify"}}>
-                                        { news.length > 0 && news[0][params.id]?.title}
-                                    </Typography>
-                                    <Typography variant="body2" color="text.secondary" sx={{textAlign: "justify"}}>
-                                        {news.length > 0 && news[0][params.id]?.content}
-
-                                        {
-                                            news.length > 0 ? (<a href={news[0][params.id]?.readMoreUrl} target="_blank" rel="noreferrer">readmore</a>) : undefined
-                                        }
-                                    </Typography>
-                                    <Divider sx={{mt: 1, mb: 1}}/>
-                                    <Typography gutterBottom variant="body2" color="text.secondary"
-                                                sx={{textAlign: "justify"}}>
-                                        {news.length > 0 && news[0][params.id]?.author} - {news.length > 0 && news[0][params.id]?.date}
-                                    </Typography>
-                                </Grid>
+                    <Box sx={{flexGrow: 1, mt: 3}}>
+                        <Grid container spacing={5}>
+                            <Grid item xs={8}>
+                                <img src={newsDetail.urlToImage} alt="" width={"100%"} height={"350"}/>
                             </Grid>
-
-                            <Divider sx={{mt: 3, mb: 3, borderBottomWidth: 3, borderColor: 'black'}}/>
-                            <Grid container spacing={2}>
-                                {
-                                    news.length > 0 && news[0].length > 0 ? news[0].map((item, i) => {
-                                            return (
-                                                <Grid key={i} item xs={3}>
-                                                    <CardNewsNoImg item={item}/>
-                                                </Grid>
-                                            )
-                                        })
-                                        : null
-                                }
+                            <Grid item xs={4}>
+                                <Typography gutterBottom variant="h5" component="div" sx={{textAlign: "justify"}}>
+                                    {newsDetail.title}
+                                </Typography>
+                                <Typography variant="body2" color="text.secondary" sx={{textAlign: "justify"}}>
+                                    {newsDetail.content} <a href={newsDetail.url} target="_blank" rel="noreferrer">readmore</a>
+                                </Typography>
+                                <Divider sx={{mt: 1, mb: 1}}/>
+                                <Typography gutterBottom variant="body2" color="text.secondary"
+                                            sx={{textAlign: "justify"}}>
+                                    {newsDetail.author} - {newsDetail.publishedAt}
+                                </Typography>
                             </Grid>
-                        </Box>
-                    </Container>
+                        </Grid>
+
+                        <Divider sx={{mt: 3, mb: 3, borderBottomWidth: 3, borderColor: 'black'}}/>
+                        <Grid container spacing={2}>
+                            {
+                                newsDetail.length > 0 && newsDetail.length > 0 ? newsDetail.map((item, i) => {
+                                        return (
+                                            <Grid key={i} item xs={3}>
+                                                <CardNewsNoImg item={item}/>
+                                            </Grid>
+                                        )
+                                    })
+                                    : null
+                            }
+                        </Grid>
+                    </Box>
                 )
             }
-        </>
+        </Container>
     )
         ;
 }

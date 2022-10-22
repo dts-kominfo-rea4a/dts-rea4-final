@@ -31,7 +31,6 @@ export default function Home({category}) {
 
     return (
         <React.Fragment>
-            <NewsMenu />
             <CssBaseline/>
             {
                 loading ? (<Loading/>) : (

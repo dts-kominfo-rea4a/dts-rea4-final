@@ -15,7 +15,7 @@ const TopNews = ({news}) => {
     function Item(props) {
         return (
             <>
-                <img src={props.item.imageUrl} alt="" width={"100%"} height={"350"}/>
+                <img src={props.item.urlToImage} alt="" width={"100%"} height={"350"}/>
             </>
         )
     }
@@ -41,10 +41,10 @@ const TopNews = ({news}) => {
                         navButtonsAlwaysVisible={true}
                         NextIcon={<NavigateNextIcon/>}
                         PrevIcon={<NavigateBeforeIcon/>}
-                        onChange={(e) => setContent(news[0][e])}
+                        onChange={(e) => setContent(news[e])}
                     >
                         {
-                            news.length > 0 && news[0].filter((item, i) => i < 10).map((news, i) => <Item key={i} item={news}/>)
+                            news.length > 0 ? news.map((news, i) => <Item key={i} item={news}/>) : undefined
                         }
                     </Carousel>
                 </Grid>

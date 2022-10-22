@@ -12,15 +12,15 @@ const News = ({news, category}) => {
         <Box sx={{flexGrow: 1, mt: 3}}>
             <Grid container spacing={2}>
                 {
-                    news.length > 0 && news[0].map((item, i) => {
+                    news.length > 0 ? news.map((item, i) => {
                         return (
-                            <Grid key={i} item xs={3}>
+                            <Grid key={i} item sm={6} md={3}>
                                 <CardActionArea component={Link} to={`${i}?category=${category}`}>
                                     <CardNews item={item}/>
                                 </CardActionArea>
                             </Grid>
                         )
-                    })
+                    }) : undefined
                 }
             </Grid>
         </Box>

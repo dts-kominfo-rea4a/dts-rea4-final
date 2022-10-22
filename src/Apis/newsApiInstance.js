@@ -1,12 +1,14 @@
 import axios from "axios";
 
+export const DEFAULT_PARAMS = {
+    sortBy:"popularity",
+}
+
 const newsApiInstance = axios.create({
     baseURL: "https://newsapi.org/v2",
-    params: {
-        country: "id",
-        pageSize: 9,
-        apiKey: "e3618b5db98c41a78e54aeb4e310b8d7"
-    }
+    headers: {
+        "X-Api-Key" : process.env.REACT_APP_NEWS_API_KEY
+    },
 })
 
 export default newsApiInstance
