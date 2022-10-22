@@ -5,6 +5,8 @@ import { ThemeProvider } from "@mui/material/styles";
 import AppLayout from "./containers/AppLayout";
 import HomePage from "./containers/HomePage";
 import themeOne from "./themes/themeOne";
+import { Provider } from "react-redux";
+import { store } from "./app/store";
 import "./index.css";
 import reportWebVitals from "./reportWebVitals";
 
@@ -12,19 +14,21 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <ThemeProvider theme={themeOne}>
-      <BrowserRouter>
-        <Routes>
-          <Route
-            path="/"
-            element={<AppLayout />}
-          >
+      <Provider store={store}>
+        <BrowserRouter>
+          <Routes>
             <Route
               path="/"
-              element={<HomePage />}
-            />
-          </Route>
-        </Routes>
-      </BrowserRouter>
+              element={<AppLayout />}
+            >
+              <Route
+                path="/"
+                element={<HomePage />}
+              />
+            </Route>
+          </Routes>
+        </BrowserRouter>
+      </Provider>
     </ThemeProvider>
   </React.StrictMode>
 );
