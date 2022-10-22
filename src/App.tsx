@@ -6,6 +6,8 @@ import 'react-toastify/dist/ReactToastify.css';
 import { app } from '@/lib/firebase-config';
 import Router from './routes';
 import { useStore } from '@/store/index';
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 import ReactObserver from 'react-event-observer';
 
 function App() {
