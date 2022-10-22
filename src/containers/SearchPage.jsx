@@ -77,7 +77,7 @@ const SearchPage = () => {
           <div className="px-6 py-2 italic font-semibold">
             {isLoading
               ? "Loading ..."
-              : `Showing  ${dataBooks.items?.length} of ${dataBooks?.totalItems} total result...`}
+              : `Showing ${dataBooks?.totalItems} search result...`}
           </div>
         </div>
       </section>
