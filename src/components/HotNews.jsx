@@ -2,6 +2,7 @@ import React from "react";
 import { Box } from "@mui/system";
 import Typography from "@mui/material/Typography";
 import countTime from "../utils/countTime";
+import { Link } from "react-router-dom";
 
 const HotNews = ({ topNews }) => {
   return (
@@ -49,20 +50,31 @@ const HotNews = ({ topNews }) => {
               margin: "30px",
             }}
           >
-            <Typography
-              gutterBottom
-              variant="h4"
-              component="div"
-              sx={{
-                width: "400px",
-                mb: "10px",
-                mt: "10px",
-                fontFamily: "Playfair Display",
-                color: "white",
+            <Link
+              to={"/content/" + topNews.id}
+              style={{
+                textDecoration: "none",
+                display: "inline-block",
+                marginTop: "10px",
+                color: "black",
               }}
             >
-              {topNews.webTitle}
-            </Typography>
+              <Typography
+                gutterBottom
+                variant="h4"
+                component="div"
+                sx={{
+                  width: "400px",
+                  mb: "10px",
+                  mt: "10px",
+                  fontFamily: "Playfair Display",
+                  color: "white",
+                }}
+              >
+                {topNews.webTitle}
+              </Typography>
+            </Link>
+
             <Box
               sx={{
                 color: "white",
@@ -89,18 +101,26 @@ const HotNews = ({ topNews }) => {
           width: "400px",
           mb: "10px",
           mt: "10px",
-          display: { xs: "none", lg: "flex" },
+          display: { xs: "none", lg: "block" },
           paddingX: "20px",
           fontSize: "22px",
           fontFamily: "Playfair Display",
           color: "black",
         }}
       >
-        Nisi, sagittis aliquet sit rutrum. Nunc, id vestibulum quam ornare
-        adipiscing. Pellentesque sed turpis nunc gravida pharetra, sit nec
-        vivamus pharetra. Velit, dui, egestas nisi, elementum mattis mauris,
-        magnis. Massa tortor nibh nulla condimentum imperdiet scelerisque...
-        read more
+        {String(topNews.fields.body)
+          .replace(/<[^>]*>/g, "")
+          .substring(0, 270) + "... "}
+        <Link
+          to={"/content/" + topNews.id}
+          style={{
+            textDecoration: "none",
+            display: "inline-block",
+            color: "#bd4ecc",
+          }}
+        >
+          Read More
+        </Link>
       </Typography>
     </Box>
   );
