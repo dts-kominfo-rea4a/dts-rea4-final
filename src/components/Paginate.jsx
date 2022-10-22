@@ -4,15 +4,12 @@ import { useNavigate } from "react-router-dom";
 import { ChevronLeft, ChevronRight } from "react-feather";
 
 const Paginate = ({ totalItems, query }) => {
-  const [currentItems, setCurrentItems] = useState([]);
   const [pageCount, setPageCount] = useState(0);
   const [itemOffset, setItemOffset] = useState(0);
   const itemsPerPage = 5;
   const navigate = useNavigate();
 
   useEffect(() => {
-    const endOffset = itemOffset + itemsPerPage;
-    // setCurrentItems(data.slice(itemOffset, endOffset));
     setPageCount(Math.ceil(totalItems / itemsPerPage));
   }, [itemOffset, itemsPerPage, query]);
 
@@ -24,12 +21,6 @@ const Paginate = ({ totalItems, query }) => {
 
   return (
     <>
-      {/* <Items currentItems={currentItems} /> */}
-      {/* <div>
-        {currentItems?.map((item) => (
-          <div>{item.volumeInfo.title}</div>
-        ))}
-      </div> */}
       <ReactPaginate
         breakLabel="..."
         nextLabel={<ChevronRight className="h-5 w-5" />}

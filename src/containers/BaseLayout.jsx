@@ -150,7 +150,7 @@ const BaseLayout = ({ children, title }) => {
           </ul>
           <ul className="pt-5 mt-5 mb-12 space-y-2">
             <li>
-              <a
+              <button
                 onClick={() => {
                   setDisplayModal(true);
                 }}
@@ -164,7 +164,7 @@ const BaseLayout = ({ children, title }) => {
                 >
                   Logout
                 </span>
-              </a>
+              </button>
             </li>
           </ul>
         </div>

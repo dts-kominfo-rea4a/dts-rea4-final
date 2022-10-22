@@ -32,7 +32,7 @@ const Bookmark = () => {
     setDisplayModal(false);
     const localBookMark = JSON.parse(localStorage.getItem(user.email));
     const filtered = localBookMark.filter((employee) => {
-      return employee.id != id;
+      return employee.id !== id;
     });
     const newItems = JSON.stringify(filtered);
     localStorage.setItem(user.email, newItems);
