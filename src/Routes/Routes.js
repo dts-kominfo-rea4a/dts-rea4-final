@@ -1,6 +1,5 @@
 import React from "react";
 import {
-    BrowserRouter as Router,
     Routes as Switch,
     Route
 } from "react-router-dom";
@@ -12,7 +11,6 @@ import NewsDetail from "../Components/NewsDetail";
 const Routes = () => {
     return (
         <>
-            <Router>
                 <NewsMenu/>
                 <Switch>
                     <Route path="/" element={<Home/>}/>
@@ -31,9 +29,7 @@ const Routes = () => {
                     <Route path="/Science/:id" element={<NewsDetail/>}/>
                     <Route path="/Technology" element={<Home category={"technology"}/>}/>
                     <Route path="/Technology/:id" element={<NewsDetail/>}/>
-
                 </Switch>
-            </Router>
         </>
     )
 }
