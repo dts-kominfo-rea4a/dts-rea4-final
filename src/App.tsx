@@ -27,7 +27,7 @@ function App() {
               const unsubscribeSetInterval = setTimeout(() => {
                 authentication.currentUser?.reload();
                 authentication.currentUser?.getIdToken(/* forceRefresh */ true);
-              }, 100);
+              }, 5000);
 
               if (user && user.emailVerified) {
                 firebaseObserver.publish('authStateChanged', user);
