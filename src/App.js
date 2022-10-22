@@ -1,19 +1,18 @@
-import CssBaseline from "@mui/material/CssBaseline";
-import Box from "@mui/material/Box";
-import Container from "@mui/material/Container";
-import { Typography } from "@mui/material";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Header from "./components/header/Header";
+import NotFoundPage from "./pages/NotFound404";
+import DashboardPage from "./pages/Dashboard";
+import DetailPage from "./pages/Detail";
 
 export default function App() {
   return (
-    <>
-      <CssBaseline />
-      <Container>
-        <Box alignItems="center">
-          <Typography variant="h1" gutterBottom>
-            Final Project Init
-          </Typography>
-        </Box>
-      </Container>
-    </>
+    <BrowserRouter>
+      <Header />
+      <Routes>
+        <Route path="/" element={<DashboardPage />} />
+        <Route path="/detail/:id" element={<DetailPage />} />
+        <Route path="*" element={<NotFoundPage />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
