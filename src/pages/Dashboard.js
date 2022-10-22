@@ -2,8 +2,10 @@ import { Container, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 import NewsList from "../components/news/NewsList";
 import { getNews } from "../network/lib/news";
+
 function DashboardPage() {
   const [news, setNews] = useState([]);
+
   useEffect(() => {
     const fetchData = async () => {
       const news = await getNews();
@@ -14,7 +16,7 @@ function DashboardPage() {
 
   return (
     <Container>
-      <Typography variant="h4" gutterBottom>
+      <Typography variant="h4" gutterBottom mb={3}>
         Dashboard
       </Typography>
       <NewsList data={news} />
