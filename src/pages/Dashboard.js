@@ -7,14 +7,16 @@ function DashboardPage() {
   useEffect(() => {
     const fetchData = async () => {
       const news = await getNews();
-      setNews(news)
+      setNews(news);
     };
     fetchData();
   }, []);
 
   return (
     <Container>
-      <Typography>Dashboard Page</Typography>
+      <Typography variant="h4" gutterBottom>
+        Dashboard
+      </Typography>
       <NewsList data={news} />
     </Container>
   );
