@@ -4,7 +4,7 @@ import {
   getAuth,
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
-  sendPasswordResetEmail,
+  // sendPasswordResetEmail,
   signOut,
 } from "firebase/auth";
 

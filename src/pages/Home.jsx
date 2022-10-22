@@ -3,21 +3,21 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { logout } from "../authentication/firebase";
 import useMovieStore, {
-  selectMovie,
-  selectFetchMovie,
+  // selectMovie,
+  // selectFetchMovie,
   selectFetchMovieTrending,
-  selectMovieTrendingDay,
-  selectMovieTrendingWeek,
+  // selectMovieTrendingDay,
+  // selectMovieTrendingWeek,
   selectTvTrendingWeek,
 } from "../stores/movie";
 
 const Home = ({ isLoggedIn }) => {
   const navigate = useNavigate();
-  const movie = useMovieStore(selectMovie);
-  const movieTrendingDay = useMovieStore(selectMovieTrendingDay);
-  const movieTrendingWeek = useMovieStore(selectMovieTrendingWeek);
+  // const movie = useMovieStore(selectMovie);
+  // const movieTrendingDay = useMovieStore(selectMovieTrendingDay);
+  // const movieTrendingWeek = useMovieStore(selectMovieTrendingWeek);
   const TvTrendingWeek = useMovieStore(selectTvTrendingWeek);
-  const fetchMovie = useMovieStore(selectFetchMovie);
+  // const fetchMovie = useMovieStore(selectFetchMovie);
   const fetchMovieTrending = useMovieStore(selectFetchMovieTrending);
 
   const baseUrlImage = "https://image.tmdb.org/t/p/original";
