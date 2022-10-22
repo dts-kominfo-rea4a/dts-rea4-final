@@ -9,13 +9,14 @@ const sliceBooks = (set) => ({
   isLoading: false,
   error: null,
   // action
-  fetchBooks: async (query = "arts") => {
+  fetchBooks: async (query = "arts", page = 0) => {
     try {
       // dalam zustand jika hanya 1 level dapat langung di set
       // set((state) => ({...state, isLoading: false }));
+      const startIndex = page * 5;
       set({ isLoading: true });
       const data = await axios.get(
-        `https://www.googleapis.com/books/v1/volumes?q=${query}&maxResults=20&key=${process.env.REACT_APP_KEY}`
+        `https://www.googleapis.com/books/v1/volumes?q=${query}&maxResults=5&startIndex=${startIndex}&key=${process.env.REACT_APP_KEY}`
       );
       // kalo ini ada beberapa level didalam data
       set((state) => ({ ...state, books: data.data, isLoading: false }));
@@ -29,8 +30,6 @@ const sliceBooks = (set) => ({
       const data = await axios.get(
         `https://www.googleapis.com/books/v1/volumes/${bookid}`
       );
-      console.log(data.data.volumeInfo);
-      console.log(data.data);
       set((state) => ({
         ...state,
         bookDetail: data.data.volumeInfo,

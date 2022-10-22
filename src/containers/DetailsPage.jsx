@@ -3,7 +3,6 @@ import { useParams, useNavigate } from "react-router-dom";
 import useBooksStore, {
   selectFetchBookDetail,
   selectBookDetail,
-  selectIsLoading,
   selectError,
 } from "../stores/book";
 import { Bookmark, BookOpen, Users, ExternalLink } from "react-feather";
@@ -20,7 +19,6 @@ const DetailsPage = () => {
   const [displayModal, setDisplayModal] = useState(true);
   const fetchBookDetail = useBooksStore(selectFetchBookDetail);
   const dataBook = useBooksStore(selectBookDetail);
-  const isLoading = useBooksStore(selectIsLoading);
   const isError = useBooksStore(selectError);
   const navigate = useNavigate();
 
