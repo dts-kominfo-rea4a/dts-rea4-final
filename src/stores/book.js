@@ -30,8 +30,6 @@ const sliceBooks = (set) => ({
       const data = await axios.get(
         `https://www.googleapis.com/books/v1/volumes/${bookid}`
       );
-      console.log(data.data.volumeInfo);
-      console.log(data.data);
       set((state) => ({
         ...state,
         bookDetail: data.data.volumeInfo,
