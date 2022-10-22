@@ -56,9 +56,8 @@ const Input = <T extends FieldValues, U extends FieldValues>({
         placeholder={placeholder}
         disabled={disabled}
         value={value}
-        {...(register ? register(name as Path<T>) : {})}
+        {...(register ? register(name as Path<T>) : { onChange: onChange })}
         {...rest}
-        onChange={onChange}
       />
       {errors && errors[name as keyof U] && (
         <span className="mb-2 text-xs text-red-500">
