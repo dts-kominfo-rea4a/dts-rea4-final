@@ -47,5 +47,5 @@
     ]
   },
   "proxy": "http://api.mediastack.com",
-  "homepage": "http://localhost:3000"
+  "homepage": "https://dts4a-17-final.netlify.app"
 }
