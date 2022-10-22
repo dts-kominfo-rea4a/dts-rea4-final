@@ -43,7 +43,7 @@ const HomePage = () => {
   return (
     <>
       <div className="p-4">
-        <Header />
+        <Header typeHeader="search" />
         <Container maxWidth="xl">
           <h1>Hot Topics</h1>
           {newsLoadingTopNews ? <Loading /> : <HotNews topNews={topNews} />}

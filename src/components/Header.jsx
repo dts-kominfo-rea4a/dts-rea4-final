@@ -11,10 +11,10 @@ import { Box } from "@mui/system";
 import LogoutIcon from "@mui/icons-material/Logout";
 import FilterListIcon from "@mui/icons-material/FilterList";
 import FilterAltOutlinedIcon from "@mui/icons-material/FilterAltOutlined";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import { Link } from "react-router-dom";
 
-const Header = () => {
-  const [auth, setAuth] = React.useState(false);
-
+const Header = ({ typeHeader }) => {
   return (
     <Box sx={{ position: "relative" }}>
       <AppBar position="static" color="transparent" variant="rounded">
@@ -39,7 +39,6 @@ const Header = () => {
             </Typography>
             <Button
               color="inherit"
-              onClick={() => setAuth(false)}
               sx={{
                 fontSize: "16px",
                 fontWeight: "bold",
@@ -60,41 +59,84 @@ const Header = () => {
               </Typography>
             </Button>
           </Toolbar>
-          <Box
-            sx={{
-              display: "flex",
-            }}
-          >
-            <IconButton type="button" sx={{ p: "10px" }} aria-label="search">
-              <FilterListIcon sx={{ color: "#F3CD0F" }} />
-            </IconButton>
-
-            <IconButton
-              type="button"
-              sx={{ p: "10px", mr: "10px" }}
-              aria-label="search"
-            >
-              <FilterAltOutlinedIcon sx={{ color: "#F3CD0F" }} />
-            </IconButton>
-
+          {typeHeader === "search" ? (
             <Box
               sx={{
-                border: "3px solid #F3CD0F",
-                borderRadius: "10px",
-                flex: 1,
                 display: "flex",
               }}
             >
-              <InputBase
-                sx={{ ml: 1, flex: 1 }}
-                placeholder="Search"
-                inputProps={{ "aria-label": "search" }}
-              />
               <IconButton type="button" sx={{ p: "10px" }} aria-label="search">
-                <SearchIcon sx={{ color: "#DAB70A" }} />
+                <FilterListIcon sx={{ color: "#F3CD0F" }} />
               </IconButton>
+
+              <IconButton
+                type="button"
+                sx={{ p: "10px", mr: "10px" }}
+                aria-label="search"
+              >
+                <FilterAltOutlinedIcon sx={{ color: "#F3CD0F" }} />
+              </IconButton>
+
+              <Box
+                sx={{
+                  border: "3px solid #F3CD0F",
+                  borderRadius: "10px",
+                  flex: 1,
+                  display: "flex",
+                }}
+              >
+                <InputBase
+                  sx={{ ml: 1, flex: 1 }}
+                  placeholder="Search"
+                  inputProps={{ "aria-label": "search" }}
+                />
+                <IconButton
+                  type="button"
+                  sx={{ p: "10px" }}
+                  aria-label="search"
+                >
+                  <SearchIcon sx={{ color: "#DAB70A" }} />
+                </IconButton>
+              </Box>
             </Box>
-          </Box>
+          ) : (
+            ""
+          )}
+
+          {typeHeader === "back" ? (
+            <Link
+              to="/"
+              style={{
+                textDecoration: "none",
+                display: "inline-block",
+                marginTop: "10px",
+              }}
+            >
+              <Box sx={{ display: "flex" }}>
+                <ArrowBackIcon
+                  sx={{
+                    color: "#F3CD0F",
+                    width: "30px",
+                    height: "30px",
+                  }}
+                />
+                <Typography
+                  variant="body2"
+                  component="span"
+                  sx={{
+                    color: "#BF8300",
+                    ml: "10px",
+                    fontSize: "18px",
+                    lineHeight: "30px",
+                  }}
+                >
+                  Back
+                </Typography>
+              </Box>
+            </Link>
+          ) : (
+            ""
+          )}
         </Container>
       </AppBar>
     </Box>

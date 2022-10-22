@@ -3,6 +3,7 @@ import Grid from "@mui/material/Unstable_Grid2";
 import Typography from "@mui/material/Typography";
 import { Box } from "@mui/system";
 import { styled } from "@mui/material/styles";
+import { Link } from "react-router-dom";
 
 const Img = styled("img")(({ theme }) => ({
   height: "auto",
@@ -46,39 +47,50 @@ const GridNews = ({ news }) => {
     >
       {news.map((data) => (
         <Grid item xs={2} sm={4} md={3} key={data.id}>
-          <Box sx={{ cursor: "pointer" }}>
-            <Img src={data.fields.thumbnail} alt={data.webTitle} />
-            <Typography
-              gutterBottom
-              variant="h6"
-              component="div"
-              sx={{
-                mb: "10px",
-                mt: "10px",
-                fontFamily: "Playfair Display",
-              }}
-            >
-              {data.webTitle}
-            </Typography>
-            <Box>
+          <Link
+            to={"/content/" + data.id}
+            style={{
+              textDecoration: "none",
+              display: "inline-block",
+              marginTop: "10px",
+              color: "black",
+            }}
+          >
+            <Box sx={{ cursor: "pointer" }}>
+              <Img src={data.fields.thumbnail} alt={data.webTitle} />
               <Typography
-                variant="caption"
-                color="text.secondary"
-                sx={{ mr: "15px" }}
+                gutterBottom
+                variant="h6"
+                component="div"
+                sx={{
+                  mb: "10px",
+                  mt: "10px",
+                  fontFamily: "Playfair Display",
+                }}
               >
-                {data.webPublicationDate != null
-                  ? countTime(
-                      new Date(
-                        Date.now() - new Date(data.webPublicationDate).getTime()
+                {data.webTitle}
+              </Typography>
+              <Box>
+                <Typography
+                  variant="caption"
+                  color="text.secondary"
+                  sx={{ mr: "15px" }}
+                >
+                  {data.webPublicationDate != null
+                    ? countTime(
+                        new Date(
+                          Date.now() -
+                            new Date(data.webPublicationDate).getTime()
+                        )
                       )
-                    )
-                  : ""}
-              </Typography>
-              <Typography variant="caption" color="text.secondary">
-                {data.fields.publication}
-              </Typography>
+                    : ""}
+                </Typography>
+                <Typography variant="caption" color="text.secondary">
+                  {data.fields.publication}
+                </Typography>
+              </Box>
             </Box>
-          </Box>
+          </Link>
         </Grid>
       ))}
     </Grid>

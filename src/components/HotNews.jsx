@@ -33,7 +33,7 @@ const HotNews = ({ topNews }) => {
   return (
     <Box
       sx={{
-        height: "500px",
+        height: "450px",
         position: "relative",
         display: "flex",
       }}
@@ -51,7 +51,8 @@ const HotNews = ({ topNews }) => {
             backgroundImage: `url(${topNews.fields.thumbnail})`,
             backgroundRepeat: "no-repeat",
             backgroundSize: "cover",
-            height: "100%",
+            backgroundPosition: "center",
+            height: "420px",
             width: "100%",
             borderRadius: "10px",
           }}
@@ -59,7 +60,7 @@ const HotNews = ({ topNews }) => {
         <Box
           sx={{
             background: `linear-gradient(0deg, rgba(0,0,0,0.65) 0%, rgba(225,225,225,0) 100%)`,
-            height: "100%",
+            height: "420px",
             width: "100%",
             position: "absolute",
             borderRadius: "10px",
