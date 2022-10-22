@@ -9,9 +9,9 @@ import useBooksStore, {
 import { Bookmark, BookOpen, Users, ExternalLink } from "react-feather";
 import ModalInfo from "../components/ModalInfo";
 import { useAuthState } from "react-firebase-hooks/auth";
-import {auth} from "../authentication/firebase";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { auth } from "../authentication/firebase";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const DetailsPage = () => {
   let { bookId } = useParams();
@@ -31,34 +31,38 @@ const DetailsPage = () => {
   const bookMarkHandle = () => {
     const localBookMark = JSON.parse(localStorage.getItem(user.email));
     if (localBookMark) {
-      const filtered = localBookMark.filter(data => {
+      const filtered = localBookMark.filter((data) => {
         return data.id === bookId;
       });
 
       if (!filtered[0]?.id) {
-        const newItems = JSON.stringify([...localBookMark, {
-          id: bookId,
-          imageLinks: dataBook?.imageLinks?.thumbnail,
-          title: dataBook?.title,
-          authors: dataBook?.authors?.[0]
-        }])
+        const newItems = JSON.stringify([
+          ...localBookMark,
+          {
+            id: bookId,
+            imageLinks: dataBook?.imageLinks?.thumbnail,
+            title: dataBook?.title,
+            authors: dataBook?.authors?.[0],
+          },
+        ]);
         localStorage.setItem(user.email, newItems);
       }
     } else {
-      const initState = [{
-        id: bookId,
-        imageLinks: dataBook?.imageLinks?.thumbnail,
-        title: dataBook?.title,
-        authors: dataBook?.authors[0]
-      }];
+      const initState = [
+        {
+          id: bookId,
+          imageLinks: dataBook?.imageLinks?.thumbnail,
+          title: dataBook?.title,
+          authors: dataBook?.authors[0],
+        },
+      ];
       localStorage.setItem(user.email, JSON.stringify(initState));
     }
-    toastifySuccess()
-
+    toastifySuccess();
   };
 
   const toastifySuccess = () => {
-    toast.success('Success', {
+    toast.success("Success", {
       position: "top-center",
       autoClose: 1000,
       hideProgressBar: false,
@@ -68,7 +72,7 @@ const DetailsPage = () => {
       progress: undefined,
       theme: "light",
     });
-  }
+  };
 
   const modalData = (data) => {
     setDisplayModal(false);
@@ -122,7 +126,7 @@ const DetailsPage = () => {
                 <a
                   href={dataBook.previewLink}
                   target="_blank"
-                  rel="noopener"
+                  rel="noreferrer"
                   className="inline-flex items-center pr-3 mb-2 mr-2 overflow-hidden text-sm font-medium tracking-wide text-center text-white uppercase rounded-lg bg-slate-400 hover:opacity-90 focus:outline-none focus:ring-4 focus:ring-slate-300"
                 >
                   <ExternalLink className="w-8 h-8 p-2 mr-2 bg-slate-500" />
@@ -131,7 +135,7 @@ const DetailsPage = () => {
                 <a
                   href={dataBook.infoLink}
                   target="_blank"
-                  rel="noopener"
+                  rel="noreferrer"
                   className="inline-flex items-center pr-3 mb-2 mr-2 overflow-hidden text-sm font-medium tracking-wide text-center text-white uppercase rounded-lg bg-slate-400 hover:opacity-90 focus:outline-none focus:ring-4 focus:ring-slate-300"
                 >
                   <ExternalLink className="w-8 h-8 p-2 mr-2 bg-slate-500" />

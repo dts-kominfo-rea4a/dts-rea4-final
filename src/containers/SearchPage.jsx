@@ -80,43 +80,41 @@ const SearchPage = () => {
         </div>
       </section>
       <section className="py-2 bg-slate-100">
-        <div className="">
-          <div className="flex flex-wrap">
-            {dataBooks.items?.map((book) => (
-              <div
-                key={book.id}
-                className="flex flex-col w-full px-4 sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5 group"
-              >
-                <div className="flex-1 mb-10 overflow-hidden bg-white shadow-lg rounded-xl">
-                  <Link to={`/details/${book.id}`}>
-                    <img
-                      src={
-                        book.volumeInfo.imageLinks
-                          ? book.volumeInfo.imageLinks.thumbnail
-                          : noimage
-                      }
-                      alt="img"
-                      className="w-full"
-                    />
-                    <div className="px-6 py-2">
-                      <h3>
-                        <div className="block mb-3 font-semibold truncate text-md text-slate-900 group-hover:text-primary">
-                          {book.volumeInfo.title}
-                        </div>
-                      </h3>
-                      <p className="mb-4 text-xs text-slate-500">
-                        {book.volumeInfo.authors
-                          ? book.volumeInfo.authors.length === 1
-                            ? book.volumeInfo.authors[0]
-                            : book.volumeInfo.authors.map((a) => `${a}, `)
-                          : ""}
-                      </p>
-                    </div>
-                  </Link>
-                </div>
+        <div className="flex flex-wrap">
+          {dataBooks.items?.map((book) => (
+            <div
+              key={book.id}
+              className="flex flex-col w-full px-4 sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5 group"
+            >
+              <div className="flex-1 mb-10 overflow-hidden bg-white shadow-lg rounded-xl">
+                <Link to={`/details/${book.id}`}>
+                  <img
+                    src={
+                      book.volumeInfo.imageLinks
+                        ? book.volumeInfo.imageLinks.thumbnail
+                        : noimage
+                    }
+                    alt="img"
+                    className="w-full"
+                  />
+                  <div className="px-6 py-2">
+                    <h3>
+                      <div className="block mb-3 font-semibold truncate text-md text-slate-900 group-hover:text-primary">
+                        {book.volumeInfo.title}
+                      </div>
+                    </h3>
+                    <p className="mb-4 text-xs text-slate-500">
+                      {book.volumeInfo.authors
+                        ? book.volumeInfo.authors.length === 1
+                          ? book.volumeInfo.authors[0]
+                          : book.volumeInfo.authors.map((a) => `${a}, `)
+                        : ""}
+                    </p>
+                  </div>
+                </Link>
               </div>
-            ))}
-          </div>
+            </div>
+          ))}
         </div>
       </section>
     </>

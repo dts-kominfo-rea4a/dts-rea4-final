@@ -32,19 +32,19 @@ const RegisterPage = ({ title }) => {
     if (response.hasOwnProperty("code")) {
       switch (response.code) {
         case "auth/invalid-email":
-          setErrorMessage("Email tidak valid!");
+          setErrorMessage("Email not valid!");
           break;
         case "auth/email-already-in-use":
-          setErrorMessage("Email sudah pernah terdaftar!");
+          setErrorMessage("Email already registered!");
           break;
         case "auth/weak-password":
-          setErrorMessage("Pasword terlalu lemah, minimal 6 karakter!");
+          setErrorMessage("Weak password, minimum 6 character!");
           break;
         case "auth/internal-error":
-          setErrorMessage("Terjadi kesalahan internal!");
+          setErrorMessage("There is an internal error!");
           break;
         default:
-          setErrorMessage("Terjadi kesalahan!");
+          setErrorMessage("There is an error!");
       }
     } else {
       setErrorMessage(null);

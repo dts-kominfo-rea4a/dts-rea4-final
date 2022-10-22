@@ -29,22 +29,22 @@ const LoginPage = ({ title }) => {
       credential.password
     );
 
-    if (response.hasOwnProperty("code")) {
+    if (response) {
       switch (response.code) {
         case "auth/invalid-email":
-          setErrorMessage("Email tidak valid!");
+          setErrorMessage("Email not valid!");
           break;
         case "auth/user-not-found":
-          setErrorMessage("User tidak terdaftar!");
+          setErrorMessage("User not registered!");
           break;
         case "auth/wrong-password":
-          setErrorMessage("Pasword yang anda masukan salah!");
+          setErrorMessage("Wrong password!");
           break;
         case "auth/internal-error":
-          setErrorMessage("Terjadi kesalahan internal!");
+          setErrorMessage("There is an internal error!");
           break;
         default:
-          setErrorMessage("Terjadi kesalahan!");
+          setErrorMessage("There is an error!");
       }
     } else {
       setErrorMessage(null);
