@@ -5,6 +5,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import LoginPage from "./containers/LoginPage";
 import RegisterPage from "./containers/RegisterPage";
 import HomePage from "./containers/HomePage";
+import BookMark from "./containers/BookMark";
 import ProtectedComponent from "./components/ProtectedComponent";
 import NotFoundPage from "./containers/NotFoundPage";
 import BaseLayout from "./containers/BaseLayout";
@@ -65,6 +66,16 @@ root.render(
             }
           />
         </Route>
+        <Route
+          path="bookmark"
+          element={
+            <ProtectedComponent>
+              <BaseLayout title="Bookmark">
+                <BookMark />
+              </BaseLayout>
+            </ProtectedComponent>
+          }
+        />
         <Route
           path="*"
           element={<NotFoundPage title="Something's missing" />}
