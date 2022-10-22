@@ -1,4 +1,4 @@
-import logo from './logo.svg';
+import './Firebase'
 import './App.css';
 import Routes from "./Routes/Routes";
 
