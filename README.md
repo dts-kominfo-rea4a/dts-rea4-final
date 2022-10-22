@@ -17,7 +17,7 @@ This is an app that helps you to find and known about free games around the worl
 
 ## Link
 
-Coming soon...
+[freegame.afif.dev](https://freegame.afif.dev/)
 
 ## Video
 
