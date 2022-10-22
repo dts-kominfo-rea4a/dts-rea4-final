@@ -29,7 +29,7 @@ const RegisterPage = ({ title }) => {
       credential.password
     );
 
-    if (response.hasOwnProperty("code")) {
+    if (response) {
       switch (response.code) {
         case "auth/invalid-email":
           setErrorMessage("Email not valid!");
