@@ -24,7 +24,14 @@ const Router = () => (
           </PublicRoute>
         }
       />
-      <Route path="/verify-email" element={<VerifyEmail />} />
+      <Route
+        path="/verify-email"
+        element={
+          <PrivateRoute>
+            <VerifyEmail />
+          </PrivateRoute>
+        }
+      />
       <Route
         path="/games"
         element={

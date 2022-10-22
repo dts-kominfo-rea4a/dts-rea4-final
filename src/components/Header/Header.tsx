@@ -1,6 +1,7 @@
 import Button from '@/components/Button';
 import { useLogoutQuery } from '@/services/queries/auth.query';
 import { useStore } from '@/store/index';
+import { Link } from 'react-router-dom';
 
 const Header = () => {
   const { setIsAuthenticated, user, setUser } = useStore((state) => state);
@@ -13,16 +14,16 @@ const Header = () => {
   };
 
   return (
-    <nav className="bg-white shadow-lg">
+    <nav className="bg-white shadow-lg dark:bg-gray-900">
       <div className="max-w-6xl px-4 mx-auto">
         <div className="flex justify-between">
           <div className="flex space-x-7">
             <div>
-              <a href="#" className="flex items-center px-2 py-4">
-                <span className="text-lg font-bold text-gray-500">
+              <Link to="/" className="flex items-center px-2 py-4">
+                <span className="text-lg font-bold text-gray-700 dark:text-gray-200">
                   Free Games App
                 </span>
-              </a>
+              </Link>
             </div>
           </div>
           <div className="items-center hidden space-x-3 md:flex ">

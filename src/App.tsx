@@ -3,7 +3,6 @@ import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
 import { getAuth, User } from 'firebase/auth';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import Header from '@/components/Header';
 import { app } from '@/lib/firebase-config';
 import Router from './routes';
 import { useStore } from '@/store/index';
@@ -52,7 +51,6 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <div className="h-screen App">
-        <Header />
         <Router />
       </div>
       <ToastContainer />
