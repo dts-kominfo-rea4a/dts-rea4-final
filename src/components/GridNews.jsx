@@ -4,39 +4,13 @@ import Typography from "@mui/material/Typography";
 import { Box } from "@mui/system";
 import { styled } from "@mui/material/styles";
 import { Link } from "react-router-dom";
+import countTime from "../utils/countTime";
 
 const Img = styled("img")(({ theme }) => ({
   height: "auto",
   width: "100%",
   borderRadius: "8px",
 }));
-
-const countTime = (date) => {
-  var seconds = Math.floor((new Date() - date) / 100000000);
-
-  var interval = seconds / 31536000;
-
-  if (interval > 1) {
-    return Math.floor(interval) + " years ago";
-  }
-  interval = seconds / 2592000;
-  if (interval > 1) {
-    return Math.floor(interval) + " months ago";
-  }
-  interval = seconds / 86400;
-  if (interval > 1) {
-    return Math.floor(interval) + " days ago";
-  }
-  interval = seconds / 3600;
-  if (interval > 1) {
-    return Math.floor(interval) + " hours ago";
-  }
-  interval = seconds / 60;
-  if (interval > 1) {
-    return Math.floor(interval) + " minutes ago";
-  }
-  return Math.floor(seconds) + " seconds ago";
-};
 
 const GridNews = ({ news }) => {
   return (
@@ -77,12 +51,7 @@ const GridNews = ({ news }) => {
                   sx={{ mr: "15px" }}
                 >
                   {data.webPublicationDate != null
-                    ? countTime(
-                        new Date(
-                          Date.now() -
-                            new Date(data.webPublicationDate).getTime()
-                        )
-                      )
+                    ? countTime(data.webPublicationDate)
                     : ""}
                 </Typography>
                 <Typography variant="caption" color="text.secondary">

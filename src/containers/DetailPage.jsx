@@ -9,6 +9,7 @@ import DialogContent from "@mui/material/DialogContent";
 import Dialog from "@mui/material/Dialog";
 import { Box } from "@mui/system";
 import Typography from "@mui/material/Typography";
+import countTime from "../utils/countTime";
 
 import useNewsStore, {
   selectDetailNews,
@@ -84,7 +85,9 @@ const DetailPage = () => {
                   }}
                 >
                   <Typography variant="caption" sx={{ mr: "15px" }}>
-                    {newsDetail.webPublicationDate}
+                    {newsDetail.webPublicationDate != null
+                      ? countTime(newsDetail.webPublicationDate)
+                      : ""}
                   </Typography>
                   <Typography variant="caption">
                     {newsDetail.fields.publication}
