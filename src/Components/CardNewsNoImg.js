@@ -1,7 +1,9 @@
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
-import Typography from "@mui/material/Typography";
-import {Divider} from "@mui/material";
+import {
+    Card,
+    CardContent,
+    Typography,
+    Divider
+} from "@mui/material";
 
 const CardNews = ({item}) => {
     return (
@@ -11,7 +13,7 @@ const CardNews = ({item}) => {
                     {item.title}
                 </Typography>
                 <Typography variant="body2" color="text.secondary" sx={{textAlign: "justify"}}>
-                    {item.content} <a href={item.readMoreUrl} target="_blank">readmore</a>
+                    {item.content} <a href={item.readMoreUrl} target="_blank" rel="noreferrer">readmore</a>
                 </Typography>
                 <Divider sx={{mt: 1, mb: 1}}/>
                 <Typography gutterBottom variant="body2" color="text.secondary" sx={{textAlign: "justify"}}>

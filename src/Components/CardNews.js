@@ -1,8 +1,10 @@
-import Card from "@mui/material/Card";
-import CardMedia from "@mui/material/CardMedia";
-import CardContent from "@mui/material/CardContent";
-import Typography from "@mui/material/Typography";
-import {Divider} from "@mui/material";
+import {
+    Card,
+    Typography,
+    CardMedia,
+    Divider,
+    CardContent
+} from "@mui/material";
 
 const CardNews = ({item}) => {
     return (

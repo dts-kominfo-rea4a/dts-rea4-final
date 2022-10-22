@@ -9,7 +9,7 @@ export default function SimpleContainer({ category }) {
         <React.Fragment>
             <CssBaseline/>
             <Container maxWidth={'xl'}>
-                <TopNews />
+                <TopNews category={category} />
                 <News category={category} />
             </Container>
         </React.Fragment>
