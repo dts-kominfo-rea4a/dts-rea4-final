@@ -12,5 +12,13 @@ export const getApps = async (params: GetAppsProps): Promise<App[]> => {
       },
     }
   );
+  if (params.search && params.search.length) {
+    const { search } = params;
+    const filteredData = data.filter(
+      (game) => game.title.toLowerCase().indexOf(search.toLowerCase()) >= 0
+    );
+    return filteredData;
+  }
+
   return data;
 };

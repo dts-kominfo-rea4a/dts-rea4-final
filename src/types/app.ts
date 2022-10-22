@@ -57,6 +57,7 @@ export interface GetAppsProps {
   category?: AppsCategories;
   platform?: AppPlatforms;
   'sort-by'?: AppsSortBy;
+  search?: string;
 }
 
 export interface App {
