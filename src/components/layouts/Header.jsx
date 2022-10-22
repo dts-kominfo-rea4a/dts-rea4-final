@@ -9,8 +9,8 @@ export default function Header() {
   };
   const navigate = useNavigate();
   return (
-    <Box>
-      <AppBar position="static">
+    <Box sx={{ backgroundColor: "#141414" }}>
+      <AppBar position="static" sx={{ backgroundColor: "#141414" }}>
         <Toolbar>
           <Typography variant="h6" component="div">
             Navbar
