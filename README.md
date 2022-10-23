@@ -28,10 +28,11 @@ Coming soon...
 1. Authentication with Firebase (Login, Logout, Register, and Verify Email)
 2. Main's Page: show list of games from [Freetogame API](https://www.freetogame.com/api-doc)
 3. Detail's Page: new tab to the publisher game's website
-4. Search and Filter (by platform) Games
-5. Form validation
-6. Toggle Light/Dark mode as user preferred
-7. Responsive UI
+4. Detail's Page: responsive modal for show images properly
+5. Search and Filter (by platform) Games
+6. Form validation
+7. Toggle Light/Dark mode as user preferred
+8. Responsive UI
 
 ## Stack Used
 
@@ -49,6 +50,7 @@ Coming soon...
 10. Zustand for state management
 11. Tailwind as CSS framework
 12. Sass for better css
+13. Flowbite for UI Component framework with tailwindcss
 
 ### Dev Apps' Stack
 
