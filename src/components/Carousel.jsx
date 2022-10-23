@@ -12,7 +12,7 @@ const Carousel = ({ movies }) => {
   // move to the next movie
   // if we are at the end, go to the first movie
   const next = () => {
-    setCurrentIndex(currentIndex => (currentIndex + 1) % movies.length);
+    setCurrentIndex((currentIndex) => (currentIndex + 1) % movies.length);
   };
 
   // move to the previous movie
@@ -28,15 +28,16 @@ const Carousel = ({ movies }) => {
   };
   let timer;
   const updateCount = () => {
-    timer = !timer && setInterval(() => {
+    timer =
+      !timer &&
+      setInterval(() => {
         next();
       }, 5000);
   };
   useEffect(() => {
-    if (movies.length>0)
-    updateCount();
-    // return () => clearInterval(timer);
-  }, []);
+    if (timer) clearInterval(timer);
+    if (movies.length > 0) updateCount();
+  }, [movies.length]);
 
   return (
     <>
@@ -57,7 +58,7 @@ const Carousel = ({ movies }) => {
               >
                 <img
                   src={
-                    "https://image.tmdb.org/t/p/w1280/" + movie.backdrop_path
+                    "https://image.tmdb.org/t/p/original/" + movie.backdrop_path
                   }
                   alt={movie.title}
                   className={styles.movie}

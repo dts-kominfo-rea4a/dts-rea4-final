@@ -4,7 +4,7 @@
     position: relative;
     margin: auto;
     width: 100vw;
-    max-height: 60vh;
+    max-height: 90vh;
   }
   
   /* Style each slide */
@@ -25,7 +25,7 @@
 
   .movie {
     width: 100%;
-    max-height: 63vh;
+    max-height: 70vh;
     object-fit: cover;
   }
   
@@ -105,7 +105,7 @@
     display: inline-block;
     transition: 0.5s;
     bottom: 5px;
-    z-index: 2;
+    z-index: 1;
   }
   
   /* Fading animation */

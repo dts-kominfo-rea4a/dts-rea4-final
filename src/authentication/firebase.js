@@ -57,17 +57,11 @@ const sliceFirebase = (set) => ({
                 email,
                 password
             );
-
-            console.log(
-                "User yang teregistrasi dan berhasil login adalah",
-                response.user
-            );
             set({
                 isLoading: false,
                 user: response.user,
             });
         } catch (err) {
-            console.log(err);
             set({
                 isLoading: false,
                 error: err,
@@ -86,17 +80,11 @@ const sliceFirebase = (set) => ({
                 email,
                 password
             );
-            console.log("User yang berhasil login adalah", userCredential.user);
             set({
                 isLoading: false,
                 user: userCredential.user,
             });
         } catch (err) {
-            console.log(err);
-
-            // Sama dengan register
-            console.log("error code auth", err.code);
-            console.log("error message auth", err.message);
             set({
                 isLoading: false,
                 error: err,
@@ -109,13 +97,11 @@ const sliceFirebase = (set) => ({
         set({ isLoading: true })
         try {
             const userCredential = await signInWithPopup(auth, githubProvider);
-            console.log(userCredential);
             set({
                 isLoading: false,
                 user: userCredential.user,
             });
         } catch (err) {
-            console.log(err);
             set({
                 isLoading: false,
                 error: err,
@@ -127,13 +113,11 @@ const sliceFirebase = (set) => ({
         set({ isLoading: true })
         try {
             const userCredential = await signInWithPopup(auth, googleProvider);
-            console.log(userCredential);
             set({
                 isLoading: false,
                 user: userCredential.user,
             });
         } catch (err) {
-            console.log(err);
             set({
                 isLoading: false,
                 error: err,
@@ -148,12 +132,10 @@ const sliceFirebase = (set) => ({
         try {
             await sendPasswordResetEmail(auth, email);
 
-            console.log("Password reset sudah dikirimkan");
             set({
                 isLoading: false
             });
         } catch (err) {
-            console.log(err);
             set({
                 isLoading: false,
                 error: err,
@@ -172,7 +154,6 @@ const sliceFirebase = (set) => ({
                 user: null,
             });
         } catch (err) {
-            console.log(err);
             set({
                 isLoading: false,
                 error: err,

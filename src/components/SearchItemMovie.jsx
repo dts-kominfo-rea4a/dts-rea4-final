@@ -7,8 +7,6 @@ const SearchItemMovie = ({ movie }) => {
   const navigate = useNavigate();
   const location = useLocation();
   const onClickHandler = () => {
-    // NavigateOptions.push({ routeName: 'movie', params: `${movie.id}` }) 
-    // console.log(navigation.location);
     navigate(`/movie/${movie.id}`);
   }
   return (
