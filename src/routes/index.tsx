@@ -1,3 +1,4 @@
+import DetailGames from '@/pages/DetailGames';
 import VerifyEmail from '@/pages/VerifyEmail';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Apps from '../pages/Games';
@@ -37,6 +38,14 @@ const Router = () => (
         element={
           <PrivateRoute>
             <Apps />
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path="/games/:gameId"
+        element={
+          <PrivateRoute>
+            <DetailGames />
           </PrivateRoute>
         }
       />
