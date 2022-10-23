@@ -1,7 +1,6 @@
 import { useDetailAppQuery } from '@/services/queries/app.query';
 import { Navigate, useParams } from 'react-router-dom';
 import { Tabs } from 'flowbite-react';
-import './DetailGames.css';
 import { formatDate } from '@/lib/helper';
 import { Button } from 'flowbite-react';
 
@@ -27,7 +26,7 @@ const DetailGames = () => {
 
       return (
         <div className="w-full text-gray-800 bg-white -z-50 md:px-12 dark:bg-gray-800 dark:text-gray-200">
-          <div className="grid order-2 grid-cols-1 gap-6 p-12 mx-auto lg:grid-cols-3">
+          <div className="grid order-2 grid-cols-1 gap-6 pt-12 mx-auto lg:grid-cols-3">
             <div className="col-span-1 lg:col-span-1 lg:sticky lg:z-10">
               <div className="flex flex-col items-start justify-start w-full space-y-4">
                 <img
