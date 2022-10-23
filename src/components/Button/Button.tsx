@@ -5,6 +5,7 @@ export interface ButtonProps
   text: string;
   isLoading?: boolean;
   className?: string;
+  icon?: React.ReactNode;
   children?: React.ReactNode;
 }
 
@@ -30,11 +31,12 @@ const Button: React.FC<ButtonProps> = ({
   text,
   isLoading,
   className,
+  icon,
   children,
   ...props
 }) => (
   <button type="button" className={className ?? defaultClasses} {...props}>
-    {isLoading ? <Spinner /> : children ?? text}
+    {isLoading ? <Spinner /> : children ?? text} {icon ?? null}
   </button>
 );
 
