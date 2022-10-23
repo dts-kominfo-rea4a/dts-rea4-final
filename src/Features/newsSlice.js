@@ -5,17 +5,15 @@ const initialStateNews = {
     loading: false,
     error: null,
     news: [],
-    newsDetail: [],
-    topNews: []
 }
 
-export const getNews = createAsyncThunk("getNews", async ({category}) => {
+export const getNews = createAsyncThunk("getNews", async ({category, sort}) => {
     const responseNewsApi = await newsApiInstance.get("/everything", {
         params: {
             ...DEFAULT_PARAMS,
             language: "en",
             q: category,
-            sortBy: "relevancy",
+            sortBy: sort,
             pageSize: 24
         }
     })

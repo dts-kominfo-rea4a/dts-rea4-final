@@ -1,11 +1,17 @@
 import * as React from 'react';
 import {Box, FormControl, InputLabel, MenuItem, Select} from "@mui/material";
+import {useDispatch} from "react-redux";
+import {getNews} from "../Features/newsSlice";
 
-const SortSelect = () => {
+const SortSelect = ({category}) => {
     const [sortValue, setSortValue] = React.useState('');
+    const dispatch = useDispatch()
 
     const handleChange = (event) => {
+        const sort = event.target.value
         setSortValue(event.target.value);
+
+        dispatch(getNews({category, sort}))
     };
 
     return (
