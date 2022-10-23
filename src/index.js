@@ -7,14 +7,18 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import View from "./pages/View";
+import FirstPage from "./pages/FirstPage";
+import Navbar from "./components/Navbar";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
   <React.StrictMode>
     <BrowserRouter>
+      <Navbar />
       <Routes>
         <Route path="/" element={<App />} />
+        <Route path="first" element={<FirstPage/>} />
         <Route path="login" element={<Login loginOrRegister="login" />} />
         <Route path="register" element={<Register />} />
         <Route path="view/:id" element={<View />} />

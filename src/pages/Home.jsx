@@ -37,10 +37,46 @@ const Home = ({ isLoggedIn }) => {
     navigate("/login");
   };
 
+  const truncateString = (str, num) => {
+    if (str?.length > num) {
+      return str.slice(0, num) + '...';
+    } else {
+      return str;
+    }
+  };
+
   return (
     <>
-      <div className="p-4 bg-slate-900 w-full">
-        <div className="text-slate-700 pl-3 text-semibold font-sans flex flex-wrap justify-between">
+    <div className='w-full h-[500px] text-white'>
+      <div className='w-full h-full'>
+        <div className='absolute w-full h-[500px] bg-gradient-to-r from-black'></div>
+        <img
+          className='w-full h-full object-cover'
+          src={`https://image.tmdb.org/t/p/original/${movie?.backdrop_path}`}
+          alt={movie?.title}
+        />
+        <div className='absolute w-full top-[20%] p-4 md:p-8'>
+          <h1 className='text-3xl md:text-5xl font-bold'>{movie?.title}</h1>
+          <div className='my-4'>
+            <button className='border bg-gray-300 text-black border-gray-300 py-2 px-5'>
+              Play
+            </button>
+            <button className='border text-white border-gray-300 py-2 px-5 ml-4'>
+              Watch Later
+            </button>
+          </div>
+          <p className='text-gray-400 text-sm'>
+            Released: {movie?.release_date}
+          </p>
+          <p className='w-full md:max-w-[70%] lg:max-w-[50%] xl:max-w-[35%] text-gray-200'>
+            {truncateString(movie?.overview, 150)}
+          </p>
+        </div>
+      </div>
+    </div>
+    
+      
+        {/* <div className="text-slate-700 pl-3 text-semibold font-sans flex flex-wrap justify-between">
           <div></div>
           {!isLoggedIn ? (
             <Link
@@ -57,9 +93,10 @@ const Home = ({ isLoggedIn }) => {
               logout
             </button>
           )}
-        </div>
-        {/* start content  */}
-        <div className="w-full max-w-full rounded-md  mt-2 mx-auto">
+        </div> */}
+        
+
+        
           <div className="text-xl text-slate-700 font-bold font-sans text-center p-3">
             <p
               className={
@@ -83,7 +120,7 @@ const Home = ({ isLoggedIn }) => {
               <h6 className="text-slate-100 font-bold">Movies >></h6>
             </div>
           </div>
-          <div className="flex flex-nowrap gap-2 justify-start mb-10 overflow-x-auto">
+          <div className="flex flex-nowrap gap-2 justify-start mb-10 overflow-x-auto scrollbar-hide">
             {movieTrendingWeek.map((data) => (
               <div
                 className="shadow-xl mt-2 mb-0 h-56 lg:w-44 md:w-44 sm:w-44 flex-none relative group"
@@ -112,7 +149,7 @@ const Home = ({ isLoggedIn }) => {
               <h6 className="text-slate-100 font-bold"> TV Series >></h6>
             </div>
           </div>
-          <div className="flex flex-nowrap gap-2 justify-start mb-10 overflow-x-auto">
+          <div className="flex flex-nowrap gap-2 justify-start mb-10 overflow-x-auto scrollbar-hide">
             {TvTrendingWeek.map((data) => (
               <div
                 key={data.id}
@@ -132,8 +169,8 @@ const Home = ({ isLoggedIn }) => {
             ))}
           </div>
           {/* <div className="w-full max-w-full bg-lime-400">d</div> */}
-        </div>
-      </div>
+        
+      
     </>
   );
 };

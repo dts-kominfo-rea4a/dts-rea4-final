@@ -85,7 +85,7 @@ const LoginOrRegister = ({ loginOrRegister }) => {
 
   return (
     <>
-      <div className="w-full max-w-full flex bg-slate-900 h-screen">
+      {/* <div className="w-full max-w-full flex bg-slate-900 h-screen">
         <div className="w-1/2 bg-blue-900">Image</div>
         <div className="w-1/2 m-auto max-w-md ">
           <div className="w-full flex flex-wrap justify-center gap-6 p-4">
@@ -138,6 +138,65 @@ const LoginOrRegister = ({ loginOrRegister }) => {
               </div>
             </Link>
           )}
+        </div>
+      </div> */}
+
+
+      <div className='w-full h-screen'>
+        <img
+          className='hidden sm:block absolute w-full h-full object-cover'
+          src='https://assets.nflxext.com/ffe/siteui/vlv3/f841d4c7-10e1-40af-bcae-07a3f8dc141a/f6d7434e-d6de-4185-a6d4-c77a2d08737b/US-en-20220502-popsignuptwoweeks-perspective_alpha_website_medium.jpg'
+          alt='/'
+        />
+        <div className='bg-black/60 fixed top-0 left-0 w-full h-screen'></div>
+        <div className='fixed w-full px-4 py-24 z-50'>
+          <div className='max-w-[450px] h-[600px] mx-auto bg-black/75 text-white'>
+            <div className='max-w-[320px] mx-auto py-16'>
+              <h1 className='text-3xl font-bold'>Sign In</h1>
+              {error ? <p className='p-3 bg-red-400 my-2'>{error}</p> : null}
+              <form className='w-full flex flex-col py-4'>
+                <input
+                type="email"
+                className='p-3 my-2 bg-gray-700 rouded'
+                name="email"
+                id="email"
+                value={credential.email}
+                onChange={textFieldEmailOnChangeHandler}
+                placeholder='Email'
+                />
+                <input
+                  type="password"
+                  className='p-3 my-2 bg-gray-700 rouded'
+                  name="password"
+                  id="password"
+                  value={credential.password}
+                  onChange={textFieldPasswordOnChangeHandler}
+                  placeholder='Password'
+                />
+                <button 
+                onClick={buttonLoginOrRegisterOnClickHandler}
+                className='bg-red-600 py-3 my-6 rounded font-bold'>
+                
+                <span className="text-xl font-bold">
+                {loginOrRegister === "login" ? "login" : "register"}
+                </span>
+                </button>
+                {loginOrRegister === "login" ? (
+                  <Link to="/register">
+                    <div className="text-center mt-1 text-md font-sans text-slate-100 font-semibold">
+                      or do you want Sign Up ?
+                    </div>
+                  </Link>
+                ) : (
+                  <Link to="/login">
+                    <div className="text-center mt-1 text-md font-sans text-slate-100 font-semibold">
+                      or do you want Sign In ?
+                    </div>
+                  </Link>
+                )}
+              </form>
+            </div>
+          </div>
         </div>
       </div>
     </>
