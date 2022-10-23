@@ -23,19 +23,6 @@ export const getNews = createAsyncThunk("getNews", async ({category}) => {
     return responseNewsApi.data.articles
 })
 
-export const getNewsDetail = createAsyncThunk("getNewsDetail", async ({category, id}) => {
-    const responseNewsApi = await newsApiInstance.get("/everything", {
-        params: {
-            ...DEFAULT_PARAMS,
-            language: "en",
-            q: category,
-            sortBy: "relevancy",
-        }
-    })
-
-    return responseNewsApi.data.articles[id]
-})
-
 export const getTopNews = createAsyncThunk("getTopNews", async ({category}) => {
     const responseNewsApi = await newsApiInstance.get("/top-headlines", {
         params: {
@@ -61,19 +48,6 @@ const newsSlice = createSlice({
             state.news = action.payload
         },
         [getNews.rejected]: (state, action) => {
-            state.loading = false
-            state.error = action.payload
-        },
-
-        //get everything news detail
-        [getNewsDetail.pending]: (state, action) => {
-            state.loading = true
-        },
-        [getNewsDetail.fulfilled]: (state, action) => {
-            state.loading = false
-            state.newsDetail = action.payload
-        },
-        [getNewsDetail.rejected]: (state, action) => {
             state.loading = false
             state.error = action.payload
         },
