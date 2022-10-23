@@ -6,6 +6,7 @@ import {
   Grid,
   Typography,
 } from '@mui/material';
+import Cookies from 'js-cookie';
 import * as Yup from 'yup';
 import {useEffect, useState } from 'react';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
@@ -46,10 +47,21 @@ const initialInput = {
 
 const Register = () => {
   const dispatch = useDispatch();
+  let navigate = useNavigate();
   
   const { statusRegister } = useSelector((state) => state.auth);
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+
+  useEffect(() => {
+    if (statusRegister === 'error') {
+      cogoToast.error('Anda Gagal Register, Tolong Cek lagi data Anda');
+    }
+    if (statusRegister === 'success') {
+      navigate('/news');
+      cogoToast.success('Anda Berhasil Register Akun');
+    }
+  }, [statusRegister, navigate]);
 
   const handleClickShowPassword = (name) => {
     if (name === 'password') {

@@ -1,20 +1,21 @@
+import Cookies from 'js-cookie';
 import {
   getAuth,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
+  updateProfile,
 } from 'firebase/auth';
 import { getDatabase, ref, set } from 'firebase/database';
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import cogoToast from 'cogo-toast';
 
 const auth = getAuth();
 const db = getDatabase();
 
 const initialState = {
-  statusRegister :'idle',
+  statusRegister: 'idle',
   dataRegister: {},
   errorRegister: null,
-  statusLogin: false,
+  statusLogin: 'idle',
   dataLogin: {},
   errorLogin: null,
 };
@@ -23,7 +24,7 @@ export const postRegisterAction = createAsyncThunk(
   'auth/register',
   async (data) => {
     try {
-      const result = await createUserWithEmailAndPassword(
+      let result = await createUserWithEmailAndPassword(
         auth,
         data.email,
         data.password,
@@ -35,12 +36,12 @@ export const postRegisterAction = createAsyncThunk(
         noTelp: data.noTelp,
         address: data.address,
       };
+      console.log('result register', result);
       set(ref(db, `users/${result.user.uid}`), dataUser);
-      cogoToast.success('Anda Berhasil register');
+      auth.displayName = data.fullName;
       return result;
     } catch (err) {
       console.log('err Register', err);
-      cogoToast.error('Anda Gagal Register Akun, Tolong Cek lagi data Anda');
     }
   },
 );
@@ -54,11 +55,12 @@ export const postLoginAction = createAsyncThunk(
         values.email,
         values.password,
       );
-      cogoToast.success('Anda Berhasil Login');
+      console.log('result', result);
+      Cookies.set('token', result.user.accessToken);
+      Cookies.set('name', result.user.auth.displayName);
       return result;
     } catch (err) {
       console.log('err Register', err);
-      cogoToast.error('Anda Gagal Register Akun, Tolong Cek lagi data Anda');
     }
   },
 );
@@ -77,8 +79,14 @@ const authSlice = createSlice({
         state.statusRegister = 'loading';
       })
       .addCase(postRegisterAction.fulfilled, (state, action) => {
-        state.statusRegister = 'success';
-        state.dataRegister = action.payload;
+        console.log('action', action)
+        if (action.payload) {
+          state.statusRegister = 'success';
+          state.dataRegister = action.payload;
+        }
+        if (!action.payload) {
+          state.statusRegister = 'error';
+        }
       })
       .addCase(postRegisterAction.rejected, (state, action) => {
         state.statusRegister = 'error';
@@ -88,12 +96,16 @@ const authSlice = createSlice({
         state.statusLogin = 'loading';
       })
       .addCase(postLoginAction.fulfilled, (state, action) => {
-        state.statusLogin = 'success';
-        state.dataLogin = action.payload;
+        if(action.payload){
+          state.statusLogin = 'success';
+        }
+        if(!action.payload){
+          state.statusLogin = 'error';
+        }
       })
       .addCase(postLoginAction.rejected, (state, action) => {
-        state.statusLogin = 'error';
-        state.errorLogin = action.payload.error;
+         state.statusLogin = 'error';
+        state.errorLogin = action.payload;
       });
   },
 });

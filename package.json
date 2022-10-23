@@ -15,6 +15,7 @@
     "cogo-toast": "^4.2.3",
     "firebase": "^9.12.1",
     "formik": "^2.2.9",
+    "js-cookie": "^3.0.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-material-ui-carousel": "^3.4.2",

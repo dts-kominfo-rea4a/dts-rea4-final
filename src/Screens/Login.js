@@ -1,4 +1,5 @@
 import * as Yup from 'yup';
+import Cookies from 'js-cookie';
 import { Box, Button, Card, CardContent, Typography } from '@mui/material';
 import {useEffect, useState } from 'react';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
@@ -24,8 +25,19 @@ const initialInput = {
 
 const Login = () => {
   const dispatch = useDispatch();
+  let navigate = useNavigate();
   const { statusLogin } = useSelector((state) => state.auth);
   const [showPassword, setShowPassword] = useState(false);
+
+  useEffect(() => {
+    if (statusLogin === 'error') {
+      cogoToast.error('Anda Gagal Login, Tolong Cek lagi data Anda');
+    }
+    if (statusLogin === 'success') {
+      navigate('/news');
+      cogoToast.success('Anda Berhasil Login');
+    }
+  }, [statusLogin, navigate]);
 
   const handleClickShowPassword = () => {
     setShowPassword(!showPassword);
