@@ -60,6 +60,10 @@ export interface GetAppsProps {
   search?: string;
 }
 
+export interface GetDetailApp {
+  id: string;
+}
+
 export interface App {
   id: number;
   title: string;
@@ -70,6 +74,26 @@ export interface App {
   platform: string;
   publisher: string;
   developer: string;
-  release_date: '2022-10-04';
-  freetogame_profile_url: 'https://www.freetogame.com/overwatch-2';
+  release_date: string;
+  freetogame_profile_url: string;
+}
+
+export interface MinimumSystemRequirements {
+  os: string;
+  processor: string;
+  memory: string;
+  graphics: string;
+  storage: string;
+}
+
+export interface Screenshot {
+  id: number;
+  image: string;
+}
+
+export interface DetailApp extends App {
+  status: string;
+  description: string;
+  minimum_system_requirements: MinimumSystemRequirements;
+  screenshots: Screenshot[];
 }
