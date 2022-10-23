@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import GridNews from "../components/GridNews";
@@ -22,7 +22,7 @@ import useNewsStore, {
 } from "../stores/news";
 
 const HomePage = () => {
-  const [openError, setOpenError] = React.useState(true);
+  const [openError, setOpenError] = useState(true);
 
   const fetchNews = useNewsStore(selectFetchNews);
   const fetchTopNews = useNewsStore(selectFetchTopNews);

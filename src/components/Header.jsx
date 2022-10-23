@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
@@ -12,9 +12,27 @@ import LogoutIcon from "@mui/icons-material/Logout";
 import FilterListIcon from "@mui/icons-material/FilterList";
 import FilterAltOutlinedIcon from "@mui/icons-material/FilterAltOutlined";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Header = ({ typeHeader }) => {
+  const navigate = useNavigate();
+  const [search, setSearch] = useState("");
+
+  const handleTypeSearch = (e) => {
+    setSearch(e.target.value);
+  };
+
+  const handleSubmitSearch = () => {
+    navigate(`/search/${search}`);
+    setSearch("");
+  };
+
+  const handleEnter = (e) => {
+    if (e.key === "Enter" || e.keyCode === 13) {
+      handleSubmitSearch();
+    }
+  };
+
   return (
     <Box sx={{ position: "relative" }}>
       <AppBar position="static" color="transparent" variant="rounded">
@@ -88,12 +106,16 @@ const Header = ({ typeHeader }) => {
                 <InputBase
                   sx={{ ml: 1, flex: 1 }}
                   placeholder="Search"
+                  onInput={handleTypeSearch}
+                  onKeyUp={handleEnter}
+                  value={search}
                   inputProps={{ "aria-label": "search" }}
                 />
                 <IconButton
                   type="button"
                   sx={{ p: "10px" }}
                   aria-label="search"
+                  onClick={handleSubmitSearch}
                 >
                   <SearchIcon sx={{ color: "#DAB70A" }} />
                 </IconButton>
@@ -104,8 +126,8 @@ const Header = ({ typeHeader }) => {
           )}
 
           {typeHeader === "back" ? (
-            <Link
-              to="/"
+            <Box
+              onClick={() => navigate(-1)}
               style={{
                 textDecoration: "none",
                 display: "inline-block",
@@ -133,7 +155,7 @@ const Header = ({ typeHeader }) => {
                   Back
                 </Typography>
               </Box>
-            </Link>
+            </Box>
           ) : (
             ""
           )}

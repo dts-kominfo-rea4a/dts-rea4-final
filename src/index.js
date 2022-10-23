@@ -5,6 +5,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import reportWebVitals from "./reportWebVitals";
 import HomePage from "./containers/HomePage";
 import DetailPage from "./containers/DetailPage";
+import SearchPage from "./containers/SearchPage";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -13,6 +14,7 @@ root.render(
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/content/*" element={<DetailPage />} />
+        <Route path="/search/*" element={<SearchPage />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>

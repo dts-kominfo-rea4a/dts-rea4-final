@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
@@ -19,7 +19,7 @@ import useNewsStore, {
 } from "../stores/news";
 
 const DetailPage = () => {
-  const [openError, setOpenError] = React.useState(true);
+  const [openError, setOpenError] = useState(true);
   const params = useParams();
   const fetchDetailNews = useNewsStore(selectFetchDetailNews);
   const newsLoadingDetailNews = useNewsStore(selectIsLoadingDetailNews);
