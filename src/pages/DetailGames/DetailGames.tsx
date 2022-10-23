@@ -2,10 +2,41 @@ import { useDetailAppQuery } from '@/services/queries/app.query';
 import { Navigate, useParams } from 'react-router-dom';
 import { Tabs } from 'flowbite-react';
 import { formatDate } from '@/lib/helper';
-import { Button } from 'flowbite-react';
+import { Button, Modal } from 'flowbite-react';
+import { useState } from 'react';
+import { Screenshot } from '@/types/app';
+
+interface PopUpAttributes {
+  show: boolean;
+  content?: React.ReactNode;
+}
 
 const DetailGames = () => {
   const { gameId } = useParams();
+  const [popUp, setPopup] = useState<PopUpAttributes>({
+    show: false,
+    content: null,
+  });
+
+  const onOpen = (scr: Screenshot, title: string, idx: number) => {
+    setPopup((pop) => ({
+      ...pop,
+      show: true,
+      content: (
+        <img
+          key={scr.id}
+          src={scr.image}
+          alt={`screenshot ${title} ${idx}`}
+          className="block w-screen h-auto rounded"
+        />
+      ),
+    }));
+  };
+
+  const onClose = () => {
+    setPopup((pop) => ({ ...pop, show: false, content: null }));
+  };
+
   if (gameId) {
     const { data: game, isLoading } = useDetailAppQuery({ id: gameId });
 
@@ -145,7 +176,8 @@ const DetailGames = () => {
                           key={scr.id}
                           src={scr.image}
                           alt={`screenshot ${game.title} ${idx}`}
-                          className="block w-full h-auto rounded"
+                          className="block w-full h-auto rounded cursor-pointer"
+                          onClick={() => onOpen(scr, game.title, idx)}
                         />
                       );
                     })}
@@ -230,6 +262,16 @@ const DetailGames = () => {
               </Tabs.Group>
             </div>
           </div>
+          <Modal
+            show={popUp.show}
+            size="6xl"
+            popup={true}
+            onClose={onClose}
+            position="center"
+          >
+            <Modal.Header />
+            <Modal.Body>{popUp.content}</Modal.Body>
+          </Modal>
         </div>
       );
     }
