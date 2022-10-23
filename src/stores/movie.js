@@ -10,6 +10,7 @@ const sliceMovie = (set) => ({
   movie:null,
   isLoading: false,
   error: null,
+  totalPages:0,
 
   // actions
   // 1. comot data dari jikan.moe
@@ -23,6 +24,7 @@ const sliceMovie = (set) => ({
         ...state,
         isLoading: false,
         movies: data.results,
+        totalPages: data.total_pages
       }));
     } catch (err) {
       set({
@@ -32,18 +34,24 @@ const sliceMovie = (set) => ({
     }
   },
 
-  // upcoming
-  upcomingMovie: async () => {
+  // category movie : upcoming, popular, top_rated, now_playing
+  fetchMovieByCategory: async (category,page) => {
     try {
       // isLoading = true;
       set({ isLoading: true });
-
-      const { data } = await tmdb.get("movie/upcoming");
-      set((state) => ({
-        ...state,
-        isLoading: false,
-        movies: data.results,
-      }));
+      const categoris = ["popular", "upcoming", "top_rated","now_playing"];
+      if (categoris.includes(category)){
+        const { data } = await tmdb.get(`movie/${category}`, {
+          params: {
+              page: page
+          }});
+        set((state) => ({
+          ...state,
+          isLoading: false,
+          movies: data.results,
+          totalPages: data.total_pages
+        }));
+      }
     } catch (err) {
       set({
         isLoading: false,
@@ -74,9 +82,6 @@ const sliceMovie = (set) => ({
 
   searchMovie: async (key) => {
     try {
-      // isLoading = true;
-      // set({ isLoading: true });
-
       const { data } = await tmdb.get(`search/multi`, {
         params: {
             query: key
@@ -130,7 +135,8 @@ export const selectDetailMovie = (state) => state.detailMovie;
 export const selectIsLoading = (state) => state.isLoading;
 export const selectError = (state) => state.error;
 export const selectFetchMovies = (state) => state.fetchMovie;
-export const selectUpcomingMovies = (state) => state.upcomingMovie;
+export const selectFetchMoviesByCategory = (state) => state.fetchMovieByCategory;
+export const selectTotalPages = (state) => state.totalPages;
 export const selectSearchMovies = (state) => state.searchMovie;
 export const searchedMovies = (state) => state.searchMovies;
 export const selectResetSearchedMovies = (state) => state.resetSearchMovies;

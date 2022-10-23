@@ -128,7 +128,10 @@ const NavBar = () => {
   const searchHandler = async (event) => {
     let key = event.target.value;
     setSearcKey(key);
-    if (key) await searchMovies(key);
+    if (key) {
+      setIsComponentVisible(true);
+      await searchMovies(key);
+    }
     else resetResult();
   };
 
@@ -213,6 +216,9 @@ const NavBar = () => {
                   >
                     {
                       //todo add page here
+                      <MenuItem onClick={() => {navigate("/movies")}}>
+                        Movies
+                      </MenuItem>
                     }
                   </Menu>
                 </Box>
@@ -237,19 +243,11 @@ const NavBar = () => {
                     style={{ height: 20, width: 20 }}
                   />
                 </Typography>
-                <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
+                <Box sx={{ flexGrow: 1, justifyContent: "space-around",
+  alignItems: "center", display: { xs: "none", md: "flex", ml:20 } }}>
                   {
-                    // pages.map((page) => (
-                    //   <Button
-                    //     key={page}
-                    //     onClick={handleCloseNavMenu}
-                    //     sx={{ my: 2, color: "white", display: "block" }}
-                    //   >
-                    //     {page}
-                    //   </Button>
-                    // ))
                     //todo add page here
-                    // <Button onClick={() =>navigate("/movies")}>Movies</Button>
+                    <Button onClick={() =>navigate("/movies")} sx={{ my: 2, color: "white", display: "block" }}>Movies</Button>
                   }
                 </Box>
                 <Search style={{ maxWidth: "30vw" }}>
@@ -331,7 +329,7 @@ const NavBar = () => {
           <List
             style={{
               position: "absolute" /* Sit on top of the page content */,
-              top: "8v",
+              top: "7.5vh",
               right: 0,
               width: "100vw",
               zIndex: 2 /* Specify a stack order in case you're using a different order for other elements */,

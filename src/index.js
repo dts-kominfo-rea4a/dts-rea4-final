@@ -26,7 +26,7 @@ root.render(
               <App />
             </ProtectedComponent>
           } />        
-        <Route path="movies/:id" element={<ProtectedComponent><MoviesPage /></ProtectedComponent>} />
+        <Route path="movies" element={<ProtectedComponent><MoviesPage /></ProtectedComponent>} />
         <Route path="movie/:id" element={<ProtectedComponent><MovieDetailPage /></ProtectedComponent>} />
         <Route path="login" element={<LoginPage />} />
         <Route path="register" element={<RegisterPage />} />

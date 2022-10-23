@@ -3,6 +3,7 @@ import {
   Grid,
   Box,
   Typography,
+  Divider,
 } from "@mui/material";
 
 const MovieVertical = ({ movie }) => {
@@ -21,31 +22,16 @@ const MovieVertical = ({ movie }) => {
               width: "100vw",
               height: "92vh",
               display: "flex",
-              alignItems:"center",
-              '&:after': {
-                content: "",
-                position: "absolute",
-                left: 0,
-                right: 0,
-                top: 0,
-                bottom: 0,
-                background: "rgba(0,0,0,0.6)",
-              },              
+              direction:"row",
             }}
           >
-            {/* <Box style={{ content: "",
-                position: "absolute",
-                left: 0,
-                right: 0,
-                top: 0,
-                bottom: 0,
-                background: "rgba(0,0,0,0.6)", }}></Box> */}
             <Grid
               container
-              sx={{ ml: 10, mr: 10, alignItems: "bottom", color: "white" }}
+              sx={{bottom:0, color: "white", backgroundColor: "rgba(0,0,0,0.6)", textAlign:"bottom", position:"absolute" }}
             >
-              <Grid item xs={12} md={9} style={{ zIndex: 1 }}>
+              <Grid item xs={12} md={12} style={{ zIndex: 1, padding:10, margin:"20px" }}>
                 <Typography variant="h5">{movie.title}</Typography>
+                <Divider/>
                 <Typography variant="subtitle">Overview</Typography>
                 <Typography variant="body1">{movie.overview}</Typography>
               </Grid>
