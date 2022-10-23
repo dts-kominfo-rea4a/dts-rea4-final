@@ -5,6 +5,7 @@ import type { App, GetAppsProps } from '@/types/app';
 import { formatDate } from '@/lib/helper';
 import './App.css';
 import Input from '@/components/Input';
+import { Link } from 'react-router-dom';
 
 export interface CarListProps {
   apps: App[];
@@ -22,7 +23,7 @@ const AppList: React.FC<CarListProps> = ({ apps }) => {
           key={app.id}
           className="flex flex-col col-span-1 overflow-hidden bg-white rounded-t-lg rounded-b-lg shadow-lg dark:shadow-2xl dark:bg-gray-700 dark:border-gray-700 hover:shadow-sky-500 dark:hover:shadow-sky-700 mobile-tap-highlight"
         >
-          <a href={app.game_url} target="_blank" rel="noreferrer noopener">
+          <Link to={`/games/${app.id}`}>
             {app.thumbnail ? (
               <img
                 alt="Placeholder"
@@ -45,13 +46,13 @@ const AppList: React.FC<CarListProps> = ({ apps }) => {
                 />
               </svg>
             )}
-          </a>
+          </Link>
           <div className="p-5">
-            <a href={app.game_url} target="_blank" rel="noreferrer noopener">
+            <Link to={`/games/${app.id}`}>
               <h1 className="mb-4 text-2xl font-bold tracking-tight text-gray-900 font-play dark:text-white">
                 {app.title}
               </h1>
-            </a>
+            </Link>
             <p className="font-normal text-justify text-gray-800 dark:text-gray-300">
               {app.short_description}
             </p>
