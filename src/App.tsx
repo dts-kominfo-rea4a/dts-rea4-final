@@ -52,7 +52,7 @@ function App() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <div className="h-screen App">
+      <div className="h-screen text-gray-800 bg-white -z-50 dark:bg-gray-800 dark:text-gray-200">
         <Router />
       </div>
       <ToastContainer />
