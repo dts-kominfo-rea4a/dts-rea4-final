@@ -21,7 +21,7 @@ This is an app that helps you to find and known about free games around the worl
 
 ## Video
 
-Coming soon...
+![Alt Text](https://raw.githubusercontent.com/bungambohlah/DTS4A-07-final/main/documentation/demo.gif)
 
 ## App Features
 
