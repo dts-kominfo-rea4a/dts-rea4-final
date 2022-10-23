@@ -6,7 +6,6 @@ import NewsMenu from "./Components/NewsMenu";
 function App() {
     return (
         <div className="App">
-            <NewsMenu/>
             <Routes/>
         </div>
     );
