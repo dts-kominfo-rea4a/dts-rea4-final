@@ -5,7 +5,8 @@ import {
     useGetTopRatedQuery,
     useGetTrendingQuery,
     useGetTvOnAirQuery,
-    useGetMovieByIdQuery
+    useGetMovieByIdQuery,
+    useGetTvByIdQuery
 } from "../services/tmdbAPI";
 import loading from '../assets/loading.gif';
 import NavBar from "../components/NavBar";
@@ -43,6 +44,13 @@ const ViewMovie = ({path}) => {
         error: error_getbyid,
         isLoading: getbyid_movie_loading
     } = useGetMovieByIdQuery(location.state.movieid);
+    const {
+        data: gettvbyid_movie,
+        error: error_gettvbyid,
+        isLoading: gettvbyid_movie_loading
+    } = useGetTvByIdQuery(location.state.movieid);
+
+    console.log(location.state.movieid);
 
     return (
         <Grid
@@ -56,7 +64,17 @@ const ViewMovie = ({path}) => {
             <NavBar />
             {
                 getbyid_movie_loading ? (<img src={loading} alt="loading" />) : (
-                    error_getbyid ? (console.log("error: ", error_getbyid)) : (
+                    error_getbyid ? (
+                        gettvbyid_movie_loading ? (<img src={loading} alt="loading" />) : (
+                            error_gettvbyid ? (console.log("error: ", error_gettvbyid)) : (
+                                path === "view" ? (
+                                    <CardViewMovie movie={gettvbyid_movie} />
+                                ) : (
+                                    <CardPlayMovie movie={gettvbyid_movie} />
+                                )
+                            )
+                        )
+                    ) : (
                         path === "view" ? (
                             <CardViewMovie movie={getbyid_movie} />
                         ) : (

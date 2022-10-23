@@ -29,6 +29,9 @@ export const tmdbAPI = createApi({
         }),
         getMovieById: builder.query({
             query: (id) => `/movie/${id}?api_key=` + token
+        }),
+        getTvById: builder.query({
+            query: (id) => `/tv/${id}?api_key=` + token
         })
     })
 })
@@ -40,5 +43,6 @@ export const {
     useGetNowPlayingQuery,
     useGetTvPopularQuery,
     useGetTvOnAirQuery,
-    useGetMovieByIdQuery
+    useGetMovieByIdQuery,
+    useGetTvByIdQuery
 } = tmdbAPI;

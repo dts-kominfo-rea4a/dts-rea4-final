@@ -22,11 +22,13 @@ const CardViewMovie = ({movie}) => {
         });
     }
 
+    // console.log(movie);
+
     return (
         <Card sx={{marginTop:'114px'}}>
             <Box sx={{display:'flex', justifyContent:'flex-start', position:'absolute'}}>
                 <CardContent sx={{marginLeft:'30px', marginTop:'130px', color:'white'}}>
-                    <Typography component="div" variant="h1">{movie.title}</Typography><br/>
+                    <Typography component="div" variant="h1">{(movie.title ? movie.title : movie.name)}</Typography><br/>
                     <Typography component="div" variant="h5" sx={{width:'40%'}}>{movie.overview}</Typography><br/>
                     <Button size="large" variant="contained" onClick={() => playOnClick(movie.id)} startIcon={<PlayArrowSharpIcon />} sx={{marginRight:'10px'}}>Play</Button>
                     <Button size="large" variant="contained" startIcon={<InfoOutlinedIcon />} >More Information</Button>

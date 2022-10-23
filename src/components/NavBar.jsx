@@ -21,8 +21,9 @@ import CardGiftcardIcon from '@mui/icons-material/CardGiftcard';
 import NotificationsSharpIcon from '@mui/icons-material/NotificationsSharp';
 import SearchIcon from '@mui/icons-material/Search';
 import InputBase from '@mui/material/InputBase';
-import { styled, alpha } from '@mui/material/styles';
+import { useLocation } from "react-router-dom";
 
+import { styled, alpha } from '@mui/material/styles';
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../authentication/firebase";
 
@@ -72,6 +73,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 const settings = ['Logout'];
 
 const NavBar = () => {
+    const location = useLocation();
     const navigate = useNavigate();
     const [user] = useAuthState(auth);
     
@@ -91,18 +93,38 @@ const NavBar = () => {
             console.log("logout done");
         }
     }
+    const logoOnClick = () => {
+        navigate("/login");
+    }
+    const currentPage = (path) => {
+        if(location.pathname === path){
+            return "red";
+        }else{
+            return "white";
+        }
+    }
+    const navBarButtonOnClick = (path) => {
+        if(location.pathname === path){
+            return;
+        }else{
+            navigate(path);
+        }
+    }
+
     return (
         <Grid item xs={12}>
             <AppBar position="static" sx={{bgcolor: '#141414', position: 'absolute', width: '100%', height: '94px', left:'0px', top: '0px', display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center', padding: '25px 30px', gap: '530px'}}>
                 <Container maxWidth="xl">
                     <Toolbar disableGutters>
-                        <Avatar variant="square" alt="logo" src={logo} sx={{width: '36px', height: '44px'}}/>
+                        <IconButton onClick={logoOnClick}>
+                            <Avatar variant="square" alt="logo" src={logo} sx={{width: '36px', height: '44px'}} />
+                        </IconButton>
                         <Box sx={{flexGrow: 1, display: { xs: 'none', md: 'flex' }}}>
-                            <Button sx={{my: 2, color: 'white', display: 'block'}}>home</Button>
-                            <Button sx={{my: 2, color: 'white', display: 'block'}}>series</Button>
-                            <Button sx={{my: 2, color: 'white', display: 'block'}}>movies</Button>
-                            <Button sx={{my: 2, color: 'white', display: 'block'}}>new and popular</Button>
-                            <Button sx={{my: 2, color: 'white', display: 'block'}}>my list</Button>
+                            <Button onClick={() => navBarButtonOnClick("/")} sx={{my: 2, color: currentPage('/'), display: 'block'}}>home</Button>
+                            <Button onClick={() => navBarButtonOnClick("/series")} sx={{my: 2, color: currentPage('/series'), display: 'block'}}>series</Button>
+                            <Button onClick={() => navBarButtonOnClick("/movies")} sx={{my: 2, color: currentPage('/movies'), display: 'block'}}>movies</Button>
+                            <Button onClick={() => navBarButtonOnClick("/newpopular")} sx={{my: 2, color: currentPage('/newpopular'), display: 'block'}}>new and popular</Button>
+                            <Button onClick={() => navBarButtonOnClick("/watchlist")} sx={{my: 2, color: currentPage('/watchlist'), display: 'block'}}>my list</Button>
                         </Box>
                         <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
                             <Search>
