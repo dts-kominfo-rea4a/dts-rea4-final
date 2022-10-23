@@ -1,8 +1,15 @@
 ## Current Version
 
-**_Version 0.1.0_**
+**_Version 0.1.1_**
 
 ### Changelog
+
+### Version 0.1.1
+
+[BUG FIXING]
+
+- Handle axios on error fetch
+- Fix typo in TMDB API path
 
 ### Version 0.1.0
 

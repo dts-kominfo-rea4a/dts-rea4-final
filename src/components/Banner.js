@@ -8,14 +8,18 @@ const Banner = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const request = await axios.get(requests.fetchMetflixOriginals);
-      setMovie(
-        request.data.results[
-          Math.floor(Math.random() * request.data.results.length - 1)
-        ]
-      );
+      try {
+        const request = await axios.get(requests.fetchMetflixOriginals);
+        setMovie(
+          request.data.results[
+            Math.floor(Math.random() * request.data.results.length - 1)
+          ]
+        );
 
-      return request;
+        return request;
+      } catch (error) {
+        console.log(error);
+      }
     };
 
     fetchData();

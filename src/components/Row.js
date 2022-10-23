@@ -5,14 +5,18 @@ import "./Row.css";
 const Row = ({ title, fetchUrl, isLargeRow = false }) => {
   const [movies, setMovies] = useState([]);
 
-  const base_url = "https://image.tmdb.org/t/p/original/";
+  const base_url = "https://image.tmdb.org/t/p/original";
 
   useEffect(() => {
     const fetchData = async () => {
-      const request = await axios.get(fetchUrl);
-      setMovies(request.data.results);
+      try {
+        const request = await axios.get(fetchUrl);
+        setMovies(request.data.results);
 
-      return request;
+        return request;
+      } catch (error) {
+        console.log(error);
+      }
     };
 
     fetchData();
