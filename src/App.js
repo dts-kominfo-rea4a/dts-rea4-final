@@ -14,7 +14,7 @@ import Home from "./pages/Home";
 
 function App() {
   const navigate = useNavigate();
-  const [user, isLoading, error] = useAuthState(auth);
+  const [user, isLoading] = useAuthState(auth);
   useEffect(
     () => {
       // Bila ada logic / Component login
