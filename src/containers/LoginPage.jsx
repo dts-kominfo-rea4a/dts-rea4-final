@@ -51,20 +51,20 @@ const LoginPage = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
-    const formOnSubmitHandler = (evt) => {
-        console.log('fire');
-        evt.preventDefault();
-        console.log('register');
-        register(email,password);
-    };
+    // const formOnSubmitHandler = (evt) => {
+    //     console.log('fire');
+    //     evt.preventDefault();
+    //     console.log('register');
+    //     register(email,password);
+    // };
     
-    const inputEmailOnChangeHandler = (evt) => {
-        setEmail(evt.target.value);
-    };
+    // const inputEmailOnChangeHandler = (evt) => {
+    //     setEmail(evt.target.value);
+    // };
     
-    const inputPasswordOnChangeHandler = (evt) => {
-        setPassword(evt.target.value);
-    };
+    // const inputPasswordOnChangeHandler = (evt) => {
+    //     setPassword(evt.target.value);
+    // };
 
     return (
         <RootStyle>
