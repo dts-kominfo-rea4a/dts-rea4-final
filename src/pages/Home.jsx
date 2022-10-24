@@ -45,7 +45,7 @@ const Home = ({ isLoggedIn }) => {
   const buttonLogoutOnClickHandler = async () => {
     // Kita akan memanggil fungsi keluarDariApps di sini
     await logout();
-    navigate("/login");
+    navigate("/");
   };
 
   const textFieldkeywordMovieOnChangeHandler = (event) => {
@@ -152,29 +152,36 @@ const Home = ({ isLoggedIn }) => {
           type="text"
           value={keywordMovie}
           onChange={textFieldkeywordMovieOnChangeHandler}
-          className="bg-slate-50 rounded-md w-full max-w-md"
-          placeholder="type keyword in here .."
+          className="bg-black text-slate-50 outline-none border-b-2 rounded-md w-full max-w-md"
+          placeholder="search movie in here .."
         />
       </div>
-      <div className="flex flex-nowrap gap-2 justify-start mb-10 overflow-x-auto scrollbar-hide px-2">
-        {movieTrendingWeek.map((data) => (
-          <div
-            className="shadow-xl mt-2 mb-0 h-56 lg:w-44 md:w-44 sm:w-44 flex-none relative group"
-            key={data.id}
-          >
-            <Link to={`view/movie/${data.id}`} className="bg-blue-400">
-              <img
-                alt=""
-                className="w-44 hover:opacity-20 rounded-sm max-h-full"
-                src={`${baseUrlImage}${data.poster_path}`}
-              />
-              <div className="opacity-0 group-hover:opacity-100 duration-300 absolute left-0 bottom-0 right-0 z-10 flex justify-center items-end text-sm bg-blue-400 text-slate-100 font-semibold">
-                View
-              </div>
-            </Link>
-          </div>
-        ))}
-      </div>
+      {movieTrendingWeek.length !== 0 ? (
+        <div className="flex flex-nowrap gap-2 justify-start mb-10 overflow-x-auto scrollbar-hide px-2">
+          {movieTrendingWeek.map((data) => (
+            <div
+              className="shadow-xl mt-2 mb-0 h-56 lg:w-44 md:w-44 sm:w-44 flex-none relative group"
+              key={data.id}
+            >
+              <Link to={`/view/movie/${data.id}`} className="bg-blue-400">
+                <img
+                  alt=""
+                  className="w-44 hover:opacity-20 rounded-sm max-h-full"
+                  src={`${baseUrlImage}${data.poster_path}`}
+                />
+                <div className="opacity-0 group-hover:opacity-100 duration-300 absolute left-0 bottom-0 right-0 z-10 flex justify-center items-end text-sm bg-blue-400 text-slate-100 font-semibold">
+                  View
+                </div>
+              </Link>
+            </div>
+          ))}
+        </div>
+      ) : (
+        <div className="w-full max-w-full m-auto p-4 text-center">
+          <h3 className="text-slate-50 text-2xl font-sans font-bold">Movies Not Found</h3>
+        </div>
+      )}
+
       <div className="flex justify-between align-middle px-2">
         <div>
           <h3 className="text-slate-50 text-2xl font-bold mb-2 ">
@@ -190,30 +197,35 @@ const Home = ({ isLoggedIn }) => {
           type="text"
           value={keywordTv}
           onChange={textFieldkeywordTvOnChangeHandler}
-          className="bg-slate-50 rounded-md w-full max-w-md"
-          placeholder="type keyword in here .."
+          className="bg-black text-slate-50 outline-none border-b-2 rounded-md w-full max-w-md"
+          placeholder="search tv series in here .."
         />
       </div>
-      <div className="flex flex-nowrap gap-2 justify-start mb-10 overflow-x-auto scrollbar-hide px-2">
-        {TvTrendingWeek.map((data) => (
-          <div
-            key={data.id}
-            className="shadow-xl mt-2 mb-0 h-56 lg:w-44 md:w-44 sm:w-44 rounded-md flex-none relative group"
-          >
-            <Link to={`view/tv/${data.id}`} className="bg-blue-400">
-              <img
-                alt=""
-                className="w-44 hover:opacity-20 rounded-sm max-h-full"
-                src={`${baseUrlImage}${data.poster_path}`}
-              />
-              <div className="opacity-0 group-hover:opacity-100 duration-300 absolute left-0 bottom-0 right-0 z-10 flex justify-center items-end text-sm bg-blue-400 text-slate-100 font-semibold">
-                View
-              </div>
-            </Link>
-          </div>
-        ))}
-      </div>
-      {/* <div className="w-full max-w-full bg-lime-400">d</div> */}
+      {TvTrendingWeek.length !== 0 ? (
+        <div className="flex flex-nowrap gap-2 justify-start mb-10 overflow-x-auto scrollbar-hide px-2">
+          {TvTrendingWeek.map((data) => (
+            <div
+              className="shadow-xl mt-2 mb-0 h-56 lg:w-44 md:w-44 sm:w-44 flex-none relative group"
+              key={data.id}
+            >
+              <Link to={`/view/movie/${data.id}`} className="bg-blue-400">
+                <img
+                  alt=""
+                  className="w-44 hover:opacity-20 rounded-sm max-h-full"
+                  src={`${baseUrlImage}${data.poster_path}`}
+                />
+                <div className="opacity-0 group-hover:opacity-100 duration-300 absolute left-0 bottom-0 right-0 z-10 flex justify-center items-end text-sm bg-blue-400 text-slate-100 font-semibold">
+                  View
+                </div>
+              </Link>
+            </div>
+          ))}
+        </div>
+      ) : (
+        <div className="w-full max-w-full m-auto p-4 text-center">
+          <h3 className="text-slate-50 text-2xl font-sans font-bold">Tv Series Not Found</h3>
+        </div>
+      )}
     </>
   );
 };
