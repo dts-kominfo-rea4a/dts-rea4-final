@@ -1,19 +1,17 @@
 .nav {
     position: fixed;
     top: 0;
-    padding: 20px;
     width: 100%;
-    height: 30px;
-    z-index: 1;
-
-    /* Animations */
-    transition-timing-function: ease-in;
+    z-index: 999;
     transition: all 0.5s;
+    align-items: center;
+    background: #141414;
 }
 
 .nav__contents {
     display: flex;
-    justify-content: space-between;
+    align-items: center;
+    padding: 25px 60px;
 }
 
 .nav__black {
@@ -21,18 +19,53 @@
 }
 
 .nav__logo {
-    position: fixed;
-    top: 10px;
-    left: 0;
-    width: 80px;
-    object-fit: contain;
-    padding-left: 20px;
-    cursor: pointer;
+    margin-right: auto;
+    width: 36px;
 }
 
-.nav__avatar {
-    cursor: pointer;
-    position: fixed;
-    right: 20px;
-    width: 30px;
+.nav-right {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex: 1 1;
+    max-width: 50%;
+}
+
+.avatar img {
+    width: 32px;
+    height: 32px;
+}
+
+nav.main-nav {
+    display: flex;
+    gap: 1em;
+    margin-right: auto;
+}
+
+.form-search {
+    display: flex;
+    align-items: center;
+    width: 80%;
+    margin-right: auto;
+}
+
+.form-search input[type="search"] {
+    padding: 10px 20px;
+    width: 100%;
+    font-size: 1em;
+    border: none;
+}
+
+.form-search [type="submit"] {
+    background: transparent;
+    color: #fff;
+    font-size: 1em;
+}
+
+nav.main-nav a {
+    color: #fff;
+    text-decoration: none;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 1em;
 }
