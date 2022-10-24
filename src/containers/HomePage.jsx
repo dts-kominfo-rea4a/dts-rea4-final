@@ -69,7 +69,9 @@ const HomePage = () => {
               </Typography>
               {newsLoadingTopNews ? <Loading /> : <HotNews topNews={topNews} />}
             </Box>
-            <h2>Latest News</h2>
+            <Typography variant="h5" fontWeight="900" color="secondary.dark">
+              Latest News
+            </Typography>
             {newsLoadingNews ? <Loading /> : <GridNews news={news} />}
 
             {/* error */}

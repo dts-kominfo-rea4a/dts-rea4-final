@@ -39,7 +39,7 @@ const DetailPage = () => {
 
   return (
     <>
-      <Container maxWidth="md">
+      <Container maxWidth="md" sx={{ overflow: "hidden" }}>
         <Box sx={{ p: "20px" }}>
           <Header typeHeader="back" />
           <Box sx={{ p: "40px 0px" }}>
