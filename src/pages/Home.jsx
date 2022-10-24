@@ -208,7 +208,7 @@ const Home = ({ isLoggedIn }) => {
               className="shadow-xl mt-2 mb-0 h-56 lg:w-44 md:w-44 sm:w-44 flex-none relative group"
               key={data.id}
             >
-              <Link to={`/view/movie/${data.id}`} className="bg-blue-400">
+              <Link to={`/view/tv/${data.id}`} className="bg-blue-400">
                 <img
                   alt=""
                   className="w-44 hover:opacity-20 rounded-sm max-h-full"
