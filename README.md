@@ -4,7 +4,7 @@ Final project untuk kelas REA4A pair 25
 
 ## Preview
 
-![](https://github.com/ajimsofwan/dts4a-25-final/blob/main/preview.gif)
+![](https://raw.githubusercontent.com/ajimsofwan/dts4a-25-final/main/preview.gif)
 
 ## Link live app
 
