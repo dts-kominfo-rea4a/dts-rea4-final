@@ -54,7 +54,7 @@ function HomePage() {
         {movieLoading ? (
           <SimpleBackdrop open={movieLoading} />
         ) : (
-          <Tabs value={0} variant="scrollable" scrollButtons="auto">
+          <Tabs value={false} variant="scrollable" scrollButtons="auto">
             {movies
               ? movies.map((movie) => (
                   <MovieCard movie={movie} key={movie.id} media={"movie"} />
@@ -73,7 +73,7 @@ function HomePage() {
           </Button>
         </Box>
         {!movieLoading ? (
-          <Tabs value={0} variant="scrollable" scrollButtons="auto">
+          <Tabs value={false} variant="scrollable" scrollButtons="auto">
             {tvs
               ? tvs.map((tv) => (
                   <MovieCard movie={tv} key={tv.id} media={"tv"} />
