@@ -33,7 +33,9 @@ import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { useNavigate, useLocation, NavLink } from "react-router-dom";
 
 // Import fungsi untuk melakukan Logout
-import useFirebaseStore, { selectKeluarDariApps } from "../authentication/firebase";
+import useFirebaseStore, {
+  selectKeluarDariApps,
+} from "../authentication/firebase";
 
 import styles from "./NavBar.module.css";
 import SearchItemMovie from "./SearchItemMovie";
@@ -41,7 +43,7 @@ import SearchItemTv from "./SearchItemTv";
 
 import useMovieStore, {
   selectSearchMovies,
-  searchedMovies,
+  selectSearchMovie,
   selectResetSearchedMovies,
 } from "../stores/movie";
 
@@ -105,11 +107,12 @@ const NavBar = () => {
   const [anchorEl, setAnchorEl] = useState(null);
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const searchMovies = useMovieStore(selectSearchMovies);
-  const searchResult = useMovieStore(searchedMovies);
+  const searchResult = useMovieStore(selectSearchMovie);
   const resetResult = useMovieStore(selectResetSearchedMovies);
   const resetSearchedMovie = useMovieStore(selectResetSearchedMovies);
   const [searchKey, setSearcKey] = useState("");
-  const { ref, isComponentVisible, setIsComponentVisible } = useComponentVisible(true);
+  const { ref, isComponentVisible, setIsComponentVisible } =
+    useComponentVisible(true);
   const keluarDariApps = useFirebaseStore(selectKeluarDariApps);
 
   useEffect(() => {
@@ -131,13 +134,12 @@ const NavBar = () => {
     if (key) {
       setIsComponentVisible(true);
       await searchMovies(key);
-    }
-    else resetResult();
+    } else resetResult();
   };
 
   const searchFocusHander = () => {
     setIsComponentVisible(true);
-  }
+  };
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -151,10 +153,6 @@ const NavBar = () => {
     // Kita akan memanggil fungsi keluarDariApps di sini
     await keluarDariApps();
     navigate("/login");
-  };
-  const movieSearchClickHandler = (event) => {
-    let key = event.target.value;
-    navigate("movie/${key}");
   };
 
   return (
@@ -216,9 +214,22 @@ const NavBar = () => {
                   >
                     {
                       //todo add page here
-                      <MenuItem onClick={() => {navigate("/movies")}}>
-                        Movies
-                      </MenuItem>
+                      <Box>
+                        <MenuItem
+                          onClick={() => {
+                            navigate("/movies");
+                          }}
+                        >
+                          Movies
+                        </MenuItem>
+                        <MenuItem
+                          onClick={() => {
+                            navigate("/tvs");
+                          }}
+                        >
+                          Tv
+                        </MenuItem>
+                      </Box>
                     }
                   </Menu>
                 </Box>
@@ -243,11 +254,31 @@ const NavBar = () => {
                     style={{ height: 20, width: 20 }}
                   />
                 </Typography>
-                <Box sx={{ flexGrow: 1, justifyContent: "space-around",
-  alignItems: "center", display: { xs: "none", md: "flex", ml:20 } }}>
+                <Box
+                  sx={{
+                    flexGrow: 1,
+                    marginLeft: "30px",
+                    justifyContent: "left",
+                    alignItems: "center",
+                    display: { xs: "none", md: "flex", ml: 20 },
+                  }}
+                >
                   {
                     //todo add page here
-                    <Button onClick={() =>navigate("/movies")} sx={{ my: 2, color: "white", display: "block" }}>Movies</Button>
+                    <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+                      <Button
+                        onClick={() => navigate("/movies")}
+                        sx={{ my: 2, color: "white", display: "block" }}
+                      >
+                        Movies
+                      </Button>
+                      <Button
+                        onClick={() => navigate("/tvs")}
+                        sx={{ my: 2, color: "white", display: "block" }}
+                      >
+                        TV
+                      </Button>
+                    </Box>
                   }
                 </Box>
                 <Search style={{ maxWidth: "30vw" }}>
@@ -335,7 +366,7 @@ const NavBar = () => {
               zIndex: 2 /* Specify a stack order in case you're using a different order for other elements */,
             }}
           >
-            { searchResult.length > 0 ? (
+            {searchResult.length > 0 ? (
               <Card>
                 {searchResult.map((result) =>
                   result.media_type === "movie" ? (
@@ -347,12 +378,14 @@ const NavBar = () => {
                   )
                 )}
               </Card>
-            ) : (
-              searchKey.length>0?<Card>
+            ) : searchKey.length > 0 ? (
+              <Card>
                 <ListItem>
                   <ListItemText primary={"Not Found"} />
                 </ListItem>
-              </Card>:""
+              </Card>
+            ) : (
+              ""
             )}
           </List>
         ) : (
