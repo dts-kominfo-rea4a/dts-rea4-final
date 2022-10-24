@@ -93,7 +93,7 @@ const DetailsPage = () => {
             <img
               src={dataBook.imageLinks?.thumbnail}
               alt="books"
-              className="flex-1 w-full"
+              className="flex-1 w-full md:max-h-[500px]"
             />
           </div>
           <div className="flex flex-col w-full px-2 mt-6 md:mt-0 md:w-2/3">
@@ -141,7 +141,7 @@ const DetailsPage = () => {
                 </a>
                 <button
                   onClick={bookMarkHandle}
-                  className="inline-flex items-center pr-3 mb-2 mr-2 overflow-hidden text-sm font-medium tracking-wide text-center text-white uppercase rounded-lg bg-blue-400 hover:opacity-90 focus:outline-none focus:ring-4 focus:ring-slate-300"
+                  className="inline-flex items-center pr-3 mb-2 mr-2 overflow-hidden text-sm font-medium tracking-wide text-center text-white uppercase bg-blue-400 rounded-lg hover:opacity-90 focus:outline-none focus:ring-4 focus:ring-slate-300"
                 >
                   <Bookmark className="w-8 h-8 p-2 mr-2 bg-blue-900" />
                   Bookmark

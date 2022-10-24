@@ -16,7 +16,7 @@ const sliceBooks = (set) => ({
       const startIndex = page * 5;
       set({ isLoading: true });
       const data = await axios.get(
-        `https://www.googleapis.com/books/v1/volumes?q=${query}&maxResults=5&startIndex=${startIndex}&key=${process.env.REACT_APP_KEY}`
+        `https://www.googleapis.com/books/v1/volumes?q=${query}&maxResults=5&startIndex=${startIndex}&key=${process.env.REACT_APP_API_KEY}`
       );
       // kalo ini ada beberapa level didalam data
       set((state) => ({ ...state, books: data.data, isLoading: false }));
