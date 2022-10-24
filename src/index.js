@@ -10,6 +10,7 @@ import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import HomePage from './pages/HomePage';
 import ProtectedComponent from './components/ProtectedComponent';
+import DetailMovie from './components/DetailMovie';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

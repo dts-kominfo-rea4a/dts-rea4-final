@@ -15,9 +15,7 @@ import { grey } from '@mui/material/colors';
 
 
 import {
-    signInEmail,
     signInWithGoogle,
-    signInWithGitHub,
 } from "../auth/firebase";
 const FirebaseSocial = () => {
     const theme = useTheme();

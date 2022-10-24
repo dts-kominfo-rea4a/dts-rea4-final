@@ -1,8 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
-import { Link as RouterLink } from 'react-router-dom';
-import CssBaseline from '@mui/material/CssBaseline';
+// import { Link as RouterLink } from 'react-router-dom';
 import '@fontsource/roboto/400.css'
 
 import { strengthColor, strengthIndicator } from '../utils/password-strength';
@@ -132,7 +131,7 @@ function RegisterPage() {
                                             name="email"
                                             onBlur={handleBlur}
                                             onChange={handleChange}
-                                            placeholder="demo@company.com"
+                                            placeholder="name@dts.com"
                                             inputProps={{}}
                                         />
                                         {touched.email && errors.email && (
