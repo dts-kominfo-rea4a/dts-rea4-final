@@ -1,5 +1,5 @@
-const api_key = '49c27d43354e3e8e12df0edddbc0db24';
-const api_url = 'https://api.themoviedb.org/3';
+const api_key = process.env.REACT_APP_TMDB_API_KEY;
+const api_url = process.env.REACT_APP_TMDB_API_URL;
 
 const requests = {
   reqNowPlaying: `${api_url}/movie/now_playing?api_key=${api_key}`, // Get a list of the current popular movies on TMDB. This list updates daily.
