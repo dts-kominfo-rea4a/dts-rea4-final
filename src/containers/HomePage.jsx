@@ -20,6 +20,7 @@ import useNewsStore, {
   selectFetchNews,
   selectFetchTopNews,
 } from "../stores/news";
+import { Typography } from "@mui/material";
 
 const HomePage = () => {
   const [openError, setOpenError] = useState(true);
@@ -44,30 +45,51 @@ const HomePage = () => {
 
   return (
     <>
-      <Box>
-        <Header typeHeader="search" />
-        <Container maxWidth="xl">
-          <h1>Hot Topics</h1>
-          {newsLoadingTopNews ? <Loading /> : <HotNews topNews={topNews} />}
-          <h2>Latest News</h2>
-          {newsLoadingNews ? <Loading /> : <GridNews news={news} />}
+      <Container maxWidth="md" sx={{ overflow: "hidden" }}>
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            gap: "20px",
+            p: "20px",
+          }}
+        >
+          <Header typeHeader="search" />
+          <Box>
+            <Box
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                gap: "20px",
+                p: "20px 0px",
+              }}
+            >
+              <Typography variant="h5" fontWeight="900" color="secondary.dark">
+                Hot Topics
+              </Typography>
+              {newsLoadingTopNews ? <Loading /> : <HotNews topNews={topNews} />}
+            </Box>
+            <h2>Latest News</h2>
+            {newsLoadingNews ? <Loading /> : <GridNews news={news} />}
 
-          {/* error */}
-          {newsErrorNews != null || newsErrorTopNews != null ? (
-            <Dialog onClose={handleClose} open={openError}>
-              <DialogTitle>Error!</DialogTitle>
-              <DialogContent>
-                {newsErrorNews != null ? newsErrorNews.message : ""}
-                {newsErrorTopNews != null ? newsErrorTopNews.message : ""}
-              </DialogContent>
-            </Dialog>
-          ) : (
-            ""
-          )}
-        </Container>
-
+            {/* error */}
+            {newsErrorNews != null || newsErrorTopNews != null ? (
+              <Dialog onClose={handleClose} open={openError}>
+                <DialogTitle>Error!</DialogTitle>
+                <DialogContent>
+                  {newsErrorNews != null ? newsErrorNews.message : ""}
+                  {newsErrorTopNews != null ? newsErrorTopNews.message : ""}
+                </DialogContent>
+              </Dialog>
+            ) : (
+              ""
+            )}
+          </Box>
+        </Box>
+      </Container>
+      <Container maxWidth="md" sx={{ p: 0 }}>
         <Footer />
-      </Box>
+      </Container>
     </>
   );
 };

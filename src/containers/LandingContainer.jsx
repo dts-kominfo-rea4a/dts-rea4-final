@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 export default function LandingPage() {
   return (
     <>
-      <Container maxWidth="sm">
+      <Container maxWidth="md">
         <Box sx={{ p: "20px" }}>
           <Logo />
           <Box

@@ -7,7 +7,7 @@ import SignInForm from "../components/SignInForm";
 export default function SignIn() {
   return (
     <>
-      <Container maxWidth="sm">
+      <Container maxWidth="md">
         <Box sx={{ p: "20px" }}>
           <Logo />
           <SignInForm />

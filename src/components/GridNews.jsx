@@ -34,17 +34,16 @@ const GridNews = ({ news }) => {
               <Img src={data.fields.thumbnail} alt={data.webTitle} />
               <Typography
                 gutterBottom
-                variant="h6"
+                variant="body1"
                 component="div"
                 sx={{
                   mb: "10px",
                   mt: "10px",
-                  fontFamily: "Playfair Display",
                 }}
               >
                 {data.webTitle}
               </Typography>
-              <Box>
+              <Box sx={{ display: "flex", flexDirection: "column" }}>
                 <Typography
                   variant="caption"
                   color="text.secondary"

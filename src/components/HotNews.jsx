@@ -47,7 +47,12 @@ const HotNews = ({ topNews }) => {
             sx={{
               position: "absolute",
               bottom: 0,
-              margin: "30px",
+              // margin: "30px",
+              display: "flex",
+              flexDirection: "column",
+              p: "20px",
+              textOverflow: "ellipsis",
+              overflow: "hidden",
             }}
           >
             <Link
@@ -67,7 +72,7 @@ const HotNews = ({ topNews }) => {
                   width: "400px",
                   mb: "10px",
                   mt: "10px",
-                  fontFamily: "Playfair Display",
+                  fontFamily: "Poppins",
                   color: "white",
                 }}
               >
@@ -95,7 +100,6 @@ const HotNews = ({ topNews }) => {
 
       <Typography
         gutterBottom
-        variant="body1"
         component="div"
         sx={{
           width: "400px",
@@ -103,9 +107,8 @@ const HotNews = ({ topNews }) => {
           mt: "10px",
           display: { xs: "none", lg: "block" },
           paddingX: "20px",
-          fontSize: "22px",
-          fontFamily: "Playfair Display",
           color: "black",
+          fontSize: "20px",
         }}
       >
         {String(topNews.fields.body)

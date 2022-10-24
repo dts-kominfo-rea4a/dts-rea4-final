@@ -39,93 +39,93 @@ const DetailPage = () => {
 
   return (
     <>
-      <Box>
-        <Header typeHeader="back" />
-        <Container
-          maxWidth="xl"
-          sx={{
-            minHeight: "100vh",
-          }}
-        >
-          {newsLoadingDetailNews ? (
-            <Loading />
-          ) : (
-            <Box>
+      <Container maxWidth="md">
+        <Box sx={{ p: "20px" }}>
+          <Header typeHeader="back" />
+          <Box sx={{ p: "40px 0px" }}>
+            {newsLoadingDetailNews ? (
+              <Loading />
+            ) : (
               <Box
-                sx={{
-                  backgroundImage: `url(${newsDetail.fields.thumbnail})`,
-                  backgroundRepeat: "no-repeat",
-                  backgroundSize: "cover",
-                  backgroundPosition: "center",
-                  height: "420px",
-                  width: "100%",
-                  marginTop: "10px",
-                  borderRadius: "10px",
-                }}
-              />
-
-              <Box sx={{ marginTop: "20px" }}>
-                <Typography
-                  gutterBottom
-                  variant="h4"
-                  component="div"
-                  sx={{
-                    width: "100%",
-                    mb: "10px",
-                    mt: "10px",
-                    fontFamily: "Playfair Display",
-                    color: "black",
-                  }}
-                >
-                  {newsDetail.webTitle}
-                </Typography>
+                sx={{ display: "flex", flexDirection: "column", gap: "20px" }}
+              >
                 <Box
                   sx={{
-                    color: "black",
+                    backgroundImage: `url(${newsDetail.fields.thumbnail})`,
+                    backgroundRepeat: "no-repeat",
+                    backgroundSize: "cover",
+                    backgroundPosition: "center",
+                    height: "420px",
+                    width: "100%",
+                    marginTop: "10px",
+                    borderRadius: "10px",
                   }}
-                >
-                  <Typography variant="caption" sx={{ mr: "15px" }}>
-                    {newsDetail.webPublicationDate != null
-                      ? countTime(newsDetail.webPublicationDate)
-                      : ""}
+                />
+
+                <Box sx={{ marginTop: "20px" }}>
+                  <Typography
+                    gutterBottom
+                    variant="h4"
+                    component="div"
+                    sx={{
+                      width: "100%",
+                      mb: "10px",
+                      mt: "10px",
+                      color: "black",
+                    }}
+                  >
+                    {newsDetail.webTitle}
                   </Typography>
-                  <Typography variant="caption">
-                    {newsDetail.fields.publication}
-                  </Typography>
+                  <Box
+                    sx={{
+                      color: "black",
+                    }}
+                  >
+                    <Typography variant="caption" sx={{ mr: "15px" }}>
+                      {newsDetail.webPublicationDate != null
+                        ? countTime(newsDetail.webPublicationDate)
+                        : ""}
+                    </Typography>
+                    <Typography variant="caption">
+                      {newsDetail.fields.publication}
+                    </Typography>
+                  </Box>
                 </Box>
+
+                <Typography
+                  gutterBottom
+                  variant="body2"
+                  component="div"
+                  sx={{
+                    mt: "20px",
+                    fontSize: "22px",
+                    color: "black",
+                    textAlign: "justify",
+                    display: "flex",
+                    flexDirection: "column",
+                    gap: "20px",
+                  }}
+                  dangerouslySetInnerHTML={{
+                    __html: newsDetail.fields.body,
+                  }}
+                ></Typography>
               </Box>
+            )}
 
-              <Typography
-                gutterBottom
-                variant="body1"
-                component="div"
-                sx={{
-                  mt: "20px",
-                  fontSize: "22px",
-                  fontFamily: "Playfair Display",
-                  color: "black",
-                  textAlign: "justify",
-                }}
-                dangerouslySetInnerHTML={{
-                  __html: newsDetail.fields.body,
-                }}
-              ></Typography>
-            </Box>
-          )}
+            {/* error */}
+            {newsErrorDetailNews != null ? (
+              <Dialog onClose={handleClose} open={openError}>
+                <DialogTitle>Error!</DialogTitle>
+                <DialogContent>{newsErrorDetailNews.message}</DialogContent>
+              </Dialog>
+            ) : (
+              ""
+            )}
+          </Box>
 
-          {/* error */}
-          {newsErrorDetailNews != null ? (
-            <Dialog onClose={handleClose} open={openError}>
-              <DialogTitle>Error!</DialogTitle>
-              <DialogContent>{newsErrorDetailNews.message}</DialogContent>
-            </Dialog>
-          ) : (
-            ""
-          )}
-        </Container>
-
-        <Footer />
-      </Box>
+          <Footer />
+        </Box>
+      </Container>
     </>
   );
 };

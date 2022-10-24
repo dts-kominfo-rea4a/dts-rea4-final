@@ -6,7 +6,7 @@ import RegisterForm from "../components/RegisterForm";
 export default function RegisterContainer() {
   return (
     <>
-      <Container maxWidth="sm">
+      <Container maxWidth="md">
         <Box sx={{ p: "20px" }}>
           <Logo />
           <RegisterForm />
