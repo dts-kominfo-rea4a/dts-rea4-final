@@ -37,6 +37,7 @@ const Bookmark = () => {
     const newItems = JSON.stringify(filtered);
     localStorage.setItem(user.email, newItems);
     toastifySuccess();
+    setDataBookMark(JSON.parse(localStorage.getItem(user.email)));
   };
 
   const toastifySuccess = () => {
@@ -54,7 +55,7 @@ const Bookmark = () => {
 
   useEffect(() => {
     setDataBookMark(JSON.parse(localStorage.getItem(user.email)));
-  }, [dataBookMark]);
+  }, []);
 
   const navigate = useNavigate();
 
