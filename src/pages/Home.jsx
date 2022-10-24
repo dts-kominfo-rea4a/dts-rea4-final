@@ -38,13 +38,17 @@ const Home = ({ isLoggedIn }) => {
   const [user, isLoading] = useAuthState(auth);
 
   useEffect(() => {
+    if (isLoading) {
+      // Tampilkan loading screen (bila ada)
+      return;
+    }
     if (!user) {
       navigate("/");
     }
     fetchMovie();
     fetchMovieTrending("movie", "week");
     fetchMovieTrending("tv", "week");
-  }, [fetchMovieTrending, fetchMovie, navigate, user]);
+  }, [fetchMovieTrending, fetchMovie, navigate, user, isLoading]);
 
   // Fungsi ini akan menjadi async await
   // Karena keluarDariApps bersifat async, dan kita harus menunggu
