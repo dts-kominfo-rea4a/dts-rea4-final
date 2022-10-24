@@ -30,7 +30,9 @@ Branch dapat sesuai dengan kebutuhan dan kesepakatan bersama dalam pair, namun h
     - register
     - halaman utama
     - halaman detail
-  
+    - *fitur yang unik di luar pembelajaran yang di pakai ( pencarian movie berdasarkan input di halaman home )
+
+
    ***TechStack***
     - React js [https://reactjs.org](https://reactjs.org/)
     - tailwind css [https://tailwindcss.com/](https://tailwindcss.com/)
