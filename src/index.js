@@ -4,10 +4,32 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import ProtectedComponent from './components/ProtectedComponent';
+import ProtectedHome from './components/ProtectedHome';
+import LandingPage from './containers/LandingPage';
+import LoginPage from './containers/LoginPage';
+import RegisterPage from './containers/RegisterPage';
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={
+          <ProtectedHome>
+            <App />
+          </ProtectedHome>
+          } />
+        <Route path="login" element={<LoginPage />} />
+        <Route path="register" element={<RegisterPage />} />
+        <Route path="landing" element={<LandingPage />} />
+        <Route path="user" element={
+          <ProtectedComponent>
+            <LandingPage />
+          </ProtectedComponent>} />
+      </Routes>
+    </BrowserRouter>
   </React.StrictMode>
 );
 
