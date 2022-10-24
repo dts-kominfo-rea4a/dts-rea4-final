@@ -13,12 +13,14 @@ import {
 const LoginOrRegister = ({ loginOrRegister }) => {
   const navigate = useNavigate();
 
-  const [user, isLoading] = useAuthState(auth);
+  const [user, isLoading, error] = useAuthState(auth);
 
   const [credential, setCredential] = useState({
     email: "",
     password: "",
   });
+
+  const [errorMessage, setErrorMessage] = useState('');
 
   const textFieldEmailOnChangeHandler = (event) => {
     setCredential({
@@ -34,17 +36,18 @@ const LoginOrRegister = ({ loginOrRegister }) => {
     });
   };
 
-  const loginHandler = () => {
+  const loginHandler = async () => {
     // console.log("Login");
     // navigate("/");
 
     // Kita di sini tidak menggunakan navigate ke login lagi,
     // karena pada firebase, ketika selesai login,
     // maka auth statenya akan otomatis berubah (hooks useAuthState, data user)
-    loginWithEmailAndPassword(credential.email, credential.password);
+    const result = await loginWithEmailAndPassword(credential.email, credential.password);
+    setErrorMessage(result);
   };
 
-  const registerHandler = () => {
+  const registerHandler = async () => {
     // console.log(credential)
     // console.log("Register");
     // navigate("/login");
@@ -52,7 +55,9 @@ const LoginOrRegister = ({ loginOrRegister }) => {
     // Kita di sini tidak menggunakan navigate ke login lagi, karena pada Firebase
     // Ketika selesai register akan otomatis login juga
     // dan auth statenya akan otomatis berubah (hooks useAuthState, data user)
-    registerEmailAndPassword(credential.email, credential.password);
+    const result = await registerEmailAndPassword(credential.email, credential.password);
+    setErrorMessage(result);
+
   };
 
   const buttonLoginOrRegisterOnClickHandler = () => {
@@ -80,7 +85,7 @@ const LoginOrRegister = ({ loginOrRegister }) => {
       }
     },
     // Sekarang dependency kita tergantung pada user dan isLoading dari useAuthState
-    [user, isLoading, navigate]
+    [user, isLoading, navigate,error]
   );
 
   return (
@@ -152,7 +157,7 @@ const LoginOrRegister = ({ loginOrRegister }) => {
           <div className="max-w-[450px] h-[600px] mx-auto bg-black/75 text-white">
             <div className="max-w-[320px] mx-auto py-16">
               <h1 className="text-3xl font-bold">Sign In</h1>
-              {/* {error ? <p className='p-3 bg-red-400 my-2'>{error}</p> : null} */}
+              {errorMessage !== '' ? <p className='p-3 bg-red-400 my-2'>{errorMessage}</p> : null}
               <div className="w-full flex flex-col py-4">
                 <input
                   type="email"

@@ -20,7 +20,7 @@ root.render(
         <Route path="/home" element={<App />} />
         <Route path="first" element={<FirstPage/>} />
         <Route path="login" element={<Login loginOrRegister="login" />} />
-        <Route path="register" element={<Register />} />
+        <Route path="register" element={<Register oginOrRegister="register"/>} />
         <Route path="view/:type/:id" element={<View />} />
       </Routes>
     </BrowserRouter>

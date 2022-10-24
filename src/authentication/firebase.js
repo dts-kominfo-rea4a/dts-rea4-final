@@ -40,14 +40,14 @@ const registerEmailAndPassword = async (email, password) => {
       response.user
     );
   } catch (err) {
-    console.log(err);
-
+    // console.log(err);
     // Sebenarnya di dalam err dari Firebase ini (dalam bentuk Object)
     // ada 2 property yang penting:
     // - code: error code dari firebase authentication ketika terjadi error
     // - message: error message dari firebase authentication ketika terjadi error
-    console.log("error code auth", err.code);
-    console.log("error message auth", err.message);
+    // console.log("error code auth", err.code);
+    // console.log("error message auth", err.message);
+    return err.message;
   }
 };
 
@@ -64,11 +64,9 @@ const loginWithEmailAndPassword = async (email, password) => {
 
     console.log("User yang berhasil login adalah", userCredential.user);
   } catch (err) {
-    console.log(err);
-
-    // Sama dengan register
-    console.log("error code auth", err.code);
-    console.log("error message auth", err.message);
+    // // Sama dengan register
+    // console.log("error code auth", err.code);
+    return err.message;
   }
 };
 
