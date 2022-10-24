@@ -4,6 +4,8 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { ThemeProvider } from "@mui/material/styles";
 import AppLayout from "./containers/AppLayout";
 import HomePage from "./containers/HomePage";
+import SignInPage from "./containers/SignInPage";
+import SignUpPage from "./containers/SignUpPage";
 import themeOne from "./themes/themeOne";
 import { Provider } from "react-redux";
 import { store } from "./app/store";
@@ -24,6 +26,24 @@ root.render(
               <Route
                 path="/"
                 element={<HomePage />}
+              />
+            </Route>
+            <Route
+              path="/signIn"
+              element={<AppLayout />}
+            >
+              <Route
+                path="/signIn"
+                element={<SignInPage />}
+              />
+            </Route>
+            <Route
+              path="/signUp"
+              element={<AppLayout />}
+            >
+              <Route
+                path="/signUp"
+                element={<SignUpPage />}
               />
             </Route>
           </Routes>
