@@ -10,17 +10,22 @@ const Navbar = ({ isLoggedIn, logout }) => {
         </h1>
       </Link>
       <div>
-        {/* <Link to='/login'>
-          <button className='text-white pr-4'>Sign In</button>
-        </Link> */}
         {!isLoggedIn ? (
-          <Link to="/login">
-            <button className="bg-red-600 px-6 py-2 rounded cursor-pointer text-white">
-              Sign In / Sign Up
-            </button>
-          </Link>
+          <>
+            <Link to="/login">
+              <button className="text-white pr-4">Sign In</button>
+            </Link>
+            <Link to="/register">
+              <button className="bg-red-600 px-6 py-2 rounded cursor-pointer text-white">
+                Sign Up
+              </button>
+            </Link>
+          </>
         ) : (
-          <button  onClick={logout} className="bg-red-600 px-6 py-2 rounded cursor-pointer text-white">
+          <button
+            onClick={logout}
+            className="bg-red-600 px-6 py-2 rounded cursor-pointer text-white"
+          >
             Sign Out
           </button>
         )}

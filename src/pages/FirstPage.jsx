@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useAuthState } from "react-firebase-hooks/auth";
 
 import { auth } from "../authentication/firebase";
+import Navbar from "../components/Navbar";
 
 const FirstPage = () => {
   const navigate = useNavigate();
@@ -51,6 +52,7 @@ const FirstPage = () => {
     //   </div>
     // </div>
     <>
+      <Navbar isLoggedIn={user} logout="" />
       <div className="w-full h-screen">
         <img
           className="hidden sm:block absolute w-full h-full object-cover"
