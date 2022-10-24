@@ -11,6 +11,7 @@ import { signUpWithPassword } from "../authentications/firebaseAuth";
 const SignUpForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
   const onChangeHandler = (event) => {
     switch (event.target.id) {
       case "email":
@@ -23,6 +24,7 @@ const SignUpForm = () => {
         break;
     }
   };
+
   const onSubmitHandler = (event) => {
     event.preventDefault();
     signUpWithPassword(email, password);

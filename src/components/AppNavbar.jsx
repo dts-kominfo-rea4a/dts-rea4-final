@@ -13,16 +13,14 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
 import { Link } from "react-router-dom";
-import { signOutAll } from "../authentications/firebaseAuth";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { auth } from "../authentications/firebaseAuth";
+import { auth, signOutAll } from "../authentications/firebaseAuth";
 
 const drawerWidth = 240;
 const navItems = [
   { text: "Home", url: "/" },
-  { text: "Sign In", url: "/signIn", needAuth: true },
-  { text: "Sign Up", url: "/signUp", needAuth: true },
-  { text: "Sign Out", url: "/signOut", needAuth: true },
+  { text: "Sign In", url: "/signIn" },
+  { text: "Sign Up", url: "/signUp" },
 ];
 
 const AppNavbar = (props) => {
@@ -62,6 +60,16 @@ const AppNavbar = (props) => {
             </ListItemButton>
           </ListItem>
         ))}
+        {user ? (
+          <ListItem disablePadding>
+            <ListItemButton
+              onClick={signOutAll()}
+              sx={{ textAlign: "center" }}
+            >
+              <ListItemText primary="Sign Out" />
+            </ListItemButton>
+          </ListItem>
+        ) : null}
       </List>
     </Box>
   );

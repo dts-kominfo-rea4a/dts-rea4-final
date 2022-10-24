@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import Box from "@mui/material/Box";
@@ -6,8 +6,32 @@ import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import Link from "@mui/material/Link";
 import { Link as LinkNav } from "react-router-dom";
+import { signInWithPassword } from "../authentications/firebaseAuth";
 
 const SignInForm = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const onChangeHandler = (event) => {
+    switch (event.target.id) {
+      case "email":
+        setEmail(event.target.value);
+        break;
+      case "password":
+        setPassword(event.target.value);
+        break;
+      default:
+        break;
+    }
+  };
+
+  const onSubmitHandler = (event) => {
+    event.preventDefault();
+    signInWithPassword(email, password);
+    setEmail("");
+    setPassword("");
+  };
+
   return (
     <Container
       component="main"
@@ -28,6 +52,7 @@ const SignInForm = () => {
           Sign in
         </Typography>
         <Box
+          onSubmit={onSubmitHandler}
           component="form"
           noValidate
           sx={{ mt: 1 }}
@@ -42,6 +67,7 @@ const SignInForm = () => {
             name="email"
             autoComplete="email"
             autoFocus
+            onChange={onChangeHandler}
           />
           <TextField
             color="secondary"
@@ -53,6 +79,7 @@ const SignInForm = () => {
             type="password"
             id="password"
             autoComplete="current-password"
+            onChange={onChangeHandler}
           />
           <Button
             color="secondary"
