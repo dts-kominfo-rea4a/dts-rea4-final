@@ -58,7 +58,7 @@ const sliceMovie = (set) => ({
   filterMovie: (str, listMovie) => {
     if (str !== "") {
       let searchVal = str
-        .replace(/[-\/\\^$*+?.()|[\]{}]/g, "\\$&")
+        .replace(/[-\\^$*+?.()|[\]{}]/g, "\\$&")
         .toUpperCase();
       let regex = new RegExp(searchVal, "g");
       let filterResult = listMovie.filter((movie) => {
