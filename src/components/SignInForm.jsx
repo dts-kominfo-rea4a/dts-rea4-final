@@ -7,6 +7,7 @@ import Button from "@mui/material/Button";
 import Link from "@mui/material/Link";
 import { Link as LinkNav } from "react-router-dom";
 import { signInWithPassword } from "../authentications/firebaseAuth";
+import { useNavigate } from "react-router-dom";
 
 const SignInForm = () => {
   const [email, setEmail] = useState("");
@@ -30,7 +31,10 @@ const SignInForm = () => {
     signInWithPassword(email, password);
     setEmail("");
     setPassword("");
+    navigate("/");
   };
+
+  let navigate = useNavigate();
 
   return (
     <Container

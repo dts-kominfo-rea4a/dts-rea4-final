@@ -11,7 +11,8 @@ import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
 
 const LatestNews = ({ data }) => {
-  const newData = data.articles.slice(1, 7);
+  const endOfArray = data.articles.length + 1;
+  const newData = data.articles.slice(1, endOfArray);
   dayjs.extend(relativeTime);
 
   return (

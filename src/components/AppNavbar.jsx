@@ -18,7 +18,6 @@ import { auth, signOutAll } from "../authentications/firebaseAuth";
 
 const drawerWidth = 240;
 const navItems = [
-  { text: "Home", url: "/" },
   { text: "Sign In", url: "/signIn" },
   { text: "Sign Up", url: "/signUp" },
 ];
@@ -33,6 +32,10 @@ const AppNavbar = (props) => {
     setMobileOpen(!mobileOpen);
   };
 
+  const handleSignOut = () => {
+    signOutAll();
+  };
+
   const drawer = (
     <Box
       onClick={handleDrawerToggle}
@@ -45,25 +48,36 @@ const AppNavbar = (props) => {
         News Portal
       </Typography>
       <Divider />
+      <ListItem disablePadding>
+        <ListItemButton
+          component={Link}
+          to="/"
+          sx={{ textAlign: "center" }}
+        >
+          <ListItemText primary="Home" />
+        </ListItemButton>
+      </ListItem>
       <List>
-        {navItems.map((item) => (
-          <ListItem
-            key={item.url}
-            disablePadding
-          >
-            <ListItemButton
-              component={Link}
-              to={item.url}
-              sx={{ textAlign: "center" }}
+        {navItems.map((item) =>
+          !user ? (
+            <ListItem
+              key={item.url}
+              disablePadding
             >
-              <ListItemText primary={item.text} />
-            </ListItemButton>
-          </ListItem>
-        ))}
+              <ListItemButton
+                component={Link}
+                to={item.url}
+                sx={{ textAlign: "center" }}
+              >
+                <ListItemText primary={item.text} />
+              </ListItemButton>
+            </ListItem>
+          ) : null
+        )}
         {user ? (
           <ListItem disablePadding>
             <ListItemButton
-              onClick={signOutAll()}
+              onClick={handleSignOut}
               sx={{ textAlign: "center" }}
             >
               <ListItemText primary="Sign Out" />
