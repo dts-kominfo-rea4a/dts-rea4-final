@@ -1,11 +1,10 @@
 import React from "react";
 import { ListItem, ListItemText, ListItemIcon, Divider } from "@mui/material";
 import LocalMoviesIcon from "@mui/icons-material/LocalMovies";
-import { useNavigate, useLocation, useNavigation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const SearchItemMovie = ({ movie }) => {
   const navigate = useNavigate();
-  const location = useLocation();
   const onClickHandler = () => {
     navigate(`/movie/${movie.id}`);
   }
