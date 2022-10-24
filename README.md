@@ -4,7 +4,7 @@ Final project untuk kelas REA4A pair 25
 
 ## Preview
 
-![](https://raw.githubusercontent.com/ajimsofwan/dts4a-25-final/main/preview.gif)
+![](preview.gif)
 
 ## Link live app
 
@@ -24,4 +24,4 @@ Adapun fitur yang kami buat diantaranya:
 - Detail buku yang menampilkan judul, pembuat, penerbit, deskripsi (jika ada), serta link eksternal menuju google books dan google paly books
 - Fitur bookmark dimana kita bisa menyimpan daftar buku yang diiginkan
 
-NB: Untuk Google Books APIs hanya bisa mengambil maksimal 40 data, dan api memberikan total hasil pencarian. Sayangnya tiap mengambil data selanjutnya total hasil pencarian tersebut tidak akurat dan selalu berubah, sehingga jumlah halaman paginate selalu berubah. Jadi untuk halaman paginate akhir data selalu kosong. Namun untuk paginate prev dan next masih berjalan dengan baik.
+NB: Untuk Google Books APIs hanya bisa mengambil maksimal 40 data, dan api memberikan total hasil pencarian. Sayangnya tiap mengambil data selanjutnya total hasil pencarian tersebut tidak akurat dan selalu berubah, sehingga jumlah halaman paginate selalu berubah. Jadi untuk halaman paginate paling akhir data selalu kosong. Namun untuk paginate prev, next dan halaman paginate awal masih berjalan dengan baik.
