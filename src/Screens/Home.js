@@ -6,7 +6,7 @@ import News from "../Components/News";
 import SortSelect from "../Components/SortSelect";
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect} from "react";
-import {getNews} from "../Features/newsSlice";
+import {getNews, getTopNews} from "../Features/newsSlice";
 import {Backdrop, CircularProgress} from "@mui/material";
 
 const Loading = () => {
@@ -21,10 +21,11 @@ const Loading = () => {
 }
 
 export default function Home({category}) {
-    const {loading, news} = useSelector((state) => ({...state.app}))
+    const {loading, topNews, news} = useSelector((state) => ({...state.app}))
     const dispatch = useDispatch()
 
     useEffect(() => {
+        dispatch(getTopNews())
         dispatch(getNews({category}))
     }, [category]);
 
@@ -34,8 +35,8 @@ export default function Home({category}) {
             {
                 loading ? (<Loading/>) : (
                     <Container maxWidth={'xl'}>
-                        <TopNews news={news} category={category} />
-                        <SortSelect category={category} />
+                        <TopNews news={topNews} />
+                        {/*/!*<SortSelect category={category} />*!/*/}
                         <News news={news} category={category}/>
                     </Container>
                 )

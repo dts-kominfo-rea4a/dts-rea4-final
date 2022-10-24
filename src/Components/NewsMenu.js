@@ -20,7 +20,7 @@ import {auth} from "../Firebase";
 import {useDispatch} from "react-redux";
 import {postLogoutAction} from "../Features/authSlice";
 
-const pages = ['News', 'Sport', 'Entertainment', 'Business', 'Politic', 'Science', 'Technology'];
+const pages = ['Indonesia', 'Business', 'World', 'Culture', 'Travel', 'Sports'];
 const settings = ['Logout'];
 
 function NewsMenu() {

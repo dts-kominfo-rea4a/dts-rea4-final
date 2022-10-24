@@ -16,7 +16,7 @@ import {auth} from "../Firebase";
 
 const Menu = () => {
     const [hideMenu, setHideMenu] = useState(false);
-    const { pathname } = useLocation();
+    const {pathname} = useLocation();
 
     const [user, isLoading, error] = useAuthState(auth)
 
@@ -31,7 +31,7 @@ const Menu = () => {
     return (
         <>
             {
-                !hideMenu && (<NewsMenu />)
+                !hideMenu && (<NewsMenu/>)
             }
         </>
     )
@@ -42,29 +42,20 @@ const Routes = () => {
         <>
             <Menu/>
             <Switch>
-                <Route path='/' element={<Home category={'all'}/>}/>
-                <Route path='/:id' element={<NewsDetail/>}/>
-                <Route path='/News' element={<Home category={'all'}/>}/>
-                <Route path='/News/:id' element={<NewsDetail/>}/>
-                <Route path='/Sport' element={<Home category={'sports'}/>}/>
-                <Route path='/Sport/:id' element={<NewsDetail/>}/>
-                <Route
-                    path='/Entertainment'
-                    element={<Home category={'entertainment'}/>}
-                />
-                <Route path='/Entertainment/:id' element={<NewsDetail/>}/>
+                {/*<Route path='/' element={<Home />}/>*/}
+                {/*<Route path='/:id' element={<NewsDetail/>}/>*/}
+                <Route path='/Indonesia' element={<Home category={'indonesia'}/>}/>
+                <Route path='/Indonesia/:id' element={<NewsDetail/>}/>
                 <Route path='/Business' element={<Home category={'business'}/>}/>
                 <Route path='/Business/:id' element={<NewsDetail/>}/>
-                <Route path='/Politic' element={<Home category={'politics'}/>}/>
-                <Route path='/Politic/:id' element={<NewsDetail/>}/>
-                <Route path='/Science' element={<Home category={'science'}/>}/>
-                <Route path='/Science/:id' element={<NewsDetail/>}/>
-                <Route
-                    path='/Technology'
-                    element={<Home category={'technology'}/>}
-                />
-                <Route path='/Technology/:id' element={<NewsDetail/>}/>
-
+                <Route path='/World' element={<Home category={'world'}/>}/>
+                <Route path='/World/:id' element={<NewsDetail/>}/>
+                <Route path='/Culture' element={<Home category={'life'}/>}/>
+                <Route path='/Culture/:id' element={<NewsDetail/>}/>
+                <Route path='/Travel' element={<Home category={'travel'}/>}/>
+                <Route path='/Travel/:id' element={<NewsDetail/>}/>
+                <Route path='/Sports' element={<Home category={'sports'}/>}/>
+                <Route path='/Sports/:id' element={<NewsDetail/>}/>
                 {/* Auth */}
                 <Route path='/login' element={<Login/>}/>
                 <Route path='/register' element={<Register/>}/>

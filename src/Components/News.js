@@ -15,7 +15,7 @@ const News = ({news, category}) => {
                     news.length > 0 ? news.map((item, i) => {
                         return (
                             <Grid key={i} item sm={6} md={3}>
-                                <CardActionArea component={Link} to={`${i}?category=${category}`}>
+                                <CardActionArea component={Link} to={`${i}?link=${item.link}&category=${category}`}>
                                     <CardNews item={item}/>
                                 </CardActionArea>
                             </Grid>

@@ -7,14 +7,14 @@ import {
 } from "@mui/material";
 
 const CardNews = ({item}) => {
-    const {urlToImage, title, author, publishedAt} = item
+    const {image, title, author, pusblised_at} = item
 
     return (
         <Card elevation={0}>
                 <CardMedia
                     component="img"
                     height="140"
-                    image={urlToImage}
+                    image={image}
                     alt="green iguana"
                 />
                 <CardContent>
@@ -23,7 +23,7 @@ const CardNews = ({item}) => {
                     </Typography>
                     <Divider sx={{mt: 1, mb: 1}}/>
                     <Typography gutterBottom variant="body2" color="text.secondary" sx={{textAlign: "justify"}}>
-                        {author} - {publishedAt}
+                        The Jakarta Post - {pusblised_at}
                     </Typography>
                 </CardContent>
         </Card>
