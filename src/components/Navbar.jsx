@@ -1,26 +1,32 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
 
-const Navbar = () => {
+const Navbar = ({ isLoggedIn, logout }) => {
   return (
-    <div className='flex items-center justify-between p-4 z-[100] w-full absolute'>
-      <Link to='/'>
-        <h1 className='text-red-600 text-4xl font-bold cursor-pointer'>
+    <div className="flex items-center justify-between p-4 z-[100] w-full absolute">
+      <Link to="/">
+        <h1 className="text-red-600 text-4xl font-bold cursor-pointer">
           FLIXNET.
         </h1>
       </Link>
       <div>
-        <Link to='/login'>
+        {/* <Link to='/login'>
           <button className='text-white pr-4'>Sign In</button>
-        </Link>
-        <Link to='/register'>
-          <button className='bg-red-600 px-6 py-2 rounded cursor-pointer text-white'>
-            Sign Up
+        </Link> */}
+        {!isLoggedIn ? (
+          <Link to="/login">
+            <button className="bg-red-600 px-6 py-2 rounded cursor-pointer text-white">
+              Sign In / Sign Up
+            </button>
+          </Link>
+        ) : (
+          <button  onClick={logout} className="bg-red-600 px-6 py-2 rounded cursor-pointer text-white">
+            Sign Out
           </button>
-        </Link>
+        )}
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;
