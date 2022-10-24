@@ -3,7 +3,7 @@ import { FaHeart, FaRegHeart } from 'react-icons/fa';
 
 const Movie = ({item, rID}) => {
   
-  const [like, setLike] = useState(false);
+  const [like] = useState(false);
 
   return (
     <>
