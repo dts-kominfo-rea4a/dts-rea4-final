@@ -1,8 +1,1 @@
-#/*    /index.html    200
-/           /
-/login      /login
-/register   /register
-/movies     /movies
-/tvs        /tvs
-/movie:id   /movie/:id
-/tv:id      /tv:id
+/* /index.html 200
