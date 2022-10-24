@@ -7,7 +7,7 @@ import {
 } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
-const CardMovieList = ({movie}) => {
+const CardMovieSearch = ({movie}) => {
     const navigate = useNavigate();
 
     const isPerson = () => {
@@ -18,7 +18,11 @@ const CardMovieList = ({movie}) => {
         }
     }
     const getImageUrl = () => {
-        return "https://image.tmdb.org/t/p/w185" + (isPerson() ? movie.profile_path : movie.poster_path);
+        if(isPerson()){
+            return "https://image.tmdb.org/t/p/h632" + movie.profile_path;
+        }else{
+            return "https://image.tmdb.org/t/p/w342" + movie.poster_path;
+        }
     }
 
     const movieOnClick = (id) =>{
@@ -41,7 +45,7 @@ const CardMovieList = ({movie}) => {
                         component="img"
                         image={getImageUrl()}
                         alt={getTitle()}
-                        sx={{width:1, maxWidth:185, height:1}}>
+                        sx={{width:1, maxWidth:342, height:1}}>
                     </CardMedia>
                 </CardActionArea>
             </Tooltip>
@@ -49,4 +53,4 @@ const CardMovieList = ({movie}) => {
     )
 };
 
-export default CardMovieList;
+export default CardMovieSearch;

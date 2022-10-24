@@ -15,13 +15,12 @@ import {
 } from "@mui/material";
 import logo from "../assets/logo.png";
 import LoginPicture from "../assets/LoginPicture.png";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { logoutUser } from "../authentication/firebase";
 import CardGiftcardIcon from '@mui/icons-material/CardGiftcard';
 import NotificationsSharpIcon from '@mui/icons-material/NotificationsSharp';
 import SearchIcon from '@mui/icons-material/Search';
 import InputBase from '@mui/material/InputBase';
-import { useLocation } from "react-router-dom";
 
 import { styled, alpha } from '@mui/material/styles';
 import { useAuthState } from "react-firebase-hooks/auth";
@@ -111,6 +110,17 @@ const NavBar = () => {
         }
     }
 
+    const keypressHandler = (key) => {
+        const key_code = key.key;
+
+        if(key_code.toLowerCase() === 'enter'){
+            const val = document.getElementById("text_search").value;
+            navigate("/search", {
+                state:{ search:val }
+            });
+        }
+    }
+
     return (
         <Grid item xs={12}>
             <AppBar position="static" sx={{bgcolor: '#141414', position: 'absolute', width: '100%', height: '94px', left:'0px', top: '0px', display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center', padding: '25px 30px', gap: '530px'}}>
@@ -127,15 +137,21 @@ const NavBar = () => {
                             <Button onClick={() => navBarButtonOnClick("/watchlist")} sx={{my: 2, color: currentPage('/watchlist'), display: 'block'}}>my list</Button>
                         </Box>
                         <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
-                            <Search>
-                                <SearchIconWrapper>
-                                    <SearchIcon />
-                                </SearchIconWrapper>
-                                <StyledInputBase sx={{marginTop:'10px'}}
-                                    placeholder="Search…"
-                                    inputProps={{ 'aria-label': 'search' }}
-                                />
-                            </Search>
+                            {
+                                location.pathname === "/search" ? "" : (
+                                    <Search>
+                                        <SearchIconWrapper>
+                                            <SearchIcon />
+                                        </SearchIconWrapper>
+                                        <StyledInputBase sx={{marginTop:'10px'}}
+                                            placeholder="Search…"
+                                            inputProps={{ 'aria-label': 'search' }}
+                                            onKeyDown={keypressHandler}
+                                            id="text_search"
+                                        />
+                                    </Search>
+                                )
+                            }                            
                             <Typography variant="h5" sx={{marginTop:'14px', marginRight:'15px'}}>{user ? user.email : ""}</Typography>
                             <IconButton size="large" aria-label="show 4 new mails" color="inherit">
                                 <CardGiftcardIcon fontSize="large" />

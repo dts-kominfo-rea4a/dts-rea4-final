@@ -50,7 +50,7 @@ const ViewMovie = ({path}) => {
         isLoading: gettvbyid_movie_loading
     } = useGetTvByIdQuery(location.state.movieid);
 
-    console.log(location.state.movieid);
+    // console.log(location.state.movieid);
 
     return (
         <Grid

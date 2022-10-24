@@ -50,6 +50,13 @@ const LoginAndRegisterForm = ({path}) => {
             registerHandler();
         }
     }
+    const keypressHandler = (key) => {
+        const key_code = key.key;
+
+        if(key_code.toLowerCase() === 'enter'){
+            loginHandler();
+        }
+    }
 
     useEffect(() => {
         if(isLoading){
@@ -85,6 +92,7 @@ const LoginAndRegisterForm = ({path}) => {
                         sx={{marginBottom:'15px', input: { color: 'red' }}}
                         value={credential.email}
                         onChange={emailOnChange}
+                        onKeyDown={keypressHandler}
                     />
                     <TextField
                         fullWidth
@@ -96,6 +104,7 @@ const LoginAndRegisterForm = ({path}) => {
                         sx={{marginBottom:'30px', input: { color: 'red' }}}
                         value={credential.password}
                         onChange={passwordOnChange}
+                        onKeyDown={keypressHandler}
                     />
                     <Button variant="contained" size="large" color="error" onClick={buttonOnClick}>{path === "login" ? "LOGIN" : "REGISTER ACCOUNT"}</Button>
                     {

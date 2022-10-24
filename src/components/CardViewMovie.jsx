@@ -30,8 +30,8 @@ const CardViewMovie = ({movie}) => {
                 <CardContent sx={{marginLeft:'30px', marginTop:'130px', color:'white'}}>
                     <Typography component="div" variant="h1">{(movie.title ? movie.title : movie.name)}</Typography><br/>
                     <Typography component="div" variant="h5" sx={{width:'40%'}}>{movie.overview}</Typography><br/>
-                    <Button size="large" variant="contained" onClick={() => playOnClick(movie.id)} startIcon={<PlayArrowSharpIcon />} sx={{marginRight:'10px'}}>Play</Button>
-                    <Button size="large" variant="contained" startIcon={<InfoOutlinedIcon />} >More Information</Button>
+                    <Button size="large" variant="contained" onClick={() => playOnClick(movie.id)} startIcon={<PlayArrowSharpIcon />} sx={{marginRight:'10px', bgcolor:'white', color:'black', "&:hover":{bgcolor:'red'}}}>Play</Button>
+                    <Button size="large" startIcon={<InfoOutlinedIcon />} sx={{bgcolor:'grey', opacity:'90%', color:'white', "&:hover":{bgcolor:'red'}}}>More Information</Button>
                 </CardContent>
             </Box>
             <Box sx={{display: 'flex', justifyContent: 'flex-end'}}>
