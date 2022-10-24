@@ -2,6 +2,8 @@ import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { logout } from "../authentication/firebase";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { auth } from "../authentication/firebase";
 import useMovieStore, {
   selectMovie,
   selectFetchMovie,
@@ -33,11 +35,16 @@ const Home = ({ isLoggedIn }) => {
 
   const baseUrlImage = "https://image.tmdb.org/t/p/original";
 
+  const [user, isLoading] = useAuthState(auth);
+
   useEffect(() => {
+    if (!user) {
+      navigate("/");
+    }
     fetchMovie();
     fetchMovieTrending("movie", "week");
     fetchMovieTrending("tv", "week");
-  }, [fetchMovieTrending, fetchMovie]);
+  }, [fetchMovieTrending, fetchMovie, navigate, user]);
 
   // Fungsi ini akan menjadi async await
   // Karena keluarDariApps bersifat async, dan kita harus menunggu
@@ -178,7 +185,9 @@ const Home = ({ isLoggedIn }) => {
         </div>
       ) : (
         <div className="w-full max-w-full m-auto p-4 text-center">
-          <h3 className="text-slate-50 text-2xl font-sans font-bold">Movies Not Found</h3>
+          <h3 className="text-slate-50 text-2xl font-sans font-bold">
+            Movies Not Found
+          </h3>
         </div>
       )}
 
@@ -223,7 +232,9 @@ const Home = ({ isLoggedIn }) => {
         </div>
       ) : (
         <div className="w-full max-w-full m-auto p-4 text-center">
-          <h3 className="text-slate-50 text-2xl font-sans font-bold">Tv Series Not Found</h3>
+          <h3 className="text-slate-50 text-2xl font-sans font-bold">
+            Tv Series Not Found
+          </h3>
         </div>
       )}
     </>
