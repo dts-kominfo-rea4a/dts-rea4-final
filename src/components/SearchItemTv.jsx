@@ -1,12 +1,16 @@
 import React from "react";
 import { ListItem, ListItemText, Divider, ListItemIcon } from "@mui/material";
 import LiveTvIcon from '@mui/icons-material/LiveTv';
+import { useNavigate } from "react-router-dom";
 
 const SearchItemTv = ({ tv }) => {
-  const base_url = "https://image.tmdb.org/t/p/w20_and_h30_face/";
+  const navigate = useNavigate();
+  const onClickHandler = () => {
+    navigate(`/tv/${tv.id}`);
+  }
   return (
     <>
-      <ListItem key={tv.id} style={{ backgroundColor: "white" }}>
+      <ListItem key={tv.id} style={{ backgroundColor: "white" }} onClick={onClickHandler}>
         <ListItemIcon>
           <LiveTvIcon />
         </ListItemIcon>
