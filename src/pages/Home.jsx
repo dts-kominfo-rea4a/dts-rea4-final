@@ -13,11 +13,11 @@ import useMovieStore, {
 
 const Home = ({ isLoggedIn }) => {
   const navigate = useNavigate();
-  // const movie = useMovieStore(selectMovie);
-  // const movieTrendingDay = useMovieStore(selectMovieTrendingDay);
+  const movie = useMovieStore(selectMovie);
+  const movieTrendingDay = useMovieStore(selectMovieTrendingDay);
   const movieTrendingWeek = useMovieStore(selectMovieTrendingWeek);
   const TvTrendingWeek = useMovieStore(selectTvTrendingWeek);
-  // const fetchMovie = useMovieStore(selectFetchMovie);
+  const fetchMovie = useMovieStore(selectFetchMovie);
   const fetchMovieTrending = useMovieStore(selectFetchMovieTrending);
 
   const baseUrlImage = "https://image.tmdb.org/t/p/original";
@@ -69,7 +69,7 @@ const Home = ({ isLoggedIn }) => {
             Released: {movie?.release_date}
           </p>
           <p className='w-full md:max-w-[70%] lg:max-w-[50%] xl:max-w-[35%] text-gray-200'>
-            {truncateString(movie?.overview, 150)}
+          {truncateString(movie?.overview, 150)}
           </p>
         </div>
       </div>
@@ -117,7 +117,7 @@ const Home = ({ isLoggedIn }) => {
               </h3>
             </div>
             <div>
-              <h6 className="text-slate-100 font-bold">Movies >></h6>
+              <h6 className="text-slate-100 font-bold">Movies</h6>
             </div>
           </div>
           <div className="flex flex-nowrap gap-2 justify-start mb-10 overflow-x-auto scrollbar-hide">
@@ -146,7 +146,7 @@ const Home = ({ isLoggedIn }) => {
               </h3>
             </div>
             <div>
-              <h6 className="text-slate-100 font-bold"> TV Series >></h6>
+              <h6 className="text-slate-100 font-bold"> TV Series</h6>
             </div>
           </div>
           <div className="flex flex-nowrap gap-2 justify-start mb-10 overflow-x-auto scrollbar-hide">
