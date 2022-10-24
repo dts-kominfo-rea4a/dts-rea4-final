@@ -5,7 +5,7 @@ Ketentuan lengkap bisa dilihat di [Final Project Guidelines](https://docs.google
 ## Daftar pair
 
 1. Agung Trisnandar (1523649113101394)
-2. Dwi Hosanna Bangkalang (1523649113100448)
+2. 
 
 ## Fork and Clone
 
