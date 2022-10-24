@@ -1,5 +1,4 @@
 import * as React from 'react';
-// import { styled, alpha } from '@mui/material/styles';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -13,61 +12,24 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import NewspaperIcon from '@mui/icons-material/Newspaper';
-// import InputBase from '@mui/material/InputBase';
-// import SearchIcon from '@mui/icons-material/Search';
 import {useNavigate} from "react-router-dom";
 
-const pages = ['News', 'Sport', 'Entertainment', 'Business', 'Politic', 'Science', 'Technology'];
-const settings = ['Profile', 'Logout'];
 
-// const Search = styled('div')(({theme}) => ({
-//     position: 'relative',
-//     borderRadius: theme.shape.borderRadius,
-//     backgroundColor: alpha(theme.palette.common.white, 0.15),
-//     '&:hover': {
-//         backgroundColor: alpha(theme.palette.common.white, 0.25),
-//     },
-//     marginLeft: 0,
-//     marginRight: 10,
-//     width: '100%',
-//     [theme.breakpoints.up('sm')]: {
-//         marginLeft: theme.spacing(1),
-//         marginRight: theme.spacing(1),
-//         width: 'auto',
-//     },
-// }));
-//
-// const SearchIconWrapper = styled('div')(({theme}) => ({
-//     padding: theme.spacing(0, 2),
-//     height: '100%',
-//     position: 'absolute',
-//     pointerEvents: 'none',
-//     display: 'flex',
-//     alignItems: 'center',
-//     justifyContent: 'center',
-// }));
-//
-// const StyledInputBase = styled(InputBase)(({theme}) => ({
-//     color: 'inherit',
-//     '& .MuiInputBase-input': {
-//         padding: theme.spacing(1, 1, 1, 0),
-//         // vertical padding + font size from searchIcon
-//         paddingLeft: `calc(1em + ${theme.spacing(4)})`,
-//         transition: theme.transitions.create('width'),
-//         width: '100%',
-//         [theme.breakpoints.up('sm')]: {
-//             width: '12ch',
-//             '&:focus': {
-//                 width: '20ch',
-//             },
-//         },
-//     },
-// }));
+import {useAuthState} from "react-firebase-hooks/auth";
+import {auth} from "../Firebase";
+import {useDispatch} from "react-redux";
+import {postLogoutAction} from "../Features/authSlice";
+
+const pages = ['News', 'Sport', 'Entertainment', 'Business', 'Politic', 'Science', 'Technology'];
+const settings = ['Logout'];
 
 function NewsMenu() {
     const [anchorElNav, setAnchorElNav] = React.useState(null);
     const [anchorElUser, setAnchorElUser] = React.useState(null);
-    const [isLogin, setIsLogin] = React.useState(false);
+
+    const dispatch = useDispatch()
+
+    const [user] = useAuthState(auth)
 
     const handleOpenNavMenu = (event) => {
         setAnchorElNav(event.currentTarget);
@@ -82,6 +44,8 @@ function NewsMenu() {
 
     const handleCloseUserMenu = () => {
         setAnchorElUser(null);
+
+        dispatch(postLogoutAction())
     };
 
     let navigate = useNavigate();
@@ -188,11 +152,11 @@ function NewsMenu() {
 
                     <Box sx={{flexGrow: 0}}>
                         {
-                            isLogin ? (
+                            user ? (
                                 <>
                                     <Tooltip title="Open settings">
                                         <IconButton onClick={handleOpenUserMenu} sx={{p: 0}}>
-                                            <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg"/>
+                                            <Avatar alt={user.email} src="/static/images/avatar/2.jpg"/>
                                         </IconButton>
                                     </Tooltip>
                                     <Menu

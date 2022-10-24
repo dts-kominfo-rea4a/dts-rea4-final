@@ -11,6 +11,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { postLoginAction } from '../Features/authSlice';
 import cogoToast from 'cogo-toast';
 
+import {useAuthState} from "react-firebase-hooks/auth";
+import {auth} from "../Firebase";
+
 const LoginSchema = Yup.object().shape({
   email: Yup.string().required('Email Is Required').email('Invalid email'),
   password: Yup.string()
@@ -29,15 +32,22 @@ const Login = () => {
   const { statusLogin } = useSelector((state) => state.auth);
   const [showPassword, setShowPassword] = useState(false);
 
+  const [user, isLoading, error] = useAuthState(auth)
+
   useEffect(() => {
-    if (statusLogin === 'error') {
-      cogoToast.error('Anda Gagal Login, Tolong Cek lagi data Anda');
+    // if (statusLogin === 'error') {
+    //   cogoToast.error('Anda Gagal Login, Tolong Cek lagi data Anda');
+    // }
+    // if (statusLogin === 'success') {
+    //   navigate('/news');
+    //   cogoToast.success('Anda Berhasil Login');
+    // }
+
+    if (user) {
+      navigate("/News");
     }
-    if (statusLogin === 'success') {
-      navigate('/news');
-      cogoToast.success('Anda Berhasil Login');
-    }
-  }, [statusLogin, navigate]);
+
+  }, [user, isLoading, error]);
 
   const handleClickShowPassword = () => {
     setShowPassword(!showPassword);
@@ -49,6 +59,7 @@ const Login = () => {
   const handleSubmit = (values) => {
     dispatch(postLoginAction(values));
   };
+
   return (
     <Box
       sx={{

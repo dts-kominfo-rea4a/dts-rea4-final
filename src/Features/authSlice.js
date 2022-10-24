@@ -3,12 +3,12 @@ import {
   getAuth,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
-  updateProfile,
+  signOut,
 } from 'firebase/auth';
 import { getDatabase, ref, set } from 'firebase/database';
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import {auth} from "../Firebase";
 
-const auth = getAuth();
 const db = getDatabase();
 
 const initialState = {
@@ -23,6 +23,7 @@ const initialState = {
 export const postRegisterAction = createAsyncThunk(
   'auth/register',
   async (data) => {
+    console.log(data)
     try {
       let result = await createUserWithEmailAndPassword(
         auth,
@@ -57,13 +58,24 @@ export const postLoginAction = createAsyncThunk(
       );
       console.log('result', result);
       Cookies.set('token', result.user.accessToken);
-      Cookies.set('name', result.user.auth.displayName);
+      Cookies.set('name', result.user.email);
       return result;
     } catch (err) {
       console.log('err Register', err);
     }
   },
 );
+
+export const postLogoutAction = createAsyncThunk(
+    'auth/logout',
+    async () => {
+      try {
+        await signOut(auth);
+      } catch (err) {
+        console.log(err);
+      }
+    }
+)
 
 const authSlice = createSlice({
   name: 'auth',
@@ -106,7 +118,23 @@ const authSlice = createSlice({
       .addCase(postLoginAction.rejected, (state, action) => {
          state.statusLogin = 'error';
         state.errorLogin = action.payload;
-      });
+      })
+      .addCase(postLogoutAction.pending, (state) => {
+          state.statusRegister = 'loading';
+        })
+      .addCase(postLogoutAction.fulfilled, (state, action) => {
+          if(action.payload){
+            state.statusLogin = 'idle';
+          }
+          if(!action.payload){
+            state.statusLogin = 'error';
+          }
+        })
+        .addCase(postLogoutAction.rejected, (state, action) => {
+          state.statusRegister = 'error';
+          state.errorRegister = action.payload.error;
+        })
+    ;
   },
 });
 

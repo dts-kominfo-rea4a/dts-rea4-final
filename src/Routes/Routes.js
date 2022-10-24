@@ -10,10 +10,15 @@ import NewsDetail from "../Components/NewsDetail";
 import Login from "../Screens/Login";
 import Register from "../Screens/Register";
 import NewsMenu from "../Components/NewsMenu";
+import {useAuthState} from "react-firebase-hooks/auth";
+import {auth} from "../Firebase";
+
 
 const Menu = () => {
     const [hideMenu, setHideMenu] = useState(false);
     const { pathname } = useLocation();
+
+    const [user, isLoading, error] = useAuthState(auth)
 
     useEffect(() => {
         setHideMenu(false)
