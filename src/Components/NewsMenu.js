@@ -44,9 +44,11 @@ function NewsMenu() {
 
     const handleCloseUserMenu = () => {
         setAnchorElUser(null);
-
-        dispatch(postLogoutAction())
     };
+
+    const handleLogout = () => {
+        dispatch(postLogoutAction())
+    }
 
     let navigate = useNavigate();
 
@@ -177,7 +179,7 @@ function NewsMenu() {
                                     >
                                         {settings.map((setting) => (
                                             <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                                                <Typography textAlign="center">{setting}</Typography>
+                                                <Typography textAlign="center" onClick={handleLogout}>{setting}</Typography>
                                             </MenuItem>
                                         ))}
                                     </Menu>

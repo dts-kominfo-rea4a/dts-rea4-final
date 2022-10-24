@@ -42,7 +42,7 @@ const Routes = () => {
         <>
             <Menu/>
             <Switch>
-                <Route path='/' element={<Home/>}/>
+                <Route path='/' element={<Home category={'all'}/>}/>
                 <Route path='/:id' element={<NewsDetail/>}/>
                 <Route path='/News' element={<Home category={'all'}/>}/>
                 <Route path='/News/:id' element={<NewsDetail/>}/>
