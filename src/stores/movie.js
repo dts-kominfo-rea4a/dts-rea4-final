@@ -7,13 +7,15 @@ const sliceMovie = (set) => ({
   movies: [],
   searchMovies: [],
   trendingMovies: [],
-  movie:null,
+  movie: null,
   isLoading: false,
   error: null,
-  totalPages:0,
+  totalPages: 0,
+  tvs: null,
+  tv: null,
 
   // actions
-  // 1. comot data dari jikan.moe
+  // 1. comot data api
   fetchMovie: async () => {
     try {
       // isLoading = true;
@@ -34,17 +36,38 @@ const sliceMovie = (set) => ({
     }
   },
 
-  // category movie : upcoming, popular, top_rated, now_playing
-  fetchMovieByCategory: async (category,page) => {
+  fetchTv: async () => {
     try {
       // isLoading = true;
       set({ isLoading: true });
-      const categoris = ["popular", "upcoming", "top_rated","now_playing"];
-      if (categoris.includes(category)){
+
+      const { data } = await tmdb.get("discover/tv");
+      set((state) => ({
+        ...state,
+        isLoading: false,
+        tvs: data.results,
+        totalPages: data.total_pages
+      }));
+    } catch (err) {
+      set({
+        isLoading: false,
+        error: err,
+      });
+    }
+  },
+
+  // category movie : upcoming, popular, top_rated, now_playing
+  fetchMovieByCategory: async (category, page) => {
+    try {
+      // isLoading = true;
+      set({ isLoading: true });
+      const categoris = ["popular", "upcoming", "top_rated", "now_playing"];
+      if (categoris.includes(category)) {
         const { data } = await tmdb.get(`movie/${category}`, {
           params: {
-              page: page
-          }});
+            page: page
+          }
+        });
         set((state) => ({
           ...state,
           isLoading: false,
@@ -59,8 +82,34 @@ const sliceMovie = (set) => ({
       });
     }
   },
+  // category movie : upcoming, popular, top_rated, now_playing
+  fetchTvByCategory: async (category, page) => {
+    try {
+      // isLoading = true;
+      set({ isLoading: true });
+      const categoris = ["popular", "airing_today", "on_the_air", "top_rated"];
+      if (categoris.includes(category)) {
+        const { data } = await tmdb.get(`tv/${category}`, {
+          params: {
+            page: page
+          }
+        });
+        set((state) => ({
+          ...state,
+          isLoading: false,
+          tvs: data.results,
+          totalPages: data.total_pages
+        }));
+      }
+    } catch (err) {
+      set({
+        isLoading: false,
+        error: err,
+      });
+    }
+  },
 
-  // upcoming
+  // detail movie
   detailMovie: async (id) => {
     try {
       // isLoading = true;
@@ -80,12 +129,33 @@ const sliceMovie = (set) => ({
     }
   },
 
+  // detail tv
+  detailTv: async (id) => {
+    try {
+      // isLoading = true;
+      set({ isLoading: true });
+
+      const { data } = await tmdb.get(`tv/${id}`);
+      set((state) => ({
+        ...state,
+        isLoading: false,
+        tv: data,
+      }));
+    } catch (err) {
+      set({
+        isLoading: false,
+        error: err,
+      });
+    }
+  },
+
   searchMovie: async (key) => {
     try {
       const { data } = await tmdb.get(`search/multi`, {
         params: {
-            query: key
-        }});
+          query: key
+        }
+      });
       set((state) => ({
         ...state,
         searchMovies: data.results,
@@ -119,7 +189,7 @@ const sliceMovie = (set) => ({
   resetSearchMovies: () => {
     set((state) => ({
       ...state,
-      searchMovies:[]
+      searchMovies: []
     }));
   }
 
@@ -130,15 +200,20 @@ const useMovieStore = create(sliceMovie);
 
 // selector
 export const selectMovies = (state) => state.movies;
+export const selectTvs = (state) => state.tvs;
 export const selectedMovie = (state) => state.movie;
+export const selectedTv = (state) => state.tv;
 export const selectDetailMovie = (state) => state.detailMovie;
+export const selectDetailTv = (state) => state.detailTv;
 export const selectIsLoading = (state) => state.isLoading;
 export const selectError = (state) => state.error;
 export const selectFetchMovies = (state) => state.fetchMovie;
+export const selectFetchTvs = (state) => state.fetchTv;
 export const selectFetchMoviesByCategory = (state) => state.fetchMovieByCategory;
+export const selectFetchTvsByCategory = (state) => state.fetchTvByCategory;
 export const selectTotalPages = (state) => state.totalPages;
 export const selectSearchMovies = (state) => state.searchMovie;
-export const searchedMovies = (state) => state.searchMovies;
+export const selectSearchMovie = (state) => state.searchMovies;
 export const selectResetSearchedMovies = (state) => state.resetSearchMovies;
 export const selectTrendingMovies = (state) => state.trendingMovie;
 export const selectedTrendingMovies = (state) => state.trendingMovies;

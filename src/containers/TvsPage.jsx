@@ -1,48 +1,35 @@
 import React, { useEffect, useState } from "react";
 import useMovieStore, {
-  selectMovies,
+  selectTvs,
   selectError,
   selectIsLoading,
-  selectFetchMoviesByCategory,
+  selectFetchTvsByCategory,
   selectTotalPages,
 } from "../stores/movie";
-import MovieVertical from "../components/MovieVertical";
+import TvVertical from "../components/TvVertical";
 
-import {
-  Box,
-  Grid,
-  Tabs,
-  Tab,
-  Typography,
-  Pagination,
-  Stack,
-} from "@mui/material";
+import { Box, Grid, Tabs, Tab, Pagination, Stack } from "@mui/material";
 // Import Link dan Outlet di sini
 import { Link, Outlet, useSearchParams } from "react-router-dom";
 import NavBar from "../components/NavBar";
 import SimpleBackdrop from "../components/SimpleBackdrop";
 
-function MoviesPage() {
+function TvsPage() {
   // select action
-  const fetchMovies = useMovieStore(selectFetchMoviesByCategory);
-  const movieLoading = useMovieStore(selectIsLoading);
+  const fetchTvs = useMovieStore(selectFetchTvsByCategory);
+  const tvLoading = useMovieStore(selectIsLoading);
   const movieError = useMovieStore(selectError);
-  const movies = useMovieStore(selectMovies);
+  const tvs = useMovieStore(selectTvs);
   const totalPage = useMovieStore(selectTotalPages);
   const [currentPage, setCurrentPage] = useState(1);
-  const categoris = [
-    "popular",
-    "upcoming",
-    "top_rated",
-    "now_playing"
-  ];
-  const [value, setValue] = React.useState(0);
+  const categoris = ["popular", "airing_today", "on_the_air", "top_rated"];
+  const [value, setValue] = useState(0);
   useEffect(() => {
     setCurrentPage(1);
-    fetchMovies(categoris[value], currentPage);
+    fetchTvs(categoris[value], currentPage);
   }, [value]);
   useEffect(() => {
-    fetchMovies(categoris[value], currentPage);
+    fetchTvs(categoris[value], currentPage);
   }, [currentPage]);
   return (
     <>
@@ -66,8 +53,8 @@ function MoviesPage() {
           </Tabs>
         </Box>
       </Box>
-      {movieLoading ? (
-        <SimpleBackdrop open={movieLoading} />
+      {tvLoading ? (
+        <SimpleBackdrop open={tvLoading} />
       ) : (
         <>
           <Box style={{ margin: 2 }}>
@@ -75,7 +62,13 @@ function MoviesPage() {
               spacing={2}
               style={{ margin: 5, right: 0, alignItems: "center" }}
             >
-              <Pagination page={currentPage} onChange={(evt, value) => setCurrentPage(value)} count={totalPage} size="medium" color="primary" />
+              <Pagination
+                page={currentPage}
+                onChange={(evt, value) => setCurrentPage(value)}
+                count={totalPage}
+                size="medium"
+                color="primary"
+              />
             </Stack>
 
             <Grid
@@ -85,10 +78,10 @@ function MoviesPage() {
               margin={"auto"}
               top={2}
             >
-              {movies?movies.map((movie) => (
-                <Grid item key={movie.id}>
-                  <Link component="div" to={`/movie/${movie.id}`}>
-                    <MovieVertical movie={movie}></MovieVertical>
+              {tvs?tvs.map((tv) => (
+                <Grid item key={tv.id}>
+                  <Link component="div" to={`/tv/${tv.id}`}>
+                    <TvVertical tv={tv}></TvVertical>
                   </Link>
                 </Grid>
               )):""}
@@ -99,4 +92,4 @@ function MoviesPage() {
     </>
   );
 }
-export default MoviesPage;
+export default TvsPage;
