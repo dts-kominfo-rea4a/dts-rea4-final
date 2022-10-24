@@ -8,7 +8,8 @@ const initialStateNews = {
     error: null,
     news: [],
     topNews: [],
-    detailNews: []
+    detailNews: [],
+    searchNews: []
 }
 
 export const getNews = createAsyncThunk("getNews", async ({category}) => {
@@ -25,6 +26,11 @@ export const getTopNews = createAsyncThunk("getTopNews", async () => {
 export const getNewsDetail = createAsyncThunk("getNewsDetail", async ({link}) => {
     const responseNewsApi = await axios.get(link)
     return responseNewsApi.data.detail_post
+})
+
+export const getSearchNews = createAsyncThunk("searchNews", async ({searchValue}) => {
+    const responseNewsApi = await jakPostApiInstance.get(`/search/${searchValue}/relevance/1`)
+    return responseNewsApi.data.data;
 })
 
 const newsSlice = createSlice({
@@ -68,7 +74,20 @@ const newsSlice = createSlice({
         [getNewsDetail.rejected]: (state, action) => {
             state.loading = false
             state.error = action.payload
-        }
+        },
+
+        //get search news
+        [getSearchNews.pending]: (state, action) => {
+            state.loading = true
+        },
+        [getSearchNews.fulfilled]: (state, action) => {
+            state.loading = false
+            state.searchNews = action.payload
+        },
+        [getSearchNews.rejected]: (state, action) => {
+            state.loading = false
+            state.error = action.payload
+        },
     }
 })
 

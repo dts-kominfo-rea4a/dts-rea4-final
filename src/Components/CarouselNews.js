@@ -42,7 +42,7 @@ function CarouselMenu({news}) {
                     bgcolor: 'background.default',
                 }}
             >
-                <Typography>{news.length > 0 && news[activeStep].title}</Typography>
+                <Typography variant="h5">{news.length > 0 && news[activeStep].title}</Typography>
             </Paper>
             <AutoPlaySwipeableViews
                 axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}

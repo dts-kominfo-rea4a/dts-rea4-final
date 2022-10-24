@@ -12,6 +12,7 @@ import Register from "../Screens/Register";
 import NewsMenu from "../Components/NewsMenu";
 import {useAuthState} from "react-firebase-hooks/auth";
 import {auth} from "../Firebase";
+import SearchResult from "../Screens/SearchResult";
 
 
 const Menu = () => {
@@ -42,8 +43,8 @@ const Routes = () => {
         <>
             <Menu/>
             <Switch>
-                {/*<Route path='/' element={<Home />}/>*/}
-                {/*<Route path='/:id' element={<NewsDetail/>}/>*/}
+                <Route path='/' element={<Home category={'indonesia'} />}/>
+                <Route path='/:id' element={<NewsDetail/>}/>
                 <Route path='/Indonesia' element={<Home category={'indonesia'}/>}/>
                 <Route path='/Indonesia/:id' element={<NewsDetail/>}/>
                 <Route path='/Business' element={<Home category={'business'}/>}/>
@@ -56,6 +57,7 @@ const Routes = () => {
                 <Route path='/Travel/:id' element={<NewsDetail/>}/>
                 <Route path='/Sports' element={<Home category={'sports'}/>}/>
                 <Route path='/Sports/:id' element={<NewsDetail/>}/>
+                <Route path='/Search' element={<SearchResult/>}/>
                 {/* Auth */}
                 <Route path='/login' element={<Login/>}/>
                 <Route path='/register' element={<Register/>}/>

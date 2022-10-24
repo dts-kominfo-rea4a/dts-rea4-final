@@ -19,6 +19,7 @@ import {useAuthState} from "react-firebase-hooks/auth";
 import {auth} from "../Firebase";
 import {useDispatch} from "react-redux";
 import {postLogoutAction} from "../Features/authSlice";
+import SearchNews from "./SearchNews";
 
 const pages = ['Indonesia', 'Business', 'World', 'Culture', 'Travel', 'Sports'];
 const settings = ['Logout'];
@@ -142,15 +143,7 @@ function NewsMenu() {
                         ))}
                     </Box>
 
-                    {/*<Search>*/}
-                    {/*    <SearchIconWrapper>*/}
-                    {/*        <SearchIcon/>*/}
-                    {/*    </SearchIconWrapper>*/}
-                    {/*    <StyledInputBase*/}
-                    {/*        placeholder="Search…"*/}
-                    {/*        inputProps={{'aria-label': 'search'}}*/}
-                    {/*    />*/}
-                    {/*</Search>*/}
+                    <SearchNews />
 
                     <Box sx={{flexGrow: 0}}>
                         {

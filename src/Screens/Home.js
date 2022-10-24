@@ -36,7 +36,6 @@ export default function Home({category}) {
                 loading ? (<Loading/>) : (
                     <Container maxWidth={'xl'}>
                         <TopNews news={topNews} />
-                        {/*/!*<SortSelect category={category} />*!/*/}
                         <News news={news} category={category}/>
                     </Container>
                 )
