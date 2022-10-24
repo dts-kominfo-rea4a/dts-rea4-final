@@ -7,44 +7,40 @@ const baseUrl = "https://api.themoviedb.org/3/";
 const sliceTmdb = (set) => ({
 
     // state * action
-    tmdb : [],
+    tmdbid : [],
     isLoading : false,
     error : null,
-    key: apiKey,
-    url: baseUrl,
 
     fetchData: async (parameter,extra) => {
         try {
             set({ isLoading:true })
             // const {data} = await axios.get(baseUrl + 'movie/upcoming?api_key=' + apiKey + '&languange=en-US&page=1');
             const {data} = await axios.get(baseUrl + parameter + '?api_key=' + apiKey + extra );
-            // console.log('mau set');
+            console.log('mau set');
             set((state) => ({
                 ...state,
                 isLoading:false, 
-                tmdb: data
+                tmdbid: data
             }));
-            // console.log(data);
-            // console.log('sudah set');
+            console.log(data);
+            console.log('sudah set');
         } catch (err) {
             set({
                 isLoading: false,
                 error: err,
             })
         }
-    },
-   
+    }
 })
 
 // hooks
-const useTmdbStore = create(sliceTmdb);
+const useTmdbIdStore = create(sliceTmdb);
 
-export const selectTmbdb = (state) => state.tmdb;
+export const selectTmbdb = (state) => state.tmdbid;
 export const selectIsLoading = (state) => state.isLoading;
 export const selectError = (state) => state.error;
 export const selectFetchData = (state) => state.fetchData;
-export const selectKey = (state) => state.key;
-export const selectUrl = (state) => state.url;
+
 
 // export
-export default useTmdbStore;
+export default useTmdbIdStore;

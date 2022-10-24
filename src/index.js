@@ -10,6 +10,7 @@ import ProtectedHome from './components/ProtectedHome';
 import LandingPage from './containers/LandingPage';
 import LoginPage from './containers/LoginPage';
 import RegisterPage from './containers/RegisterPage';
+import MoviePage from './containers/MoviePage';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -24,6 +25,10 @@ root.render(
         <Route path="login" element={<LoginPage />} />
         <Route path="register" element={<RegisterPage />} />
         <Route path="landing" element={<LandingPage />} />
+        <Route path="movie/:movieId" element={
+          <ProtectedComponent>
+            <MoviePage />
+          </ProtectedComponent>} />
         <Route path="user" element={
           <ProtectedComponent>
             <LandingPage />

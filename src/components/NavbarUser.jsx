@@ -14,36 +14,53 @@ import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import InputBase from '@mui/material/InputBase';
 import SearchIcon from '@mui/icons-material/Search';
+import LightModeIcon from '@mui/icons-material/LightMode';
+import DarkModeIcon from '@mui/icons-material/DarkMode';
 
 import { styled, alpha } from '@mui/material/styles';
 
 import { signOutFromEverywhere} from '../authentication/firebase';
 import { useNavigate } from "react-router-dom";
+import useThemeStore from '../stores/theme';
+
 
 function NavbarUser() {
 
     const navigate = useNavigate();
+    const appTheme = useThemeStore();
     const btnSignOutOnClickHandler = async () => {
         await signOutFromEverywhere();
         navigate("/login")
     }
 
-    const [anchorElNav, setAnchorElNav] = React.useState(null);
+    const [anchorElMovies, setAnchorElMovies] = React.useState(null);
+    const [anchorElSeries, setAnchorElSeries] = React.useState(null);
     const [anchorElUser, setAnchorElUser] = React.useState(null);
 
-    const handleOpenNavMenu = (event) => {
-        setAnchorElNav(event.currentTarget);
+    const handleOpenMoviesMenu = (event) => {
+        setAnchorElMovies(event.currentTarget);
+    };
+
+    const handleOpenSeriesMenu = (event) => {
+        setAnchorElSeries(event.currentTarget);
     };
 
     const handleOpenUserMenu = (event) => {
         setAnchorElUser(event.currentTarget);
     };
 
-    const handleCloseNavMenu = () => {
-        setAnchorElNav(null);
+    const handleCloseMoviesMenu = () => {
+        setAnchorElMovies(null);
+    };
+    const handleCloseSeriesMenu = () => {
+        setAnchorElSeries(null);
     };
     const handleCloseUserMenu = () => {
         setAnchorElUser(null);
+    };
+
+    const setDarkThemeHandler = () => {
+        appTheme.setDarkMode();
     };
 
     const Search = styled('div')(({ theme }) => ({
@@ -117,7 +134,7 @@ function NavbarUser() {
                 aria-label="account of current user"
                 aria-controls="menu-appbar"
                 aria-haspopup="true"
-                onClick={handleOpenNavMenu}
+                onClick={handleOpenMoviesMenu}
                 color="inherit"
                 >
                 <MenuIcon />
@@ -144,25 +161,88 @@ function NavbarUser() {
             LOGO
             </Typography>
             <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-                <Button sx={{ my: 2, color: 'white', display: 'block' }}>
+                <Button sx={{ my: 2, color: 'white', display: 'block' }} >
                     Home
                 </Button>
-                <Button sx={{ my: 2, color: 'white', display: 'block' }}>
-                    Series
-                </Button>
-                <Button sx={{ my: 2, color: 'white', display: 'block' }}>
+                <Button sx={{ my: 2, color: 'white', display: 'block' }} onClick={handleOpenMoviesMenu}>
                     Movies
                 </Button>
+                <Button sx={{ my: 2, color: 'white', display: 'block' }} onClick={handleOpenSeriesMenu}>
+                    Series
+                </Button>
+                
                 <Button sx={{ my: 2, color: 'white', display: 'block' }}>
                     News And Popular
                 </Button>
                 <Button sx={{ my: 2, color: 'white', display: 'block' }}>
                     My List
                 </Button>
+                <Button sx={{ my: 2, color: 'white', display: 'block' }} onClick={() => setDarkThemeHandler()}>
+                    {appTheme.darkMode ? ( <LightModeIcon/>) : ( <DarkModeIcon/>) }
+                </Button>
+                <Menu
+                    sx={{ mt: '45px' }}
+                    id="menu-appbar1"
+                    anchorEl={anchorElMovies}
+                    anchorOrigin={{
+                        vertical: 'top',
+                        horizontal: 'right',
+                    }}
+                    keepMounted
+                    transformOrigin={{
+                        vertical: 'top',
+                        horizontal: 'right',
+                    }}
+                    open={Boolean(anchorElMovies)}
+                    onClose={handleCloseMoviesMenu}
+                >
+                    <MenuItem>
+                        <Typography textAlign="center">Popular</Typography>
+                    </MenuItem>
+                    <MenuItem>
+                        <Typography textAlign="center">Now Playing</Typography>
+                    </MenuItem>
+                    <MenuItem>
+                        <Typography textAlign="center">Upcoming</Typography>
+                    </MenuItem>
+                    <MenuItem>
+                        <Typography textAlign="center">Top Rated</Typography>
+                    </MenuItem>
+                </Menu>
+                <Menu
+                    sx={{ mt: '45px' }}
+                    id="menu-appbar2"
+                    anchorEl={anchorElSeries}
+                    anchorOrigin={{
+                        vertical: 'top',
+                        horizontal: 'right',
+                    }}
+                    keepMounted
+                    transformOrigin={{
+                        vertical: 'top',
+                        horizontal: 'right',
+                    }}
+                    open={Boolean(anchorElSeries)}
+                    onClose={handleCloseSeriesMenu}
+                >
+                    <MenuItem>
+                        <Typography textAlign="center">Popular</Typography>
+                    </MenuItem>
+                    <MenuItem>
+                        <Typography textAlign="center">Airing Today</Typography>
+                    </MenuItem>
+                    <MenuItem>
+                        <Typography textAlign="center">On TV</Typography>
+                    </MenuItem>
+                    <MenuItem>
+                        <Typography textAlign="center">Top Rated</Typography>
+                    </MenuItem>
+                </Menu>
             </Box>
             <Search sx={{
                 marginRight: '1em'
             }}>
+                
             <SearchIconWrapper>
               <SearchIcon />
             </SearchIconWrapper>
@@ -172,10 +252,12 @@ function NavbarUser() {
             />
           </Search>
             <Box sx={{ flexGrow: 0 }}>
+                
                 <Tooltip title="Open settings">
                     <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                         <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
                     </IconButton>
+                    
                 </Tooltip>
                 <Menu
                     sx={{ mt: '45px' }}

@@ -1,64 +1,47 @@
 import React from 'react'
 import { useEffect,useState } from 'react';
 import Carousel from 'react-material-ui-carousel';
-import useTmdbStore, {
-    selectTmbdb,
-    selectError,
-    selectFetchData,
-    selectIsLoading,
-} from '../../stores/tmdb';
-import {Paper, Button, Grid, Card, Box, CardContent, Typography, CardMedia} from "@mui/material";
+import useTmdbStore from '../../stores/tmdb';
+import {Card, Box, CardContent, Typography, CardMedia} from "@mui/material";
+import axios from 'axios';
+import Loading from '../../images/loading.gif'
 
 function HomeCarrousel() {
     const tmdb = useTmdbStore();
-    // const fetchData = useTmdbStore(selectFetchData);
-    // const isLoading = useTmdbStore(selectIsLoading);
-    const [movies, setMovies] = useState([]);
-    useEffect( () => {
-        // const fetchData = async () => {
-        //     try {
-        //         await tmdb.fetchData("movie/upcoming","en-US","1");
-        //         setMovies(tmdb.tmdb.results);
-        //     } catch {
-        //         console.log(tmdb.error())
-        //     }
-        // }
-        tmdb.fetchData();
-        
-        console.log(tmdb.tmdb.results);
-        console.log(tmdb.isLoading);
-    },[]);
-    useEffect( () => {
-        // const fetchData = async () => {
-        //     try {
-        //         await tmdb.fetchData("movie/upcoming","en-US","1");
-        //         setMovies(tmdb.tmdb.results);
-        //     } catch {
-        //         console.log(tmdb.error())
-        //     }
-        // }
-        setMovies(tmdb.tmdb.results);
-        console.log('setmovie')
-    },[!tmdb.isLoading]);
-    // console.log(movies);
+    
+    const [movies, setMovies] = useState();
+    const myFetchData = async () => {
+      const {data} = await axios.get( tmdb.url + 'trending/all/day?api_key=' + tmdb.key + '&languange=en-US&page=1');
+      setMovies(data);
+    }
+    useEffect(
+        () => {
+            myFetchData();
+            // eslint-disable-next-line
+        }, []
+    )
    
-        console.log('render');
-        console.log(movies);
+    
         return (
-            !movies ?  (
-                <div>
-                  <p className="font-semibold">Sedang menunggu data</p>
-                </div>
-              ) : (
-            <Carousel
-                indicators="true"
-                navButtonsAlwaysVisible='true'
-                duration='1000'
-                >
-            {
-                 movies.map( (item) => <Item2 key={item.id} item={item} /> ) 
-            }
-            </Carousel>)
+            movies ?  (
+              <>
+          <Carousel
+              indicators="true"
+              navButtonsAlwaysVisible='true'
+              duration='1000'
+              height='350px'
+              >
+          {
+            movies.results.map( (item) => <Item2 key={item.id} item={item} /> ) 
+          }
+          </Carousel>
+          </>
+          ) : (
+            
+            <div style={{ textAlign: 'center' }}>
+              <img src={Loading} width="30px" alt="Loading"/>
+            </div>
+          )
         )
     
     
@@ -67,21 +50,12 @@ function HomeCarrousel() {
 function Item2(props)
 {
     return (
-        // <Paper>
-        //         <h2>{props.item.original_title}</h2>
-        //         <p>{props.item.overview}</p>
-
-        //         <Button className="CheckButton">
-        //             Check it out!
-        //         </Button>
-                
-            
-        // </Paper>
+      
         <Card sx={{ display: 'flex' }}>
       <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-        <CardContent sx={{ flex: '1 0 auto', width:'50%' }}>
+        <CardContent sx={{ flex: '1 0 auto' }}>
           <Typography component="div" variant="h5">
-          {props.item.original_title}
+          {props.item.original_title ? props.item.original_title : props.item.original_name}
           </Typography>
           <Typography variant="subtitle1" color="text.secondary" component="div">
           {props.item.overview}
@@ -92,7 +66,7 @@ function Item2(props)
       <CardMedia
         component="img"
         sx={{ width: '50%' }}
-        image={"https://image.tmdb.org/t/p/original/" + props.item.backdrop_path}
+        image={"https://image.tmdb.org/t/p/original/" + props.item.backdrop_path} height='350px'
         alt="Live from space album cover"
       />
     </Card>
