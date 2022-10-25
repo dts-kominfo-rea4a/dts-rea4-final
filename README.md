@@ -21,7 +21,7 @@ Branch dapat sesuai dengan kebutuhan dan kesepakatan bersama dalam pair, namun h
 # DTS REA4A-6-Final-Project
 
 1. ![](https://flixnet-final.netlify.app/flixnet.gif)
-2. [Flixnet](https://final-project-dts.netlify.app)
+2. [Flixnet](https://flixnet-final.netlify.app/)
 3. Flixnet adalah web movie dimana terdapat banyak pilihan untuk menonton film & tv series. adapun teknologi & fitur yang ada dan di gunakan untuk membuat web ini adalah sebagai berikut : 
    
    ***Feature***
