@@ -1,5 +1,6 @@
 import { Box, Button, TextField, Typography } from "@mui/material";
 import React from "react";
+import {auth, signInWithEmailAndPassword } from '../authentication/firebase';
 
 export default function SignInForm() {
   return (

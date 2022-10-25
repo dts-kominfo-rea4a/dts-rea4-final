@@ -1,7 +1,32 @@
-import React from "react";
+import React, { useState } from "react";
 import { Box, Button, TextField, Typography } from "@mui/material";
+import { auth, registrationWithEmailAndPassword } from '../authentication/firebase'; 
 
 export default function RegisterForm() {
+  const [credential, setCredential] = useState({
+    email: '',
+    password: ''
+  })
+
+  const textFieldEmailOnChangeHandler = (event) => {
+    setCredential({
+      ...credential,
+      email: event.target.value
+    })
+  }
+
+  registerHandler = () => {
+    registrationWithEmailAndPassword(credential.email, credential.password)
+  }
+
+
+  const textFieldPasswordOnChangeHandler = (event) => {
+    setCredential({
+      ...credential,
+      password: event.target.value
+    })
+  }
+
   return (
     <>
       <Box sx={{ p: "40px 0px" }}>
@@ -20,20 +45,13 @@ export default function RegisterForm() {
         >
           <TextField
             required
-            id="name"
-            label="Name"
-            placeholder="Name"
-            color="secondary"
-          >
-            Name
-          </TextField>
-          <TextField
-            required
             id="email"
             label="Email"
             placeholder="Email"
             color="secondary"
             type="email"
+            value={credential.user}
+            onChange={textFieldEmailOnChangeHandler}
           >
             Email
           </TextField>
@@ -44,6 +62,8 @@ export default function RegisterForm() {
             type="password"
             placeholder="Password"
             color="secondary"
+            value={credential.password}
+            onChange={textFieldPasswordOnChangeHandler}
           >
             Password
           </TextField>
