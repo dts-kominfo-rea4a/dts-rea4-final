@@ -13,6 +13,7 @@ const sliceMovie = (set) => ({
   totalPages: 0,
   tvs: null,
   tv: null,
+  videos: [],
 
   // actions
   // 1. comot data api
@@ -129,6 +130,26 @@ const sliceMovie = (set) => ({
     }
   },
 
+  // detail movie
+  fetchVideo: async (media,id) => {
+    try {
+      // isLoading = true;
+      set({ isLoading: true });
+
+      const { data } = await tmdb.get(`${media}/${id}/videos`);
+      set((state) => ({
+        ...state,
+        isLoading: false,
+        videos: data.results,
+      }));
+    } catch (err) {
+      set({
+        isLoading: false,
+        error: err,
+      });
+    }
+  },
+
   // detail tv
   detailTv: async (id) => {
     try {
@@ -217,6 +238,8 @@ export const selectSearchMovie = (state) => state.searchMovies;
 export const selectResetSearchedMovies = (state) => state.resetSearchMovies;
 export const selectTrendingMovies = (state) => state.trendingMovie;
 export const selectedTrendingMovies = (state) => state.trendingMovies;
+export const selectFetchVideos = (state) => state.fetchVideo;
+export const selectVideos = (state) => state.videos;
 
 // export
 export default useMovieStore;

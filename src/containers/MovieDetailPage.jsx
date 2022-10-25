@@ -3,7 +3,9 @@ import { useParams } from "react-router-dom";
 import useMovieStore, {
   selectedMovie,
   selectDetailMovie,
-  selectIsLoading
+  selectIsLoading,
+  selectVideos,
+  selectFetchVideos
 } from "../stores/movie";
 
 import NavBar from "../components/NavBar";
@@ -13,19 +15,20 @@ import SimpleBackdrop from "../components/SimpleBackdrop";
 
 const MovieDetailPage = () => {
   const params = useParams();
-  const [loaded, setLoaded] = useState(false);
   const selectMovie = useMovieStore(selectDetailMovie);
   const detailMovie = useMovieStore(selectedMovie);
   const isLoading   = useMovieStore(selectIsLoading);
+  const videos   = useMovieStore(selectVideos);
+  const fetchVideo   = useMovieStore(selectFetchVideos);
   useEffect(() => {
-    selectMovie(params.id)
-    setLoaded(true);
+    selectMovie(params.id);
+    fetchVideo("movie",params.id);
   }, [params.id]);
   return (
     <>
       <div className="App">
         <NavBar />
-        {isLoading?<SimpleBackdrop open={isLoading} /> :detailMovie?<Movie movie={detailMovie} />:<NotFound/>}
+        {isLoading?<SimpleBackdrop open={isLoading} /> :detailMovie?<Movie movie={detailMovie} videos={videos} />:<NotFound/>}
       </div>
     </>
   );
