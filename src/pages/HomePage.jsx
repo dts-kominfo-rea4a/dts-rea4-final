@@ -1,14 +1,19 @@
 import React from "react";
+import Banner from "../components/Banner";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 
 function HomePage() {
   return (
-    <div>
+    <div className="min-h-screen flex flex-col">
       {/* Header */}
       <Navbar loginStatus={true} />
+
       {/* Main Content */}
-      <main>HomePage</main>
+      <main className="grow">
+        <Banner />
+      </main>
+
       {/* Footer */}
       <Footer />
     </div>
