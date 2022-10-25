@@ -14,12 +14,12 @@ import {
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyBmiVjFA1QFrKojGlkYDvryiBBw9MTIa3k",
-  authDomain: "dts-final-project-6ea49.firebaseapp.com",
-  projectId: "dts-final-project-6ea49",
-  storageBucket: "dts-final-project-6ea49.appspot.com",
-  messagingSenderId: "690451337036",
-  appId: "1:690451337036:web:42f764e78aafd0738f49e9",
+  apiKey: "",
+  authDomain: "",
+  projectId: "",
+  storageBucket: "",
+  messagingSenderId: "",
+  appId: "",
 };
 
 const googleProvider = new GoogleAuthProvider();
