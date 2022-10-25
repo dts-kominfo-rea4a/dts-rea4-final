@@ -12,6 +12,9 @@ const customStyles = {
     bottom: 'auto',
     marginRight: '-50%',
     transform: 'translate(-50%, -50%)',
+    padding:5,
+    maxWidth:"100%",
+    maxHeight:{xs:"40%"}
   },
 };
 
@@ -28,7 +31,7 @@ const ModalVideo = ({ label, videoKey, isOpen, closeHandler }) => {
         style={customStyles}
         contentLabel={label}
       >
-        <Box display={"flex"} padding={1}>
+        <Box display={"flex"} padding={3}>
           <IconButton
             aria-label="close"
             onClick={closeHandler}
@@ -45,6 +48,8 @@ const ModalVideo = ({ label, videoKey, isOpen, closeHandler }) => {
           <iframe
             width={727}
             height={409}
+            maxWidth="100%"
+            maxHeight={{xs:"40%"}}
             src={`https://www.youtube.com/embed/${videoKey}`}
             title={label}
             frameBorder={0}
