@@ -16,7 +16,7 @@ const sliceMovie = (set) => ({
   // cukup declare action sebagai async, dan bisa berjalan ^_^
   fetchMovie: async () => {
     const { data } = await axios.get(
-      `https://api.themoviedb.org/3/movie/76341?api_key=28036dc96a89f050276c45424d61cd0f`
+      `https://api.themoviedb.org/3/movie/436270?api_key=28036dc96a89f050276c45424d61cd0f`
     );
 
     // Karena langsung mengganti, tanpa butuh untuk melihat data lama
