@@ -1,7 +1,6 @@
 // import logo from './logo.svg';
 // import './App.css';
 import React,{ useEffect, useState } from "react";
-import LandingPage from "./containers/LandingPage";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { CssBaseline } from "@mui/material";
 import useThemeStore, {selectTheme} from "./stores/theme";
@@ -39,6 +38,7 @@ function App() {
   });
   useEffect(() => {
     setDarkMode(appTheme)
+    // eslint-disable-next-line
   },[])
  
   return (

@@ -2,15 +2,16 @@
 import { initializeApp } from "firebase/app";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
-
 import { 
     getAuth, 
     createUserWithEmailAndPassword,
-    GithubAuthProvider, 
     GoogleAuthProvider, 
     signInWithEmailAndPassword,
     signInWithPopup, 
+    updateProfile,
     signOut } from "firebase/auth";
+import { useUpdateProfile } from "react-firebase-hooks/auth";
+
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -22,26 +23,14 @@ const firebaseConfig = {
     appId: "1:478488433208:web:0434b1d262f7acf93dcccd"
 };
 
+
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
-
-const githubProvider = new GithubAuthProvider();
-githubProvider.addScope("repo");
-
 const googleProvider = new GoogleAuthProvider();
 googleProvider.addScope("profile");
 googleProvider.addScope("email");
 // googleProvider.addScope("https://www.googleapis.com/auth/contacts.readonly")
-
-const signInWithGithub = async () => {
-    try{
-        const userCredential = await signInWithPopup(auth, githubProvider);
-        console.log(userCredential);
-    } catch (err){
-        console.log(err);
-    }
-};
 
 const signInWithGoogle = async () => {
     try{
@@ -53,6 +42,8 @@ const signInWithGoogle = async () => {
 };
 
 const register = async (email, password) => {
+    
+
     try{
         const userCredential = await createUserWithEmailAndPassword(auth, email, password);
         console.log(userCredential);
@@ -78,4 +69,14 @@ const signOutFromEverywhere = async () => {
     }
 }
 
-export { auth, signInWithGithub, signInWithGoogle, signOutFromEverywhere, register, sigInWithEmail };
+// save list id combine with user display name
+const saveIdListMovies = async (listId) => {
+    try{
+        const update = await updateProfile(auth.currentUser,{displayName: listId});
+        console.log(update);
+    } catch(err){
+        console.log(err);
+    }
+}
+
+export { auth, signInWithGoogle, signOutFromEverywhere, register, sigInWithEmail, saveIdListMovies };

@@ -9,8 +9,9 @@ import { Link } from "react-router-dom";
 import { Icon } from "@iconify/react";
 import { Stack, Button, IconButton } from "@mui/material";
 
-import { register, signInWithGoogle, signInWithGithub } from "../authentication/firebase";
+import { register, signInWithGoogle } from "../authentication/firebase";
 import { useNavigate } from "react-router-dom";
+
 
 const RootStyle = styled("div")({
     background: "rgb(213, 235, 250 )",
@@ -19,6 +20,7 @@ const RootStyle = styled("div")({
     placeItems: "center",
     fontFamily: "Poppins"
 });
+
 
 const HeadingStyle = styled(Box)({
     textAlign: "center",
@@ -47,17 +49,20 @@ const animate = {
     },
 };
 
+
+
+
 const RegisterPage = () => {
 
     const navigate = useNavigate();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
-    const formOnSubmitHandler = (evt) => {
-        console.log('fire');
+    const formOnSubmitHandler = async (evt) => {
         evt.preventDefault();
-        console.log('register');
-        register(email,password);
+        await register(email,password);
+        
+        navigate("/")
     };
 
     const inputEmailOnChangeHandler = (evt) => {
@@ -68,11 +73,6 @@ const RegisterPage = () => {
         setPassword(evt.target.value);
     };
 
-    const githubOnClickHandler = async (evt) => {
-        await signInWithGithub();
-        navigate("/")
-    };
-    
     const googleOnClickHandler = async (evt) => {
         await signInWithGoogle();
         navigate("/")
@@ -87,7 +87,7 @@ const RegisterPage = () => {
                 <HeadingStyle >
                 <Box>
                     <Link to="/">
-                        <Box component="img" src="/logo.png" alt="logo" />
+                        <Box component="img" src="/logo.png" alt="logo" height="100px"/>
                     </Link>
                     
                 </Box>
@@ -107,37 +107,6 @@ const RegisterPage = () => {
                             onClick={googleOnClickHandler}
                         >
                             <Icon icon="eva:google-fill" color="#DF3E30" width={22} height={22} />
-                        </IconButton>
-                        <IconButton
-                        sx={{
-                            border: "2px solid #ccc",
-                            borderRadius: "5px",
-                            padding: "0.5675rem",
-                            flex: 1,
-                        }}
-                        onClick={githubOnClickHandler}
-                        >
-                        <Icon
-                            icon="eva:facebook-fill"
-                            color="#1877F2"
-                            width={22}
-                            height={22}
-                        />
-                        </IconButton>
-                        <IconButton
-                        sx={{
-                            border: "2px solid #ccc",
-                            borderRadius: "5px",
-                            padding: "0.5675rem",
-                            flex: 1,
-                        }}
-                        >
-                        <Icon
-                            icon="eva:twitter-fill"
-                            color="#1C9CEA"
-                            width={22}
-                            height={22}
-                        />
                         </IconButton>
                     </Stack>
                 </Box>
@@ -204,7 +173,7 @@ const RegisterPage = () => {
                             type="submit"
                             variant="contained"
                             >
-                            Login
+                            Register
                             </Button>
                         </Box>
                     </Box>

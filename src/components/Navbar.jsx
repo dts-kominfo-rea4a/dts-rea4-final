@@ -1,9 +1,6 @@
 import React, { useState } from 'react';
 import {Link} from 'react-scroll';
 import {Link as Link2} from 'react-router-dom';
-import {AppBar, Toolbar, Typography, Button} from "@mui/material";
-import DarkModeOutlinedIcon from "@mui/icons-material/DarkModeOutlined";
-import LightModeIcon from "@mui/icons-material/LightMode";
 import useThemeStore from '../stores/theme';
 
 function Navbar(props) {
@@ -29,7 +26,7 @@ function Navbar(props) {
             </a>
             <input type='checkbox' className='menu-btn' id='menu-btn'/>
             <label className='menu-icon' >
-                <span className='nav-icon'></span>
+                <span className='nav-icon'>asdfsdfsdf</span>
             </label>
             <ul className='menu'>
                 <li><Link activeClass="active" to="main" spy={true} smooth={true}>Home</Link></li>
@@ -39,7 +36,7 @@ function Navbar(props) {
                 <li><Link to="contact" spy={true} smooth={true}>Contact US</Link></li>
                 <li><Link2 to="/login">Login</Link2></li>
                 <li><Link2 to="/register">Register</Link2></li>
-                <li><a onClick={() => setDarkThemeHandler()}>
+                <li><a onClick={() => setDarkThemeHandler()} href="#a">
                         {appTheme.darkMode ? "Light Mode" : "Dark Mode"}
                     </a></li>
             </ul>
@@ -48,13 +45,13 @@ function Navbar(props) {
     )
 }
 
-const customstyle = {
-    logo: {
-      flexGrow: "1",
-      fontWeight: "bold",
-    },
-    button: {},
-  };
+// const customstyle = {
+//     logo: {
+//       flexGrow: "1",
+//       fontWeight: "bold",
+//     },
+//     button: {},
+//   };
   
 
 export default Navbar;

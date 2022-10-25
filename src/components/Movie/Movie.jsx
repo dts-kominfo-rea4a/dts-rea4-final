@@ -1,30 +1,65 @@
 
 import React, { useState } from 'react';
-import './Movie.css';
+import '../../styles/Movie.css';
 import { Link } from 'react-router-dom';
 import TheatersIcon from '@mui/icons-material/Theaters';
 import LanguageIcon from '@mui/icons-material/Language';
 import AspectRatioIcon from '@mui/icons-material/AspectRatio';
 import iconAmazon from '../../images/icon-amazon.png';
 import iconNetflix from '../../images/icon-netflix.png';
-import Popular from '../Home/Popular';
+import { useEffect } from 'react';
+
 function Movie( { item } ) {
 
 const descriptionVideo = item.overview.length > 120 ? item.overview.substring(0, 120) + '...' : item.overview;
 const [urlVideo,setUrlVideo] = useState('');
+const [playVideo,setPlayVideo] = useState(false);
 const [videoFullScreen,setVideoFullScreen] = useState(false);
+const [id,setId] = useState('');
 function handleShowTrailer(){
+    
     const trailer = item.videos.results;
     if(trailer !== undefined && trailer.length > 0){
-        const url = `https://youtube.com/embed/${trailer[0].key}?autoplay=1&controls=0&showinfo=0&autohide=1`;
+        const trailerid = trailer.find(
+            (vid) => vid.type === "Trailer"
+          );
+        // console.log(trailerid.key);
+        const url = `https://youtube.com/embed/${trailerid.key}?autoplay=1&controls=1`;
         setUrlVideo(url);
+        setId(item.id);
     }
+    setPlayVideo(true);
 }
 function handleVideoFullScreen(){
-    setVideoFullScreen(videoFullScreen);
+    setVideoFullScreen(!videoFullScreen);
 }
 
+useEffect( () => {
+    if (id !== item.id){
+        setPlayVideo(false);
+    }
+},[item, videoFullScreen,id]);
+
 return (
+    playVideo ? (
+        <div
+        className="details" 
+    >   
+        <Link to="/" className="details--backbutton">Back</Link>
+       
+            <section className={videoFullScreen ? 'video--fullscreen' : ''}> 
+          
+            <iframe frameBorder="0" height="100%" width="100%" title={item.original_name ||item.original_title}
+                        src={urlVideo}>
+                    </iframe>
+                    <div>
+                        <button onClick={() => handleVideoFullScreen()}><AspectRatioIcon /></button>
+                    </div>
+            </section>
+                        
+            
+        </div>
+    ) : (
     <div
         className="details" 
         style={{
@@ -47,7 +82,7 @@ return (
                     {
                         (item.videos.results !== undefined && item.videos.results.length !== 0)
                         &&
-                        <a onClick={() => handleShowTrailer()} className="details--viewtrailer" href='#a'><div><TheatersIcon />Assistir trailer</div></a>
+                        <a onClick={() => handleShowTrailer()} className="details--viewtrailer" href='#a'><div><TheatersIcon />Play Trailer</div></a>
                     }
                      {
                         (item.homepage !== undefined && item.homepage !== '') && 
@@ -70,24 +105,10 @@ return (
             <div>
                 <br/>
                 {item.overview}
-                <Popular />
             </div>
-            {
-                urlVideo !== undefined
-                &&
-                <aside className={videoFullScreen ? 'video--fullscreen' : ''}>
-                    <div>
-                        <button onClick={() => handleVideoFullScreen()}><AspectRatioIcon /></button>
-                    </div>
-                    <iframe frameBorder="0" height="100%" width="100%" title="1"
-                        src={urlVideo}>
-                    </iframe>
-                </aside>
-            }
-            
             
         </div>
-        
+    )
        
   );
 }

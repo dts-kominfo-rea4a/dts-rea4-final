@@ -1,6 +1,6 @@
 
 import React from 'react';
-import './FeaturedMovie.css';
+import '../../styles/FeaturedMovie.css';
 import AddIcon from '@mui/icons-material/Add';
 import PlayCircleIcon from '@mui/icons-material/PlayCircle';
 

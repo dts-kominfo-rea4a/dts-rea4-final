@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './MovieRow.css';
+import '../../styles/MovieRow.css';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
 import { Link } from 'react-router-dom';

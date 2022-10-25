@@ -1,19 +1,16 @@
 import React, { useEffect, useState } from "react";
-import MovieCard from "../components/Movie/MovieCard";
-import tmdb from '../config/tmdb';
+import  Movie from "../components/Movie/MovieCard";
 import '../styles/MovieList.css';
 import InfiniteScroll from "react-infinite-scroller";
-import {useParams} from 'react-router-dom';
-import NavbarUser from "../components/NavbarUser";
+import tmdb from '../../config/tmdb';
 
-const MoviesPage = () => {
-  let params = useParams();
+const MovieList = (item) => {
+ 
   const [movies, setMovies] = useState([]);
   const [page, setPage] = useState(1);
-  const category = params.category;
 
   const fetchData = async (pageNum) => {
-    const {data} = await tmdb.get( `movie/${category}` , { params : { page: pageNum, language: 'en-US' }});
+    const {data} = await tmdb.get( `movie/popular` , { params : { page: {pageNum}, language: 'en-US' }});
     // console.log(data);
     setMovies((prevstate) => [...prevstate, ...data.results]);
     // console.log(data.results);
@@ -26,12 +23,10 @@ const MoviesPage = () => {
   console.log(movies)
 
   const loadMore = () => {
-    // setPage((prevstate) => prevstate + 1);
+    setPage((prevstate) => prevstate + 1);
   };
 
   return (
-    <>
-    <NavbarUser />
     <div>
         <InfiniteScroll
         pageStart={0}
@@ -43,7 +38,7 @@ const MoviesPage = () => {
       <div className="mx-auto py-10 px-6 max-w-[90%]">
         <div className="grid grid-cols-2 gap-y-10 gap-x-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 xl:gap-x-8 mt-12">
           {movies.map((item) => (
-           <MovieCard item={item} key={item.id} type='movie'/>
+           <Movie item={item} key={item.id}></Movie>
           ))}
         </div>
         <div className="flex items-center justify-center mt-10">
@@ -55,8 +50,7 @@ const MoviesPage = () => {
       </div>
       </InfiniteScroll>
     </div>
-    </>
   );
 };
 
-export default MoviesPage;
+export default MovieList;

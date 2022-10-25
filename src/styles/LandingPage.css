@@ -1,17 +1,3 @@
-/* body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-} */
-
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
 body{
@@ -19,7 +5,7 @@ body{
   padding: 0px;
   
   background-color: #ffffff;
-  font-family: 'Poppins', 'Montserrat', sans-serif;
+  font-family: 'Poppins';
 }
 *{
   box-sizing: border-box;
@@ -48,7 +34,7 @@ input{
   position: relative;
   background-repeat: no-repeat;
   background-size: cover;
-  background-image:linear-gradient(rgba(226, 222, 233, 0.8), rgba(3, 13, 74, 0.8)), url('./images/bglanding.jpg');
+  background-image: url('../images/background.png');
 }
 nav{
 display: flex;
@@ -101,7 +87,7 @@ nav .menu-btn,
   display:none;
 }
 .name{
-font-family: 'Poppins', 'Montserrat';
+font-family: 'Poppins';
 width: 500px;
 position: absolute;
   left: 22%;
@@ -115,7 +101,7 @@ transform: translate(-22%,-50%);
   color: #969696;
 }
 .name h1{
-font-family:'Poppins', 'Montserrat';
+font-family:'Poppins';
 font-size: 40px;
 margin:0px;
 letter-spacing: 2px;
@@ -164,7 +150,7 @@ background-color: #0099ff;
   margin-top:100px ;
 width:100%;
 height: 120vh;
-background-color:#000809;
+background-color:#f3fdff;
 box-sizing: border-box;
 display: flex;
 align-items: center;
@@ -223,7 +209,7 @@ width: 600px;
   align-items: center;
   justify-content: center;
   padding-top: 40px ;
-  background-color: #060000;
+  background-color: #ffffff;
 }
 .a-container{
   display: flex;
@@ -264,7 +250,7 @@ width: 600px;
   position: relative;
   background-repeat: no-repeat;
   background-size: cover;
-  background-image: url(images/presentation.png);
+  background-image: url(../images/presentation.png);
   text-align: center;
 }
 #presentaion h1{

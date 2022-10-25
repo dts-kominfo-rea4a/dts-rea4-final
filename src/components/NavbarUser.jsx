@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -12,22 +12,29 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
-import InputBase from '@mui/material/InputBase';
 import SearchIcon from '@mui/icons-material/Search';
 import LightModeIcon from '@mui/icons-material/LightMode';
 import DarkModeIcon from '@mui/icons-material/DarkMode';
+import InputAdornment from '@mui/material/InputAdornment'
 
-import { styled, alpha } from '@mui/material/styles';
+
 
 import { signOutFromEverywhere} from '../authentication/firebase';
 import { useNavigate } from "react-router-dom";
 import useThemeStore from '../stores/theme';
+import {Link, TextField} from "@mui/material";
 
+import { auth, saveIdListMovies } from "../authentication/firebase";
+import { useAuthState } from "react-firebase-hooks/auth";
 
 function NavbarUser() {
 
+    const [user, loading] = useAuthState(auth);
+      
     const navigate = useNavigate();
     const appTheme = useThemeStore();
+
+    console.log('auth' , user.displayName);
     const btnSignOutOnClickHandler = async () => {
         await signOutFromEverywhere();
         navigate("/login")
@@ -36,6 +43,27 @@ function NavbarUser() {
     const [anchorElMovies, setAnchorElMovies] = React.useState(null);
     const [anchorElSeries, setAnchorElSeries] = React.useState(null);
     const [anchorElUser, setAnchorElUser] = React.useState(null);
+    const [keyword, setKeyword] = useState("");
+    
+    
+    const inputSearchOnChangeHandler = (evt) => {
+        setKeyword(evt.target.value);
+        if (evt.keyCode === 13){
+            console.log(keyword);
+            formOnSubmitHandler();
+        }
+        console.log(keyword);
+    };
+
+    const inputSearchKeyPressHandler = (evt) => {
+        
+    }
+    
+    const formOnSubmitHandler = async (evt) => {
+        evt.preventDefault();
+        await navigate(`/search/${keyword}`)
+    };
+
 
     const handleOpenMoviesMenu = (event) => {
         setAnchorElMovies(event.currentTarget);
@@ -63,50 +91,15 @@ function NavbarUser() {
         appTheme.setDarkMode();
     };
 
-    const Search = styled('div')(({ theme }) => ({
-        position: 'relative',
-        borderRadius: theme.shape.borderRadius,
-        backgroundColor: alpha(theme.palette.common.white, 0.15),
-        '&:hover': {
-          backgroundColor: alpha(theme.palette.common.white, 0.25),
-        },
-        marginLeft: 0,
-        width: '100%',
-        [theme.breakpoints.up('sm')]: {
-          marginLeft: theme.spacing(1),
-          width: 'auto',
-        },
-      }));
-      
-      const SearchIconWrapper = styled('div')(({ theme }) => ({
-        padding: theme.spacing(0, 2),
-        height: '100%',
-        position: 'absolute',
-        pointerEvents: 'none',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-      }));
-      
-      const StyledInputBase = styled(InputBase)(({ theme }) => ({
-        color: 'inherit',
-        '& .MuiInputBase-input': {
-          padding: theme.spacing(1, 1, 1, 0),
-          // vertical padding + font size from searchIcon
-          paddingLeft: `calc(1em + ${theme.spacing(4)})`,
-          transition: theme.transitions.create('width'),
-          width: '100%',
-          [theme.breakpoints.up('sm')]: {
-            width: '12ch',
-            '&:focus': {
-              width: '20ch',
-            },
-          },
-        },
-      }));
+    const handleSaveIdList = () => {
+        saveIdListMovies('Agung Trisnandar,8224044');
+    }
+
+   
 
     return (
         <AppBar position="static" style={{ background: 'transparent'}}>
+            
         <Container maxWidth="xl">
             <Toolbar disableGutters>
             <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
@@ -127,7 +120,7 @@ function NavbarUser() {
             >
                 LOGO
             </Typography>
-
+           
             <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
                 <IconButton
                 size="large"
@@ -161,7 +154,7 @@ function NavbarUser() {
             LOGO
             </Typography>
             <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-                <Button sx={{ my: 2, color: 'white', display: 'block' }} >
+                <Button sx={{ my: 2, color: 'white', display: 'block' }} onClick={handleSaveIdList} >
                     Home
                 </Button>
                 <Button sx={{ my: 2, color: 'white', display: 'block' }} onClick={handleOpenMoviesMenu}>
@@ -197,16 +190,16 @@ function NavbarUser() {
                     onClose={handleCloseMoviesMenu}
                 >
                     <MenuItem>
-                        <Typography textAlign="center">Popular</Typography>
+                        <Typography textAlign="center"><Link href="/movies/popular" underline="none">Popular</Link></Typography>
                     </MenuItem>
                     <MenuItem>
-                        <Typography textAlign="center">Now Playing</Typography>
+                        <Typography textAlign="center"><Link href="/movies/now_playing" underline="none">Now Playing</Link></Typography>
                     </MenuItem>
                     <MenuItem>
-                        <Typography textAlign="center">Upcoming</Typography>
+                        <Typography textAlign="center"><Link href="/movies/upcoming" underline="none">Upcoming</Link></Typography>
                     </MenuItem>
                     <MenuItem>
-                        <Typography textAlign="center">Top Rated</Typography>
+                        <Typography textAlign="center"><Link href="/movies/top_rated" underline="none">Top Rated</Link></Typography>
                     </MenuItem>
                 </Menu>
                 <Menu
@@ -226,36 +219,46 @@ function NavbarUser() {
                     onClose={handleCloseSeriesMenu}
                 >
                     <MenuItem>
-                        <Typography textAlign="center">Popular</Typography>
+                        <Typography textAlign="center"><Link href="/series/popular" underline="none">Popular</Link></Typography>
                     </MenuItem>
                     <MenuItem>
-                        <Typography textAlign="center">Airing Today</Typography>
+                        <Typography textAlign="center"><Link href="/series/airing_today" underline="none">Airing Today</Link></Typography>
                     </MenuItem>
                     <MenuItem>
-                        <Typography textAlign="center">On TV</Typography>
+                        <Typography textAlign="center"><Link href="/series/on_the_air" underline="none">On The Air</Link></Typography>
                     </MenuItem>
                     <MenuItem>
-                        <Typography textAlign="center">Top Rated</Typography>
+                        <Typography textAlign="center"><Link href="/series/top_rated" underline="none">Top Rated</Link></Typography>
                     </MenuItem>
                 </Menu>
             </Box>
-            <Search sx={{
-                marginRight: '1em'
-            }}>
-                
-            <SearchIconWrapper>
-              <SearchIcon />
-            </SearchIconWrapper>
-            <StyledInputBase
-              placeholder="Search…"
-              inputProps={{ 'aria-label': 'search' }}
+            <form onSubmit={formOnSubmitHandler}   >
+            <TextField
+            value={keyword}
+            onChange={inputSearchOnChangeHandler}
+            onKeyPress={inputSearchKeyPressHandler}
+            InputProps={{
+                startAdornment: (
+                  <InputAdornment>
+                    <IconButton>
+                      <SearchIcon />
+                    </IconButton>
+                  </InputAdornment>
+                )
+              }}
+            sx={{
+                borderColor:'white',
+                marginRight: '1em',
+            }}
+            size="small"
             />
-          </Search>
+          </form>
+          
             <Box sx={{ flexGrow: 0 }}>
                 
                 <Tooltip title="Open settings">
                     <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                        <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                        <Avatar alt={user.displayName} src={user.photoURL} /> 
                     </IconButton>
                     
                 </Tooltip>

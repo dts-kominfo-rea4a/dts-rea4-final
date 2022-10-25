@@ -1,22 +1,21 @@
 import React, {useEffect, useState} from 'react';
 import MovieRow from '../Movie/MovieRow';
-import useTmdbStore from '../../stores/tmdb';
-import axios from "axios";
 import Loading from '../../images/loading.gif'
+import tmdb from '../../config/tmdb';
 
 function NowPlaying() {
 
-    const tmdb = useTmdbStore();
+    // const tmdb = useTmdbStore();
     const [movies, setMovies] = useState();
 
     const myFetchData = async () => {
-        const {data} = await axios.get( tmdb.url + 'movie/now_playing?api_key=' + tmdb.key );
+        const {data} = await tmdb.get('movie/now_playing');
         setMovies(data);
     }
     // Fetch tmdb
     useEffect( () => {
         myFetchData();
-        // eslint-disable-next-line
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     },[]);
    
      return (

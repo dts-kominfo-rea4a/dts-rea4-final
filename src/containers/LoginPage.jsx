@@ -9,7 +9,8 @@ import { Link } from "react-router-dom";
 import { Icon } from "@iconify/react";
 import { Stack, Button, IconButton } from "@mui/material";
 
-import { register } from "../authentication/firebase";
+import { signInWithGoogle, sigInWithEmail } from "../authentication/firebase";
+import { useNavigate } from "react-router-dom";
 
 const RootStyle = styled("div")({
     background: "rgb(213, 235, 250 )",
@@ -36,6 +37,7 @@ const ContentStyle = styled("div")({
 
 let easing = [0.6, -0.05, 0.01, 0.99];
 
+
 const animate = {
     opacity: 1,
     y: 0,
@@ -50,21 +52,29 @@ const LoginPage = () => {
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const navigate = useNavigate();
 
-    // const formOnSubmitHandler = (evt) => {
-    //     console.log('fire');
-    //     evt.preventDefault();
-    //     console.log('register');
-    //     register(email,password);
-    // };
     
-    // const inputEmailOnChangeHandler = (evt) => {
-    //     setEmail(evt.target.value);
-    // };
+    const inputEmailOnChangeHandler = (evt) => {
+        setEmail(evt.target.value);
+        console.log(email);
+    };
     
-    // const inputPasswordOnChangeHandler = (evt) => {
-    //     setPassword(evt.target.value);
-    // };
+    const inputPasswordOnChangeHandler = (evt) => {
+        setPassword(evt.target.value);
+    };
+
+    const googleOnClickHandler = async (evt) => {
+        await signInWithGoogle();
+        navigate("/")
+    };
+
+    const formOnSubmitHandler = async (evt) => {
+        evt.preventDefault();
+        await sigInWithEmail(email,password);
+        
+        navigate("/")
+    };
 
     return (
         <RootStyle>
@@ -75,7 +85,7 @@ const LoginPage = () => {
                 <HeadingStyle >
                 <Box>
                     <Link to="/">
-                        <Box component="img" src="/logo.png" alt="logo" />
+                        <Box component="img" src="/logo.png" alt="logo" width="100px"/>
                     </Link>
                     
                 </Box>
@@ -92,38 +102,9 @@ const LoginPage = () => {
                                 padding: "0.5675rem",
                                 flex: 1,
                             }}
+                            onClick={googleOnClickHandler}
                         >
                             <Icon icon="eva:google-fill" color="#DF3E30" width={22} height={22} />
-                        </IconButton>
-                        <IconButton
-                        sx={{
-                            border: "2px solid #ccc",
-                            borderRadius: "5px",
-                            padding: "0.5675rem",
-                            flex: 1,
-                        }}
-                        >
-                        <Icon
-                            icon="eva:facebook-fill"
-                            color="#1877F2"
-                            width={22}
-                            height={22}
-                        />
-                        </IconButton>
-                        <IconButton
-                        sx={{
-                            border: "2px solid #ccc",
-                            borderRadius: "5px",
-                            padding: "0.5675rem",
-                            flex: 1,
-                        }}
-                        >
-                        <Icon
-                            icon="eva:twitter-fill"
-                            color="#1C9CEA"
-                            width={22}
-                            height={22}
-                        />
                         </IconButton>
                     </Stack>
                 </Box>
@@ -132,7 +113,7 @@ const LoginPage = () => {
                     OR
                     </Typography>
                 </Divider>
-                <form>
+                <form onSubmit={formOnSubmitHandler}>
                     <Box
                     
                     animate={{
@@ -156,7 +137,9 @@ const LoginPage = () => {
                             autoComplete="username"
                             type="email"
                             label="Email Address"
-                            
+                            value={email}
+                            onChange={inputEmailOnChangeHandler}
+                           
                             />
 
                             <TextField
@@ -164,6 +147,9 @@ const LoginPage = () => {
                             autoComplete="current-password"
                             type="password"
                             label="Password"
+                            value={password}
+                            onChange={inputPasswordOnChangeHandler}
+                           
                             />
                         </Box>
 

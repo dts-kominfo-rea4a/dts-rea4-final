@@ -1,23 +1,21 @@
 import React from 'react'
 import { useEffect,useState } from 'react';
 import Carousel from 'react-material-ui-carousel';
-import useTmdbStore from '../../stores/tmdb';
 import {Card, Box, CardContent, Typography, CardMedia} from "@mui/material";
-import axios from 'axios';
-import Loading from '../../images/loading.gif'
+import Loading from '../../images/loading.gif';
+import tmdb from '../../config/tmdb';
 
 function HomeCarrousel() {
-    const tmdb = useTmdbStore();
     
     const [movies, setMovies] = useState();
     const myFetchData = async () => {
-      const {data} = await axios.get( tmdb.url + 'trending/all/day?api_key=' + tmdb.key + '&languange=en-US&page=1');
+      const {data} = await tmdb.get( 'trending/all/day' ,{params: { language: 'en-US',page:'1'}});
       setMovies(data);
     }
     useEffect(
         () => {
             myFetchData();
-            // eslint-disable-next-line
+            // eslint-disable-next-line react-hooks/exhaustive-deps
         }, []
     )
    
