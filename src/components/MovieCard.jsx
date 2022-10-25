@@ -16,8 +16,10 @@ const MovieCard = ({ movie, media }) => {
     navigate(`/${media}/${movie.id}`);
   }
   return (
-    <Card sx={{ minWidth: 200, margin: 0.5 }} onClick={movieClickHandler}>
-      <CardActionArea>
+    <Card sx={{ minWidth: 200, margin: 0.5, '&:hover': { 
+      transform: 'scale(1.05)'
+    }}} onClick={movieClickHandler}>
+      <CardActionArea sx={{ }}>
         <CardMedia
           component="img"
           maxheight="50"
@@ -25,7 +27,7 @@ const MovieCard = ({ movie, media }) => {
           alt={movie.original_title?movie.original_title:movie.name}
         />
         <CardContent>
-          <Typography gutterBottom variant="body2">
+          <Typography  gutterBottom variant="body2">
             {movie.original_title?movie.original_title:movie.name}
           </Typography>
         </CardContent>

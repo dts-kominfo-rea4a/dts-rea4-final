@@ -157,7 +157,7 @@ const NavBar = () => {
 
   return (
     <>
-      <Box className={styles.grow}>
+      <Box className={styles.grow} sx={{position: 'sticky', top: 0, display: 'inline', zIndex: 1}}>
         <ThemeProvider theme={darkTheme}>
           <AppBar position="relative">
             <Container maxWidth="xl">
