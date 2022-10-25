@@ -150,15 +150,10 @@ const Home = ({ isLoggedIn }) => {
       </div>
       <div className="flex justify-between align-middle px-2">
         <div>
-          <h3 className="text-slate-50 text-2xl font-bold">
+          <h3 className="text-slate-100 font-bold">
             Trending This Week
           </h3>
         </div>
-        <div>
-          <h6 className="text-slate-100 font-bold">Movies >></h6>
-        </div>
-      </div>
-      <div className="px-2">
         <input
           type="text"
           value={keywordMovie}
@@ -166,6 +161,9 @@ const Home = ({ isLoggedIn }) => {
           className="bg-black text-slate-50 outline-none border-b-2 rounded-md w-full max-w-md"
           placeholder="search movie in here .."
         />
+        <div>
+          <h6 className="text-slate-100 font-bold">Movies >></h6>
+        </div>
       </div>
       {movieTrendingWeek.length !== 0 ? (
         <div className="flex flex-nowrap gap-2 justify-start mb-10 overflow-x-auto scrollbar-hide px-2">
@@ -197,15 +195,10 @@ const Home = ({ isLoggedIn }) => {
 
       <div className="flex justify-between align-middle px-2">
         <div>
-          <h3 className="text-slate-50 text-2xl font-bold mb-2 ">
+          <h3 className="text-slate-100 font-bold mb-2 ">
             Trending This Week
           </h3>
         </div>
-        <div>
-          <h6 className="text-slate-100 font-bold"> TV Series >></h6>
-        </div>
-      </div>
-      <div className="px-2">
         <input
           type="text"
           value={keywordTv}
@@ -213,6 +206,9 @@ const Home = ({ isLoggedIn }) => {
           className="bg-black text-slate-50 outline-none border-b-2 rounded-md w-full max-w-md"
           placeholder="search tv series in here .."
         />
+        <div>
+          <h6 className="text-slate-100 font-bold"> TV Series >></h6>
+        </div>
       </div>
       {TvTrendingWeek.length !== 0 ? (
         <div className="flex flex-nowrap gap-2 justify-start mb-10 overflow-x-auto scrollbar-hide px-2">
