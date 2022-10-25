@@ -6,13 +6,25 @@ import Show from './container/Show';
 import Dashboard from './container/Dashboard';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import LoginOrRegisterForm from './components/LoginOrRegister';
+import Register from './container/Register';
+import Login from './container/Login';
+import ProtectedComponent from './components/ProtectedComponent';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<App />}>
+        <Route path="/register" element={<Register />} />
+        <Route path="/login" element={<Login />} />
+        
+
+        <Route path="/" element={
+          <ProtectedComponent>
+          <App />
+         </ProtectedComponent>
+        }>
           <Route path="/" element={<Dashboard/>}></Route>
           <Route path="/show" element={<Show />} />
         </Route>

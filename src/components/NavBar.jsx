@@ -1,61 +1,8 @@
-// import React from "react";
-// import {
-//     Box,
-//     IconButton,
-//     Typography,
-// } from "@mui/material";
-// import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
-
-// const NavBar =()=>{
-//     return(
-//       <Box sx={{ flexGrow: 1, display:'flex'}}>
-//       {/* <AppBar position="static"> */}
-//         {/* <StyledToolbar> */}
-//           <Box sx ={{flexGrow: 1, p: 2, display:'flex', justifyContent:'space-between'}}>
-//             <Typography sx ={{display:'flex', marginLeft:'20px'}}>
-//               <Box component="span" sx={{p: 1,backgroundColor:'black', borderRadius:'4px', display:'', color:'white',marginTop:'3px' }}>
-//                 News
-//                 </Box>
-//                 <Box component="span" sx={{ p: 1, marginTop:'3px' }}>
-//                 Portal
-//                 </Box>
-//             </Typography>
-            
-//             <Box sx ={{display:'flex', gap:'1em'}} >     
-//               <IconButton size="large" aria-label="search" color="inherit">
-//                 <SearchIcon />
-//               </IconButton>
-
-//               <IconButton
-//                 size="large"
-//                 edge="start"
-//                 color="inherit"
-//                 aria-label="open drawer"
-//                 sx={{ mr: 2 }}
-//               >
-//                 <MenuIcon />
-                
-//               </IconButton>
-//             </Box>
-            
-//           </Box>
-//         {/* </StyledToolbar> */}
-//       {/* </AppBar> */}
-//     </Box>
-
-//     );
-    
-// };
-
 import * as React from 'react';
 import { styled, alpha, useTheme } from '@mui/material/styles';
-import Box from '@mui/material/Box';
-import Drawer from '@mui/material/Drawer';
 import MuiAppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
-import CssBaseline from '@mui/material/CssBaseline';
-import List from '@mui/material/List';
 import Typography from '@mui/material/Typography';
 import InputBase from '@mui/material/InputBase';
 import Divider from '@mui/material/Divider';
@@ -63,13 +10,25 @@ import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
-import ListItem from '@mui/material/ListItem';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
-import { Link } from '@mui/material';
+import useNewsStore from '../store/news';
+import { 
+  Link,
+  Box, 
+  Drawer,
+  List,
+  ListItem,
+  ListItemButton,
+  ListItemText,
+  Avatar,
+ } from '@mui/material';
+import { useEffect, } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { 
+  auth,
+  logOut,
+} from "../auth/firebase";
+import {useAuthState} from "react-firebase-hooks/auth"
+
 
 const drawerWidth = 240;
 const Search = styled('div')(({ theme }) => ({
@@ -149,8 +108,28 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 }));
 
 const NavBar=()=> {
+  const navigate = useNavigate();
+
+  const buttonLogoutOnClickHandler = async () => {
+    await logOut();
+    navigate("/login");
+
+  };
+
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
+  const [query, setQuery] = React.useState("");
+  // console.log(query);
+  const buttonSearchOnClickHandler = () => {
+    newsState.fetchNews(query)
+  };
+  
+
+  const newsState = useNewsStore();
+
+    useEffect(()=>{
+        newsState.fetchNews()
+    },[query]);
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -159,6 +138,8 @@ const NavBar=()=> {
   const handleDrawerClose = () => {
     setOpen(false);
   };
+  
+  const [user]=useAuthState(auth);
 
   return (
           
@@ -181,6 +162,7 @@ const NavBar=()=> {
                 <StyledInputBase sx={{marginTop:'5px'}}
                   placeholder="Search…"
                   inputProps={{ 'aria-label': 'search' }}
+                  onChange={e=>setQuery(e.target.value)}
                 />
                 <IconButton size="large" aria-label="search" color="inherit">
                   <SearchIcon /> 
@@ -221,15 +203,35 @@ const NavBar=()=> {
           <IconButton onClick={handleDrawerClose}>
             {theme.direction === 'rtl' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
           </IconButton>
+          {/* <Avatar></Avatar> */}
+          {/* {user ? (
+          <Typography> yesasa </Typography>): ""} */}
         </DrawerHeader>
         <Divider />
-        {/* <List> */}
-        
-                <Link to="/">
-                  <Typography variant='body1'>testes</Typography>
-                  </Link>
+        <List>
+        <ListItem  disablePadding>
+            {/* <Link to="/register"> */}
+              <ListItemButton >
+                {/* <ListItemIcon>
+                  
+                </ListItemIcon> */}
+                <ListItemText primary="Dashboard" />
+              </ListItemButton>
+              
+            {/* </Link> */}
+
+            </ListItem>
+            <ListItemButton onClick={buttonLogoutOnClickHandler}>
+                {/* <ListItemIcon>
+                  
+                </ListItemIcon> */}
+                <ListItemText primary="Logout" />
+              </ListItemButton>
+                
+                  
             
-        {/* </List> */}
+        </List>
+
       </Drawer>
     </Box>
   );

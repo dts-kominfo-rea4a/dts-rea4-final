@@ -12,7 +12,13 @@ import {
     Paper,
  } from "@mui/material";
  import { styled } from '@mui/material/styles';
+ import TimeAgo from 'javascript-time-ago';
+ import en from 'javascript-time-ago/locale/en'
 
+ TimeAgo.addLocale(en)
+
+ // Create formatter (English).
+ const timeAgo = new TimeAgo('en-US')
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -45,25 +51,27 @@ const Item = styled(Paper)(({ theme }) => ({
             <Box sx={{ maxWidth: 345, minHeight:450}} >
                 <CardMedia sx={{borderRadius:'10px'}}
                             component="img" key={news}
-                            image={news.image}
+                            image={news.image||"https://www.freeiconspng.com/img/13630"}
                             height='200'
                         />
-                        <CardContent>
+                        <CardContent sx={{height:100, p:1, paddingTop:2}}>
                 
-                <Typography variant="h6" color="black" >
-                    <text numberOfLines={2}>
-                    {news.title.length < 60
-                ? `${news.title}`
-                : `${news.title.substring(0, 60)} .....`}
+                <Typography variant="h6" color="black" 
+                sx={{display: "-webkit-box",
+                overflow: "hidden",
+                WebkitBoxOrient: "vertical",
+                WebkitLineClamp: 2,
+                textAlign:'justify'}}>
+                   
+                    {news.title}
 
-                    </text>
                 </Typography>
                 
             </CardContent>
             <CardActions sx={{display:'flex', justifyContent:"space-between", justify:'flex-bottom'}}>
                 {/* <Button size="small" sx={{color:'text.secondary'}}>{news.dateLong}</Button> */}
                 <Typography variant="body2" color="text.secondary">
-                {news.dateLong}
+                {timeAgo.format(news.dateLong)}
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
                 {news.author}

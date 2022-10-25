@@ -12,7 +12,7 @@ const sliceNews =(set)=>({
                 'X-RapidAPI-Key': '98e0325be9mshbc00fa3bbea457ap1a0c46jsn9bd045faddbc',
                 'X-RapidAPI-Host': 'newsx.p.rapidapi.com'
               },
-              params: {q:'royal',limit: '8', skip: '0'},
+              params: {limit: '8', skip: '0'},
             });
             set (
                 {news: data}

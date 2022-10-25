@@ -1,12 +1,16 @@
 // import logo from './logo.svg';
-import React from 'react';
+import React, {useEffect} from 'react';
 import index from './index.css';
 import Dashboard from './container/Dashboard';
 import axios from 'axios';
 import NavBar from './components/NavBar';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
-import { Outlet } from "react-router-dom";
+import { Navigate, Outlet } from "react-router-dom";
 import Footer from './components/Footer';
+import { auth } from './auth/firebase';
+import {useAuthState} from "react-firebase-hooks/auth";
+import { useNavigate  } from 'react-router-dom';
+
 
 const monoChromeTheme = createTheme({
   palette: {
@@ -38,6 +42,16 @@ export const ambilBerita = axios.request(options).then(function (response) {
 
 
 function App() {
+  const navigate=useNavigate();
+  const[user,isLoading, error]=useAuthState(auth);
+  useEffect(()=>{
+    if(isLoading){
+
+    }
+    if(!user){
+      navigate("/login")
+    }
+  })
   return (
     <div className="App">
       <ThemeProvider theme={monoChromeTheme}>
