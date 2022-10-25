@@ -45,7 +45,7 @@ const AppNavbar = (props) => {
         variant="h6"
         sx={{ my: 2 }}
       >
-        News Portal
+        {user ? user.email : "News Portal"}
       </Typography>
       <Divider />
       <ListItem disablePadding>
