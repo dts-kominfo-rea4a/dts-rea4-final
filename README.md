@@ -1,19 +1,27 @@
 # DTS REA4 Final Project
 
-Ketentuan lengkap bisa dilihat di [Final Project Guidelines](https://docs.google.com/document/d/122KyWNQ4xxU4aFwWbM4vIfH7LM4AH2CZEZa3YsEHjCk). 
+Final project untuk kelas REA4A pair 25
 
-## Daftar pair
+## Preview
 
-Tugas dikerjakan secara berpasangan, untuk daftar kelompok bisa dilihat pada masing-masing Classroom atau Discord Class.
+![](preview.gif)
 
-## Fork and Clone
+## Link live app
 
-Mohon perwakilan dari pair bisa melakukan fork repo ini dan clone, untuk repositori yang di fork menggunakan penamaan:
+Live app bisa dilihat di [https://dts4a-25-final.netlify.app](https://dts4a-25-final.netlify.app).
 
-`dts4[a/b/c]-[nomor pair]-final`
+## Penjelasan project
 
-Contoh: `dts4a-01-final`
+Untuk final project ini kami memutuskan untuk menggunakan api [Google Books APIs](https://developers.google.com/books).
 
-## Branching, commit
+Google Books adalah sebuah layanan pencarian buku atau ebook dan majalah yang disediakan oleh Google.
 
-Branch dapat sesuai dengan kebutuhan dan kesepakatan bersama dalam pair, namun hasil akhirnya harus di merge ke branch `main` dan di push ke Github. Pastikan hasil akhir kode sudah ter-push!
+Adapun fitur yang kami buat diantaranya:
+
+- Login dan register menggunakan email dan akun google.
+- Error handling untuk proses authentication.
+- Pencarian buku dengan fitur paginate.
+- Detail buku yang menampilkan judul, pembuat, penerbit, deskripsi (jika ada), serta link eksternal menuju google books dan google paly books
+- Fitur bookmark dimana kita bisa menyimpan daftar buku yang diiginkan
+
+Notes: Untuk Google Books APIs hanya bisa mengambil maksimal 40 data, dan api memberikan total hasil pencarian. Sayangnya tiap mengambil data selanjutnya total hasil pencarian tersebut tidak akurat dan selalu berubah, sehingga jumlah halaman paginate selalu berubah. Jadi untuk halaman paginate paling akhir data selalu kosong. Namun untuk paginate prev, next dan halaman paginate awal masih berjalan dengan baik.
