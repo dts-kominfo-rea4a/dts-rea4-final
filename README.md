@@ -17,3 +17,18 @@ Contoh: `dts4a-01-final`
 ## Branching, commit
 
 Branch dapat sesuai dengan kebutuhan dan kesepakatan bersama dalam pair, namun hasil akhirnya harus di merge ke branch `main` dan di push ke Github. Pastikan hasil akhir kode sudah ter-push!
+
+# -- Finished Project --
+
+<img src="https://thumbs.gfycat.com/LiquidFaintCaterpillar-size_restricted.gif" width="100%" /><br/>
+
+`Live Demo` [Movies App](https://xcplaysure.netlify.app)<br/><br/>
+`Feature list:`
+<ul>
+    <li>Login, Register & Logout</li>
+    <li>Fully function tab</li>
+    <li>Search any Movie & TV Shows title</li>
+    <li>Click any movie card redirect to view movie</li>
+</ul><br/>
+
+`PS: This project was done on solo effort`
