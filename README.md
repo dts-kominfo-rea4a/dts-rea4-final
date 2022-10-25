@@ -1,6 +1,6 @@
 # DTS REA4 Final Project
 
-Ketentuan lengkap bisa dilihat di [Final Project Guidelines](https://docs.google.com/document/d/122KyWNQ4xxU4aFwWbM4vIfH7LM4AH2CZEZa3YsEHjCk). 
+Ketentuan lengkap bisa dilihat di [Final Project Guidelines](https://docs.google.com/document/d/122KyWNQ4xxU4aFwWbM4vIfH7LM4AH2CZEZa3YsEHjCk).
 
 ## Daftar pair
 
@@ -17,3 +17,22 @@ Contoh: `dts4a-01-final`
 ## Branching, commit
 
 Branch dapat sesuai dengan kebutuhan dan kesepakatan bersama dalam pair, namun hasil akhirnya harus di merge ke branch `main` dan di push ke Github. Pastikan hasil akhir kode sudah ter-push!
+
+Video gif
+Register
+https://gfycat.com/diligentthirdblowfish
+
+Login
+https://gfycat.com/blissfulgiganticcougar
+
+Logout
+https://gfycat.com/heavyvaluabledove
+
+Homepage
+https://gfycat.com/whichrepentantkrill
+
+Detail Page
+
+
+Link Api
+ https://api.thenewsapi.com/
