@@ -2,6 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+@import "~slick-carousel/slick/slick.css"; 
+@import "~slick-carousel/slick/slick-theme.css";
+
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap");
 
 html {
@@ -11,4 +14,13 @@ html {
     "Noto Color Emoji";
   background-color: #201f1f;
   color: #fff;
+}
+
+.slick-prev {
+  left: 0.5%;
+  z-index: 5;
+}
+.slick-next {
+  right: 0.5%;
+  z-index: 5;
 }
