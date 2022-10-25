@@ -19,7 +19,7 @@ const CardViewMovie = ({movie}) => {
 
     const playOnClick = (id) => {
         navigate("/playmovie", {
-            state:{ movieid:id }
+            state:{ movieid:id, movietype:(movie.title ? "movie" : "tv") }
         });
     }
 

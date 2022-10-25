@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 
-import { Grid, TextField, InputAdornment  } from "@mui/material";
+import { Grid, TextField, InputAdornment, Typography } from "@mui/material";
 import SearchIcon from '@mui/icons-material/Search';
 import { useLocation } from "react-router-dom";
 
@@ -58,7 +58,14 @@ const SearchPage = () => {
             {
                 movie.isLoading ? (<img src={loading} alt="loading" />) : (
                     movie.error ? (console.log("error: ", movie.error)) : (
-                        <MovieList movies={movie.data.results} />
+                        movie.data.results.length > 0 ? (
+                                <MovieList movies={movie.data.results} />
+                        ) : (
+                            <>
+                                <Typography variant="h4" sx={{marginTop:'50px', color:'red'}}>Opss... No matched data!</Typography>
+                                <Typography variant="subtitle1" sx={{color:'red'}}>Psst! Try with another keywords</Typography>
+                            </>
+                        )
                     )
                 )
             }

@@ -36,7 +36,7 @@ const CardMovieBanner = ({movie}) => {
 
     const movieOnClick = (id) =>{
         navigate("/viewmovie", {
-            state:{ movieid:id }
+            state:{ movieid:id, movietype:(movie.title ? "movie" : "tv") }
         });
     }
 

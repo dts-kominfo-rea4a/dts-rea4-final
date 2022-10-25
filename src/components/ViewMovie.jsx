@@ -63,22 +63,24 @@ const ViewMovie = ({path}) => {
         >
             <NavBar />
             {
-                getbyid_movie_loading ? (<img src={loading} alt="loading" />) : (
-                    error_getbyid ? (
-                        gettvbyid_movie_loading ? (<img src={loading} alt="loading" />) : (
-                            error_gettvbyid ? (console.log("error: ", error_gettvbyid)) : (
-                                path === "view" ? (
-                                    <CardViewMovie movie={gettvbyid_movie} />
-                                ) : (
-                                    <CardPlayMovie movie={gettvbyid_movie} />
-                                )
+                location.state.movietype === "movie" ? (
+                    getbyid_movie_loading ? (<img src={loading} alt="loading" />) : (
+                        error_getbyid ? (console.log("error: ", error_getbyid)) : (
+                            path === "view" ? (
+                                <CardViewMovie movie={getbyid_movie} />
+                            ) : (
+                                <CardPlayMovie movie={getbyid_movie} />
                             )
                         )
-                    ) : (
-                        path === "view" ? (
-                            <CardViewMovie movie={getbyid_movie} />
-                        ) : (
-                            <CardPlayMovie movie={getbyid_movie} />
+                    )
+                ) : (
+                    gettvbyid_movie_loading ? (<img src={loading} alt="loading" />) : (
+                        error_gettvbyid ? (console.log("error: ", error_gettvbyid)) : (
+                            path === "view" ? (
+                                <CardViewMovie movie={gettvbyid_movie} />
+                            ) : (
+                                <CardPlayMovie movie={gettvbyid_movie} />
+                            )
                         )
                     )
                 )

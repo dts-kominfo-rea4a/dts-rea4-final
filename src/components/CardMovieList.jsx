@@ -24,7 +24,7 @@ const CardMovieList = ({movie}) => {
     const movieOnClick = (id) =>{
         if(!isPerson()){
             navigate("/viewmovie", {
-                state:{ movieid:id }
+                state:{ movieid:id, movietype:(movie.title ? "movie" : "tv") }
             });
         }
     }
