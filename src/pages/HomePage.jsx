@@ -6,7 +6,7 @@ function HomePage() {
   return (
     <div>
       {/* Header */}
-      <Navbar />
+      <Navbar loginStatus={true} />
       {/* Main Content */}
       <main>HomePage</main>
       {/* Footer */}
