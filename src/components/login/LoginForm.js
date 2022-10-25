@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link as RouterLink, useLocation, useNavigate } from "react-router-dom";
 import LoadingButton from "@mui/lab/LoadingButton";
 import {
@@ -12,6 +12,12 @@ import {
   TextField,
 } from "@mui/material";
 import { Icon } from "@iconify/react";
+import {
+  auth,
+  signInDenganEmailAndPassword,
+  registerWithEmailAndPassword,
+} from "../../authentication/firebase";
+import { useAuthState } from "react-firebase-hooks/auth";
 
 let easing = [0.6, -0.05, 0.01, 0.99];
 const animate = {
@@ -24,13 +30,64 @@ const animate = {
   },
 };
 
-const LoginForm = ({ setAuth }) => {
+const LoginForm = ({ loginOrRegister }) => {
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
-  const isSubmitting = false;
+  let isSubmitting = false;
+
+  const [user, isLoading, error] = useAuthState(auth);
 
   const [showPassword, setShowPassword] = useState(false);
+  const [credential, setCredential] = useState({
+    email: "",
+    password: "",
+  });
+
+  const textFieldEmailOnChangeHandler = (event) => {
+    setCredential({
+      ...credential,
+      email: event.target.value,
+    });
+  };
+
+  const textFieldPasswordOnChangeHandler = (event) => {
+    setCredential({
+      ...credential,
+      password: event.target.value,
+    });
+  };
+
+  const loginHandler = () => {
+    isSubmitting = true;
+    signInDenganEmailAndPassword(credential.email, credential.password);
+    isSubmitting = false;
+    navigate("/home");
+  };
+
+  const registerHandler = () => {
+    isSubmitting = true;
+    registerWithEmailAndPassword(credential.email, credential.password);
+    isSubmitting = false;
+    navigate("/login");
+  };
+
+  const loginOnClickHandler = (event) => {
+    if (loginOrRegister === "login") {
+      loginHandler();
+    } else {
+      registerHandler();
+    }
+  };
+
+  useEffect(() => {
+    if (isLoading) {
+      return;
+    }
+    if (user) {
+      navigate("/home");
+    }
+  }, [user, isLoading, navigate]);
 
   return (
     <Box
@@ -54,6 +111,8 @@ const LoginForm = ({ setAuth }) => {
           autoComplete="username"
           type="email"
           label="Email Address"
+          value={credential.email}
+          onChange={textFieldEmailOnChangeHandler}
         />
 
         <TextField
@@ -61,6 +120,8 @@ const LoginForm = ({ setAuth }) => {
           autoComplete="current-password"
           type={showPassword ? "text" : "password"}
           label="Password"
+          value={credential.password}
+          onChange={textFieldPasswordOnChangeHandler}
         />
       </Box>
 
@@ -84,8 +145,13 @@ const LoginForm = ({ setAuth }) => {
           type="submit"
           variant="contained"
           loading={isSubmitting}
+          onClick={loginOnClickHandler}
         >
-          {isSubmitting ? "loading..." : "Login"}
+          {isSubmitting
+            ? "loading..."
+            : loginOrRegister === "login"
+            ? "Login"
+            : "Register"}
         </LoadingButton>
       </Box>
     </Box>

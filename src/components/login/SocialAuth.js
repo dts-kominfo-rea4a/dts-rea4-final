@@ -1,7 +1,18 @@
 import { Icon } from "@iconify/react";
 import { Stack, Button, IconButton } from "@mui/material";
+import { auth, signInWithGoogle } from "../../authentication/firebase";
 
 const SocialAuth = () => {
+  const loginWithGoogle = (e) => {
+    signInWithGoogle();
+  };
+  const loginWithFacebook = (e) => {
+    alert("Under construction!");
+  };
+  const loginWithTwitter = (e) => {
+    alert("Under construction!");
+  };
+
   return (
     <>
       <Stack direction="row" spacing={2}>
@@ -12,6 +23,7 @@ const SocialAuth = () => {
             padding: "0.5675rem",
             flex: 1,
           }}
+          onClick={loginWithGoogle}
         >
           <Icon icon="eva:google-fill" color="#DF3E30" width={22} height={22} />
         </IconButton>
@@ -22,6 +34,7 @@ const SocialAuth = () => {
             padding: "0.5675rem",
             flex: 1,
           }}
+          onClick={loginWithFacebook}
         >
           <Icon
             icon="eva:facebook-fill"
@@ -37,6 +50,7 @@ const SocialAuth = () => {
             padding: "0.5675rem",
             flex: 1,
           }}
+          onClick={loginWithTwitter}
         >
           <Icon
             icon="eva:twitter-fill"

@@ -12,6 +12,7 @@ export const Product = styled(Box)(({ theme }) => ({
   [theme.breakpoints.up("md")]: {
     position: "relative",
   },
+  width: "200px",
 }));
 
 export const ProductImage = styled("img")(({ src, theme }) => ({

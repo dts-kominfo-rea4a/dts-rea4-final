@@ -46,33 +46,44 @@ const fadeInUp = {
   },
 };
 
-const Login = ({ setAuth }) => {
+const Login = ({ loginOrRegister }) => {
   return (
     <RootStyle>
       <Container maxWidth="sm">
         <ContentStyle>
-          <HeadingStyle>
-            {/* <Logo /> */}
-            <Typography sx={{ color: "text.secondary", mb: 5 }}>
-              Login to your account
-            </Typography>
-          </HeadingStyle>
+          {loginOrRegister === "login" ? (
+            <>
+              <HeadingStyle>
+                {/* <Logo /> */}
+                <Typography sx={{ color: "text.secondary", mb: 5 }}>
+                  Login to your account
+                </Typography>
+              </HeadingStyle>
 
-          <Box>
-            <SocialAuth />
-          </Box>
+              <Box>
+                <SocialAuth />
+              </Box>
 
-          <Divider sx={{ my: 3 }}>
-            <Typography variant="body2" sx={{ color: "text.secondary" }}>
-              OR
-            </Typography>
-          </Divider>
+              <Divider sx={{ my: 3 }}>
+                <Typography variant="body2" sx={{ color: "text.secondary" }}>
+                  OR
+                </Typography>
+              </Divider>
+            </>
+          ) : (
+            <HeadingStyle>
+              {/* <Logo /> */}
+              <Typography sx={{ color: "text.secondary", mb: 5 }}>
+                Register your account
+              </Typography>
+            </HeadingStyle>
+          )}
 
-          <LoginForm setAuth={setAuth} />
+          <LoginForm loginOrRegister={loginOrRegister} />
 
           <Typography sx={{ mt: 3 }}>
             Don’t have an account?{" "}
-            <Link variant="subtitle2" component={RouterLink} to="/signup">
+            <Link variant="subtitle2" component={RouterLink} to="/register">
               Sign up
             </Link>
           </Typography>

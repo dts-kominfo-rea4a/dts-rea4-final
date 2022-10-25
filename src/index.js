@@ -9,6 +9,7 @@ import Movies from "./components/movie";
 import Banner from "./components/banner";
 import LoginOrRegisterForm from "./components/login";
 import Watchlist from "./components/watchlist";
+import ProtectedComponent from "./components/auth/ProtectedComponent";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -23,7 +24,14 @@ root.render(
           path="register"
           element={<LoginOrRegisterForm loginOrRegister={"register"} />}
         />
-        <Route path="/" element={<App />}>
+        <Route
+          path="/"
+          element={
+            <ProtectedComponent>
+              <App />
+            </ProtectedComponent>
+          }
+        >
           <Route path="/home" element={<Banner />} />
           <Route path="/products" element={<Products />} />
           <Route path="/movies" element={<Movies />} />
