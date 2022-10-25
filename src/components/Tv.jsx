@@ -6,9 +6,6 @@ import ModalVideo from "./ModalVideo";
 const Tv = ({ tv, videos }) => {
   const base_url = "https://image.tmdb.org/t/p/w1280/";
   const [modalOpen, setModalOpen] = useState(false);
-  const videoCloseHandler = () => {
-    setModalOpen(false);
-  };
   return (
     <>
       {tv ? (
@@ -95,7 +92,7 @@ const Tv = ({ tv, videos }) => {
               isOpen={modalOpen}
               label={videos[0].name}
               videoKey={videos[0].key}
-              closeHandler={() => videoCloseHandler}
+              closeHandler={() => setModalOpen(false)}
             />
           ) : (
             ""
