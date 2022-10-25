@@ -7,13 +7,13 @@ const MainMenu = () => {
         <Link href="/">
           Home
         </Link>
-        <Link href="/series">
+        <Link href="/category/series">
           Series
         </Link>
-        <Link href="/movies">
+        <Link href="/category/movies">
           Movies
         </Link>
-        <Link href="/new">
+        <Link href="/category/new">
           New and Popular
         </Link>
         <Link href="/my-list">

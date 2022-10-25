@@ -1,15 +1,14 @@
 .banner {
     position: relative;
     height: 500px;
-    color: white;
-    object-fit: contain;
+    color: white;   
     display: flex;
     align-items: center;
 }
 
 .banner__contents {
-    flex: 1;
-    padding: 2em;
+    flex: 1 1;
+    padding: 2em 4em;
     z-index: 1;
 }
 
@@ -75,4 +74,50 @@
     left: 0;
 }
 
+.banner .play-button {
+    background: #fff;
+    color: #000;
+}
 
+.banner .info-button {
+    color: #000;
+    background: #fff;
+    opacity: .4;
+}
+
+.banner .info-button:hover {
+    background: #ff9800;
+    color: #fff;
+    opacity: 1;
+}
+
+.banner .play-button:hover {
+    background: #ba001a;
+    color: #fff;
+}
+
+.slider-banner {
+    padding-top: 50px;
+}
+
+.slider-banner .slick-next {
+    right: 10px;
+    z-index: 9;
+}
+
+.slider-banner .slick-prev {
+    left: 10px;
+    z-index: 9;
+}
+
+.slider-banner .slick-prev:before,
+.slider-banner .slick-next:before {
+    font-size: 40px;
+    color: #fff;
+}
+
+.slider-banner .slick-next,
+.slider-banner .slick-prev {
+    height: 100%;
+    width: 50px;
+}

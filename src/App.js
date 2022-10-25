@@ -10,8 +10,9 @@ import auth from "./firebase";
 import { login, logout, selectUser } from "./features/userSlice";
 import ProfileScreen from "./containers/ProfileScreen";
 import NotFoundPage from "./containers/NotFoundPage";
-// import MovieDetail from "./containers/MovieDetail";
+import CategoryScreen from "./containers/Category";
 import Searched from "./containers/Searched";
+
 import { useEffect } from "react";
 
 // import axios from "../axios";
@@ -56,10 +57,12 @@ function App() {
             <Route path="/searched/:search" element={<Searched />} />
             <Route path="/movie/:name" element={<MovieDetail />} />
             <Route path="/profile" element={<ProfileScreen />} />
+            <Route path="/category/:cat" element={<CategoryScreen />} />
             <Route path="/" element={<HomeScreen />} />
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
         )}
+        
       </div>
     );
 }

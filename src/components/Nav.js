@@ -5,8 +5,10 @@ import logo from "../logo.png";
 import MainMenu from "./MainMenu";
 import IconButton from "@mui/material/IconButton";
 import SearchIcon from "@mui/icons-material/Search";
+import { useParams } from "react-router-dom";
 
 const Nav = () => {
+  let params = useParams();
   const [show, setShow] = useState(false);
   const navigate = useNavigate();
   const [inputSearch, setInputSearch] = useState("");
@@ -22,6 +24,12 @@ const Nav = () => {
       setShow(false);
     }
   };
+
+  useEffect(() => {
+    if (params.search) {
+      setInputSearch(params.search);
+    }
+  }, [params.search]);
 
   useEffect(() => {
     window.addEventListener("scroll", transitionNavBar);
