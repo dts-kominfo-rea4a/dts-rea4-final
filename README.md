@@ -1,7 +1,7 @@
 # News Center
 
 ## Video dokumentasi
-![DTS-news-center](https://user-images.githubusercontent.com/39264221/197574456-a512e791-9193-4447-ba87-3e17239f379c.gif)
+![DTS-news-center](https://thumbs.gfycat.com/IncomparableGroundedCuscus-size_restricted.gif)
 
 ## Link app
 https://news-center.vercel.app/
