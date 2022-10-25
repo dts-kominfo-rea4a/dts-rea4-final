@@ -15,6 +15,10 @@ import ListItemText from "@mui/material/ListItemText";
 import { Link } from "react-router-dom";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth, signOutAll } from "../authentications/firebaseAuth";
+import Modal from "@mui/material/Modal";
+import Button from "@mui/material/Button";
+import TextField from "@mui/material/TextField";
+import { useNavigate } from "react-router-dom";
 
 const drawerWidth = 240;
 const navItems = [
@@ -23,10 +27,16 @@ const navItems = [
 ];
 
 const AppNavbar = (props) => {
+  let navigate = useNavigate();
+
   const [user] = useAuthState(auth);
 
   const { window } = props;
   const [mobileOpen, setMobileOpen] = useState(false);
+
+  const [openSearch, setOpenSearch] = useState(false);
+
+  const [textSearch, setTextSearch] = useState("");
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
@@ -34,6 +44,17 @@ const AppNavbar = (props) => {
 
   const handleSignOut = () => {
     signOutAll();
+  };
+
+  const handleOpenSearch = () => setOpenSearch(true);
+  const handleCloseSearch = () => setOpenSearch(false);
+
+  const onChangeHandler = (event) => {
+    setTextSearch(event.target.value);
+  };
+  const onSubmitHandler = (event) => {
+    event.preventDefault();
+    navigate(`/${textSearch}`);
   };
 
   const drawer = (
@@ -125,6 +146,7 @@ const AppNavbar = (props) => {
             color="inherit"
             aria-label="menu"
             sx={{ mr: 2 }}
+            onClick={handleOpenSearch}
           >
             <SearchIcon />
           </IconButton>
@@ -160,6 +182,54 @@ const AppNavbar = (props) => {
           {drawer}
         </Drawer>
       </Box>
+      <Modal
+        open={openSearch}
+        onClose={handleCloseSearch}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box
+          sx={{
+            position: "absolute",
+            top: "20%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+            width: 300,
+            bgcolor: "background.paper",
+            border: "2px solid #000",
+            boxShadow: 24,
+            p: 4,
+          }}
+        >
+          <Box
+            onSubmit={onSubmitHandler}
+            component="form"
+            noValidate
+            sx={{ mt: 1 }}
+          >
+            <TextField
+              color="secondary"
+              margin="normal"
+              fullWidth
+              name="search"
+              label="Search"
+              type="text"
+              id="search"
+              value={textSearch}
+              onChange={onChangeHandler}
+            />
+            <Button
+              color="secondary"
+              type="submit"
+              fullWidth
+              variant="contained"
+              sx={{ mt: 3, mb: 2 }}
+            >
+              Search
+            </Button>
+          </Box>
+        </Box>
+      </Modal>
     </Box>
   );
 };

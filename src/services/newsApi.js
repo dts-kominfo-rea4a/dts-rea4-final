@@ -9,7 +9,11 @@ export const newsApi = createApi({
     getTopHeadlines: builder.query({
       query: () => `top-headlines?country=id&category=sports&apiKey=${apiKey}`,
     }),
+    getNewsBySearch: builder.query({
+      query: (textSearch) =>
+        `everything?q=${encodeURI(textSearch)}&apiKey=${apiKey}`,
+    }),
   }),
 });
 
-export const { useGetTopHeadlinesQuery } = newsApi;
+export const { useGetTopHeadlinesQuery, useGetNewsBySearchQuery } = newsApi;
