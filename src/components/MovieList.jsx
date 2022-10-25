@@ -39,17 +39,17 @@ const MovieList = ({movies, title}) => {
     const responsive_large = {
         superLargeDesktop: {
             breakpoint: { max: 4000, min: 3000 },
-            items: 4,
+            items: 5,
             slidesToSlide: 1
         },
         desktop: {
             breakpoint: { max: 3000, min: 1024 },
-            items: 3,
+            items: 4,
             slidesToSlide: 1
         },
         tablet: {
             breakpoint: { max: 1024, min: 464 },
-            items: 2,
+            items: 3,
             slidesToSlide: 1
         },
         mobile: {
@@ -67,6 +67,10 @@ const MovieList = ({movies, title}) => {
         }
     }
 
+    const filtered_movies = movies.filter(movie => movie.media_type !== "person" && 
+        (movie.backdrop_path !== null || movie.poster_path !== null)
+    );
+
     return (
         <Box sx={{width:'90%', marginTop:'20px', bgcolor:'inherit'}}>
             <Typography variant="h5" sx={{color:'white'}}>{title}</Typography>
@@ -81,7 +85,7 @@ const MovieList = ({movies, title}) => {
                 removeArrowOnDeviceType={["tablet", "mobile"]}
                 itemClass="carousel-item-padding-40-px">
                 {
-                    movies?.map((movie) => (
+                    filtered_movies?.map((movie) => (
                         isSearch() ? (
                             <CardMovieSearch movie={movie} key={movie.id} />
                         ) : (
