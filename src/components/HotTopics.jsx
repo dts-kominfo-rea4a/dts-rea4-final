@@ -42,7 +42,7 @@ const HotTopics = ({ data }) => {
               >
                 <CardMedia
                   component="img"
-                  image={data.articles[0].urlToImage}
+                  image={data.articles[0]?.urlToImage}
                   alt="green iguana"
                   sx={{
                     height: { xs: 250, sm: 400, md: 400, lg: 400, xl: 400 },
@@ -65,7 +65,7 @@ const HotTopics = ({ data }) => {
                       fontSize: { xs: 16, sm: 32, md: 32, lg: 32, xl: 32 },
                     }}
                   >
-                    {data.articles[0].title.substring(0, 55)}...read more
+                    {data.articles[0]?.title.substring(0, 55)}...read more
                   </Typography>
                   <CardActions>
                     <Typography
@@ -74,7 +74,7 @@ const HotTopics = ({ data }) => {
                       component="div"
                       sx={{ fontWeight: 700 }}
                     >
-                      {dayjs(data.articles[0].publishedAt).fromNow()}
+                      {dayjs(data.articles[0]?.publishedAt).fromNow()}
                     </Typography>
                     <Typography
                       gutterBottom
@@ -82,7 +82,7 @@ const HotTopics = ({ data }) => {
                       component="div"
                       sx={{ fontWeight: 700 }}
                     >
-                      {data.articles[0].source.name}
+                      {data.articles[0].source?.name}
                     </Typography>
                   </CardActions>
                 </Box>
@@ -109,7 +109,7 @@ const HotTopics = ({ data }) => {
                 variant="body1"
                 sx={{ fontSize: 21 }}
               >
-                {data.articles[0].content.substring(0, 160)}...read more
+                {data.articles[0]?.content.substring(0, 160)}...read more
               </Typography>
             </Grid>
           </Grid>

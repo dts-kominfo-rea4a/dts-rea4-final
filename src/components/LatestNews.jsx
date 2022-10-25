@@ -43,8 +43,8 @@ const LatestNews = ({ data }) => {
                 <CardMedia
                   component="img"
                   height="245"
-                  image={index.urlToImage}
-                  alt={index.urlToImage}
+                  image={index?.urlToImage}
+                  alt={index?.urlToImage}
                 />
                 <CardContent>
                   <Typography
@@ -53,7 +53,7 @@ const LatestNews = ({ data }) => {
                     component="div"
                     sx={{ fontWeight: 700 }}
                   >
-                    {index.title.substring(0, 40)}...read more
+                    {index.title?.substring(0, 40)}...read more
                   </Typography>
                 </CardContent>
                 <CardActions sx={{ color: "grey" }}>
@@ -63,7 +63,7 @@ const LatestNews = ({ data }) => {
                     component="div"
                     sx={{ color: "grey", fontWeight: 700 }}
                   >
-                    {dayjs(index.publishedAt).fromNow()}
+                    {dayjs(index?.publishedAt).fromNow()}
                   </Typography>
                   <Typography
                     gutterBottom
@@ -71,7 +71,7 @@ const LatestNews = ({ data }) => {
                     component="div"
                     sx={{ color: "grey", fontWeight: 700 }}
                   >
-                    {index.source.name}
+                    {index.source?.name}
                   </Typography>
                 </CardActions>
               </CardActionArea>
