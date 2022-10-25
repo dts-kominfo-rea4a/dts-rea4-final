@@ -37,8 +37,8 @@ function Banner() {
             <div className="absolute h-full w-full bg-gradient-to-t from-[#040C16]"></div>
             <div className="absolute h-full w-full bg-gradient-to-r from-secondary-100/10"></div>
             <div className="absolute left-0 h-full max-w-[640px] mx-12 flex flex-col justify-center items-start gap-4">
-              <h1 className="text-5xl font-bold">{trendingItem.title ? trendingItem.title : trendingItem.name}</h1>
-              <button className="bg-secondary-600/70 rounded px-8 py-3 text-sm">Detail</button>
+              <h2 className="text-5xl font-bold">{trendingItem.title ? trendingItem.title : trendingItem.name}</h2>
+              {/* <button className="bg-secondary-600/70 rounded px-8 py-3 text-sm">{trendingItem.release_date}</button> */}
               <p className="text-sm font-light">{trendingItem.overview}</p>
             </div>
           </div>

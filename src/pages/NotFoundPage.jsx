@@ -12,7 +12,7 @@ function NotFoundPage() {
   return (
     <div className="min-h-screen flex flex-col">
       {/* Header */}
-      <Navbar />
+      <Navbar loginStatus={true}/>
       {/* Main Content */}
       <main className="grow py-16 px-4 flex flex-col justify-center items-center text-center">
         <h1 className="text-6xl pb-2 font-bold">Page not Found</h1>

@@ -2,6 +2,7 @@ import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import logo from "../assets/logo.svg";
 import { signOutCurrentUser } from "../authentication/firebase";
+import ProtectedComponent from "./ProtectedComponent";
 
 function Navbar({ loginStatus }) {
   const navigate = useNavigate;
@@ -17,12 +18,14 @@ function Navbar({ loginStatus }) {
         </a>
         <ul className="flex items-center gap-6">
           {loginStatus ? (
-            <button
-              className="px-4 py-2 rounded text-sm bg-primary cursor-pointer hover:bg-primary/90 active:bg-primary"
-              onClick={handleSignOut}
-            >
-              Sign Out
-            </button>
+            <ProtectedComponent>
+              <button
+                className="px-4 py-2 rounded text-sm bg-primary cursor-pointer hover:bg-primary/90 active:bg-primary"
+                onClick={handleSignOut}
+              >
+                Sign Out
+              </button>
+            </ProtectedComponent>
           ) : (
             <>
               <Link to="/login">Sign In</Link>

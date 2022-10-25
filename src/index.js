@@ -9,6 +9,7 @@ import HomePage from "./pages/HomePage";
 import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
 import NotFoundPage from "./pages/NotFoundPage";
+import DatailPage from "./pages/DatailPage";
 import ProtectedComponent from "./components/ProtectedComponent";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
@@ -34,8 +35,16 @@ root.render(
         />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
-        <Route path="/not-found" element={<NotFoundPage />} />
+        <Route
+          path="/detail/:type/:id"
+          element={
+            <ProtectedComponent>
+              <DatailPage />
+            </ProtectedComponent>
+          }
+        />
 
+        <Route path="/not-found" element={<NotFoundPage />} />
         <Route path="*" element={<Navigate to={"/not-found"} />} />
       </Routes>
     </BrowserRouter>
