@@ -16,7 +16,10 @@ const MovieVertical = ({ movie }) => {
   const base_url = "https://image.tmdb.org/t/p/w220_and_h330_face/";
   // Contact berisi foto, nama, telepon, dan email
   return (
-    <Card sx={{ maxWidth: 150, margin: 0.5 }}>
+    <Card sx={{ maxWidth: 150, margin: 0.5, height: 300, '&:hover': {
+      transform: 'scale(1.05)',
+      height: 'auto',
+    } }}>
       <CardActionArea>
         <CardMedia
           component="img"
