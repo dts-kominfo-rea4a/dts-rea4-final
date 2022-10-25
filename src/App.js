@@ -6,6 +6,8 @@ import { useEffect } from "react";
 import theme from "./styles/theme";
 import Appbar from "./components/appbar";
 import Banner from "./components/banner";
+import Products from "./components/product";
+import { Outlet } from "react-router-dom";
 
 function App() {
   useEffect(() => {
@@ -13,9 +15,10 @@ function App() {
   }, []);
   return (
     <ThemeProvider theme={theme}>
-      <Container max-maxWidth="xl" sx={{ background: "#fff" }}>
+      <Container maxWidth="lg" sx={{ background: "#fff" }}>
         <Appbar />
-        <Banner />
+        {/* <Products /> */}
+        <Outlet />
       </Container>
     </ThemeProvider>
   );

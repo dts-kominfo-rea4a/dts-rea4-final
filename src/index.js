@@ -4,13 +4,31 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Products from "./components/product";
+import Movies from "./components/movie";
+import Banner from "./components/banner";
+import LoginOrRegisterForm from "./components/login";
+import Watchlist from "./components/watchlist";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<App />} />
+        <Route
+          path="login"
+          element={<LoginOrRegisterForm loginOrRegister={"login"} />}
+        />
+        <Route
+          path="register"
+          element={<LoginOrRegisterForm loginOrRegister={"register"} />}
+        />
+        <Route path="/" element={<App />}>
+          <Route path="/home" element={<Banner />} />
+          <Route path="/products" element={<Products />} />
+          <Route path="/movies" element={<Movies />} />
+          <Route path="/favorite" element={<Watchlist />} />
+        </Route>
       </Routes>
     </BrowserRouter>
   </React.StrictMode>

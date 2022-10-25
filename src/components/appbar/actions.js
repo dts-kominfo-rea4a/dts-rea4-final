@@ -8,11 +8,22 @@ import {
   ActionIconsContainerMobile,
 } from "../../styles/appbar";
 import { Colors } from "../../styles/theme";
+import { useNavigate } from "react-router-dom";
 
 export default function Actions({ matches }) {
   const Component = matches
     ? ActionIconsContainerMobile
     : ActionIconsContainerDekstop;
+
+  const navigate = useNavigate();
+
+  const loginOnClick = () => {
+    navigate("/login");
+  };
+
+  const favoriteOnClick = () => {
+    navigate("/favorite");
+  };
 
   return (
     <Component>
@@ -29,7 +40,10 @@ export default function Actions({ matches }) {
           </ListItemIcon>
         </ListItemButton>
         <Divider orientation="vertical" flexItem />
-        <ListItemButton sx={{ justifyContent: "center" }}>
+        <ListItemButton
+          sx={{ justifyContent: "center" }}
+          onClick={favoriteOnClick}
+        >
           <ListItemIcon
             sx={{
               justifyContent: "center",
@@ -41,7 +55,10 @@ export default function Actions({ matches }) {
           </ListItemIcon>
         </ListItemButton>
         <Divider orientation="vertical" flexItem />
-        <ListItemButton sx={{ justifyContent: "center" }}>
+        <ListItemButton
+          sx={{ justifyContent: "center" }}
+          onClick={loginOnClick}
+        >
           <ListItemIcon
             sx={{
               justifyContent: "center",
