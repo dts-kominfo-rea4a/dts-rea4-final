@@ -32,10 +32,15 @@ export const Row = ({movie, fetch, rID}) => {
   
 
   return (
-    <>
-      <h2 className='text-white font-bold md:text-xl p-4'>
-        {movie}
-      </h2>
+    <div id={rID}>
+      <div className='flex ml-2 py-5 mt-10'>
+        <div className='border border-l-2 rounded-full border-red-600 h-9'></div>
+        <div className='pl-2'>
+          <h2 className='text-white text-3xl font-semibold'>
+            {movie}
+          </h2>
+        </div>
+      </div>
       <div 
       className='relative flex items-center group' >
         <MdChevronLeft
@@ -57,7 +62,7 @@ export const Row = ({movie, fetch, rID}) => {
         />
 
       </div>
-    </>
+    </div>
   );
 };
 
