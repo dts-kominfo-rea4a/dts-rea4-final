@@ -156,9 +156,9 @@ const LoginOrRegister = ({ loginOrRegister }) => {
         <div className="fixed w-full px-4 py-24 z-50">
           <div className="max-w-[450px] h-[600px] mx-auto bg-black/75 text-white">
             <div className="max-w-[320px] mx-auto py-16">
-              <h1 className="text-3xl font-bold">Sign In</h1>
+              <h1 className='text-3xl font-bold'>FLIXNET.</h1>
               {errorMessage !== '' ? <p className='p-3 bg-red-400 my-2'>{errorMessage}</p> : null}
-              <div className="w-full flex flex-col py-4">
+              <div className="w-full flex flex-col py-4 my-8">
                 <input
                   type="email"
                   className="p-3 my-2 bg-gray-700 rouded"
@@ -188,13 +188,13 @@ const LoginOrRegister = ({ loginOrRegister }) => {
                 {loginOrRegister === "login" ? (
                   <Link to="/register">
                     <div className="text-center mt-1 text-md font-sans text-slate-100 font-semibold">
-                      or do you want Sign Up ?
+                    New to Flixnet?
                     </div>
                   </Link>
                 ) : (
                   <Link to="/login">
                     <div className="text-center mt-1 text-md font-sans text-slate-100 font-semibold">
-                      or do you want Sign In ?
+                    Already subscribed to Flixnet?
                     </div>
                   </Link>
                 )}
