@@ -6,12 +6,13 @@ const SignUp = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
-  const { signUp} = UserAuth()
+  const { signUp, addFirebaseUser } = UserAuth()
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       await signUp(email, password);
+      await addFirebaseUser(email);
       navigate('/');
     } catch (error) {
       console.log(error);

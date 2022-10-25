@@ -6,7 +6,8 @@ import {
   signOut, 
   onAuthStateChanged, 
 } from 'firebase/auth';
-import { doc, setDoc } from 'firebase/firestore';
+import { collection, addDoc } from 'firebase/firestore';
+
 
 const AuthContext = createContext();
 
@@ -14,11 +15,19 @@ export function AuthContextProvider({children}) {
   const [user, setUser] = useState({});
 
   function signUp(email, password) {
-    createUserWithEmailAndPassword(auth, email, password);
-    setDoc(doc(db, 'users', email), {
-      savedShows: []
-    });
+    return createUserWithEmailAndPassword(auth, email, password);
   }  
+
+  function addFirebaseUser(email) {
+    try {
+      const docRef = addDoc(collection(db, "users"), {
+        email: email,
+      });
+      console.log("Document written with ID: ", docRef.id);
+    } catch (e) {
+      console.error("Error adding document: ", e);
+    }
+  }
 
   function logIn(email, password) {
     return signInWithEmailAndPassword(auth, email, password);
@@ -38,12 +47,11 @@ export function AuthContextProvider({children}) {
   });
 
   return (
-    <AuthContext.Provider value={{ signUp, logIn, logOut, user }}>
+    <AuthContext.Provider value={{ signUp, logIn, logOut, user, addFirebaseUser, }}>
       {children}
     </AuthContext.Provider>
   )
 }
-
 export function UserAuth() {
   return useContext(AuthContext);
 }
