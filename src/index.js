@@ -6,6 +6,7 @@ import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Products from "./components/product";
 import Movies from "./components/movie";
+import PopularMovies from "./components/movie/PopularMovies";
 import Banner from "./components/banner";
 import LoginOrRegisterForm from "./components/login";
 import Watchlist from "./components/watchlist";

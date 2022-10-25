@@ -5,11 +5,13 @@ import { useTheme } from "@mui/material/styles";
 import { useMediaQuery } from "@mui/material";
 import SingleProductDesktop from "./SingleProductDesktop";
 
-export default function Products() {
+export default function Products({ movies }) {
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.down("md"));
 
-  const renderProducts = products.map((product) => (
+  console.log(movies);
+
+  const renderProducts = movies?.map((product) => (
     <Grid
       item
       key={product.id}

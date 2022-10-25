@@ -59,7 +59,7 @@ export default function ProductDetail({ open, onClose, product }) {
           alignItems="center"
           justifyContent={"space-between"}
         >
-          Product title
+          Movie
           <IconButton onClick={onClose}>
             <CloseIcon />
           </IconButton>
@@ -71,19 +71,21 @@ export default function ProductDetail({ open, onClose, product }) {
           flexDirection={matches ? "column" : "row"}
         >
           <Product sx={{ mr: 4 }}>
-            <ProductImage src={product.image} />
+            <ProductImage
+              src={"https://image.tmdb.org/t/p/original" + product.poster_path}
+            />
           </Product>
           <ProductDetailInfoWrapper>
-            <Typography variant="subtitle">SKU: 123</Typography>
-            <Typography variant="subtitle">Availability: 5 in stock</Typography>
+            <Typography variant="subtitle">
+              Release Date: {product.release_date}
+            </Typography>
+            <Typography variant="subtitle">
+              Popularity: {product.popularity}
+            </Typography>
             <Typography sx={{ lineHeight: 2 }} variant="h4">
-              {product.name}
+              {product.title}
             </Typography>
-            <Typography variant="body">
-              {product.description}
-              {product.description}
-              {product.description}
-            </Typography>
+            <Typography variant="body">{product.overview}</Typography>
             <Box
               sx={{ mt: 4 }}
               display="flex"
