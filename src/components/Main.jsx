@@ -19,15 +19,6 @@ const Main = () => {
       fetchData();
   }, []);
 
-
-  const truncateOverview = (overview, n) => {
-    if (overview?.length > n) {
-      return overview.slice(0, n) + '...';
-    } else {
-      return overview;
-    }
-  };
-
   return (
     <div className='w-full h-[950px] text-white '>
       <div className='w-full h-full'>
