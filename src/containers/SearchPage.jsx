@@ -40,7 +40,7 @@ const SearchPage = () => {
             <NavBar />
             <TextField
                 error
-                label="Search Movie, TV Shows, or Person"
+                label="Search Movie or TV Shows"
                 id="txt-search"
                 variant="outlined"
                 value={searchVal}
@@ -49,9 +49,9 @@ const SearchPage = () => {
                 sx={{marginBottom:'15px', marginTop:'12%', width:'500px', input: { color: 'red' }}}
                 InputProps={{
                     startAdornment: (
-                      <InputAdornment position="start">
-                        <SearchIcon sx={{color:'red'}} />
-                      </InputAdornment>
+                        <InputAdornment position="start">
+                            <SearchIcon sx={{color:'red'}} />
+                        </InputAdornment>
                     )
                 }}
             />
