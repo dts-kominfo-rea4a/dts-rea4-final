@@ -35,6 +35,4 @@ Movies App is a movie listing with integrated Firebase & TMDB API. You can login
     <li>TMDB API</li>
 </ul><br/>
 
-`Note:` There is a bug in TMDB API returned json, the `id` of movie is not match when used on movie/tv show search. as example movie id `84773` title `The Lord of the Rings: The Rings of Power` will return movie title `Detective Kitty O'Day`.
-
 `PS: This project was done on solo effort`
