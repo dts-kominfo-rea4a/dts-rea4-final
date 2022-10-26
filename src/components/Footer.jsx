@@ -72,7 +72,7 @@ const Footer = () => {
             </div>
         </div>
         <div className="bg-gray-900 py-6 px-4 md:flex md:items-center md:justify-between">
-            <span className="text-sm text-gray-300 sm:text-center">© 2022 <a href="#">Movies</a>. All Rights Reserved.
+            <span className="text-sm text-gray-300 sm:text-center">© 2022 <a href="">David Top</a>. All Rights Reserved.
             </span>
             <div className="flex mt-4 space-x-6 sm:justify-center md:mt-0">                
                 <a href="https://www.instagram.com/d_t0p/" target="_blank" className="text-gray-400 hover:text-white">
