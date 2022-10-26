@@ -4,13 +4,24 @@ import { usePopularMoviesQuery } from "../../service/theMovieDBApi";
 import Products from "../product";
 
 export default function Movies() {
-  const { data, error, isLoading } = usePopularMoviesQuery();
+  const [page, setPage] = useState(1);
+  const { data, error, isLoading } = usePopularMoviesQuery(page);
+
+  const handleChange = (event, value) => {
+    setPage(value);
+  };
 
   useEffect(() => {
     console.log("movies : " + data);
   }, []);
 
   return (
-    <>{error ? <p>an error occured</p> : <Products movies={data?.results} />}</>
+    <>
+      {error ? (
+        <p>an error occured</p>
+      ) : (
+        <Products movies={data} handleChange={handleChange} />
+      )}
+    </>
   );
 }

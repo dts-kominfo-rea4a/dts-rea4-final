@@ -5,13 +5,11 @@ import { useTheme } from "@mui/material/styles";
 import { useMediaQuery } from "@mui/material";
 import SingleProductDesktop from "./SingleProductDesktop";
 
-export default function Products({ movies }) {
+export default function Products({ movies, handleChange }) {
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.down("md"));
 
-  console.log(movies);
-
-  const renderProducts = movies?.map((product) => (
+  const renderProducts = movies?.results?.map((product) => (
     <Grid
       item
       key={product.id}
@@ -29,6 +27,7 @@ export default function Products({ movies }) {
       )}
     </Grid>
   ));
+
   return (
     <Container>
       <Grid
@@ -41,7 +40,12 @@ export default function Products({ movies }) {
         {renderProducts}
       </Grid>
       <Stack alignItems="center">
-        <Pagination count={10} variant="outlined" shape="rounded"></Pagination>
+        <Pagination
+          count={movies?.total_pages}
+          variant="outlined"
+          shape="rounded"
+          onChange={handleChange}
+        ></Pagination>
       </Stack>
     </Container>
   );

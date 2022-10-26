@@ -17,7 +17,7 @@ export const theMovieDBApi = createApi({
   }),
   endpoints: (builder) => ({
     popularMovies: builder.query({
-      query: () => "/movie/popular?language=en-US&page=1",
+      query: (page = 1) => `/movie/popular?language=en-US&page=${page}`,
     }),
     upcomingMovies: builder.query({
       query: (page) => `/movie/upcoming?language=en-US&page=${page}`,
