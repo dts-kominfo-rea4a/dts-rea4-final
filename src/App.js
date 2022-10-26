@@ -12,6 +12,7 @@ import ProfileScreen from "./containers/ProfileScreen";
 import NotFoundPage from "./containers/NotFoundPage";
 import CategoryScreen from "./containers/Category";
 import Searched from "./containers/Searched";
+import MyList from "./containers/MyList";
 
 import { useEffect, useState } from "react";
 import { CircularProgress } from "@mui/material";
@@ -56,6 +57,7 @@ function App() {
           </Routes>
         ) : (
           <Routes>
+            <Route path="/my-list" element={<MyList />} />
             <Route path="/searched/:search" element={<Searched />} />
             <Route path="/movie/:name" element={<MovieDetail />} />
             <Route path="/profile" element={<ProfileScreen />} />
