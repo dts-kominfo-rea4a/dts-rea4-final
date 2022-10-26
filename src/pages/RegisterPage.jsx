@@ -25,6 +25,7 @@ function RegisterPage() {
   const handleSubmitSignup = async (event) => {
     event.preventDefault();
     try {
+      setErrorMessage("");
       await registerNewUser(email, password);
     } catch (error) {
       setErrorMessage(mapAuthCodeToMessage(error.message));

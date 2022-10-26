@@ -25,9 +25,9 @@ function LoginPage() {
   const handleSubmitSignin = async (event) => {
     event.preventDefault();
     try {
+      setErrorMessage("");
       await signInUser(email, password);
     } catch (error) {
-      // alert(mapAuthCodeToMessage(error.message));
       setErrorMessage(mapAuthCodeToMessage(error.message));
     }
   };
