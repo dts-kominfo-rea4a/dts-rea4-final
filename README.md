@@ -18,8 +18,8 @@ Contoh: `dts4a-01-final`
 
 Branch dapat sesuai dengan kebutuhan dan kesepakatan bersama dalam pair, namun hasil akhirnya harus di merge ke branch `main` dan di push ke Github. Pastikan hasil akhir kode sudah ter-push!
 
-## Submission dts4-02-final
+## Submission dts4a-02-final
 Creator: Akhmad Muntako, Ferdi Hasan.
-Link Gif: https://drive.google.com/file/d/15UZJao4IXi7R7ngMG0IWq_FLJa4VysKR/view?usp=drivesdk
+Link Gif: [gif]]https://drive.google.com/file/d/15UZJao4IXi7R7ngMG0IWq_FLJa4VysKR/view?usp=drivesdk)
 Link Project: http://dts4a-02-final.netlify.app/
 Mengecenai project yaitu dengan tema web streaming movies, menggunakan api tmdb, dan fitur unik yaitu search.
