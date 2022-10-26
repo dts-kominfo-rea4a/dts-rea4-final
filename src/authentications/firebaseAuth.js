@@ -19,37 +19,15 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
 const signUpWithPassword = async (email, password) => {
-  try {
-    const userCredential = await createUserWithEmailAndPassword(
-      auth,
-      email,
-      password
-    );
-    console.log(userCredential);
-  } catch (err) {
-    console.log(err);
-  }
+  await createUserWithEmailAndPassword(auth, email, password);
 };
 
 const signInWithPassword = async (email, password) => {
-  try {
-    const userCredential = await signInWithEmailAndPassword(
-      auth,
-      email,
-      password
-    );
-    console.log(userCredential);
-  } catch (err) {
-    console.log(err);
-  }
+  await signInWithEmailAndPassword(auth, email, password);
 };
 
 const signOutAll = async () => {
-  try {
-    await signOut(auth);
-  } catch (err) {
-    console.log(err);
-  }
+  await signOut(auth);
 };
 
 export { auth, signUpWithPassword, signInWithPassword, signOutAll };

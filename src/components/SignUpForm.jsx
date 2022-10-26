@@ -8,10 +8,24 @@ import Link from "@mui/material/Link";
 import { Link as LinkNav } from "react-router-dom";
 import { signUpWithPassword } from "../authentications/firebaseAuth";
 import { useNavigate } from "react-router-dom";
+import Snackbar from "@mui/material/Snackbar";
+import MuiAlert from "@mui/material/Alert";
 
 const SignUpForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  const [snackbarState, setSnackbarState] = useState({
+    open: false,
+    vertical: "top",
+    horizontal: "center",
+    content: "",
+    severity: "error",
+  });
+
+  const handleCloseSnackbar = () => {
+    setSnackbarState({ ...snackbarState, open: false });
+  };
 
   const onChangeHandler = (event) => {
     switch (event.target.id) {
@@ -26,12 +40,20 @@ const SignUpForm = () => {
     }
   };
 
-  const onSubmitHandler = (event) => {
+  const onSubmitHandler = async (event) => {
     event.preventDefault();
-    signUpWithPassword(email, password);
-    setEmail("");
-    setPassword("");
-    navigate("/");
+    try {
+      await signUpWithPassword(email, password);
+      setEmail("");
+      setPassword("");
+      navigate("/");
+    } catch {
+      setSnackbarState({
+        ...snackbarState,
+        open: true,
+        content: "Invalid email or already registered!",
+      });
+    }
   };
 
   let navigate = useNavigate();
@@ -41,6 +63,23 @@ const SignUpForm = () => {
       component="main"
       maxWidth="xs"
     >
+      <Snackbar
+        anchorOrigin={{
+          vertical: snackbarState.vertical,
+          horizontal: snackbarState.horizontal,
+        }}
+        open={snackbarState.open}
+        onClose={handleCloseSnackbar}
+        key={snackbarState.vertical + snackbarState.horizontal}
+      >
+        <MuiAlert
+          onClose={handleCloseSnackbar}
+          severity={snackbarState.severity}
+          sx={{ width: "100%" }}
+        >
+          {snackbarState.content}
+        </MuiAlert>
+      </Snackbar>
       <Box
         sx={{
           marginTop: 8,

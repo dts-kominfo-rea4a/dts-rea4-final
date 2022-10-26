@@ -42,8 +42,8 @@ const AppNavbar = (props) => {
     setMobileOpen(!mobileOpen);
   };
 
-  const handleSignOut = () => {
-    signOutAll();
+  const handleSignOut = async () => {
+    await signOutAll();
   };
 
   const handleOpenSearch = () => setOpenSearch(true);
