@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
 	auth,
 	registerWithEmailAndPassword,
 	signInWithGoogle,
-} from "../../firebase";
+} from "../../authentication/firebase";
 
 import ErrorComponents from "../../components/ErrorComponents";
 
@@ -109,6 +109,15 @@ const LoginPage = () => {
 								</svg>
 								Sign in with Google
 							</button>
+							<p class="text-sm font-light text-gray-500 dark:text-gray-400">
+								Already have an account?
+								<Link
+									to="/login"
+									className="ml-2  font-bold text-cyan-500 hover:underline"
+								>
+									Login here
+								</Link>
+							</p>
 						</form>
 					</div>
 				</div>

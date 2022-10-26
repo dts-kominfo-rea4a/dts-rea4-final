@@ -8,7 +8,9 @@ import { navContent } from "../../helper";
 // Icon
 import { Popcorn } from "phosphor-react";
 
-const SideBarComponents = () => {
+import { logout } from "../../authentication/firebase";
+
+const SideBarComponents = ({ user }) => {
 	return (
 		<div className="fixed hidden h-full w-fit flex-col gap-8 rounded-xl  bg-slate-50 p-8 pt-12  text-slate-900 shadow-lg  sm:flex">
 			<Link to={"/"} className="w-fit opacity-100 hover:rounded-full">
@@ -44,6 +46,24 @@ const SideBarComponents = () => {
 					))}
 				</ul>
 			</nav>
+			{user ? (
+				<div
+					className="mt-16 cursor-pointer justify-self-end rounded-full bg-red-500 py-4 px-2 text-center font-bold text-slate-50 hover:bg-slate-50 hover:text-slate-900 hover:ring-4 hover:ring-red-500"
+					onClick={() => {
+						logout();
+						window.location.reload();
+					}}
+				>
+					Logout
+				</div>
+			) : (
+				<Link
+					to="/signup"
+					className="mt-16 cursor-pointer justify-self-end rounded-full bg-cyan-500 py-4 px-2 text-center font-bold text-slate-50 hover:bg-slate-50 hover:text-slate-900 hover:ring-4 hover:ring-cyan-500"
+				>
+					Sign in
+				</Link>
+			)}
 		</div>
 	);
 };

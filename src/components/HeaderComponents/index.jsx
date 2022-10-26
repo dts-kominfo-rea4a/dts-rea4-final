@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 // Assets
 import { Popcorn, UserCircle } from "phosphor-react";
 
-const HeaderComponents = () => {
+const HeaderComponents = ({ user }) => {
 	const [prevScrollPos, setPrevScrollPos] = useState(0);
 	const [visible, setVisible] = useState(true);
 

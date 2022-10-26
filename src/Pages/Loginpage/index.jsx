@@ -1,6 +1,23 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { useAuthState } from "react-firebase-hooks/auth";
+import {
+	auth,
+	logInWithEmailAndPassword,
+	signInWithGoogle,
+} from "../../authentication/firebase";
 
 const LoginPage = () => {
+	const [email, setEmail] = useState("");
+	const [password, setPassword] = useState("");
+	const [user] = useAuthState(auth);
+
+	const navigate = useNavigate();
+
+	useEffect(() => {
+		if (user) navigate("/");
+	}, [user, navigate]);
+
 	return (
 		<section className="bg-slate-50 ">
 			<div className="mx-auto flex flex-col items-center justify-center px-6 py-8 md:h-screen lg:py-0">
@@ -11,10 +28,10 @@ const LoginPage = () => {
 						</h1>
 						<form
 							className="space-y-4 md:space-y-6"
-							// onSubmit={e => {
-							// e.preventDefault();
-							// register();
-							// }}
+							onSubmit={e => {
+								e.preventDefault();
+								logInWithEmailAndPassword(email, password);
+							}}
 						>
 							<div>
 								<label
@@ -30,7 +47,7 @@ const LoginPage = () => {
 									className="focus:ring-primary-600 focus:border-primary-600 block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-slate-900  sm:text-sm"
 									placeholder="Your email"
 									required
-									// onChange={e => setEmail(e.target.value)}
+									onChange={e => setEmail(e.target.value)}
 								/>
 							</div>
 							<div>
@@ -47,14 +64,17 @@ const LoginPage = () => {
 									placeholder="••••••••"
 									className="focus:ring-primary-600 focus:border-primary-600 block w-full rounded-lg border border-gray-300  p-2.5 text-slate-900  sm:text-sm"
 									required
-									// onChange={e => setPassword(e.target.value)}
+									onChange={e => setPassword(e.target.value)}
 								/>
 							</div>
 
 							<button
 								type="submit"
 								className="w-full rounded-lg bg-cyan-500  px-5 py-2.5 text-center text-sm font-medium text-slate-50 hover:bg-slate-50 hover:text-slate-900 hover:ring-4 hover:ring-cyan-500 focus:outline-none focus:ring-4 focus:ring-cyan-500"
-								// onClick={register}
+								onSubmit={e => {
+									e.preventDefault();
+									logInWithEmailAndPassword(email, password);
+								}}
 							>
 								Sign In
 							</button>
@@ -62,7 +82,7 @@ const LoginPage = () => {
 							<button
 								type="button"
 								className="dark:focus:ring-[#4285F4]/55 mr-2 mb-2 inline-flex w-full items-center justify-center rounded-lg bg-[#4285F4] px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-[#4285F4]/90 focus:outline-none focus:ring-4 focus:ring-[#4285F4]/50"
-								// onClick={signUpWithGoogle}
+								onClick={signInWithGoogle}
 							>
 								<svg
 									className="mr-2 -ml-1 h-4 w-4"
