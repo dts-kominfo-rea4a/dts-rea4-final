@@ -3,10 +3,11 @@
 ## Nguflix - Web Movies
 
 ### Preview
--
+![nguflix_web_demo](https://user-images.githubusercontent.com/55597186/197936525-50de1d30-d293-4bb3-bd20-c8bbdf0e99cf.gif)
+
 
 ### Link Live Web App
--
+- https://nguflix.vercel.app/login 
 
 ### Description
 Nguflix adalah web katalog film sederhana dimana Anda bisa mencari film kesukaan Anda dan membaca gambaran umum tentang film yang Anda cari. Terdapat beberapa fitur yang bisa dojalankan dalam web Nguflix, yaitu:
