@@ -5,6 +5,10 @@ import produce from 'immer';
 
 const sliceNews =(set)=>({
     news: [],
+    keyword: "",
+    setKeyword: (value) => {
+        set({ keyword: value });
+      },
     fetchNews:async()=>{
         try{
             const {data} = await axios.get(`https://newsx.p.rapidapi.com/search`,{
@@ -24,9 +28,29 @@ const sliceNews =(set)=>({
         }       
 
     },
+    // filterNews: (str, listNews) => {
+    //     if (str !== "") {
+    //       let searchVal = str
+    //         .replace(/[-\\^$*+?.()|[\]{}]/g, "\\$&")
+    //         .toUpperCase();
+    //       let regex = new RegExp(searchVal, "g");
+    //       let filterResult = listNews.filter((news) => {
+    //         return news.title.toUpperCase().match(regex);
+    //       });
+    
+    //       set({ news: filterResult });
+    //     }
+    //   },
 });
 
 const useNewsStore = create(sliceNews);
-export const fetchNews = (state) => state.news;
+
+export const iniNews = (state) => state.news;
+export const fetchNews = (state) => state.fetchNews;
+export const iniKeyword = (state) => state.keyword;
+export const setKeyword = (state) => state.setKeyword;
+// export const setFilterNews = (state)=> state.filterNews;
+
+
 
 export default useNewsStore;

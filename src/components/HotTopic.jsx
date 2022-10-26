@@ -7,13 +7,13 @@ import {
 
  } from "@mui/material";
 import { useEffect } from "react";
- import useHotStore from "../store/hot";
+ import useHotStore, { fetchHot, } from "../store/hot";
 
 const HotTopic = () => {
     const hotState = useHotStore();
 
     useEffect(()=>{
-        hotState.fetchHot()
+        hotState.fetchHot();
     },[]);
     return(
         <Container maxWidth="xl" >
@@ -34,12 +34,13 @@ const HotTopic = () => {
 
             <CardMedia
                 component="img"
-                // image={hotState.hots.multimedia[0].url}
+                image={hotState.multimedia}
                 
                 /> 
                 <CardContent>
                         <Typography gutterBottom variant="h5" component="div">
                         {hotState.hots.title}
+                        {/* {hotState.hots.multimedia} */}
                         </Typography>
                         <Typography variant="body2" color="text.secondary">
                         {hotState.hots.abstract}

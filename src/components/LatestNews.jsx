@@ -1,4 +1,4 @@
-import useNewsStore from "../store/news";
+// import useNewsStore from "../store/news";
 import { useEffect } from "react";
 import { Container,  } from "@mui/system";
 import { 
@@ -12,8 +12,14 @@ import {
     Paper,
  } from "@mui/material";
  import { styled } from '@mui/material/styles';
+import { Link, Outlet } from "react-router-dom";
+
  import TimeAgo from 'javascript-time-ago';
- import en from 'javascript-time-ago/locale/en'
+ import en from 'javascript-time-ago/locale/en';
+ import useNewsStore,{
+  fetchNews, iniNews,
+} from '../store/news';
+
 
  TimeAgo.addLocale(en)
 
@@ -31,12 +37,15 @@ const Item = styled(Paper)(({ theme }) => ({
 
 
   const LatestNews = () => {
-    const newsState = useNewsStore();
+    const terapNews = useNewsStore();
+    const news = useNewsStore(iniNews);
   // const colors= useColorStore(selectColor);
 
   useEffect(()=>{
-    newsState.fetchNews()
+// terapNews();
+    terapNews.fetchNews();
   }, []) 
+  
     return (
         <Container maxWidth="xl" sx={{marginTop:3}} >
             <Typography variant='h4'>
@@ -44,16 +53,20 @@ const Item = styled(Paper)(({ theme }) => ({
             </Typography>
             <Box sx={{ flexGrow: 1 }}  >  
                 <Grid container column={12} spacing={{ xs: 2, md: 3 }}>
-                    {newsState.news?.map((news,index)=> (
+                    {terapNews.news?.map((news,index)=> (
             <Grid item xs={12} sm={4} md={3} key={index}>
                 
-
             <Box sx={{ maxWidth: 345, minHeight:450}} >
+<Card>
+
+            <Link to={`/show/${news.url}`} >
                 <CardMedia sx={{borderRadius:'10px'}}
                             component="img" key={news}
                             image={news.image||"https://www.freeiconspng.com/img/13630"}
                             height='200'
                         />
+            </Link>
+
                         <CardContent sx={{height:100, p:1, paddingTop:2}}>
                 
                 <Typography variant="h6" color="black" 
@@ -64,6 +77,7 @@ const Item = styled(Paper)(({ theme }) => ({
                 textAlign:'justify'}}>
                    
                     {news.title}
+                    
 
                 </Typography>
                 
@@ -79,6 +93,7 @@ const Item = styled(Paper)(({ theme }) => ({
 
                 {/* <Button size="small" sx={{color:'text.secondary'}}>{news.author}</Button> */}
             </CardActions>
+            </Card>
             </Box>
             </Grid>
             
@@ -87,6 +102,7 @@ const Item = styled(Paper)(({ theme }) => ({
             
             ))}
             </Grid>
+            <Outlet/>
             </Box>
             
         </Container>

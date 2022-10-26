@@ -11,6 +11,7 @@ import { Link } from "react-router-dom";
 // ataupun ke halaman HomePage (setelah Login), maka kita bisa memanfaatkan useNavigate
 import { useNavigate } from "react-router-dom";
 
+import {Card} from "@mui/material";
 import { 
     auth,
     regWithEmail,
@@ -75,7 +76,7 @@ const LoginOrRegisterForm = ({ loginOrRegister }) => {
 
     }
     if(user){
-        navigate("/");
+        navigate("/dashboard");
     }
 
   })
@@ -89,7 +90,8 @@ const LoginOrRegisterForm = ({ loginOrRegister }) => {
       justifyContent="center"
       style={{ minHeight: "95vh" }}
     >
-      <Box sx={{border: "1px dashed grey",
+      <Card sx={{
+        // border: "1px dashed grey",
             padding: "1em",
             display: "inherit",
             flexDirection: "column",
@@ -119,7 +121,7 @@ const LoginOrRegisterForm = ({ loginOrRegister }) => {
         />
 
         <Button
-          variant="outlined"
+          variant="contained"
           size="small"
           onClick={buttonLoginOrRegisterOnClickHandler}
         >
@@ -135,7 +137,7 @@ const LoginOrRegisterForm = ({ loginOrRegister }) => {
             <Typography variant="body1">or do you want Login ?</Typography>
           </Link>
         )}
-      </Box>
+      </Card>
     </Grid>
   );
 };

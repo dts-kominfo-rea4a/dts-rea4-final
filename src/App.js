@@ -24,21 +24,21 @@ const monoChromeTheme = createTheme({
 
   },
 });
-const options = {
-  method: 'GET',
-  url: 'https://newsx.p.rapidapi.com/search',
-  params: {limit: '10', skip: '0'},
-  headers: {
-    'X-RapidAPI-Key': '98e0325be9mshbc00fa3bbea457ap1a0c46jsn9bd045faddbc',
-    'X-RapidAPI-Host': 'newsx.p.rapidapi.com'
-  }
-};
+// const options = {
+//   method: 'GET',
+//   url: 'https://newsx.p.rapidapi.com/search',
+//   params: {limit: '10', skip: '0'},
+//   headers: {
+//     'X-RapidAPI-Key': '98e0325be9mshbc00fa3bbea457ap1a0c46jsn9bd045faddbc',
+//     'X-RapidAPI-Host': 'newsx.p.rapidapi.com'
+//   }
+// };
 
-export const ambilBerita = axios.request(options).then(function (response) {
-	console.log(response.data);
-}).catch(function (error) {
-	console.error(error);
-});
+// export const ambilBerita = axios.request(options).then(function (response) {
+// 	console.log(response.data);
+// }).catch(function (error) {
+// 	console.error(error);
+// });
 
 
 function App() {

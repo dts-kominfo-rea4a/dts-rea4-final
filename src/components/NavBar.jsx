@@ -10,7 +10,14 @@ import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
-import useNewsStore from '../store/news';
+import useNewsStore,{
+  iniNews,
+  iniKeyword, 
+  setKeyword,
+  // fetchNews,
+  setFilterNews,
+  fetchNews,
+} from '../store/news';
 import { 
   Link,
   Box, 
@@ -109,6 +116,12 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 
 const NavBar=()=> {
   const navigate = useNavigate();
+  // const news = useNewsStore(iniNews);
+  const keyword = useNewsStore(iniKeyword);
+  // const keywordSet = useNewsStore(setKeyword);
+  // const filterNews = useNewsStore(setFilterNews);
+  // const terapNews = useNewsStore(fetchNews);
+
 
   const buttonLogoutOnClickHandler = async () => {
     await logOut();
@@ -120,15 +133,24 @@ const NavBar=()=> {
   const [open, setOpen] = React.useState(false);
   const [query, setQuery] = React.useState("");
   // console.log(query);
-  const buttonSearchOnClickHandler = () => {
-    newsState.fetchNews(query)
+  const searchOnChangeHandler = (event) => {
+    // newsState.fetchNews(query)
+    // keywordSet(event.target.value)
+    // if (event.target.value !==""){
+    //   filterNews(event.target.value, news)
+    // }
+    // else{
+    //   // newsState.fetchNews();
+    //   terapNews();
+
+    // }
   };
   
 
-  const newsState = useNewsStore();
+  // const newsState = useNewsStore();
 
     useEffect(()=>{
-        newsState.fetchNews()
+        // newsState.fetchNews()
     },[query]);
 
   const handleDrawerOpen = () => {
@@ -162,7 +184,7 @@ const NavBar=()=> {
                 <StyledInputBase sx={{marginTop:'5px'}}
                   placeholder="Search…"
                   inputProps={{ 'aria-label': 'search' }}
-                  onChange={e=>setQuery(e.target.value)}
+                  onChange={searchOnChangeHandler}
                 />
                 <IconButton size="large" aria-label="search" color="inherit">
                   <SearchIcon /> 
@@ -172,6 +194,7 @@ const NavBar=()=> {
               color="inherit"
               aria-label="open drawer"
               edge="end"
+              value={keyword}
               onClick={handleDrawerOpen}
               sx={{ ...(open && { display: 'none' }) }}
             >

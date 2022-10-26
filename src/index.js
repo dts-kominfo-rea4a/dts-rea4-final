@@ -10,6 +10,7 @@ import LoginOrRegisterForm from './components/LoginOrRegister';
 import Register from './container/Register';
 import Login from './container/Login';
 import ProtectedComponent from './components/ProtectedComponent';
+import NotFound from './components/NotFound';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -21,12 +22,16 @@ root.render(
         
 
         <Route path="/" element={
-          <ProtectedComponent>
+          // <ProtectedComponent>
           <App />
-         </ProtectedComponent>
+        //  </ProtectedComponent>
         }>
-          <Route path="/" element={<Dashboard/>}></Route>
-          <Route path="/show" element={<Show />} />
+          <Route path="dashboard" element={<Dashboard/>}></Route>
+          <Route path="show" element={<Show />}>
+            <Route path=":url" element={<Show />}></Route>
+          </Route>
+          {/* <Route path="/*" element={<NotFound />}></Route> */}
+
         </Route>
       </Routes>
     </BrowserRouter>

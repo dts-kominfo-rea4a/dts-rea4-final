@@ -4,8 +4,8 @@ import create from "zustand";
 import produce from 'immer';
 
 const sliceContent =(set)=>({
-    contents: [],
-    fetchContent:async()=>{
+    content: {},
+    fetchContent:async(url)=>{
         try{
             const {data} = await axios.get(`https://extract-news.p.rapidapi.com/v0/article`,{
                 headers: {
@@ -13,11 +13,12 @@ const sliceContent =(set)=>({
                     'X-RapidAPI-Host': 'extract-news.p.rapidapi.com'
               },
               params: {
-                url: 'https://www.nytimes.com/2022/10/24/world/europe/rishi-sunak-uk-prime-minister.html'
+                // url: 'https://www.nytimes.com/2022/10/24/world/europe/rishi-sunak-uk-prime-minister.html'
+                url : url
               },
             });
             set (
-                {contents: data}
+                {content: data.article}
 
                 )
         }
@@ -28,7 +29,7 @@ const sliceContent =(set)=>({
     },
 });
 
-const useNewsStore = create(sliceNews);
-export const fetchNews = (state) => state.news;
+const useContentStore = create(sliceContent);
+export const fetchContent = (state) => state.content;
 
-export default useNewsStore;
+export default useContentStore;
