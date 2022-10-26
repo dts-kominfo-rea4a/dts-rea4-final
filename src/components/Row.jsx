@@ -44,7 +44,7 @@ function Row({ title, category, selector }) {
   }, [fetchMovies, category]);
 
   return (
-    <div className="px-12 lg:px-14 pt-5">
+    <div className="px-6 xs:px-12 lg:px-14 pt-5">
       <h3 className="mb-2 text-xl">{title}</h3>
       <Slider {...sliderSetting}>
         {movies.map((movie) => (

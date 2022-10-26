@@ -14,10 +14,10 @@ function HomePage() {
   return (
     <div className="min-h-screen flex flex-col">
       {/* Header */}
-      <Navbar loginStatus={true} />
+      <Navbar />
 
       {/* Main Content */}
-      <main className="grow">
+      <main className="grow pb-8">
         <Banner />
         <Row title="Popular" category="popular" selector={selectMoviePopular} />
         <Row

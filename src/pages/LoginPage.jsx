@@ -28,7 +28,7 @@ function LoginPage() {
       await signInUser(email, password);
     } catch (error) {
       // alert(mapAuthCodeToMessage(error.message));
-      setErrorMessage(mapAuthCodeToMessage(error.message))
+      setErrorMessage(mapAuthCodeToMessage(error.message));
     }
   };
 
@@ -44,7 +44,8 @@ function LoginPage() {
   return (
     <div className="min-h-screen flex flex-col">
       {/* Header */}
-      <Navbar loginStatus={false} />
+      <Navbar />
+
       {/* Main Content */}
       <main
         className="min-h-screen grow flex justify-center items-center bg-no-repeat bg-cover bg-center relative"
@@ -78,7 +79,9 @@ function LoginPage() {
             />
 
             {/* error message */}
-            <p className="text-red-500 text-xs font-light self-end">{errorMessage ? `*${errorMessage}` : ""}</p>
+            <p className="text-red-500 text-xs font-light self-end">
+              {errorMessage ? `*${errorMessage}` : ""}
+            </p>
 
             <input
               type="submit"
@@ -94,6 +97,7 @@ function LoginPage() {
           </p>
         </div>
       </main>
+
       {/* Footer */}
       <Footer className="bg-white" />
     </div>

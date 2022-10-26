@@ -24,12 +24,10 @@ function DatailPage() {
   return (
     <div className="min-h-screen flex flex-col">
       {/* Header */}
-      <Navbar loginStatus={true} />
+      <Navbar />
 
       {/* Main Content */}
       <main className="grow">
-        {/* <main className="grow">{movie.title ? movie.title : movie.name}</main> */}
-
         <div key={movie.id} className="relative min-h-screen w-full">
           <img
             src={`https://image.tmdb.org/t/p/original${movie?.backdrop_path}`}
@@ -44,7 +42,10 @@ function DatailPage() {
             </h2>
             <div className="flex gap-2">
               {movie?.genres?.map((genre) => (
-                <div className="bg-secondary-600/70 rounded px-8 py-3 text-sm" key={genre.name}>
+                <div
+                  className="bg-secondary-600/70 rounded px-8 py-3 text-sm"
+                  key={genre.name}
+                >
                   {genre.name}
                 </div>
               ))}

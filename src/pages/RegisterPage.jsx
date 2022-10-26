@@ -15,20 +15,19 @@ function RegisterPage() {
   const [errorMessage, setErrorMessage] = useState("");
 
   const handleEmailChange = (event) => {
-    setEmail(event.target.value)
-  }
+    setEmail(event.target.value);
+  };
 
   const handlePasswordChange = (event) => {
-    setPassword(event.target.value)
-  }
+    setPassword(event.target.value);
+  };
 
   const handleSubmitSignup = async (event) => {
     event.preventDefault();
     try {
       await registerNewUser(email, password);
     } catch (error) {
-      // console.log(error.message)
-      setErrorMessage(mapAuthCodeToMessage(error.message))      
+      setErrorMessage(mapAuthCodeToMessage(error.message));
     }
   };
 
@@ -40,11 +39,11 @@ function RegisterPage() {
       navigate("/");
     }
   }, [isLoading, user, navigate]);
-  
+
   return (
     <div className="min-h-screen flex flex-col">
       {/* Header */}
-      <Navbar loginStatus={false} />
+      <Navbar />
 
       {/* Main Content */}
       <main
@@ -57,7 +56,10 @@ function RegisterPage() {
           <h1 className="text-4xl font-semibold">
             Welcome! <br /> Join Nguflix
           </h1>
-          <form className="flex flex-col gap-6 text-base" onSubmit={handleSubmitSignup}>
+          <form
+            className="flex flex-col gap-6 text-base"
+            onSubmit={handleSubmitSignup}
+          >
             <input
               type="email"
               value={email}
@@ -76,7 +78,9 @@ function RegisterPage() {
             />
 
             {/* error message */}
-            <p className="text-red-500 text-xs font-light self-end">{errorMessage ? `*${errorMessage}` : ""}</p>
+            <p className="text-red-500 text-xs font-light self-end">
+              {errorMessage ? `*${errorMessage}` : ""}
+            </p>
 
             <input
               type="submit"

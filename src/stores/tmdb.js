@@ -21,32 +21,6 @@ const tmdbSlice = (set) => ({
       console.log("Weekly Treanding:", error);
     }
   },
-
-  // fetchData: async (type, category) => {
-  //   try {
-  //     const { data } = await tmdbApi(type + "/" + category);
-  //     if (type === "discover") {
-  //       if (category === "tv") {
-  //         set({ netflixOriginal: data.results });
-  //       }
-  //     } else if (type === "movie") {
-  //       if (category === "popular") {
-  //         set({ moviePopular: data.results });
-  //       } else if (category === "top_rated") {
-  //         set({ movieTopRated: data.results });
-  //       } else if (category === "now_playing") {
-  //         set({ movieNowPlaying: data.results });
-  //       } else if (category === "upcoming") {
-  //         set({ movieUpcoming: data.results });
-  //       } else if (category === "id") {
-  //         set({ movieById: data });
-  //       }
-  //     }
-  //   } catch (error) {
-  //     console.log("Netflix Original:", error);
-  //   }
-  // },
-
   fetchNetflixOriginal: async () => {
     try {
       const { data } = await tmdbApi("discover/tv");
@@ -105,7 +79,6 @@ export const selectMovieNowPlaying = (state) => state.movieNowPlaying;
 export const selectMovieUpcoming = (state) => state.movieUpcoming;
 export const selectMovieById = (state) => state.movieById;
 export const selectMovieSearch = (state) => state.movieSearch;
-
 // export action selector
 export const selectFetchWeeklyTrending = (state) => state.fetchWeeklyTrending;
 export const selectFetchNetflixOriginal = (state) => state.fetchNetflixOriginal;

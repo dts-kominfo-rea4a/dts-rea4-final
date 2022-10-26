@@ -25,10 +25,7 @@ function Banner() {
     <div className="min-h-[480px] max-w-[100vw]">
       <Slider {...sliderSetting}>
         {weeklyTrending?.map((trendingItem) => (
-          <div
-            key={trendingItem.id}
-            className="relative min-h-[480px] w-full"
-          >
+          <div key={trendingItem.id} className="relative min-h-[480px] w-full">
             <img
               src={`https://image.tmdb.org/t/p/original${trendingItem?.backdrop_path}`}
               alt={trendingItem.title ? trendingItem.title : trendingItem.name}
@@ -37,8 +34,9 @@ function Banner() {
             <div className="absolute h-full w-full bg-gradient-to-t from-[#040C16]"></div>
             <div className="absolute h-full w-full bg-gradient-to-r from-secondary-100/10"></div>
             <div className="absolute left-0 h-full max-w-[640px] mx-12 flex flex-col justify-center items-start gap-4">
-              <h2 className="text-5xl font-bold">{trendingItem.title ? trendingItem.title : trendingItem.name}</h2>
-              {/* <button className="bg-secondary-600/70 rounded px-8 py-3 text-sm">{trendingItem.release_date}</button> */}
+              <h2 className="text-5xl font-bold">
+                {trendingItem.title ? trendingItem.title : trendingItem.name}
+              </h2>
               <p className="text-sm font-light">{trendingItem.overview}</p>
             </div>
           </div>
