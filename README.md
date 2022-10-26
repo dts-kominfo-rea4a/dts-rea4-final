@@ -12,12 +12,14 @@ Mohon perwakilan dari pair bisa melakukan fork repo ini dan clone, untuk reposit
 
 `dts4s-03-final`
 
+[[https://github.com/agungtrisnandar/DTS4A-03-final/blob/main/main.jpg]]
+
 Video Dokumentasi
 
 
 Link Aplikasi
 - https://moviedts.netlify.app/
-- https://moviedts.vercel.app/landing
+- https://moviedts.vercel.app/
 
 Fitur Aplikasi
 - Landing Page
@@ -35,8 +37,8 @@ Fitur Aplikasi
                    -> Top Rated
 - Detail Movie/Series Page 
 - Play Official Trailer / Fullscreen
-- Search by Keyword (movie and series_
+- Search by Keyword (movie and series)
 - Discover (Filtering Movie and Seris by Year, Genre)
 - Discover (Sort filtering)
 - Save List Movie to TMDB Playlist ( ID List Store to Firebase Auth)
-
+- Switch Theme using State Management Zustand (not completed)
