@@ -20,3 +20,5 @@ Branch dapat sesuai dengan kebutuhan dan kesepakatan bersama dalam pair, namun h
 
 Tugas akhir untuk DTS dengan menggunakan fitur yang diwajibkan seperti main page, log in, log out, detail, register dan fitur unik berupa pencarian berbasis API
 (Dikerjakan sendiri)
+
+![Alt Text](https://s4.gifyu.com/images/screen-capture-_3_.md.gif)
