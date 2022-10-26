@@ -1,19 +1,20 @@
-# DTS REA4 Final Project
+# DTS REA4 Final Project (Pair 11)
 
-Ketentuan lengkap bisa dilihat di [Final Project Guidelines](https://docs.google.com/document/d/122KyWNQ4xxU4aFwWbM4vIfH7LM4AH2CZEZa3YsEHjCk). 
+## Preview
 
-## Daftar pair
+![](preview.gif)
 
-Tugas dikerjakan secara berpasangan, untuk daftar kelompok bisa dilihat pada masing-masing Classroom atau Discord Class.
+## Link Live App
 
-## Fork and Clone
+[Click Here](https://dts4a-11-final.netlify.app/)
 
-Mohon perwakilan dari pair bisa melakukan fork repo ini dan clone, untuk repositori yang di fork menggunakan penamaan:
+## Penjelasan Aplikasi
 
-`dts4[a/b/c]-[nomor pair]-final`
+Fitur Aplikasi mencakup :
+- Authentication Firebase (Login / Logout / Register / Google)
+- Daftar Surat
+- Ayat Per Surat
+- Simpan Ayat Pilihan (Fitur unit diluar pembelajaran)
 
-Contoh: `dts4a-01-final`
-
-## Branching, commit
-
-Branch dapat sesuai dengan kebutuhan dan kesepakatan bersama dalam pair, namun hasil akhirnya harus di merge ke branch `main` dan di push ke Github. Pastikan hasil akhir kode sudah ter-push!
+## API 
+API Quran yang digunakan [Quran.com API](https://api.quran.com/api/v3)
