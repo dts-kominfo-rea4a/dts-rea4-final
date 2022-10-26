@@ -1,4 +1,14 @@
-# DTS REA4 Final Project
+# Final Project Nomor Pair 43
+
+1. Video Dokumentasi [on progress]
+2. Link live app [di sini](https://dts4a-43-final.netlify.app/)
+3. Penjelasan:
+    - Semacam Portal yang menampilkan berita populer (sebelum berganti API) dan pencariannua, menampilkan sedikit deskripsi pada berita yang dipilih lalu memberikan link Sumber Asli-nya
+    - API: Saat pengembangan menggunakan newsapi.org (terkait fitur berbayar jadi tidak bisa di deploy) tetapi saat deploy menggunakan thenewsapi.com
+    - Fitur Unik:
+      - Pencarian Berita: Memanfaatkan useParams untuk mengambil parameter dari react-router-dom lalu memanggil API sebagai sumber data.
+
+## DTS REA4 Final Project
 
 Ketentuan lengkap bisa dilihat di [Final Project Guidelines](https://docs.google.com/document/d/122KyWNQ4xxU4aFwWbM4vIfH7LM4AH2CZEZa3YsEHjCk). 
 
