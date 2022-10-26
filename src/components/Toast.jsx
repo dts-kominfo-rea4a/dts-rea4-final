@@ -14,12 +14,12 @@ const Toast = () => {
   }, [error]);
 
   return (
-    <div className="fixed top-5 right-5 z-50">
+    <div
+      className={`${hide ? `invisible` : `visible`} fixed top-5 right-5 z-50`}
+    >
       <div
         id="toast-default"
-        className={`${
-          hide ? `invisible` : `visible`
-        } flex items-center p-4 w-full max-w-xs text-gray-500 bg-white rounded-lg shadow dark:text-gray-400 dark:bg-gray-800`}
+        className="flex items-center p-4 w-full max-w-xs text-gray-500 bg-white rounded-lg shadow dark:text-gray-400 dark:bg-gray-800"
         role="alert"
       >
         <div className="inline-flex flex-shrink-0 justify-center items-center w-8 h-8 text-orange-500 bg-orange-100 rounded-lg dark:bg-orange-800 dark:text-orange-200">
