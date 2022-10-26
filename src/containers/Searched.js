@@ -5,6 +5,7 @@ import Nav from "../components/Nav";
 import MovieSlider from "../components/MovieSlider";
 import Row from "../components/Row";
 import requests from "../Requests";
+import Footer from "../components/footer";
 
 
 const Searched = () => {
@@ -32,7 +33,7 @@ const Searched = () => {
         fetchUrl={requests.fetchMetflixOriginals}
         isLargeRow
       />
-      
+      <Footer/>
     </div>
   );
 };

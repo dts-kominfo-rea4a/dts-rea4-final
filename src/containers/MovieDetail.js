@@ -11,7 +11,9 @@ import { useParams } from "react-router-dom";
 import Button from "@mui/material/Button";
 import Stack from '@mui/material/Stack';
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
-import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
+
+import AddToList from "../components/AddToList";
+import Footer from "../components/footer";
 
 const MovieDetail = ({ select }) => {
   const [details, setDetails] = useState({});
@@ -37,7 +39,7 @@ const MovieDetail = ({ select }) => {
     return string?.length > n ? string.substring(0, n - 1) + "..." : string;
   };
 
-  console.log(details)
+  
   return (
     <div className="homeScreen">
       <Nav />
@@ -70,15 +72,9 @@ const MovieDetail = ({ select }) => {
               size="large"
             >
               Play
-            </Button>
-            <Button
-              variant="contained"
-              className="info-button"
-              startIcon={<InfoOutlinedIcon />}
-              size="large"
-            >
-              More information
-            </Button>
+            </Button>           
+
+            <AddToList movie={details} />
           </Stack>
         </div>
 
@@ -97,6 +93,7 @@ const MovieDetail = ({ select }) => {
       <Row title="Horror Movies" fetchUrl={requests.fetchHorrorMovies} />
       <Row title="Romance Movies" fetchUrl={requests.fetchRomanceMovies} />
       <Row title="Documentaries" fetchUrl={requests.fetchDocumentaries} />
+      <Footer/>
     </div>
   );
 };

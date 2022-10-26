@@ -1,27 +1,49 @@
 import React, { useState } from "react";
 import "./LoginScreen.css";
 import SignupScreen from "./SignupScreen";
+import SignInScreen from "./SignInScreen";
+import logo from "../logo.png";
 
 const LoginScreen = () => {
   const [signIn, setSignIn] = useState(false);
+  const [signUp, setSignUp] = useState(false);
 
   return (
     <div className="loginScreen">
       <div className="loginScreen__background">
-        <img
-          className="loginScreen__logo"
-          src="https://assets.stickpng.com/images/580b57fcd9996e24bc43c529.png"
-          alt=""
-        />
-        <button onClick={() => setSignIn(true)} className="loginScreen__button">
-          Sign In
-        </button>
+        <div className="loginscreen-nav">
+          <img className="loginScreen__logo" src={logo} alt="metflix-logo" />
+          <div className="button-group">
+            <button
+              onClick={() => {
+                setSignUp(true);
+                setSignIn(false);
+              }}
+              className="register-button loginScreen__button"
+            >
+              {" "}
+              Sign Up{" "}
+            </button>
+            <button
+              onClick={() => {
+                setSignUp(false);
+                setSignIn(true);
+              }}
+              className="login-button loginScreen__button"
+            >
+              {" "}
+              Sign In
+            </button>
+          </div>
+        </div>
 
         <div className="loginScreen__gradient" />
       </div>
 
       <div className="loginScreen__body">
         {signIn ? (
+          <SignInScreen />
+        ) : signUp ? (
           <SignupScreen />
         ) : (
           <>

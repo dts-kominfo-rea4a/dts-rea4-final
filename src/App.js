@@ -14,6 +14,7 @@ import CategoryScreen from "./containers/Category";
 import Searched from "./containers/Searched";
 
 import { useEffect } from "react";
+import MyList from "./containers/MyList";
 
 // import axios from "../axios";
 // import requests from "../Requests";
@@ -41,10 +42,6 @@ function App() {
         return unsubscribe;
     }, [dispatch]);
 
-    
-
-    
-
     return (
       <div className="app">
         {!user ? (
@@ -54,6 +51,7 @@ function App() {
           </Routes>
         ) : (
           <Routes>
+            <Route path="/my-list" element={<MyList />} />
             <Route path="/searched/:search" element={<Searched />} />
             <Route path="/movie/:name" element={<MovieDetail />} />
             <Route path="/profile" element={<ProfileScreen />} />
@@ -62,7 +60,6 @@ function App() {
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
         )}
-        
       </div>
     );
 }

@@ -9,7 +9,7 @@
 
 /* the slides */
 .slider-row .slick-slide {
-    margin-right: 10px;
+    
     overflow: hidden;
     transition: all .5s;
 }
@@ -47,7 +47,7 @@
     transform: translate(0);
 }
 
-.movie-link a {
+.movie-link a, .movie-link button {
     color: #fff;
 }
 
