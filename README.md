@@ -20,7 +20,14 @@ Branch dapat sesuai dengan kebutuhan dan kesepakatan bersama dalam pair, namun h
 
 ## link demo
 
-https://dts4a-45-final.netlify.app/
+link aplikasi : https://dts4a-45-final.netlify.app/
 
 ## gif demonstasi 
+
+## fitur yang ada
+### 1. Register
+### 2. Login
+### 3. Home Page
+### 4. Detail Movie (harus login terlebih dahulu)
+### 5. Search Movie
 
