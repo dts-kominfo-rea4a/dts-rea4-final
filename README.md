@@ -7,7 +7,7 @@
 
 
 ### Link Live Web App
-- https://nguflix.vercel.app/login 
+- https://nguflix.vercel.app/
 
 ### Description
 Nguflix adalah web katalog film sederhana dimana Anda bisa mencari film kesukaan Anda dan membaca gambaran umum tentang film yang Anda cari. Terdapat beberapa fitur yang bisa dojalankan dalam web Nguflix, yaitu:
