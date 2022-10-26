@@ -10,7 +10,7 @@ Movie app created with React. Features include user authentication, movie list, 
 <a href="https://iili.io/DPC6Ex.gif">Screenshot 2</a>
 <a href="https://iili.io/DPn9Ev.gif">Screenshot 3</a>
 
-![](react-app.gif)
+![](https://github.com/BakaKami/DTS4A-34-final/blob/main/react-app.gif)
 
 ## Current Version
 
