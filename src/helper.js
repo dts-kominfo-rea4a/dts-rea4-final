@@ -27,7 +27,7 @@ const getSingleMovie = axios.create({
 });
 
 const getSearchedMovies = axios.create({
-	baseURL: `${DEFAULT_URL}/search/movie/`,
+	baseURL: `https://api.themoviedb.org/3/search/movie?`,
 	params: {
 		api_key: API_KEY,
 		query: "",
