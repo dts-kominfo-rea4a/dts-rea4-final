@@ -129,6 +129,12 @@ const NavBar=()=> {
 
   };
 
+  const searchOnClickHandler = async () => {
+    // await logOut();
+    navigate("./search");
+
+  };
+
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
   const [query, setQuery] = React.useState("");
@@ -184,9 +190,9 @@ const NavBar=()=> {
                 <StyledInputBase sx={{marginTop:'5px'}}
                   placeholder="Search…"
                   inputProps={{ 'aria-label': 'search' }}
-                  onChange={searchOnChangeHandler}
+                  // onChange={searchOnChangeHandler}
                 />
-                <IconButton size="large" aria-label="search" color="inherit">
+                <IconButton size="large" aria-label="search" color="inherit" onClick={searchOnClickHandler}>
                   <SearchIcon /> 
                 </IconButton>
               </Search>

@@ -1,5 +1,5 @@
 // import useNewsStore from "../store/news";
-import { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Container,  } from "@mui/system";
 import { 
     Typography, 
@@ -7,12 +7,14 @@ import {
     CardMedia,
     CardContent,
     CardActions,
+    CardActionArea,
     Box,
     Grid,
     Paper,
  } from "@mui/material";
  import { styled } from '@mui/material/styles';
 import { Link, Outlet } from "react-router-dom";
+import PopUp from "./Popup";
 
  import TimeAgo from 'javascript-time-ago';
  import en from 'javascript-time-ago/locale/en';
@@ -36,10 +38,23 @@ const Item = styled(Paper)(({ theme }) => ({
 
 
 
-  const LatestNews = () => {
+  const LatestNews = ({}) => {
     const terapNews = useNewsStore();
-    const news = useNewsStore(iniNews);
+    // const news = useNewsStore(iniNews);
   // const colors= useColorStore(selectColor);
+  const [showPopup, setShowPopup] = useState(false);
+  const [newsContent, setNewsContent] = useState({});
+  
+
+  const readMore = (event) => {
+    setNewsContent({ url: event.target.id, description: event.target.alt });
+    setShowPopup(true);
+    console.log(event.target.id);
+  };
+
+  const popUpClose = () => {
+    setShowPopup(false);
+  };
 
   useEffect(()=>{
 // terapNews();
@@ -59,18 +74,27 @@ const Item = styled(Paper)(({ theme }) => ({
             <Box sx={{ maxWidth: 345, minHeight:450}} >
 <Card>
 
-            {/* <Link to={`/show/${news.url}`} > */}
-            <a href={news.url}>
-                <CardMedia sx={{borderRadius:'10px'}}
+            <Link to={`/show/${news.url}`} >
+            {/* <a 
+            // href={news.url}
+            >{news?.url} */}
+            <CardActionArea
+            onClick={readMore}
+            id={news?.url}
+            value={news?.url}
+            // alt={news.summary}
+            >
+                <CardMedia 
+             sx={{borderRadius:'10px'}}
                             component="img" key={news}
-                            image={news.image||"https://www.freeiconspng.com/img/13630"}
+                            image={news?.image}
                             height='200'
                         />
-                        </a>
-            {/* </Link> */}
+                        {/* </a> */}
+            </Link>
 
                         <CardContent sx={{height:100, p:1, paddingTop:2}}>
-                
+                        {/* {news?.url} */}
                 <Typography variant="h6" color="black" 
                 sx={{display: "-webkit-box",
                 overflow: "hidden",
@@ -95,6 +119,7 @@ const Item = styled(Paper)(({ theme }) => ({
 
                 {/* <Button size="small" sx={{color:'text.secondary'}}>{news.author}</Button> */}
             </CardActions>
+            </CardActionArea>
             </Card>
             </Box>
             </Grid>
@@ -104,6 +129,11 @@ const Item = styled(Paper)(({ theme }) => ({
             
             ))}
             </Grid>
+            <PopUp
+        showPopup={showPopup}
+        newsContent={newsContent}
+        popUpClose={popUpClose}
+      />
             <Outlet/>
             </Box>
             

@@ -19,7 +19,7 @@ const sliceHot =(set)=>({
 
 
                 )
-                console.log(data.results[0]);
+                // console.log(data.results[0]);
 
         }
         catch(err){

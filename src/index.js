@@ -11,6 +11,7 @@ import Register from './container/Register';
 import Login from './container/Login';
 import ProtectedComponent from './components/ProtectedComponent';
 import NotFound from './components/NotFound';
+import Search from './container/Search';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -30,7 +31,8 @@ root.render(
           <Route path="show" element={<Show />}>
             <Route path=":url" element={<Show />}></Route>
           </Route>
-          {/* <Route path="/*" element={<NotFound />}></Route> */}
+          <Route path="/search" element={<Search/>}></Route>
+          <Route path="/*" element={<NotFound />}></Route>
 
         </Route>
       </Routes>

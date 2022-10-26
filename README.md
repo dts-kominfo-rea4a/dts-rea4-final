@@ -1,3 +1,29 @@
+# Catatan Final Project DTS REA4A pair 8
+
+## Preview
+preview.gif
+
+## Live APP
+https://newsportalrea4a-8.netlify.app
+
+## Penjelasan
+Merupakan Aplikasi Portal berita berbahasa Inggris yang menampilkan berita terpopuler dan berita terkini yang terkumpul dari berbagai sumber berita di dunia.
+
+## Fitur
+- login
+- logout
+- register
+- halaman utama
+- halaman detail
+- *fitur yang unik di luar pembelajaran yang di pakai ( pencarian movie berdasarkan input di halaman home )
+
+## API
+https://newsx.p.rapidapi.com/search
+
+
+
+
+
 # DTS REA4 Final Project
 
 Ketentuan lengkap bisa dilihat di [Final Project Guidelines](https://docs.google.com/document/d/122KyWNQ4xxU4aFwWbM4vIfH7LM4AH2CZEZa3YsEHjCk). 
