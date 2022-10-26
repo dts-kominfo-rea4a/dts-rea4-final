@@ -150,9 +150,7 @@ const Home = ({ isLoggedIn }) => {
       </div>
       <div className="flex justify-between align-middle px-2">
         <div>
-          <h3 className="text-slate-100 font-bold">
-            Trending This Week
-          </h3>
+          <h3 className="text-slate-100 font-bold">Trending This Week</h3>
         </div>
         <input
           type="text"
@@ -195,9 +193,7 @@ const Home = ({ isLoggedIn }) => {
 
       <div className="flex justify-between align-middle px-2">
         <div>
-          <h3 className="text-slate-100 font-bold mb-2 ">
-            Trending This Week
-          </h3>
+          <h3 className="text-slate-100 font-bold mb-2 ">Trending This Week</h3>
         </div>
         <input
           type="text"
