@@ -74,7 +74,7 @@ const Footer = () => {
             <Box sx={{display:'flex', flexDirection:'row', color:'white', width:'100%', p:1, marginTop:'10px'}}>
                 <Grid item xs={2}></Grid>
                 <Grid item xs={3}>
-                <Typography variant="body2">© 2022 Chandra Arifin, All Right Reserved</Typography>
+                <Typography variant="body2">© 2022 XCPlaySure, All Right Reserved</Typography>
                 </Grid>
                 <Grid item xs={7}></Grid>
             </Box>
