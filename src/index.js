@@ -15,6 +15,7 @@ import SeriesPage from './containers/SeriesPage';
 import SeriePage from './containers/SeriePage';
 import SearchPage from './containers/SearchPage';
 import MyListPage from './containers/MyListPage';
+import DiscoverPage from './containers/DiscoverPage';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
@@ -57,6 +58,10 @@ root.render(
         <Route path="mylist/:listId" element={
           <ProtectedComponent>
             <MyListPage />
+          </ProtectedComponent>} />
+        <Route path="discover" element={
+          <ProtectedComponent>
+            <DiscoverPage />
           </ProtectedComponent>} />
         <Route path="user" element={
           <ProtectedComponent>

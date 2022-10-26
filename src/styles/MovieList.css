@@ -135,7 +135,7 @@ input::placeholder,textarea::placeholder{
     cursor:default
 }
 audio,canvas,embed,iframe,img,object,svg,video{
-    display:block;
+    /* display:block; */
     vertical-align:middle
 }
 img,video{

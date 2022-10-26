@@ -9,6 +9,7 @@ const SeriesPage = () => {
   let params = useParams();
   const [movies, setMovies] = useState([]);
   const [page, setPage] = useState(1);
+  const [oldCategory,setOldCategory] = useState('');
   const category = params.category;
 
 
@@ -27,13 +28,22 @@ const SeriesPage = () => {
   }
 
 
+  const fetchData = async (pageNum) => {
+    const {data} = await tmdb.get( `tv/${category}` , { params : { page: pageNum, language: 'en-US' }});
+    if (category !== oldCategory){
+      setMovies(data.results);
+    } else {
+      setMovies((prevstate) => [...prevstate, ...data.results]);
+    }
+    setOldCategory(category);
+  };
+
   useEffect(() => {
     // console.log(data);
-    const fetchData = async (pageNum) => {
-      const {data} = await tmdb.get( `tv/${category}` , { params : { page: pageNum, language: 'en-US' }});
-      setMovies((prevstate) => [...prevstate, ...data.results]);
-    };
+    
+    
     fetchData(page);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [page,category]);
 
   console.log(movies)

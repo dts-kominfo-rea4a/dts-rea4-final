@@ -14,7 +14,7 @@ import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import LightModeIcon from '@mui/icons-material/LightMode';
 import DarkModeIcon from '@mui/icons-material/DarkMode';
-
+import Logo from '../images/logo.png';
 
 
 import { signOutFromEverywhere} from '../authentication/firebase';
@@ -103,19 +103,19 @@ function NavbarUser() {
     }
 
     const handleMoviePopular = () => {
-        navigate('movies/popular');
+        navigate('/movies/popular');
     }
 
     const handleMovieNowPlaying = () => {
-        navigate('movies/popular');
+        navigate('/movies/popular');
     }
 
     const handleMovieUpcoming = () => {
-        navigate('movies/upcoming');
+        navigate('/movies/upcoming');
     }
 
     const handleMovieTopRated = () => {
-        navigate('movies/top_rated');
+        navigate('/movies/top_rated');
     }
 
     const handleSeriesPopular = () => {
@@ -123,7 +123,7 @@ function NavbarUser() {
     }
 
     const handleSeriesAiringToday = () => {
-        navigate('/series/iring_today');
+        navigate('/series/airing_today');
     }
 
     const handleSeriesOnTheAir = () => {
@@ -134,30 +134,16 @@ function NavbarUser() {
         navigate('/series/top_rated');
     }
 
+    const handleDiscover = () => {
+        navigate('/discover');
+    }
+
     return (
         <AppBar position="static" style={{ background: 'transparent'}}>
             
         <Container maxWidth="xl">
             <Toolbar disableGutters>
-            <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
-            <Typography
-                variant="h6"
-                noWrap
-                component="a"
-                href="/"
-                sx={{
-                mr: 2,
-                display: { xs: 'none', md: 'flex' },
-                fontFamily: 'monospace',
-                fontWeight: 700,
-                letterSpacing: '.3rem',
-                color: 'inherit',
-                textDecoration: 'none',
-                }}
-            >
-                LOGO
-            </Typography>
-           
+            <img src={Logo} width="50px" alt="LOGO"/>
             <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
                 <IconButton
                 size="large"
@@ -199,6 +185,9 @@ function NavbarUser() {
                 </Button>
                 <Button sx={{ my: 2, color: 'white', display: 'block' }} onClick={handleOpenSeriesMenu}>
                     Series
+                </Button>
+                <Button sx={{ my: 2, color: 'white', display: 'block' }} onClick={handleDiscover}>
+                    Discover
                 </Button>
                 
                 <Button sx={{ my: 2, color: 'white', display: 'block' }} onClick={handleMyList}>

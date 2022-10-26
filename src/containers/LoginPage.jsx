@@ -83,9 +83,10 @@ const LoginPage = () => {
                 borderRadius : '10px'
             }}>
                 <HeadingStyle >
-                <Box>
+                <Box  alignItems="center"  justifyContent="center">
                     <Link to="/">
-                        <Box component="img" src="/logo.png" alt="logo" width="100px"/>
+                       
+                        <img src="/logo.png" alt="logo"  width="100px" display="inline"/>
                     </Link>
                     
                 </Box>
