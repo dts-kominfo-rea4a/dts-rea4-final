@@ -13,6 +13,7 @@ import NewsMenu from "../Components/NewsMenu";
 import {useAuthState} from "react-firebase-hooks/auth";
 import {auth} from "../Firebase";
 import SearchResult from "../Screens/SearchResult";
+import Profile from "../Screens/Profile";
 
 
 const Menu = () => {
@@ -61,6 +62,7 @@ const Routes = () => {
                 {/* Auth */}
                 <Route path='/login' element={<Login/>}/>
                 <Route path='/register' element={<Register/>}/>
+                <Route path="/profile" element={<Profile />} />
             </Switch>
         </>
     );

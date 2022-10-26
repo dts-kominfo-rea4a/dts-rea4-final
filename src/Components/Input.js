@@ -21,6 +21,7 @@ const Input = ({
   kindPass,
   error,
   messageError,
+  disabled,
 }) => {
   if (type === 'password') {
     return (
@@ -64,6 +65,7 @@ const Input = ({
         name={name}
         error={error}
         helperText={messageError}
+        disabled={disabled}
       />
     </FormControl>
   );

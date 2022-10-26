@@ -5,9 +5,11 @@ import {
   signInWithEmailAndPassword,
   signOut,
 } from 'firebase/auth';
-import { getDatabase, ref, set } from 'firebase/database';
+import { getDatabase, ref, set, onValue } from 'firebase/database';
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import {auth} from "../Firebase";
+import cogoToast from 'cogo-toast';
+
 
 const db = getDatabase();
 
@@ -18,6 +20,11 @@ const initialState = {
   statusLogin: 'idle',
   dataLogin: {},
   errorLogin: null,
+  profile :{},
+  statusProfile: 'idle',
+  errorProfile: null,
+  statusUpdateProfile:'idle',
+  errorUpdateProfile:null
 };
 
 export const postRegisterAction = createAsyncThunk(
@@ -37,12 +44,13 @@ export const postRegisterAction = createAsyncThunk(
         noTelp: data.noTelp,
         address: data.address,
       };
-      console.log('result register', result);
+      cogoToast.success('Anda Berhasil Register Akun');
       set(ref(db, `users/${result.user.uid}`), dataUser);
       auth.displayName = data.fullName;
       return result;
     } catch (err) {
       console.log('err Register', err);
+      cogoToast.error('Anda Gagal Regsiter Akun');
     }
   },
 );
@@ -56,12 +64,13 @@ export const postLoginAction = createAsyncThunk(
         values.email,
         values.password,
       );
-      console.log('result', result);
       Cookies.set('token', result.user.accessToken);
       Cookies.set('name', result.user.email);
+      cogoToast.success('Anda Berhasil Login');
       return result;
     } catch (err) {
-      console.log('err Register', err);
+      cogoToast.error('Anda Gagal Login, Tolong Cek lagi data Anda');
+      console.log('err login', err);
     }
   },
 );
@@ -71,11 +80,36 @@ export const postLogoutAction = createAsyncThunk(
     async () => {
       try {
         await signOut(auth);
+        Cookies.remove('token');
+        Cookies.remove('name');
       } catch (err) {
         console.log(err);
       }
     }
 )
+
+export const getProfileUser = createAsyncThunk('auth/profile', async (userId) => {
+ const starCountRef = ref(db, `users/${userId}`);
+ return new Promise((resolve) => {
+   onValue(starCountRef, (snapshot) => {
+     onValue(starCountRef, (snapshot) => {
+       resolve(snapshot.val());
+     });
+   });
+ });
+});
+
+export const updateProfileUser = createAsyncThunk(
+  'auth/udpdateProfile',
+  async (data) => {
+    set(ref(db, `users/${data.id}`), data.data)
+      .then(() => {cogoToast.success('Anda Berhasil Update Profile')})
+      .catch((err) => {
+        console.log('err', err)
+        cogoToast.success('Anda Gagal Update Profile');
+      });
+  },
+);
 
 const authSlice = createSlice({
   name: 'auth',
@@ -91,7 +125,7 @@ const authSlice = createSlice({
         state.statusRegister = 'loading';
       })
       .addCase(postRegisterAction.fulfilled, (state, action) => {
-        console.log('action', action)
+        console.log('action', action);
         if (action.payload) {
           state.statusRegister = 'success';
           state.dataRegister = action.payload;
@@ -108,33 +142,65 @@ const authSlice = createSlice({
         state.statusLogin = 'loading';
       })
       .addCase(postLoginAction.fulfilled, (state, action) => {
-        if(action.payload){
+        if (action.payload) {
           state.statusLogin = 'success';
         }
-        if(!action.payload){
+        if (!action.payload) {
           state.statusLogin = 'error';
         }
       })
       .addCase(postLoginAction.rejected, (state, action) => {
-         state.statusLogin = 'error';
+        state.statusLogin = 'error';
         state.errorLogin = action.payload;
       })
       .addCase(postLogoutAction.pending, (state) => {
-          state.statusRegister = 'loading';
-        })
+        state.logout = 'loading';
+      })
       .addCase(postLogoutAction.fulfilled, (state, action) => {
-          if(action.payload){
-            state.statusLogin = 'idle';
-          }
-          if(!action.payload){
-            state.statusLogin = 'error';
-          }
-        })
-        .addCase(postLogoutAction.rejected, (state, action) => {
-          state.statusRegister = 'error';
-          state.errorRegister = action.payload.error;
-        })
-    ;
+        if (action.payload) {
+          state.statusLogin = 'idle';
+        }
+        if (!action.payload) {
+          state.statusLogin = 'error';
+        }
+      })
+      .addCase(postLogoutAction.rejected, (state, action) => {
+        state.logout = 'error';
+        state.errorRegister = action.payload.error;
+      })
+      .addCase(getProfileUser.pending, (state) => {
+        state.statusProfile = 'loading';
+      })
+      .addCase(getProfileUser.fulfilled, (state, action) => {
+        console.log('action profile', action);
+        if (action.payload) {
+          state.statusProfile = 'success';
+          state.profile = action.payload;
+        }
+        if (!action.payload) {
+          state.statusProfile = 'error';
+        }
+      })
+      .addCase(getProfileUser.rejected, (state, action) => {
+        state.updateProfileUser = 'error';
+        state.errorProfile = action.payload.error;
+      })
+      .addCase(updateProfileUser.pending, (state) => {
+        state.statusUpdateProfile = 'loading';
+      })
+      .addCase(updateProfileUser.fulfilled, (state, action) => {
+        console.log('action profile', action);
+        if (action.payload) {
+          state.statusUpdateProfile = 'success';
+        }
+        if (!action.payload) {
+          state.statusUpdateProfile = 'error';
+        }
+      })
+      .addCase(updateProfileUser.rejected, (state, action) => {
+        state.statusUpdateProfile = 'error';
+        state.errorUpdateProfile = action.payload.error;
+      });
   },
 });
 

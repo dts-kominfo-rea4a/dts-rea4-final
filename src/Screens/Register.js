@@ -16,7 +16,8 @@ import Input from '../Components/Input';
 import LinkText from '../Components/LinkText';
 import { useDispatch, useSelector } from 'react-redux';
 import { postRegisterAction } from '../Features/authSlice';
-import cogoToast from 'cogo-toast';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { auth } from '../Firebase';
 
 const LoginSchema = Yup.object().shape({
   fullName: Yup.string().required('Full Name Is Required').min(3, 'Too Short!'),
@@ -53,15 +54,22 @@ const Register = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
+
+  const [user, isLoading, error] = useAuthState(auth);
+
   useEffect(() => {
-    if (statusRegister === 'error') {
-      cogoToast.error('Anda Gagal Register, Tolong Cek lagi data Anda');
+    // if (statusLogin === 'error') {
+    //   cogoToast.error('Anda Gagal Login, Tolong Cek lagi data Anda');
+    // }
+    // if (statusLogin === 'success') {
+    //   navigate('/news');
+    //   cogoToast.success('Anda Berhasil Login');
+    // }
+
+    if (user) {
+      navigate('/News');
     }
-    if (statusRegister === 'success') {
-      navigate('/news');
-      cogoToast.success('Anda Berhasil Register Akun');
-    }
-  }, [statusRegister, navigate]);
+  }, [user, isLoading, error]);
 
   const handleClickShowPassword = (name) => {
     if (name === 'password') {
