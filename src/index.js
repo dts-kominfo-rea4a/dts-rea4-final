@@ -4,10 +4,39 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+// import react router dom
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+import LoginPage from "./containers/LoginPage";
+import RegisterPage from "./containers/RegisterPage";
+import ProtectedComponent from "./components/ProtectedComponent";
+import MovieDetailPage from './containers/MovieDetailPage';
+import NoMatchPage from './containers/NoMatchPage';
+import MoviesPage from './containers/MoviesPage';
+import Movie from './components/Movie';
+import TvsPage from './containers/TvsPage';
+import TvDetailPage from './containers/TvDetailPage';
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <BrowserRouter>
+      <Routes>
+        <Route exact path="/"
+          element={
+            <ProtectedComponent>
+              <App />
+            </ProtectedComponent>
+          } />        
+        <Route path="movies" element={<ProtectedComponent><MoviesPage /></ProtectedComponent>} />
+        <Route path="tvs" element={<ProtectedComponent><TvsPage /></ProtectedComponent>} />
+        <Route path="movie/:id" element={<ProtectedComponent><MovieDetailPage /></ProtectedComponent>} />
+        <Route path="tv/:id" element={<ProtectedComponent><TvDetailPage /></ProtectedComponent>} />
+        <Route path="login" element={<LoginPage />} />
+        <Route path="register" element={<RegisterPage />} />
+        <Route path="*" element={<NoMatchPage/>}/>
+      </Routes>
+    </BrowserRouter>
   </React.StrictMode>
 );
 

@@ -4,7 +4,9 @@ Ketentuan lengkap bisa dilihat di [Final Project Guidelines](https://docs.google
 
 ## Daftar pair
 
-Tugas dikerjakan secara berpasangan, untuk daftar kelompok bisa dilihat pada masing-masing Classroom atau Discord Class.
+Tugas dikerjakan secara berpasangan, angota kelompok:.
+1. Akhmad Muntako (1523649113101381)
+2. Ferdi Hasan (1523649113101540)
 
 ## Fork and Clone
 
@@ -17,3 +19,13 @@ Contoh: `dts4a-01-final`
 ## Branching, commit
 
 Branch dapat sesuai dengan kebutuhan dan kesepakatan bersama dalam pair, namun hasil akhirnya harus di merge ke branch `main` dan di push ke Github. Pastikan hasil akhir kode sudah ter-push!
+
+## Submission dts4a-02-final
+Creator: Akhmad Muntako, Ferdi Hasan.
+
+![](https://github.com/muntako/dts4a-02-final/blob/main/preview.gif)
+
+
+Link original Gif: [gif](https://drive.google.com/file/d/15UZJao4IXi7R7ngMG0IWq_FLJa4VysKR/view?usp=drivesdk)
+Link Project: http://dts4a-02-final.netlify.app/
+Mengecenai project yaitu dengan tema web streaming movies, menggunakan api tmdb, dan fitur unik yaitu search.
