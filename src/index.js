@@ -7,6 +7,9 @@ import LoginPage from "./containers/LoginPage";
 import HomePage from "./containers/HomePage";
 import RegisterPage from "./containers/RegisterPage";
 import ProtectedComponent from "./components/ProtectedComponent";
+import DetailPage from "./containers/DetailPage";
+import ProfilePage from "./containers/ProfilePage";
+import NotFound from "./containers/NotFound";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -16,16 +19,24 @@ root.render(
         <Route
           path="/"
           element={
-            <ProtectedComponent>
+            <ProtectedComponent title="Daftar Surat">
               <HomePage />
             </ProtectedComponent>
           }
         />
         <Route
-          path="/register"
+          path="/surat/:suratId"
           element={
-            <ProtectedComponent withAuth={false}>
-              <RegisterPage />
+            <ProtectedComponent title="Surat">
+              <DetailPage />
+            </ProtectedComponent>
+          }
+        />
+        <Route
+          path="/profile"
+          element={
+            <ProtectedComponent title="Profil Saya">
+              <ProfilePage />
             </ProtectedComponent>
           }
         />
@@ -37,6 +48,15 @@ root.render(
             </ProtectedComponent>
           }
         />
+        <Route
+          path="/register"
+          element={
+            <ProtectedComponent withAuth={false}>
+              <RegisterPage />
+            </ProtectedComponent>
+          }
+        />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>
@@ -45,4 +65,4 @@ root.render(
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-// reportWebVitals();
+reportWebVitals();

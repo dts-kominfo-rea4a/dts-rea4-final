@@ -4,9 +4,33 @@ import { auth } from "../auth/firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useNavigate } from "react-router-dom";
 import LoaderFull from "./LoaderFull";
-const ProtectedComponent = ({ children, withAuth = true }) => {
+import useQuranStore, {
+  selectAyatTersimpan,
+  selectStoreAyatLocal,
+} from "../stores/quran";
+
+const ProtectedComponent = ({
+  children,
+  title = "Quran API",
+  withAuth = true,
+}) => {
   const [user, isLoading] = useAuthState(auth);
   const navigate = useNavigate();
+  const storeAyatLocal = useQuranStore(selectStoreAyatLocal);
+  const ayatTersimpan = useQuranStore(selectAyatTersimpan);
+
+  useEffect(() => {
+    const ayatTersimpanLocal = JSON.parse(
+      localStorage.getItem("quran:tersimpan")
+    );
+    if (ayatTersimpanLocal?.length) {
+      storeAyatLocal(ayatTersimpanLocal);
+    }
+  }, []);
+
+  useEffect(() => {
+    document.title = title;
+  }, [title]);
 
   useEffect(() => {
     if (isLoading) {

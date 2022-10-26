@@ -1,17 +1,27 @@
 import { useEffect } from "react";
-import { signOutMe } from "../auth/firebase";
+import Surat from "../components/Surat";
+import useQuranStore, {
+  selectFetchListSurat,
+  selectListSurat,
+} from "../stores/quran";
+import Layout from "./Layout";
+
 const HomePage = () => {
+  const listSurat = useQuranStore(selectListSurat);
+  const fetchListSurat = useQuranStore(selectFetchListSurat);
+
+  useEffect(() => {
+    fetchListSurat();
+  }, [listSurat.length]);
+
   return (
-    <div>
-      <h1>Home Page</h1>
-      <button
-        onClick={async (e) => {
-          await signOutMe();
-        }}
-      >
-        Logout
-      </button>
-    </div>
+    <Layout>
+      <div className="grid sm:grid-cols-2 grid-cols-1 gap-2 sm:gap-4 mb-2">
+        {listSurat.map((surat) => (
+          <Surat key={surat.id} surat={surat} />
+        ))}
+      </div>
+    </Layout>
   );
 };
 
