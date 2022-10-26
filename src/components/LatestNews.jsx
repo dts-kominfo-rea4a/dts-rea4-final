@@ -48,7 +48,7 @@ const Item = styled(Paper)(({ theme }) => ({
   
     return (
         <Container maxWidth="xl" sx={{marginTop:3}} >
-            <Typography variant='h4'>
+            <Typography variant='h4' sx={{ fontWeight: 'bold' }}>
                 Latest News
             </Typography>
             <Box sx={{ flexGrow: 1 }}  >  
@@ -59,13 +59,15 @@ const Item = styled(Paper)(({ theme }) => ({
             <Box sx={{ maxWidth: 345, minHeight:450}} >
 <Card>
 
-            <Link to={`/show/${news.url}`} >
+            {/* <Link to={`/show/${news.url}`} > */}
+            <a href={news.url}>
                 <CardMedia sx={{borderRadius:'10px'}}
                             component="img" key={news}
                             image={news.image||"https://www.freeiconspng.com/img/13630"}
                             height='200'
                         />
-            </Link>
+                        </a>
+            {/* </Link> */}
 
                         <CardContent sx={{height:100, p:1, paddingTop:2}}>
                 

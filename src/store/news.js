@@ -9,6 +9,26 @@ const sliceNews =(set)=>({
     setKeyword: (value) => {
         set({ keyword: value });
       },
+    hotest: [],
+    fetchBerita:async()=>{
+        try{
+            const {data} = await axios.get(`https://newsx.p.rapidapi.com/search`,{
+                headers: {
+                'X-RapidAPI-Key': '98e0325be9mshbc00fa3bbea457ap1a0c46jsn9bd045faddbc',
+                'X-RapidAPI-Host': 'newsx.p.rapidapi.com'
+              },
+              params: {q: 'trend',limit: '1', skip: '0'},
+            });
+            set (
+                {hotest: data}
+                )
+                console.log(data);
+
+        }
+        catch(err){
+            console.log(err);
+        }       
+    },
     fetchNews:async()=>{
         try{
             const {data} = await axios.get(`https://newsx.p.rapidapi.com/search`,{
@@ -20,13 +40,11 @@ const sliceNews =(set)=>({
             });
             set (
                 {news: data}
-
                 )
         }
         catch(err){
             console.log(err);
         }       
-
     },
     // filterNews: (str, listNews) => {
     //     if (str !== "") {
@@ -47,6 +65,10 @@ const useNewsStore = create(sliceNews);
 
 export const iniNews = (state) => state.news;
 export const fetchNews = (state) => state.fetchNews;
+export const iniBerita = (state) => state.hotest;
+
+export const fetchBerita = (state) => state.fetchBerita;
+
 export const iniKeyword = (state) => state.keyword;
 export const setKeyword = (state) => state.setKeyword;
 // export const setFilterNews = (state)=> state.filterNews;

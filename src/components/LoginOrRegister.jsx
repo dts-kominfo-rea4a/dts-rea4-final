@@ -1,5 +1,6 @@
 // Membutuhkan state untuk meng-track value dari TextField
 import React, { useState, useEffect } from "react";
+import { ThemeProvider, createTheme } from '@mui/material/styles';
 
 // Gunakan .module.css untuk mendapatkan scoped css
 // import styles from "./LoginOrRegisterForm.module.css";
@@ -31,6 +32,18 @@ const LoginOrRegisterForm = ({ loginOrRegister }) => {
   });
 
   const [user, isLoading, error]= useAuthState(auth);
+  const monoChromeTheme = createTheme({
+    palette: {
+      mode: 'dark',
+      primary: {
+        main: '#fff',
+      },
+      secondary: {
+        main: '#000'
+      },
+  
+    },
+  });
 
   const textFieldEmailOnChangeHandler = (event) => {
     // Karena state berupa Object
@@ -81,7 +94,7 @@ const LoginOrRegisterForm = ({ loginOrRegister }) => {
 
   })
 
-  return (
+  return (<ThemeProvider theme={monoChromeTheme}>
     <Grid
       container
       spacing={0}
@@ -139,6 +152,7 @@ const LoginOrRegisterForm = ({ loginOrRegister }) => {
         )}
       </Card>
     </Grid>
+    </ThemeProvider>
   );
 };
 

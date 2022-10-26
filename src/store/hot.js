@@ -17,13 +17,17 @@ const sliceHot =(set)=>({
             set (
                 {hots: data.results[0]}
 
+
                 )
+                console.log(data.results[0]);
+
         }
         catch(err){
             console.log(err);
         }       
 
     },
+    
 });
 
 const useHotStore = create(sliceHot);
