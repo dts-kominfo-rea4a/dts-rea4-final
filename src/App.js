@@ -1,7 +1,6 @@
 import './Firebase'
 import './App.css';
 import Routes from "./Routes/Routes";
-import NewsMenu from "./Components/NewsMenu";
 
 function App() {
     return (

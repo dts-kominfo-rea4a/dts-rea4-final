@@ -1,9 +1,7 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {
     Box,
-    Grid,
-    Typography,
-    Divider
+    Grid
 } from '@mui/material';
 
 import CarouselNews from "./CarouselNews";

@@ -2,7 +2,7 @@ import {
     Card,
     CardContent,
     Typography,
-    Divider, Link
+    Divider
 } from "@mui/material";
 
 const CardNews = ({item, category}) => {

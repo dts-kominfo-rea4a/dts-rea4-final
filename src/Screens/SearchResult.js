@@ -2,7 +2,6 @@ import Container from "@mui/material/Container";
 import {useSelector} from "react-redux";
 import {
     Backdrop,
-    Box,
     Card,
     CardContent,
     CardHeader,
@@ -12,7 +11,6 @@ import {
     Typography
 } from "@mui/material";
 import {useEffect} from "react";
-import SortSelect from "../Components/SortSelect";
 
 const Loading = () => {
     return (

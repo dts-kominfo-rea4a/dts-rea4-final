@@ -1,5 +1,4 @@
 import {createSlice, createAsyncThunk} from "@reduxjs/toolkit";
-import newsApiInstance, {DEFAULT_PARAMS} from "../Apis/newsApiInstance";
 import jakPostApiInstance from "../Apis/JakPostApiInstance";
 import axios from "axios";
 

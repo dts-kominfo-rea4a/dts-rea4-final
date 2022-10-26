@@ -1,5 +1,4 @@
 import * as Yup from 'yup';
-import Cookies from 'js-cookie';
 import { Box, Button, Card, CardContent, Typography } from '@mui/material';
 import {useEffect, useState } from 'react';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
@@ -9,7 +8,6 @@ import Input from '../Components/Input';
 import LinkText from '../Components/LinkText';
 import { useDispatch, useSelector } from 'react-redux';
 import { postLoginAction } from '../Features/authSlice';
-import cogoToast from 'cogo-toast';
 
 import {useAuthState} from "react-firebase-hooks/auth";
 import {auth} from "../Firebase";
@@ -35,14 +33,6 @@ const Login = () => {
   const [user, isLoading, error] = useAuthState(auth)
 
   useEffect(() => {
-    // if (statusLogin === 'error') {
-    //   cogoToast.error('Anda Gagal Login, Tolong Cek lagi data Anda');
-    // }
-    // if (statusLogin === 'success') {
-    //   navigate('/news');
-    //   cogoToast.success('Anda Berhasil Login');
-    // }
-
     if (user) {
       navigate("/News");
     }
