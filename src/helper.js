@@ -5,7 +5,7 @@ import axios from "axios";
 import { House, MagnifyingGlass, Ghost, Sword, Heart } from "phosphor-react";
 
 const DEFAULT_URL = "https://api.themoviedb.org/3";
-const API_KEY = "ec40f0d2519d92ed60001998ab18f38c";
+const API_KEY = process.env.REACT_APP_API_TMDB;
 
 const getMovies = axios.create({
 	baseURL: `${DEFAULT_URL}/movie`,

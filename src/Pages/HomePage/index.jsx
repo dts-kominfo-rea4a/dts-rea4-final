@@ -4,6 +4,7 @@ import React, { useEffect, useState, useRef } from "react";
 // Components
 import MovieListComponents from "../../components/MovieListComponents";
 import ErrorComponents from "../../components/ErrorComponents";
+import SpinnerComponents from "../../components/SpinnerComponents";
 
 // Api Fetch
 import { getMovies } from "../../helper";
@@ -37,7 +38,7 @@ const HomePage = () => {
 		setPage(prev => prev + 1);
 		pageLoaded.current = true;
 	};
-	if (moviesList.length === 0) return <h1>loading</h1>;
+	if (moviesList.length === 0) return <SpinnerComponents />;
 
 	if (isError) return <ErrorComponents />;
 

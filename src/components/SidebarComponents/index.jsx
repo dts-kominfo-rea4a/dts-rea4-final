@@ -15,7 +15,7 @@ const SideBarComponents = () => {
 				<Popcorn size={42} color="#0ea5e9" className="" />
 			</Link>
 			<nav>
-				<ul className="flex flex-col xl:gap-6">
+				<ul className="flex flex-col lg:gap-6">
 					{navContent.map(content => (
 						<li
 							className="w-fit cursor-pointer rounded-full   "
@@ -26,7 +26,7 @@ const SideBarComponents = () => {
 								end
 								className={({ isActive }) =>
 									[
-										"flex items-stretch justify-between rounded-full py-3 px-2 hover:bg-cyan-500 hover:text-slate-50 xl:gap-6",
+										"flex items-stretch justify-between rounded-full py-3 px-2 hover:bg-cyan-500 hover:text-slate-50 lg:gap-6",
 										isActive
 											? "bg-cyan-500 text-slate-50"
 											: "",
@@ -36,7 +36,7 @@ const SideBarComponents = () => {
 								}
 							>
 								{content.navIcon}
-								<h3 className="hidden text-xl font-bold  xl:block">
+								<h3 className="hidden text-xl font-bold  lg:block">
 									{content.navName}
 								</h3>
 							</NavLink>

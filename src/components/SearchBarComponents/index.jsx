@@ -26,12 +26,18 @@ const SearchBarComponents = ({ handleSearchTerm }) => {
 	}, [searchValue, handleSearchTerm]);
 
 	const handleSearchValue = e => {
+		e.preventDefault();
 		pageLoaded.current = true;
 		setSearchValue(e.currentTarget.value);
 	};
 
+	const handleOnSubmit = e => {
+		e.preventDefault();
+		handleSearchTerm(searchValue);
+	};
+
 	return (
-		<form className="relative rounded-full">
+		<form className="relative rounded-full" onSubmit={handleOnSubmit}>
 			<label
 				htmlFor="default-search"
 				className="sr-only mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"

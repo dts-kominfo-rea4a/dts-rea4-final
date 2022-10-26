@@ -14,6 +14,7 @@ import Homepage from "./Pages/HomePage";
 import SearchPage from "./Pages/SearchPage";
 import ErrorComponents from "./components/ErrorComponents";
 import MovieDetailsPage from "./Pages/MovieDetailsPage";
+import SignUpPage from "./Pages/SignUpPage";
 
 const router = createBrowserRouter(
 	createRoutesFromElements(
@@ -26,6 +27,7 @@ const router = createBrowserRouter(
 			<Route path="/search" element={<SearchPage />} />
 			<Route path="/horor" element={<SearchPage />} />
 			<Route path="/movie/:movieId" element={<MovieDetailsPage />} />
+			<Route path="/signup/" element={<SignUpPage />} />
 		</Route>
 	)
 );
