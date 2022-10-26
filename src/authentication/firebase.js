@@ -10,7 +10,6 @@ import {
     signInWithPopup, 
     updateProfile,
     signOut } from "firebase/auth";
-import { useUpdateProfile } from "react-firebase-hooks/auth";
 
 
 // Your web app's Firebase configuration

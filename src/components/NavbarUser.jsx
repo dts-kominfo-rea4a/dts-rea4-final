@@ -12,10 +12,8 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
-import SearchIcon from '@mui/icons-material/Search';
 import LightModeIcon from '@mui/icons-material/LightMode';
 import DarkModeIcon from '@mui/icons-material/DarkMode';
-import InputAdornment from '@mui/material/InputAdornment'
 
 
 
@@ -24,7 +22,7 @@ import { useNavigate } from "react-router-dom";
 import useThemeStore from '../stores/theme';
 import {Link, TextField} from "@mui/material";
 
-import { auth, saveIdListMovies } from "../authentication/firebase";
+import { auth } from "../authentication/firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 
 function NavbarUser() {
@@ -34,7 +32,6 @@ function NavbarUser() {
     const navigate = useNavigate();
     const appTheme = useThemeStore();
 
-    console.log('auth' , user.displayName);
     const btnSignOutOnClickHandler = async () => {
         await signOutFromEverywhere();
         navigate("/login")
@@ -87,12 +84,22 @@ function NavbarUser() {
         setAnchorElUser(null);
     };
 
+    const handleMyList = () => {
+        if (user) {
+            let users = user.displayName.split(',');
+            if (users[1] !== undefined){
+              console.log(users[1]);
+              navigate(`/mylist/${users[1]}`);
+            }
+          }
+    }
+
     const setDarkThemeHandler = () => {
         appTheme.setDarkMode();
     };
 
-    const handleSaveIdList = () => {
-        saveIdListMovies('Agung Trisnandar,8224044');
+    const handleHome = () => {
+        navigate('/');
     }
 
    
@@ -154,7 +161,7 @@ function NavbarUser() {
             LOGO
             </Typography>
             <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-                <Button sx={{ my: 2, color: 'white', display: 'block' }} onClick={handleSaveIdList} >
+                <Button sx={{ my: 2, color: 'white', display: 'block' }} onClick={handleHome} >
                     Home
                 </Button>
                 <Button sx={{ my: 2, color: 'white', display: 'block' }} onClick={handleOpenMoviesMenu}>
@@ -167,7 +174,7 @@ function NavbarUser() {
                 <Button sx={{ my: 2, color: 'white', display: 'block' }}>
                     News And Popular
                 </Button>
-                <Button sx={{ my: 2, color: 'white', display: 'block' }}>
+                <Button sx={{ my: 2, color: 'white', display: 'block' }} onClick={handleMyList}>
                     My List
                 </Button>
                 <Button sx={{ my: 2, color: 'white', display: 'block' }} onClick={() => setDarkThemeHandler()}>
@@ -237,15 +244,7 @@ function NavbarUser() {
             value={keyword}
             onChange={inputSearchOnChangeHandler}
             onKeyPress={inputSearchKeyPressHandler}
-            InputProps={{
-                startAdornment: (
-                  <InputAdornment>
-                    <IconButton>
-                      <SearchIcon />
-                    </IconButton>
-                  </InputAdornment>
-                )
-              }}
+           placeholder="Search"
             sx={{
                 borderColor:'white',
                 marginRight: '1em',
@@ -258,6 +257,7 @@ function NavbarUser() {
                 
                 <Tooltip title="Open settings">
                     <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                        {loading }
                         <Avatar alt={user.displayName} src={user.photoURL} /> 
                     </IconButton>
                     

@@ -1,6 +1,8 @@
 
 .movieRow {
-    margin-bottom: 40px;
+    margin-bottom: 20px;
+    margin-top:20px;
+    color: #e5e7eb;
 }
 
 .movieRow h2 {

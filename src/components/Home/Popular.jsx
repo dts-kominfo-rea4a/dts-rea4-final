@@ -19,12 +19,12 @@ function Popular() {
       
      return (
         !movies ?  (
-            <div style={{ textAlign: 'center' }}>
+            <div style={{ textAlign: 'center' }} >
             <img src={Loading} width="30px" alt="Loading"/>
         </div>
           ) : (
             <>
-        <MovieRow title="Popular" type="movie" items={movies} />
+        <MovieRow title="Popular" type="movie" items={movies}  linkRow='movie/popular'/>
         </>
         )
     )

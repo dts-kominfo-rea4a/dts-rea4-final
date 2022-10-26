@@ -1,21 +1,21 @@
 
 import React, { useState } from 'react';
 import '../../styles/Movie.css';
-import { Link } from 'react-router-dom';
 import TheatersIcon from '@mui/icons-material/Theaters';
 import LanguageIcon from '@mui/icons-material/Language';
 import AspectRatioIcon from '@mui/icons-material/AspectRatio';
 import iconAmazon from '../../images/icon-amazon.png';
 import iconNetflix from '../../images/icon-netflix.png';
 import { useEffect } from 'react';
+import {useNavigate} from 'react-router-dom';
 
 function Movie( { item } ) {
 
-const descriptionVideo = item.overview.length > 120 ? item.overview.substring(0, 120) + '...' : item.overview;
 const [urlVideo,setUrlVideo] = useState('');
 const [playVideo,setPlayVideo] = useState(false);
 const [videoFullScreen,setVideoFullScreen] = useState(false);
 const [id,setId] = useState('');
+const navigate = useNavigate();
 function handleShowTrailer(){
     
     const trailer = item.videos.results;
@@ -45,7 +45,9 @@ return (
         <div
         className="details" 
     >   
-        <Link to="/" className="details--backbutton">Back</Link>
+        <button className="details--backbutton" onClick={() => {
+            navigate(-1);
+          }}>Back</button>
        
             <section className={videoFullScreen ? 'video--fullscreen' : ''}> 
           
@@ -68,7 +70,9 @@ return (
             backgroundImage: `url(https://image.tmdb.org/t/p/original/${item.backdrop_path})`
         }}
     >   
-        <Link to="/" className="details--backbutton">Back</Link>
+         <button className="details--backbutton" onClick={() => {
+            navigate(-1);
+          }}>Back</button>
             <section> 
                 <div>
                     <div className="details--info">
@@ -77,7 +81,7 @@ return (
 
                     <h1>{item.original_title || item.original_name}</h1>
 
-                    <h4>{descriptionVideo}</h4>
+                    <h4>{item.overview}</h4>
 
                     {
                         (item.videos.results !== undefined && item.videos.results.length !== 0)
@@ -102,10 +106,7 @@ return (
                 </div>
                
             </section>
-            <div>
-                <br/>
-                {item.overview}
-            </div>
+            
             
         </div>
     )

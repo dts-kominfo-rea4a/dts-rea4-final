@@ -1,6 +1,7 @@
-.details {
+  .details {
     height: 100vh;
     width: 100%;
+    color: #e5e7eb;
   }
   
   .details section {
@@ -22,7 +23,7 @@
   }
   
   .details section div h4 {
-      max-width: 50%;
+      max-width: 100%;
       line-height: 28px;
       font-weight: 500;
   }

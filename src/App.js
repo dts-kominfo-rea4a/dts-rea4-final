@@ -37,7 +37,8 @@ function App() {
     }
   });
   useEffect(() => {
-    setDarkMode(appTheme)
+    setDarkMode(appTheme);
+    console.log('set');
     // eslint-disable-next-line
   },[])
  
