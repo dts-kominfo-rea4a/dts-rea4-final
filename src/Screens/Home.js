@@ -3,11 +3,11 @@ import CssBaseline from '@mui/material/CssBaseline';
 import Container from '@mui/material/Container';
 import TopNews from "../Components/TopNews";
 import News from "../Components/News";
-import SortSelect from "../Components/SortSelect";
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect} from "react";
 import {getNews, getTopNews} from "../Features/newsSlice";
 import {Backdrop, CircularProgress} from "@mui/material";
+import Footer from "../Components/Footer";
 
 const Loading = () => {
     return (
@@ -37,6 +37,7 @@ export default function Home({category}) {
                     <Container maxWidth={'xl'}>
                         <TopNews news={topNews} />
                         <News news={news} category={category}/>
+                        <Footer />
                     </Container>
                 )
             }
