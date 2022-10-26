@@ -3,11 +3,24 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import Login from './containers/Login';
+import HalamanUtama from './containers/HalamanUtama';
+import Register from './containers/Register';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <BrowserRouter>
+        <Routes>
+        <Route path="/" element={<HalamanUtama />} />
+        <Route path="/home" element={<App />} />
+        <Route path="/utama" element={<HalamanUtama/>} />
+        <Route path="/login" element={<Login loginOrRegister="login" />} />
+        <Route path="/register" element={<Register loginOrRegister="register"/>} />
+        </Routes>
+    </BrowserRouter>
   </React.StrictMode>
 );
 
