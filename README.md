@@ -1,19 +1,25 @@
 # DTS REA4 Final Project
 
-Ketentuan lengkap bisa dilihat di [Final Project Guidelines](https://docs.google.com/document/d/122KyWNQ4xxU4aFwWbM4vIfH7LM4AH2CZEZa3YsEHjCk). 
+## Nguflix - Web Movies
 
-## Daftar pair
+### Preview
+-
 
-Tugas dikerjakan secara berpasangan, untuk daftar kelompok bisa dilihat pada masing-masing Classroom atau Discord Class.
+### Link Live Web App
+-
 
-## Fork and Clone
+### Description
+Nguflix adalah web katalog film sederhana dimana Anda bisa mencari film kesukaan Anda dan membaca gambaran umum tentang film yang Anda cari. Terdapat beberapa fitur yang bisa dojalankan dalam web Nguflix, yaitu:
+- register
+- login
+- logout
+- halaman utama
+- halaman detail
+- fitur unik diluar pembelajaran yang ditambahkan adalah fitur pencarian yang bisa dilakukan melalui search bar dan akan memunculkan daftar film sesuai dari kembalian dari search api dari Tmdb, selain itu daftar tersebut juga bisa di klik untuk menuju halaman detail dari film yang di cari.
 
-Mohon perwakilan dari pair bisa melakukan fork repo ini dan clone, untuk repositori yang di fork menggunakan penamaan:
-
-`dts4[a/b/c]-[nomor pair]-final`
-
-Contoh: `dts4a-01-final`
-
-## Branching, commit
-
-Branch dapat sesuai dengan kebutuhan dan kesepakatan bersama dalam pair, namun hasil akhirnya harus di merge ke branch `main` dan di push ke Github. Pastikan hasil akhir kode sudah ter-push!
+### Tech Stack
+- Raect js https://reactjs.org
+- Tailwind css https://tailwindcss.com/
+- Firebase Authentication https://firebase.google.com/
+- API Data https://www.themoviedb.org/
+- State Management https://github.com/pmndrs/zustand
