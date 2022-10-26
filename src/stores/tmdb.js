@@ -79,9 +79,13 @@ const tmdbSlice = (set) => ({
       throw error;
     }
   },
-  fetchMovieSearch: async (query) => {
+  fetchMovieSearch: async (searchQuery) => {
     try {
-      const { data } = await tmdbApi.get("search/movie");
+      const { data } = await tmdbApi.get("search/movie", {
+        params: {
+          query: searchQuery,
+        },
+      });
       set({ movieSearch: data.results });
     } catch (error) {
       console.log(error);
@@ -100,11 +104,14 @@ export const selectMovieTopRated = (state) => state.movieTopRated;
 export const selectMovieNowPlaying = (state) => state.movieNowPlaying;
 export const selectMovieUpcoming = (state) => state.movieUpcoming;
 export const selectMovieById = (state) => state.movieById;
+export const selectMovieSearch = (state) => state.movieSearch;
+
 // export action selector
 export const selectFetchWeeklyTrending = (state) => state.fetchWeeklyTrending;
 export const selectFetchNetflixOriginal = (state) => state.fetchNetflixOriginal;
 export const selectFetchMovies = (state) => state.fetchMovies;
 export const selectFetchMovieById = (state) => state.fetchMovieById;
+export const selectFetchMovieSearch = (state) => state.fetchMovieSearch;
 
 // export hooks
 export default useTmdbStore;
