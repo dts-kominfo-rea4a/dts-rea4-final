@@ -7,7 +7,7 @@ import useMovieStore, {
   selectTotalPages,
 } from "../stores/movie";
 import TvVertical from "../components/TvVertical";
-
+import Footer from '../components/Footer'
 import { Box, Grid, Tabs, Tab, Pagination, Stack } from "@mui/material";
 // Import Link dan Outlet di sini
 import { Link, Outlet, useSearchParams } from "react-router-dom";
@@ -87,6 +87,7 @@ function TvsPage() {
               )):""}
             </Grid>
           </Box>
+          <Footer/>
         </>
       )}
     </>
