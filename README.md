@@ -18,6 +18,9 @@ Contoh: `dts4a-01-final`
 
 Branch dapat sesuai dengan kebutuhan dan kesepakatan bersama dalam pair, namun hasil akhirnya harus di merge ke branch `main` dan di push ke Github. Pastikan hasil akhir kode sudah ter-push!
 
+Describe Our Porject
+Sebuah aplikasi yang menampilkan berbagai macam berita, baik itu olahraga, berita terkini, dan sebagainya. Untuk API sebagai data source kami menggunakan API dari https://api.thenewsapi.com/ dimana kami bisa mendapatkan arikel sekitar 150 artikel per hari.
+
 Video gif
 Register
 https://gfycat.com/diligentthirdblowfish
@@ -33,6 +36,7 @@ https://gfycat.com/whichrepentantkrill
 
 Detail Page
 
-
 Link Api
- https://api.thenewsapi.com/
+https://api.thenewsapi.com/
+
+Link Live App
