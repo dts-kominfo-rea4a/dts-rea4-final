@@ -17,3 +17,26 @@ Contoh: `dts4a-01-final`
 ## Branching, commit
 
 Branch dapat sesuai dengan kebutuhan dan kesepakatan bersama dalam pair, namun hasil akhirnya harus di merge ke branch `main` dan di push ke Github. Pastikan hasil akhir kode sudah ter-push!
+
+## link demo
+
+link aplikasi : https://dts4a-45-final.netlify.app/
+
+## gif demonstasi 
+![Demonstasi](ss/record.gif)
+
+## fitur yang ada
+### 1. Sign UP 
+![Sign UP](ss/2-signup.png)
+### 2. Sign In 
+![Sign In](ss/2-signin.png)
+### 3. Home Page 
+![Dasboard 1](ss/1-dashboard-a.png)
+![Dasboard 2](ss/1-dashboard-b.png)
+### 4. Detail Movie (harus login terlebih dahulu)
+![Detail Movie](ss/4-detail.png)
+### 5. Search Movie
+![Serach Movie](ss/5-search.png)
+## 6. Log Out
+![Log Out](ss/3-logout.png)
+
