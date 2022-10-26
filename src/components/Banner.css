@@ -1,0 +1,123 @@
+.banner {
+    position: relative;
+    height: 500px;
+    color: white;   
+    display: flex;
+    align-items: center;
+}
+
+.banner__contents {
+    flex: 1 1;
+    padding: 2em 4em;
+    z-index: 1;
+}
+
+.banner__title {
+    font-size: 3rem;
+    font-weight: 800;
+    padding-bottom: 0.3rem;
+}
+
+.banner__description {
+    width: 50%;
+    padding-top: 1rem;
+    font-size: 1em;
+    height: 80px;
+    font-weight: normal;
+}
+
+.banner--fadeBottom {
+    height: 100%;
+    background-image: linear-gradient(180deg, transparent, rgba(37, 37, 37, 0.61), rgb(0 0 0 / 85%));
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+.banner__button {
+    cursor: pointer;
+    color: #fff;
+    outline: none;
+    border: none;
+    font-weight: 700;
+    border-radius: 0.2vw;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    margin-right: 1rem;
+    padding-top: 0.5rem;
+    background-color: rgba(51, 51, 51, 0.5);
+    padding-bottom: 0.5rem;
+}
+
+.banner__button:hover {
+    color: #000;
+    background-color: #e6e6e6;
+    transition: all 0.2s;
+}
+
+.banner__genree {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    gap: 1em;
+}
+
+.banner__genree li:not(:first-child) {
+    padding-left: 1em;
+    position: relative;
+}
+
+.banner__genree li:not(:first-child):before {
+    content: "•";
+    position: absolute;
+    left: 0;
+}
+
+.banner .play-button {
+    background: #fff;
+    color: #000;
+}
+
+.banner .info-button {
+    color: #000;
+    background: #fff;
+    opacity: .4;
+}
+
+.banner .info-button:hover {
+    background: #ff9800;
+    color: #fff;
+    opacity: 1;
+}
+
+.banner .play-button:hover {
+    background: #ba001a;
+    color: #fff;
+}
+
+.slider-banner {
+    padding-top: 50px;
+}
+
+.slider-banner .slick-next {
+    right: 10px;
+    z-index: 9;
+}
+
+.slider-banner .slick-prev {
+    left: 10px;
+    z-index: 9;
+}
+
+.slider-banner .slick-prev:before,
+.slider-banner .slick-next:before {
+    font-size: 40px;
+    color: #fff;
+}
+
+.slider-banner .slick-next,
+.slider-banner .slick-prev {
+    height: 100%;
+    width: 50px;
+}
