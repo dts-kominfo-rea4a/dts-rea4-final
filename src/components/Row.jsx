@@ -44,9 +44,9 @@ function Row({ title, category, selector }) {
   }, [fetchMovies, category]);
 
   return (
-    <div className="px-6 xs:px-12 lg:px-14 pt-5">
+    <div className="px-6 xs:px-12 lg:px-14 pt-5 min-h-[156px]">
       <h3 className="mb-2 text-xl">{title}</h3>
-      <Slider {...sliderSetting}>
+      <Slider {...sliderSetting} className="min-h-[156px]">
         {movies.map((movie) => (
           <Link to={`/detail/movie/${movie.id}`} key={movie.id}>
             <div className="h-full w-full relative px-1 hover:scale-105">

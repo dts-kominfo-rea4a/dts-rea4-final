@@ -17,24 +17,30 @@ function HomePage() {
       <Navbar />
 
       {/* Main Content */}
-      <main className="grow pb-8">
+      <main className="grow">
         <Banner />
-        <Row title="Popular" category="popular" selector={selectMoviePopular} />
-        <Row
-          title="Top Rated"
-          category="top_rated"
-          selector={selectMovieTopRated}
-        />
-        <Row
-          title="Now Playing"
-          category="now_playing"
-          selector={selectMovieNowPlaying}
-        />
-        <Row
-          title="Upcoming"
-          category="upcoming"
-          selector={selectMovieUpcoming}
-        />
+        <div className="pt=2 pb-8">
+          <Row
+            title="Popular"
+            category="popular"
+            selector={selectMoviePopular}
+          />
+          <Row
+            title="Top Rated"
+            category="top_rated"
+            selector={selectMovieTopRated}
+          />
+          <Row
+            title="Now Playing"
+            category="now_playing"
+            selector={selectMovieNowPlaying}
+          />
+          <Row
+            title="Upcoming"
+            category="upcoming"
+            selector={selectMovieUpcoming}
+          />
+        </div>
       </main>
 
       {/* Footer */}

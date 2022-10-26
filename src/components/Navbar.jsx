@@ -8,7 +8,11 @@ import SearchBar from "./SearchBar";
 function Navbar() {
   const navigate = useNavigate;
   const handleSignOut = async () => {
-    await signOutCurrentUser().then(navigate("/login"));
+    try {
+      await signOutCurrentUser().then(navigate("/login"));
+    } catch (error) {
+      
+    }
   };
   const [user] = useAuthState(auth);
 
