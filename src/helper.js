@@ -5,6 +5,7 @@ import axios from "axios";
 import { House, MagnifyingGlass, Ghost, Sword, Heart } from "phosphor-react";
 
 const DEFAULT_URL = "https://api.themoviedb.org/3";
+// https://api.themoviedb.org/3/search/movie?
 const API_KEY = process.env.REACT_APP_API_TMDB;
 
 const getMovies = axios.create({
@@ -26,7 +27,7 @@ const getSingleMovie = axios.create({
 });
 
 const getSearchedMovies = axios.create({
-	baseURL: `${DEFAULT_URL}/search/movie`,
+	baseURL: `${DEFAULT_URL}/search/movie/`,
 	params: {
 		api_key: API_KEY,
 		query: "",
