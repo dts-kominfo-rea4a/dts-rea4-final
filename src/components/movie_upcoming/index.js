@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import "../../styles/movie/movie.module.css";
-import { usePopularMoviesQuery } from "../../service/theMovieDBApi";
+import { useUpcomingMoviesQuery } from "../../service/theMovieDBApi";
 import Products from "../product";
 
-export default function Movies() {
+export default function UpcomingMovie() {
   const [page, setPage] = useState(1);
-  const { data, error, isLoading } = usePopularMoviesQuery(page);
+  const { data, error, isLoading } = useUpcomingMoviesQuery(page);
 
   const handleChange = (event, value) => {
     setPage(value);
@@ -19,7 +19,7 @@ export default function Movies() {
         <Products
           movies={data}
           handleChange={handleChange}
-          category="now_playing"
+          category="upcoming"
         />
       )}
     </>

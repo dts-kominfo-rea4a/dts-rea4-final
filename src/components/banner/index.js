@@ -17,15 +17,13 @@ export default function Banner() {
     <BannerContainer>
       <BannerImage src="/images/banner/banner_01.jpg" />
       <BannerContent>
-        <Typography variant="h6">Huge Collection</Typography>
-        <BannerTitle variant="h2">New Bags</BannerTitle>
+        {/* <Typography variant="h6">Welcome</Typography> */}
+        <BannerTitle variant="h2">Welcome</BannerTitle>
 
         <BannerDescription variant="subtitle">
           Torem ipsum dolor sit amet, consectetur adipisicing elitsed do eiusmo
           tempor incididunt ut labore et dolore magna
         </BannerDescription>
-
-        <BannerShopButton color="primary">Shop Now</BannerShopButton>
       </BannerContent>
     </BannerContainer>
   );

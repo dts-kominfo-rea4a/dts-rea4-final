@@ -42,6 +42,11 @@ const ProductDetailInfoWrapper = styled(Box)(() => ({
 export default function ProductDetail({ open, onClose, product }) {
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.down("md"));
+
+  const addToCartHandler = () => {
+    alert(123);
+  };
+
   return (
     <Dialog
       TransitionComponent={SlideTransition}
@@ -93,7 +98,14 @@ export default function ProductDetail({ open, onClose, product }) {
               justifyContent="space-between"
             >
               {/* <IncDec /> */}
-              <Button variant="contained">Add to Cart</Button>
+              <Button
+                variant="contained"
+                onClick={() => {
+                  alert(123);
+                }}
+              >
+                Add to Cart
+              </Button>
             </Box>
             <Box
               display="flex"

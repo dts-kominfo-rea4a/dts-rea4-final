@@ -8,10 +8,10 @@ export default function AppbarDekstop({ matches }) {
   const navigate = useNavigate();
 
   const btnUpcomingOnClick = (e) => {
-    navigate("/movies");
+    navigate("/upcoming");
   };
   const btnNoPlayingOnClick = (e) => {
-    navigate("/products");
+    navigate("/movies");
   };
   const btnHomeOnClick = (e) => {
     navigate("/home");
@@ -27,12 +27,10 @@ export default function AppbarDekstop({ matches }) {
         <AppbarHeader>Movie</AppbarHeader>
         <MyList type="row">
           <ListItemButton onClick={btnHomeOnClick}>Home</ListItemButton>
-          <ListItemButton onClick={btnUpcomingOnClick}>
+          <ListItemButton onClick={btnNoPlayingOnClick}>
             Now Playing
           </ListItemButton>
-          <ListItemButton onClick={btnNoPlayingOnClick}>
-            Upcoming
-          </ListItemButton>
+          <ListItemButton onClick={btnUpcomingOnClick}>Upcoming</ListItemButton>
           <ListItemText primary="Contact Us" />
           <ListItemButton>
             <SearchIcon />

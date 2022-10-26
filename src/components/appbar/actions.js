@@ -34,7 +34,11 @@ export default function Actions({ matches }) {
   };
 
   const favoriteOnClick = () => {
-    navigate("/favorite");
+    navigate("/watchlist");
+  };
+
+  const cartOnClick = () => {
+    navigate("/cart");
   };
 
   const [user, isLoading, error] = useAuthState(auth);
@@ -56,7 +60,7 @@ export default function Actions({ matches }) {
   return (
     <Component>
       <MyList type="row">
-        <ListItemButton sx={{ justifyContent: "center" }}>
+        <ListItemButton sx={{ justifyContent: "center" }} onClick={cartOnClick}>
           <ListItemIcon
             sx={{
               justifyContent: "center",

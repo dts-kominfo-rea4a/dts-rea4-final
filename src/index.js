@@ -6,11 +6,12 @@ import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Products from "./components/product";
 import Movies from "./components/movie";
-import PopularMovies from "./components/movie/PopularMovies";
+import UpcomingMovie from "./components/movie_upcoming";
 import Banner from "./components/banner";
 import LoginOrRegisterForm from "./components/login";
 import Watchlist from "./components/watchlist";
 import ProtectedComponent from "./components/auth/ProtectedComponent";
+import Cart from "./components/cart";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -34,9 +35,10 @@ root.render(
           }
         >
           <Route path="/home" element={<Banner />} />
-          <Route path="/products" element={<Products />} />
+          <Route path="/upcoming" element={<UpcomingMovie />} />
           <Route path="/movies" element={<Movies />} />
-          <Route path="/favorite" element={<Watchlist />} />
+          <Route path="/watchlist" element={<Watchlist />} />
+          <Route path="/cart" element={<Cart />} />
         </Route>
       </Routes>
     </BrowserRouter>

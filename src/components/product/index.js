@@ -5,7 +5,7 @@ import { useTheme } from "@mui/material/styles";
 import { useMediaQuery } from "@mui/material";
 import SingleProductDesktop from "./SingleProductDesktop";
 
-export default function Products({ movies, handleChange }) {
+export default function Products({ movies, handleChange, category }) {
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.down("md"));
 
@@ -23,7 +23,11 @@ export default function Products({ movies, handleChange }) {
       {matches ? (
         <SingleProduct product={product} matches={matches} />
       ) : (
-        <SingleProductDesktop product={product} matches={matches} />
+        <SingleProductDesktop
+          product={product}
+          matches={matches}
+          category={category}
+        />
       )}
     </Grid>
   ));
