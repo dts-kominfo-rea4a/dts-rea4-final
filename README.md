@@ -15,7 +15,7 @@ Mohon perwakilan dari pair bisa melakukan fork repo ini dan clone, untuk reposit
 <img src="https://github.com/agungtrisnandar/DTS4A-03-final/blob/main/main.jpg">
 
 Video Dokumentasi
-
+<img src="https://github.com/agungtrisnandar/DTS4A-03-final/blob/main/site.gif">
 
 Link Aplikasi
 - https://moviedts.netlify.app/
