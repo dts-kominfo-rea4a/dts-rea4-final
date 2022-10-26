@@ -5,7 +5,8 @@ export const theMovieDBApi = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: "https://api.themoviedb.org/3",
     prepareHeaders: (headers, { getState }) => {
-      const token = "";
+      const token =
+        "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjN2UwYmI4Y2FhNWU3MDU2YWU4ZDE0NTlmOGFiMzc3ZSIsInN1YiI6IjYzNTYzZGQwMzg1MjAyMDA4MmM0OTA5OSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.L36i2ALQp7Y5cAPhEyMozAfVnkL0XqonzkEqwt2BET0";
 
       // If we have a token set in state, let's assume that we should be passing it.
       if (token) {
