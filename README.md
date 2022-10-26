@@ -1,19 +1,12 @@
-# DTS REA4 Final Project
+TriFLix adalah sebuah web film dengan banyak pilihan
 
-Ketentuan lengkap bisa dilihat di [Final Project Guidelines](https://docs.google.com/document/d/122KyWNQ4xxU4aFwWbM4vIfH7LM4AH2CZEZa3YsEHjCk). 
+Fitur unik yang ada di web TriFlix adalah, bisa menonton trailernya terlebih dahulu.
+ada fitur login dan logout juga.
 
-## Daftar pair
+Video Gif : https://gfycat.com/dimpledsophisticatedamericanmarten
+Link app : https://3films.netlify.app/
 
-Tugas dikerjakan secara berpasangan, untuk daftar kelompok bisa dilihat pada masing-masing Classroom atau Discord Class.
+menggunakan api dari : https://www.themoviedb.org/
+dan styling dari tailwind css.
 
-## Fork and Clone
-
-Mohon perwakilan dari pair bisa melakukan fork repo ini dan clone, untuk repositori yang di fork menggunakan penamaan:
-
-`dts4[a/b/c]-[nomor pair]-final`
-
-Contoh: `dts4a-01-final`
-
-## Branching, commit
-
-Branch dapat sesuai dengan kebutuhan dan kesepakatan bersama dalam pair, namun hasil akhirnya harus di merge ke branch `main` dan di push ke Github. Pastikan hasil akhir kode sudah ter-push!
+Tugas ini dikerjakan oleh saya sendiri, karena partner saya tidak ada kabar.
