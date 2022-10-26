@@ -1,19 +1,21 @@
-# DTS REA4 Final Project
+# News Center
 
-Ketentuan lengkap bisa dilihat di [Final Project Guidelines](https://docs.google.com/document/d/122KyWNQ4xxU4aFwWbM4vIfH7LM4AH2CZEZa3YsEHjCk). 
+## Video dokumentasi
+![DTS-news-center](https://thumbs.gfycat.com/IncomparableGroundedCuscus-size_restricted.gif)
 
-## Daftar pair
+## Link app
+https://news-center.vercel.app/
 
-Tugas dikerjakan secara berpasangan, untuk daftar kelompok bisa dilihat pada masing-masing Classroom atau Discord Class.
+## Tentang News Center
 
-## Fork and Clone
+Aplikasi ini tentang portal berita yang di ambil dari media berita The Jakarta Post [Link](https://www.thejakartapost.com/)
 
-Mohon perwakilan dari pair bisa melakukan fork repo ini dan clone, untuk repositori yang di fork menggunakan penamaan:
+## API yang digunakan
 
-`dts4[a/b/c]-[nomor pair]-final`
+API ini di kembangkan oleh Faruq Maulana [Link](https://github.com/faruqmaulana/JAKARTA-POST-API)
 
-Contoh: `dts4a-01-final`
+## Fitur dalam aplikasi
 
-## Branching, commit
-
-Branch dapat sesuai dengan kebutuhan dan kesepakatan bersama dalam pair, namun hasil akhirnya harus di merge ke branch `main` dan di push ke Github. Pastikan hasil akhir kode sudah ter-push!
+* Fitur pencarian berita dari media The Jakarta Post
+* Fitur perubahan data user di halaman profile
+* Autentikasi dengan Firebase
