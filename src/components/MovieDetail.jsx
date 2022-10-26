@@ -23,7 +23,6 @@ const MovieDetail = () => {
   const navigate = useNavigate();
   const [width, setWidth] = useState(window.screen.availWidth);
   const [clips, setClips] = useState([]);
-  const [showModal, setShowModal] = React.useState(false);
 
   let mt = width > 768 ? (width * 9 ) / 16 - 250 : 0;
 
