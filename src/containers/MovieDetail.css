@@ -1,0 +1,28 @@
+.single-movie {
+    height: 80vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.single-movie .play-button {
+    background: #fff;
+    color: #000;
+}
+
+.single-movie .info-button {
+    color: #000;
+    background: #fff;
+    opacity: .4;
+}
+
+.single-movie .info-button:hover {
+    background: #ff9800;
+    color: #fff;
+    opacity: 1;
+}
+
+.single-movie .play-button:hover {
+    background: #ba001a;
+    color: #fff;
+}

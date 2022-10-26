@@ -1,19 +1,53 @@
-# DTS REA4 Final Project
+# METFLIX REACT APP
 
-Ketentuan lengkap bisa dilihat di [Final Project Guidelines](https://docs.google.com/document/d/122KyWNQ4xxU4aFwWbM4vIfH7LM4AH2CZEZa3YsEHjCk). 
+Movie app created with React. Features include user authentication, movie list, movie detail, favourite list, and profile.
 
-## Daftar pair
+### https://metflix-750cf.web.app/
 
-Tugas dikerjakan secara berpasangan, untuk daftar kelompok bisa dilihat pada masing-masing Classroom atau Discord Class.
+# Screenshot
 
-## Fork and Clone
+<a href="https://iili.io/DPC07I.gif">Screenshot 1</a>
+<a href="https://iili.io/DPC6Ex.gif">Screenshot 2</a>
+<a href="https://iili.io/DPn9Ev.gif">Screenshot 3</a>
 
-Mohon perwakilan dari pair bisa melakukan fork repo ini dan clone, untuk repositori yang di fork menggunakan penamaan:
+![](https://github.com/BakaKami/DTS4A-34-final/blob/main/react-app.gif)
 
-`dts4[a/b/c]-[nomor pair]-final`
+## Current Version
 
-Contoh: `dts4a-01-final`
+**_Version 1.0.0-ALPHA_**
 
-## Branching, commit
+### Changelog
 
-Branch dapat sesuai dengan kebutuhan dan kesepakatan bersama dalam pair, namun hasil akhirnya harus di merge ke branch `main` dan di push ke Github. Pastikan hasil akhir kode sudah ter-push!
+### Version 1.0.0-ALPHA
+
+Initial Release
+
+### Version 0.3.0
+
+[NEW FEATURES]
+
+- Favourite list
+
+[ADJUSTMENT]
+
+- Separated sign up & sign in button
+- Add loading screen
+
+### Version 0.2.0
+
+[MAJOR UPDATE]
+
+- Revamp UI
+- Add new menu list
+- Movie detail page
+
+### Version 0.1.1
+
+[BUG FIXING]
+
+- Handle axios on error fetch
+- Fix typo in TMDB API path
+
+### Version 0.1.0
+
+Initial Commit
