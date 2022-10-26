@@ -19,3 +19,4 @@ Contoh: `dts4a-01-final`
 Branch dapat sesuai dengan kebutuhan dan kesepakatan bersama dalam pair, namun hasil akhirnya harus di merge ke branch `main` dan di push ke Github. Pastikan hasil akhir kode sudah ter-push!
 
 Tugas akhir untuk DTS dengan menggunakan fitur yang diwajibkan seperti main page, log in, log out, detail, register dan fitur unik berupa pencarian berbasis API
+(Dikerjakan sendiri)
