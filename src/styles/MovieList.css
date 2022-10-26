@@ -120,6 +120,17 @@ menu,ol,ul{
 textarea{
     resize:vertical
 }
+.rmsc {
+    --rmsc-main: #4285f4;
+    --rmsc-hover: #2567a8!important;
+    --rmsc-selected: #4c93da!important;
+    --rmsc-border: #ccc;
+    --rmsc-gray: #aaa;
+    --rmsc-bg: hsl(207, 26%, 17%)!important;
+    --rmsc-p: 10px;
+    --rmsc-radius: 4px;
+    --rmsc-h: 38px;
+}
 input::-webkit-input-placeholder,textarea::-webkit-input-placeholder{
     color:#9ca3af;
     opacity:1

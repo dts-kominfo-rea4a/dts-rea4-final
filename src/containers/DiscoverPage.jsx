@@ -6,6 +6,8 @@ import { Button, TextField, Typography } from "@mui/material";
 import { MultiSelect } from "react-multi-select-component";
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
+import InputLabel from '@mui/material/InputLabel';
+import FormControl from '@mui/material/FormControl';
 
 
 const DiscoverPage = () => {
@@ -164,8 +166,10 @@ const DiscoverPage = () => {
       <div className="mx-auto py-10 px-6 max-w-[90%]">
         <Typography>Discover Movies and Series</Typography>
         <div className="grid grid-cols-2 gap-y-10 gap-x-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 xl:gap-x-8 mt-12">
+            <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
+            <InputLabel id="select-tipe">Tipe</InputLabel>
             <Select
-                labelId="demo-select-small"
+                labelId="select-tipe"
                 autoComplete="tipe"
                 id="select-tipe"
                 value={tipe}
@@ -178,6 +182,7 @@ const DiscoverPage = () => {
                 <MenuItem value="tv">Series</MenuItem>
                
             </Select>
+            </FormControl>
             <MultiSelect
             options={genreMovies}
             value={genres}
@@ -197,6 +202,8 @@ const DiscoverPage = () => {
                 onChange={handlerYear}
                 value={year}
             />
+             <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
+             <InputLabel id="demo-select-small">Sort</InputLabel>
              <Select
                 labelId="demo-select-small"
                 autoComplete="year"
@@ -216,12 +223,13 @@ const DiscoverPage = () => {
                 }
                
             </Select>
-            <Button variant="contained" onClick={handleFilter}>Filter</Button>
+            </FormControl>
+            <Button variant="contained" onClick={handleFilter} size="small">Filter</Button>
         </div>
         
         <div className="grid grid-cols-2 gap-y-10 gap-x-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 xl:gap-x-8 mt-12">
           {movies.map((item,id) => (
-           <MovieCard item={item} key={id} type={item.movie}/>
+           <MovieCard item={item} key={id} type={tipe}/>
           ))}
         </div>
         <div className="flex items-center justify-center mt-10">
