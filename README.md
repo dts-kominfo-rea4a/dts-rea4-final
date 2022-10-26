@@ -12,7 +12,7 @@ Mohon perwakilan dari pair bisa melakukan fork repo ini dan clone, untuk reposit
 
 `dts4s-03-final`
 
-[[https://github.com/agungtrisnandar/DTS4A-03-final/blob/main/main.jpg]]
+<img src="https://github.com/agungtrisnandar/DTS4A-03-final/blob/main/main.jpg">
 
 Video Dokumentasi
 
