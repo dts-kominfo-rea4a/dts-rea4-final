@@ -7,6 +7,7 @@ import Row from "../components/Row";
 
 import requests from "../Requests";
 import { useParams } from "react-router-dom";
+import Footer from "../components/footer";
 
 const CategoryScreen = ({ select }) => {
     let params = useParams();
@@ -35,6 +36,7 @@ const CategoryScreen = ({ select }) => {
           fetchUrl={requests.fetchMetflixOriginals}
           isLargeRow
         />
+        <Footer />
       </div>
     );
 };

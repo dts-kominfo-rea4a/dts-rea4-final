@@ -1,17 +1,16 @@
 import React from "react";
-import { Container, Box, Typography, Link } from "@mui/material";
+import {  Box, Typography, Link } from "@mui/material";
 
 import logo from "../logo.png";
 
 export default function Footer() {
   
   return (
-    <footer>
-      <Container maxWidth="lg">
+    <footer style={{padding: '0 40px'}}>      
         <Box className="main-footer" py={6} display="flex" flexWrap="wrap" alignItems="center" sx={{ justifyContent: 'space-between' }}>
           <Link href="/" color="inherit" underline="none">
             <img              
-              className="nav__logo"
+              style={{width: '60px'}}
               src={logo}
               alt="metflix-logo"
             />
@@ -23,10 +22,9 @@ export default function Footer() {
             variant="body"
             gutterBottom={false}
           >
-            &copy; Copyright 2022 | All right reserved
+            &copy; Copyright 2022 | Feri Murdeni & Calvin
           </Typography>
-        </Box>
-      </Container>
+        </Box>      
     </footer>
   );
 }

@@ -1,14 +1,13 @@
 import axios from "../axios";
 import React, { useState, useEffect } from "react";
 import "./Row.css";
-// import { Link } from "react-router-dom";
-// import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
 import SmartDisplayIcon from "@mui/icons-material/SmartDisplay";
 
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import AddToList from "./AddToList";
 
 const Row = ({ title, fetchUrl, isLargeRow = false }) => {
     const [movies, setMovies] = useState([]);
@@ -83,6 +82,7 @@ const Row = ({ title, fetchUrl, isLargeRow = false }) => {
                     >
                       <SmartDisplayIcon fontSize="large" />
                     </IconButton>
+                    <AddToList movie={movie} />
                   </div>
 
                   <img

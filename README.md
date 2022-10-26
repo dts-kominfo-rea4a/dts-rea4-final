@@ -1,8 +1,27 @@
+# METFLIX REACT APP
+
+### https://metflix-750cf.web.app/
+
 ## Current Version
 
-**_Version 0.2.0_**
+**_Version 1.0.0-ALPHA_**
 
 ### Changelog
+
+### Version 1.0.0-ALPHA
+
+Initial Release
+
+### Version 0.3.0
+
+[NEW FEATURES]
+
+- Favourite list
+
+[ADJUSTMENT]
+
+- Separated sign up & sign in button
+- Add loading screen
 
 ### Version 0.2.0
 
