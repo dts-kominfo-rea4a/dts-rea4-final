@@ -5,7 +5,6 @@ Ketentuan lengkap bisa dilihat di [Final Project Guidelines](https://docs.google
 ## Daftar pair
 
 1. Agung Trisnandar (1523649113101394)
-2. 
 
 ## Fork and Clone
 
@@ -13,6 +12,31 @@ Mohon perwakilan dari pair bisa melakukan fork repo ini dan clone, untuk reposit
 
 `dts4s-03-final`
 
-## Branching, commit
+Video Dokumentasi
 
-Branch dapat sesuai dengan kebutuhan dan kesepakatan bersama dalam pair, namun hasil akhirnya harus di merge ke branch `main` dan di push ke Github. Pastikan hasil akhir kode sudah ter-push!
+
+Link Aplikasi
+- https://moviedts.netlify.app/
+- https://moviedts.vercel.app/landing
+
+Fitur Aplikasi
+- Landing Page
+- Login (Firebase)
+- Logout (Firebase)
+- Register (Firebase)
+- Dashboard
+- Movie Page -> Popular 
+             -> Upcoming
+             -> Now Playing
+             -> Top Rated
+- Series (TV) Page -> Popular
+                   -> Airing Today
+                   -> On The Air
+                   -> Top Rated
+- Detail Movie/Series Page 
+- Play Official Trailer / Fullscreen
+- Search by Keyword (movie and series_
+- Discover (Filtering Movie and Seris by Year, Genre)
+- Discover (Sort filtering)
+- Save List Movie to TMDB Playlist ( ID List Store to Firebase Auth)
+
