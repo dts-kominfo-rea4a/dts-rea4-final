@@ -23,7 +23,7 @@ Branch dapat sesuai dengan kebutuhan dan kesepakatan bersama dalam pair, namun h
 Movies App is a movie listing with integrated Firebase & TMDB API. You can login with existing account or register if you don't have one, Search movie or tv shows title will return any matched title from TMDB. 
 
 <!-- https://ezgif.com/optimize/ezgif-3-59dc072cca.gif -->
-<img src="./src/assets/Movies.gif" width="100%"/><br/>
+<img src="https://thumbs.gfycat.com/GorgeousJoyousGreatargus-size_restricted.gif" width="100%"/><br/>
 
 `Live Demo` [Movies App](https://xcplaysure.netlify.app)<br/><br/>
 `Feature list:`
