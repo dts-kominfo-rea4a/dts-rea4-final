@@ -1,19 +1,43 @@
-# DTS REA4 Final Project
+# METFLIX REACT APP
 
-Ketentuan lengkap bisa dilihat di [Final Project Guidelines](https://docs.google.com/document/d/122KyWNQ4xxU4aFwWbM4vIfH7LM4AH2CZEZa3YsEHjCk). 
+### https://metflix-750cf.web.app/
 
-## Daftar pair
+## Current Version
 
-Tugas dikerjakan secara berpasangan, untuk daftar kelompok bisa dilihat pada masing-masing Classroom atau Discord Class.
+**_Version 1.0.0-ALPHA_**
 
-## Fork and Clone
+### Changelog
 
-Mohon perwakilan dari pair bisa melakukan fork repo ini dan clone, untuk repositori yang di fork menggunakan penamaan:
+### Version 1.0.0-ALPHA
 
-`dts4[a/b/c]-[nomor pair]-final`
+Initial Release
 
-Contoh: `dts4a-01-final`
+### Version 0.3.0
 
-## Branching, commit
+[NEW FEATURES]
 
-Branch dapat sesuai dengan kebutuhan dan kesepakatan bersama dalam pair, namun hasil akhirnya harus di merge ke branch `main` dan di push ke Github. Pastikan hasil akhir kode sudah ter-push!
+- Favourite list
+
+[ADJUSTMENT]
+
+- Separated sign up & sign in button
+- Add loading screen
+
+### Version 0.2.0
+
+[MAJOR UPDATE]
+
+- Revamp UI
+- Add new menu list
+- Movie detail page
+
+### Version 0.1.1
+
+[BUG FIXING]
+
+- Handle axios on error fetch
+- Fix typo in TMDB API path
+
+### Version 0.1.0
+
+Initial Commit
