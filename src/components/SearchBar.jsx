@@ -1,5 +1,4 @@
 import React from "react";
-import { useEffect } from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import useTmdbStore, {
@@ -23,12 +22,6 @@ function SearchBar() {
   const handleSubmitSearch = (event) => {
     event.preventDefault();
   };
-
-  useEffect(() => {
-    if (searchQuery) {
-      console.log(searchMovies);
-    }
-  }, [searchQuery, searchMovies]);
 
   return (
     <div className="relative hidden sm:block">
