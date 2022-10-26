@@ -7,7 +7,7 @@ import useMovieStore, {
   selectTotalPages,
 } from "../stores/movie";
 import MovieVertical from "../components/MovieVertical";
-
+import Footer from '../components/Footer';
 import {
   Box,
   Grid,
@@ -94,6 +94,7 @@ function MoviesPage() {
               )):""}
             </Grid>
           </Box>
+          <Footer/>
         </>
       )}
     </>
