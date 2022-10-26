@@ -2,6 +2,7 @@ import React from "react";
 import Box from "@mui/material/Box";
 import HotTopics from "../components/HotTopics";
 import LatestNews from "../components/LatestNews";
+import ContentSkeleton from "../components/ContentSkeleton";
 import { useGetTopHeadlinesQuery } from "../services/newsApi";
 
 const HomePage = () => {
@@ -12,7 +13,7 @@ const HomePage = () => {
       {error ? (
         <>Oh no, there was an error</>
       ) : isLoading ? (
-        <>Loading...</>
+        <ContentSkeleton />
       ) : data ? (
         <>
           <HotTopics data={data} />
