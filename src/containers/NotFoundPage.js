@@ -1,11 +1,9 @@
 import React from "react";
 import "./NotFoundPage.css";
-import Nav from "../components/Nav";
 
 const NotFoundPage = () => {
   return (
     <div className="notFoundScreen">
-      <Nav />
       <div className="notFoundScreen__background">
         <div className="notFoundScreen__gradient" />
       </div>
