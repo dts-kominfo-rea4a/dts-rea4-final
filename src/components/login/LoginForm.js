@@ -1,17 +1,14 @@
 import React, { useState, useEffect } from "react";
-import { Link as RouterLink, useLocation, useNavigate } from "react-router-dom";
+import { Link as useLocation, useNavigate } from "react-router-dom";
 import LoadingButton from "@mui/lab/LoadingButton";
 import {
   Box,
   Checkbox,
   FormControlLabel,
-  IconButton,
-  InputAdornment,
   Link,
   Stack,
   TextField,
 } from "@mui/material";
-import { Icon } from "@iconify/react";
 import {
   auth,
   signInDenganEmailAndPassword,
@@ -32,8 +29,6 @@ const animate = {
 
 const LoginForm = ({ loginOrRegister }) => {
   const navigate = useNavigate();
-  const location = useLocation();
-  const from = location.state?.from?.pathname || "/";
   let isSubmitting = false;
 
   const [user, isLoading, error] = useAuthState(auth);

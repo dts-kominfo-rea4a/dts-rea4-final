@@ -11,10 +11,6 @@ export default function Movies() {
     setPage(value);
   };
 
-  useEffect(() => {
-    console.log("movies : " + data);
-  }, []);
-
   return (
     <>
       {error ? (

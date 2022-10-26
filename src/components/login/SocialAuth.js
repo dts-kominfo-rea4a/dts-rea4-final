@@ -1,6 +1,6 @@
 import { Icon } from "@iconify/react";
-import { Stack, Button, IconButton } from "@mui/material";
-import { auth, signInWithGoogle } from "../../authentication/firebase";
+import { Stack, IconButton } from "@mui/material";
+import { signInWithGoogle } from "../../authentication/firebase";
 
 const SocialAuth = () => {
   const loginWithGoogle = (e) => {
