@@ -12,8 +12,8 @@ import relativeTime from "dayjs/plugin/relativeTime";
 import NewsModal from "./NewsModal";
 
 const LatestNews = ({ data }) => {
-  const endOfArray = data.articles.length + 1;
-  const newData = data.articles.slice(1, endOfArray);
+  const endOfArray = data.data.length + 1;
+  const newData = data.data.slice(1, endOfArray);
   dayjs.extend(relativeTime);
 
   const [newsModalOpen, setNewsModalOpen] = useState(false);
@@ -60,7 +60,7 @@ const LatestNews = ({ data }) => {
                   component="img"
                   height="245"
                   id={index?.url}
-                  image={index?.urlToImage}
+                  image={index?.image_url}
                   alt={index?.description}
                 />
                 <CardContent>
@@ -80,7 +80,7 @@ const LatestNews = ({ data }) => {
                     component="div"
                     sx={{ color: "grey", fontWeight: 700 }}
                   >
-                    {dayjs(index?.publishedAt).fromNow()}
+                    {dayjs(index?.published_at).fromNow()}
                   </Typography>
                   <Typography
                     gutterBottom
@@ -88,7 +88,7 @@ const LatestNews = ({ data }) => {
                     component="div"
                     sx={{ color: "grey", fontWeight: 700 }}
                   >
-                    {index.source?.name}
+                    {index?.source}
                   </Typography>
                 </CardActions>
               </CardActionArea>

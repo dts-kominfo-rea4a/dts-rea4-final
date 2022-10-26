@@ -1,6 +1,7 @@
 import React from "react";
 import Box from "@mui/material/Box";
 import LatestNews from "../components/LatestNews";
+import ContentSkeleton from "../components/ContentSkeleton";
 import { useGetNewsBySearchQuery } from "../services/newsApi";
 import { useParams } from "react-router-dom";
 import Typography from "@mui/material/Typography";
@@ -14,7 +15,7 @@ const HomePage = () => {
       {error ? (
         <>Oh no, there was an error</>
       ) : isLoading ? (
-        <>Loading...</>
+        <ContentSkeleton />
       ) : data ? (
         <>
           <Typography

@@ -39,11 +39,12 @@ const ContentSkeleton = () => {
         container
         spacing={5}
       >
-        {looping.map(() => (
+        {looping.map((index) => (
           <Grid
             item
             xs={12}
             md={4}
+            key={index}
           >
             <Stack spacing={1}>
               <Skeleton

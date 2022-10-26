@@ -36,7 +36,7 @@ const HotTopics = ({ data }) => {
       </Typography>
       <Card sx={{ boxShadow: 0 }}>
         <CardActionArea
-          id={data.articles[0]?.url}
+          id={data.data[0]?.url}
           onClick={cardClickHandle}
         >
           <Grid
@@ -58,9 +58,9 @@ const HotTopics = ({ data }) => {
               >
                 <CardMedia
                   component="img"
-                  id={data.articles[0]?.url}
-                  image={data.articles[0]?.urlToImage}
-                  alt={data.articles[0]?.description}
+                  id={data.data[0]?.url}
+                  image={data.data[0]?.image_url}
+                  alt={data.data[0]?.description}
                   sx={{
                     height: { xs: 250, sm: 400, md: 400, lg: 400, xl: 400 },
                   }}
@@ -82,7 +82,7 @@ const HotTopics = ({ data }) => {
                       fontSize: { xs: 16, sm: 32, md: 32, lg: 32, xl: 32 },
                     }}
                   >
-                    {data.articles[0].title?.substring(0, 55)}...read more
+                    {data.data[0].title?.substring(0, 55)}...read more
                   </Typography>
                   <CardActions>
                     <Typography
@@ -91,7 +91,7 @@ const HotTopics = ({ data }) => {
                       component="div"
                       sx={{ fontWeight: 700 }}
                     >
-                      {dayjs(data.articles[0]?.publishedAt).fromNow()}
+                      {dayjs(data.data[0]?.published_at).fromNow()}
                     </Typography>
                     <Typography
                       gutterBottom
@@ -99,7 +99,7 @@ const HotTopics = ({ data }) => {
                       component="div"
                       sx={{ fontWeight: 700 }}
                     >
-                      {data.articles[0].source?.name}
+                      {data.data[0]?.source}
                     </Typography>
                   </CardActions>
                 </Box>
@@ -126,7 +126,7 @@ const HotTopics = ({ data }) => {
                 variant="body1"
                 sx={{ fontSize: 21 }}
               >
-                {data.articles[0].description?.substring(0, 160)}...read more
+                {data.data[0].description?.substring(0, 160)}...read more
               </Typography>
             </Grid>
           </Grid>
