@@ -11,7 +11,6 @@ import RegisterPage from "./pages/RegisterPage";
 import NotFoundPage from "./pages/NotFoundPage";
 import DatailPage from "./pages/DatailPage";
 import ProtectedComponent from "./components/ProtectedComponent";
-import SearchPage from "./pages/SearchPage";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -36,7 +35,6 @@ root.render(
         />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
-        <Route path="/search" element={<SearchPage />} />
         <Route
           path="/detail/:type/:id"
           element={
