@@ -14,6 +14,8 @@ Aplikasi ini tentang portal berita yang di ambil dari media berita The Jakarta P
 
 API ini di kembangkan oleh Faruq Maulana [Link](https://github.com/faruqmaulana/JAKARTA-POST-API)
 
-## Fitur unik yang diterapkan
+## Fitur dalam aplikasi
 
-Fitur dalam aplikasi ini adalah fitur pencarian berita dari media The Jakarta Post
+* Fitur pencarian berita dari media The Jakarta Post
+* Fitur perubahan data user di halaman profile
+* Autentikasi dengan Firebase
