@@ -6,10 +6,9 @@ function Header() {
     <div id="main">
         <Navbar  />
         <div className='name'>
-            <h1><span>Laun Your Application</span>with confdencafjlsjf sfjasdaf jsdjf</h1>
-            <p className='detailslanding'>Lorem ipsusljfas fjasldjfsl fsdfjlas fjsldf sldf slfjlsdjf a fls sj s jfs sdfjlsajflsjfl ldsfjalsfjaslfj slfdjalsf
-            sdfjslfjsl dfjslfj lsflsdjf lsf</p>
-            <a href='#d' className='cv-btn'>Download</a>
+            <h1><span>Movie DTS</span> Final Project React</h1>
+            <p className='detailslanding'>Build with API TMDB, Zustand, Material UI, Firebase and some CSS Tailwind</p>
+            
         </div>
     </div>
   )

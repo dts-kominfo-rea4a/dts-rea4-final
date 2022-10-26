@@ -15,7 +15,7 @@ function LandingPage() {
     <Header/>
     <Navbar/>
     <Feature/>
-    <About image={aboutImage1} title="Comea asf jslfjlsjflsafjslfjal" button="Get App" id='about' />
+    <About image={aboutImage1} title="About" button="Get App" id='about' />
     <Presentation/>
     <Contact/>
     </>

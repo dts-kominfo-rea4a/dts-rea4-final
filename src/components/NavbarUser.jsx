@@ -274,7 +274,7 @@ function NavbarUser() {
                 <Tooltip title="Open settings">
                     <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                         {loading }
-                        <Avatar alt={user.displayName} src={user.photoURL} /> 
+                        <Avatar alt={user ? user.displayName : ''} src={user ? user.photoURL : ''} /> 
                     </IconButton>
                     
                 </Tooltip>

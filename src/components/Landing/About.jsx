@@ -8,9 +8,9 @@ function About(props) {
         </div>
         <div className='about-text'>
             <h2> {props.title} </h2>
-            <p> lorem isaf ljlfasjfsjflsjflsajdflsajdfljsadlfjasljflsdjflsjdfljsdlfjsldjfl  sdjf j   jfsjfl sdlfjdsjfl dsljds ljfsdjfl</p>
+            <p> Mobile Friendly UI </p>
         </div>
-        <button className='cv-btn'>{props.button}</button>
+        {/* <button className='cv-btn'>{props.button}</button> */}
     </div>
   )
 }

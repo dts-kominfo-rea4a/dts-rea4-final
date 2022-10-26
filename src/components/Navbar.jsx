@@ -22,7 +22,7 @@ function Navbar(props) {
     return (
         <nav className={nav ? 'nav active': 'nav'}>
             <a href='#main' className='logo'>
-                <img src='/logo.png' alt=""/>
+                <img src='/logo.png' alt="" width="50px"/>
             </a>
             <input type='checkbox' className='menu-btn' id='menu-btn'/>
             <label className='menu-icon' >

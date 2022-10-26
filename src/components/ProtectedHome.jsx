@@ -18,8 +18,10 @@ const ProtectedHome = ({ children }) => {
         }
 
         if (!user) {
+            console.log('landing');
             navigate("/landing");
         }
+        
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [user, loading]);
 

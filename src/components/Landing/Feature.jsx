@@ -9,9 +9,9 @@ function Feature() {
   return (
     <div id='features'>
         <div className='a-container'>
-            <FeatureBox image={featureimage1} title="development course"/>
-            <FeatureBox image={featureimage2} title="development course2"/>
-            <FeatureBox image={featureimage3} title="development course3"/>
+            <FeatureBox image={featureimage1} title="Authentication"  textfeature="Built in with Google Firebase Authentication to Login and Signout and store some Playlist ID from TMDB"/>
+            <FeatureBox image={featureimage2} title="Movie Categorized" textfeature="Movie List By Categorized and Stream some Official Movie Trailler, Add Movie to Movie List"/>
+            <FeatureBox image={featureimage3} title="Easy Search Filter" textfeature="Search Movie or Series TV or Filter list as you wish"/>
         </div>
     </div>
   )
