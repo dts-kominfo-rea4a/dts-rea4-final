@@ -40,3 +40,4 @@ Link Api
 https://api.thenewsapi.com/
 
 Link Live App
+https://news-api-dts.netlify.app/
