@@ -8,7 +8,6 @@ Movie app created with React. Features include user authentication, movie list, 
 <img src="https://iili.io/DPC07I.gif" alt="DPC07I.gif" border="0" />
 <img src="https://iili.io/DPC6Ex.gif" alt="DPC6Ex.gif" border="0" />
 <img src="https://iili.io/DPn9Ev.gif" alt="DPn9Ev.gif" border="0" />
-![](React-app.gif)
 
 ## Current Version
 
