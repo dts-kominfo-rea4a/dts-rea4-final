@@ -10,3 +10,4 @@ menggunakan api dari : https://www.themoviedb.org/
 dan styling dari tailwind css.
 
 Tugas ini dikerjakan oleh saya sendiri, karena partner saya tidak ada kabar.
+Fiandika TriDharma (1523649113101447)
