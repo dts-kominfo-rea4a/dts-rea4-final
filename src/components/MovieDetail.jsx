@@ -54,9 +54,10 @@ const MovieDetail = () => {
   }
 
   return (
-    <div className=' min-h-[100vh] text-white text-3xl sm:text-4xl md:text-3xl lg:text-4xl xl:text-6xl font-bold'>    
+    <div className='min-h-[100vh] text-white text-3xl sm:text-4xl md:text-3xl lg:text-4xl xl:text-6xl font-bold' key={movie.id}>    
       <div
         className='flex flex-col items-center justify-center md:flex-row md:ml-[50px]'
+        key={movie.id}
       >
         <img
           src={"https://image.tmdb.org/t/p/original/" + movie.poster_path}

@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom';
 import MenuDropDown from './MenuDropDown';
 import { UserAuth } from '../context/AuthContext'
+import Search from './Search';
 
 const Navbar = () => {
   const { user } = UserAuth();
@@ -11,6 +12,7 @@ const Navbar = () => {
       <Link to='/'>
         <h1 className='text-red-600 text-4xl font-bold cursor-pointer'>MOVIE</h1>
       </Link>
+      <Search />
       {user?.email ? (
       <div>
       <MenuDropDown />        
