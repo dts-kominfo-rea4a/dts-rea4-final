@@ -13,41 +13,43 @@ import NotFoundPage from "./containers/NotFoundPage";
 import CategoryScreen from "./containers/Category";
 import Searched from "./containers/Searched";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { CircularProgress } from "@mui/material";
 
 // import axios from "../axios";
 // import requests from "../Requests";
 
 function App() {
-    const user = useSelector(selectUser);
-    const dispatch = useDispatch();
+  const [loading, setLoading] = useState(false);
 
-    useEffect(() => {
-        const unsubscribe = onAuthStateChanged(auth, (userAuth) => {
-            if (userAuth) {
-                // Logged in
-                dispatch(
-                    login({
-                        uid: userAuth.uid,
-                        email: userAuth.email,
-                    })
-                );
-            } else {
-                // Logged out
-                dispatch(logout());
-            }
-        });
+  const user = useSelector(selectUser);
+  const dispatch = useDispatch();
 
-        return unsubscribe;
-    }, [dispatch]);
+  useEffect(() => {
+    setLoading(true);
+    const unsubscribe = onAuthStateChanged(auth, (userAuth) => {
+      if (userAuth) {
+        // Logged in
+        dispatch(
+          login({
+            uid: userAuth.uid,
+            email: userAuth.email,
+          })
+        );
+      } else {
+        // Logged out
+        dispatch(logout());
+      }
+      setLoading(false);
+    });
 
-    
+    return unsubscribe;
+  }, [dispatch]);
 
-    
-
-    return (
-      <div className="app">
-        {!user ? (
+  return (
+    <div className="app">
+      {!loading ? (
+        !user ? (
           <Routes>
             <Route path="/" element={<LoginScreen />} />
             <Route path="*" element={<NotFoundPage />} />
@@ -61,10 +63,12 @@ function App() {
             <Route path="/" element={<HomeScreen />} />
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
-        )}
-        
-      </div>
-    );
+        )
+      ) : (
+        <CircularProgress size={"100%"} />
+      )}
+    </div>
+  );
 }
 
 export default App;
