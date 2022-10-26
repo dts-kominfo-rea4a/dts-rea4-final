@@ -1,6 +1,8 @@
 import React, { useState, useEffect, } from 'react';
 import { useNavigate, useParams, } from 'react-router-dom';
 import axios from 'axios';
+import YoutubeEmbed from '../context/YoutubeEmbed';
+import "../index.css";
 
 async function getMovieDetail(id) {
   const result = 
@@ -21,6 +23,8 @@ const MovieDetail = () => {
   const navigate = useNavigate();
   const [width, setWidth] = useState(window.screen.availWidth);
   const [clips, setClips] = useState([]);
+  const [showModal, setShowModal] = React.useState(false);
+
   let mt = width > 768 ? (width * 9 ) / 16 - 250 : 0;
 
   window.addEventListener("resize", () => {
@@ -86,25 +90,14 @@ const MovieDetail = () => {
           </div>
         </div>
         Clips And Trailers
+        {console.log(clips)}
         <div className='flex overflow-scroll scrollbar-hide snap-x mt-5 md:mt-10'>
           {clips.map((clip) => (
             <div
               className='ml-5'
-              onClick={() => {
-                window.open(`https://youtube.com/watch?v=${clip.key}`);
-              }}
             >
               <div className='relative flex-shrink-0 h-[180px] md:h-[250px] lg:h-[300px] aspect-video rounded-xl'>
-                <img
-                  src={`https://img.youtube.com/vi/${clip.key}/hqdefault.jpg`}
-                  className='absolute object-cover h-[180px] md:h-[250px] lg:h-[300px] aspect-video rounded-xl '
-                  alt='youtube thumbnail'
-                />
-                <img
-                  src="https://www.freeiconspng.com/uploads/video-play-icon-24.png"
-                  alt='play icon'
-                  className='absolute inset-0 w-[150px] h-[150px] m-auto'
-                />
+                <YoutubeEmbed embedId={clips[0].key} />
               </div>
               <p className='text-lg md:text-xl font-normal mt-1'>{clip.name}</p>
             </div>
@@ -116,6 +109,7 @@ const MovieDetail = () => {
           {movie.overview}
         </div>
       </div>
+
     </div>
   );
 }

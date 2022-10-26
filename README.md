@@ -17,3 +17,10 @@ Contoh: `dts4a-01-final`
 ## Branching, commit
 
 Branch dapat sesuai dengan kebutuhan dan kesepakatan bersama dalam pair, namun hasil akhirnya harus di merge ke branch `main` dan di push ke Github. Pastikan hasil akhir kode sudah ter-push!
+
+## link demo
+
+https://dts4a-45-final.netlify.app/
+
+## gif demonstasi 
+
