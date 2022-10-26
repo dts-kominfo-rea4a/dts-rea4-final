@@ -1,6 +1,10 @@
 # METFLIX REACT APP
 
+Movie app created with React. Features include user authentication, movie list, movie detail, favourite list, and profile.
+
 ### https://metflix-750cf.web.app/
+
+![](React-app.gif)
 
 ## Current Version
 
