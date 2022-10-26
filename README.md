@@ -1,19 +1,12 @@
-# DTS REA4 Final Project
+Sebuah Aplikasi yang menampilkan berbagai macam berita dari API dari https://api.thenewsapi.com/ dimana API tersebut memberikan 5 artikel yang dapat ditampilkan dalam satu waktu dan memiliki 150 pull request.
 
-Ketentuan lengkap bisa dilihat di [Final Project Guidelines](https://docs.google.com/document/d/122KyWNQ4xxU4aFwWbM4vIfH7LM4AH2CZEZa3YsEHjCk). 
+Video GIF Register, Login, dan HomePage : https://gfycat.com/hospitableadolescentiberianbarbel
 
-## Daftar pair
+Video GIF Detail, logOut dan Protected Component : https://gfycat.com/legalsharparachnid
 
-Tugas dikerjakan secara berpasangan, untuk daftar kelompok bisa dilihat pada masing-masing Classroom atau Discord Class.
+Link Live App : https://strong-gumdrop-a9b5b3.netlify.app/
 
-## Fork and Clone
+Link Api : https://api.thenewsapi.com/
 
-Mohon perwakilan dari pair bisa melakukan fork repo ini dan clone, untuk repositori yang di fork menggunakan penamaan:
-
-`dts4[a/b/c]-[nomor pair]-final`
-
-Contoh: `dts4a-01-final`
-
-## Branching, commit
-
-Branch dapat sesuai dengan kebutuhan dan kesepakatan bersama dalam pair, namun hasil akhirnya harus di merge ke branch `main` dan di push ke Github. Pastikan hasil akhir kode sudah ter-push!
+Untuk pengerjaan dilakukan oleh saya sendiri Agung Iman Santoso (1523649113101648) dikarenakan pasangan saya tidak ada kabar.
+Demikian disampaikan dengan hormat, Apabila ada kurangnya, kami ucapkan terima kasih.

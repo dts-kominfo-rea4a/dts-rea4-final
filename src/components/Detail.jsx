@@ -17,6 +17,7 @@ function Detail(props) {
   const fetchSingle = useNewsStore(selectSingleNews);
   const news = useNewsStore(selectNews);
   const { id } = useParams();
+  console.log(id, "ini useParam");
 
   useEffect(() => {
     fetchSingle(id);
