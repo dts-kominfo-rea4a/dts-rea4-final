@@ -22,7 +22,7 @@ Branch dapat sesuai dengan kebutuhan dan kesepakatan bersama dalam pair, namun h
 
 Sebuah aplikasi yang menampilkan berbagai macam berita, baik itu olahraga, berita terkini, dan sebagainya. Untuk API sebagai data source kami menggunakan API dari https://api.thenewsapi.com/ dimana kami bisa mendapatkan arikel sekitar 150 artikel per hari.
 
-Video gif
+## Video gif
 Register
 https://gfycat.com/alltastyleafhopper
 
