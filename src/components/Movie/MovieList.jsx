@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
-import  Movie from "../components/Movie/MovieCard";
-import '../styles/MovieList.css';
+import  MovieCard from "../components/Movie/MovieCard";
 import InfiniteScroll from "react-infinite-scroller";
 import tmdb from '../../config/tmdb';
 
@@ -38,7 +37,7 @@ const MovieList = (item) => {
       <div className="mx-auto py-10 px-6 max-w-[90%]">
         <div className="grid grid-cols-2 gap-y-10 gap-x-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 xl:gap-x-8 mt-12">
           {movies.map((item) => (
-           <Movie item={item} key={item.id}></Movie>
+           <MovieCard item={item} key={item.id}></Movie>
           ))}
         </div>
         <div className="flex items-center justify-center mt-10">

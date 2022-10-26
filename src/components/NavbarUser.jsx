@@ -20,7 +20,7 @@ import DarkModeIcon from '@mui/icons-material/DarkMode';
 import { signOutFromEverywhere} from '../authentication/firebase';
 import { useNavigate } from "react-router-dom";
 import useThemeStore from '../stores/theme';
-import {Link, TextField} from "@mui/material";
+import { TextField} from "@mui/material";
 
 import { auth } from "../authentication/firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
@@ -102,7 +102,37 @@ function NavbarUser() {
         navigate('/');
     }
 
-   
+    const handleMoviePopular = () => {
+        navigate('movies/popular');
+    }
+
+    const handleMovieNowPlaying = () => {
+        navigate('movies/popular');
+    }
+
+    const handleMovieUpcoming = () => {
+        navigate('movies/upcoming');
+    }
+
+    const handleMovieTopRated = () => {
+        navigate('movies/top_rated');
+    }
+
+    const handleSeriesPopular = () => {
+        navigate('/series/popular');
+    }
+
+    const handleSeriesAiringToday = () => {
+        navigate('/series/iring_today');
+    }
+
+    const handleSeriesOnTheAir = () => {
+        navigate('/series/on_the_air');
+    }
+
+    const handleSeriesTopRated = () => {
+        navigate('/series/top_rated');
+    }
 
     return (
         <AppBar position="static" style={{ background: 'transparent'}}>
@@ -171,9 +201,6 @@ function NavbarUser() {
                     Series
                 </Button>
                 
-                <Button sx={{ my: 2, color: 'white', display: 'block' }}>
-                    News And Popular
-                </Button>
                 <Button sx={{ my: 2, color: 'white', display: 'block' }} onClick={handleMyList}>
                     My List
                 </Button>
@@ -197,16 +224,16 @@ function NavbarUser() {
                     onClose={handleCloseMoviesMenu}
                 >
                     <MenuItem>
-                        <Typography textAlign="center"><Link href="/movies/popular" underline="none">Popular</Link></Typography>
+                        <Typography textAlign="center" onClick={handleMoviePopular}>Popular</Typography>
                     </MenuItem>
                     <MenuItem>
-                        <Typography textAlign="center"><Link href="/movies/now_playing" underline="none">Now Playing</Link></Typography>
+                        <Typography textAlign="center" onClick={handleMovieNowPlaying}>Now Playing</Typography>
                     </MenuItem>
                     <MenuItem>
-                        <Typography textAlign="center"><Link href="/movies/upcoming" underline="none">Upcoming</Link></Typography>
+                        <Typography textAlign="center" onClick={handleMovieUpcoming}>Upcoming</Typography>
                     </MenuItem>
                     <MenuItem>
-                        <Typography textAlign="center"><Link href="/movies/top_rated" underline="none">Top Rated</Link></Typography>
+                        <Typography textAlign="center" onClick={handleMovieTopRated}>Top Rated</Typography>
                     </MenuItem>
                 </Menu>
                 <Menu
@@ -226,16 +253,16 @@ function NavbarUser() {
                     onClose={handleCloseSeriesMenu}
                 >
                     <MenuItem>
-                        <Typography textAlign="center"><Link href="/series/popular" underline="none">Popular</Link></Typography>
+                        <Typography textAlign="center" onClick={handleSeriesPopular}>Popular</Typography>
                     </MenuItem>
                     <MenuItem>
-                        <Typography textAlign="center"><Link href="/series/airing_today" underline="none">Airing Today</Link></Typography>
+                        <Typography textAlign="center" onClick={handleSeriesAiringToday}>Airing Today</Typography>
                     </MenuItem>
                     <MenuItem>
-                        <Typography textAlign="center"><Link href="/series/on_the_air" underline="none">On The Air</Link></Typography>
+                        <Typography textAlign="center" onClick={handleSeriesOnTheAir}>On The Air</Typography>
                     </MenuItem>
                     <MenuItem>
-                        <Typography textAlign="center"><Link href="/series/top_rated" underline="none">Top Rated</Link></Typography>
+                        <Typography textAlign="center" onClick={handleSeriesTopRated}>Top Rated</Typography>
                     </MenuItem>
                 </Menu>
             </Box>

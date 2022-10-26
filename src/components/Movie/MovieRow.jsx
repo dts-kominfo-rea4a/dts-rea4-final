@@ -26,7 +26,7 @@ function MovieRow({ title, items, type }) {
   
     return (
       <div className="movieRow">
-          <h2>{title} >></h2>
+          <h2>{title} >> </h2>
   
           <div className="movieRow--left" onClick={handleLeftArrow}>
             <NavigateBeforeIcon style={{fontSize: 50}}/>

@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import MovieCard from "../components/Movie/MovieCard";
 import tmdb from '../config/tmdb';
-import '../styles/MovieList.css';
 import {useParams} from 'react-router-dom';
 import NavbarUser from "../components/NavbarUser";
 import { Typography } from "@mui/material";

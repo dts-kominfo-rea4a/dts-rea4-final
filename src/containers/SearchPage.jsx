@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import MovieCard from "../components/Movie/MovieCard";
 import tmdb from '../config/tmdb';
-import '../styles/MovieList.css';
 import {useParams} from 'react-router-dom';
 import NavbarUser from "../components/NavbarUser";
 import { Typography } from "@mui/material";
@@ -45,7 +44,7 @@ const SearchPage = () => {
     <div>
         
       <div className="mx-auto py-10 px-6 max-w-[90%]">
-        <Typography sx={{color:'white'}}>Searh Result for <b>{keyword}</b></Typography>
+        <Typography sx={{color:'white'}}>Seacrh Result for <b>{keyword}</b></Typography>
         <div className="grid grid-cols-2 gap-y-10 gap-x-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 xl:gap-x-8 mt-12">
        
           {movies.map(item => {

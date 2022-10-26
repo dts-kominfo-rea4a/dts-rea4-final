@@ -6,39 +6,71 @@ import LanguageIcon from '@mui/icons-material/Language';
 import AspectRatioIcon from '@mui/icons-material/AspectRatio';
 import iconAmazon from '../../images/icon-amazon.png';
 import iconNetflix from '../../images/icon-netflix.png';
+import PlaylistAddIcon from '@mui/icons-material/PlaylistAdd';
 import { useEffect } from 'react';
 import {useNavigate} from 'react-router-dom';
+import Snackbar from '@mui/material/Snackbar';
+import { auth } from '../../authentication/firebase';
+import {  onAuthStateChanged } from "firebase/auth";
+import tmdb, {tmdbConfig} from '../../config/tmdb';
+
 
 function Movie( { item } ) {
 
-const [urlVideo,setUrlVideo] = useState('');
-const [playVideo,setPlayVideo] = useState(false);
-const [videoFullScreen,setVideoFullScreen] = useState(false);
-const [id,setId] = useState('');
-const navigate = useNavigate();
-function handleShowTrailer(){
-    
-    const trailer = item.videos.results;
-    if(trailer !== undefined && trailer.length > 0){
-        const trailerid = trailer.find(
-            (vid) => vid.type === "Trailer"
-          );
-        // console.log(trailerid.key);
-        const url = `https://youtube.com/embed/${trailerid.key}?autoplay=1&controls=1`;
-        setUrlVideo(url);
-        setId(item.id);
-    }
-    setPlayVideo(true);
-}
-function handleVideoFullScreen(){
-    setVideoFullScreen(!videoFullScreen);
-}
+    const [urlVideo,setUrlVideo] = useState('');
+    const [playVideo,setPlayVideo] = useState(false);
+    const [videoFullScreen,setVideoFullScreen] = useState(false);
+    const [id,setId] = useState('');
+    const [messageList, setMessageList] = useState();
+    const [open, setOpen] = React.useState(false);
+    const navigate = useNavigate();
 
-useEffect( () => {
-    if (id !== item.id){
-        setPlayVideo(false);
+    function handleShowTrailer(){
+    
+        const trailer = item.videos.results;
+        if(trailer !== undefined && trailer.length > 0){
+            const trailerid = trailer.find(
+                (vid) => vid.type === "Trailer"
+            );
+            // console.log(trailerid.key);
+            const url = `https://youtube.com/embed/${trailerid.key}?autoplay=1&controls=1`;
+            setUrlVideo(url);
+            setId(item.id);
+        }
+        setPlayVideo(true);
     }
-},[item, videoFullScreen,id]);
+
+    function handleVideoFullScreen(){
+        setVideoFullScreen(!videoFullScreen);
+    }
+
+    useEffect( () => {
+        if (id !== item.id){
+            setPlayVideo(false);
+        }
+    },[item, videoFullScreen,id]);
+
+    const addList = async (id) => {
+        let users = [];
+        await onAuthStateChanged(auth, (user) => {
+            if (user) {
+                users = user.displayName.split(',');
+                // setUser(users);
+            } else {
+                setMessageList('List data Not Available');
+                setOpen(true);
+            }
+        });
+        if (users){
+            console.log(users);
+            const {data} = await tmdb.post(`list/${users[1]}/add_item?session_id=${tmdbConfig.sessionId}`,{
+                media_id : id,
+            });
+            console.log(data);
+            setOpen(true);
+            setMessageList(data.status_message);
+        }
+    };
 
 return (
     playVideo ? (
@@ -103,7 +135,13 @@ return (
                                 </div>
                             </a>
                      }
+                     <a onClick={ () => addList(item.id)} className="details--viewtrailer" href='#a'>
+                        <div><PlaylistAddIcon />Add To List</div>
+                    </a>
                 </div>
+                <Snackbar open={open} autoHideDuration={6000} message={messageList}>
+          
+                </Snackbar>
                
             </section>
             
