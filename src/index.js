@@ -18,11 +18,17 @@ root.render(
       <Routes>
         <Route path="/" element={<FirstPage />} />
         <Route path="/home" element={<App />} />
-        <Route path="first" element={<FirstPage/>} />
+        <Route path="first" element={<FirstPage />} />
         <Route path="login" element={<Login loginOrRegister="login" />} />
-        <Route path="register" element={<Register oginOrRegister="register"/>} />
+        <Route
+          path="register"
+          element={<Register oginOrRegister="register" />}
+        />
         <Route path="view/:type/:id" element={<View />} />
       </Routes>
+      <div className="text-slate-50 text-sm text-center w-full py-6 font-semibold ">
+        <div>Created By Aditya Prasetyo & Bobby Putra Kurniawan</div>
+      </div>
     </BrowserRouter>
   </React.StrictMode>
 );
