@@ -7,7 +7,7 @@ export const newsApi = createApi({
   baseQuery: fetchBaseQuery({ baseUrl: "https://newsapi.org/v2/" }),
   endpoints: (builder) => ({
     getTopHeadlines: builder.query({
-      query: () => `top-headlines?country=id&category=sports&apiKey=${apiKey}`,
+      query: () => `top-headlines?country=id&apiKey=${apiKey}`,
     }),
     getNewsBySearch: builder.query({
       query: (textSearch) =>

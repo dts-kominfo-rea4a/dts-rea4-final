@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Card from "@mui/material/Card";
@@ -8,9 +8,22 @@ import CardActionArea from "@mui/material/CardActionArea";
 import Grid from "@mui/material/Grid";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
+import NewsModal from "./NewsModal";
 
 const HotTopics = ({ data }) => {
   dayjs.extend(relativeTime);
+
+  const [newsModalOpen, setNewsModalOpen] = useState(false);
+  const [newsContent, setNewsContent] = useState({});
+
+  const cardClickHandle = (event) => {
+    setNewsContent({ url: event.target.id, description: event.target.alt });
+    setNewsModalOpen(true);
+  };
+
+  const handleModalClose = () => {
+    setNewsModalOpen(false);
+  };
 
   return (
     <Box>
@@ -22,7 +35,10 @@ const HotTopics = ({ data }) => {
         Hot Topics
       </Typography>
       <Card sx={{ boxShadow: 0 }}>
-        <CardActionArea>
+        <CardActionArea
+          id={data.articles[0]?.url}
+          onClick={cardClickHandle}
+        >
           <Grid
             container
             spacing={4}
@@ -42,8 +58,9 @@ const HotTopics = ({ data }) => {
               >
                 <CardMedia
                   component="img"
+                  id={data.articles[0]?.url}
                   image={data.articles[0]?.urlToImage}
-                  alt="green iguana"
+                  alt={data.articles[0]?.description}
                   sx={{
                     height: { xs: 250, sm: 400, md: 400, lg: 400, xl: 400 },
                   }}
@@ -115,6 +132,11 @@ const HotTopics = ({ data }) => {
           </Grid>
         </CardActionArea>
       </Card>
+      <NewsModal
+        newsModalOpen={newsModalOpen}
+        newsContent={newsContent}
+        handleModalClose={handleModalClose}
+      />
     </Box>
   );
 };

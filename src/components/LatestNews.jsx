@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Card from "@mui/material/Card";
@@ -9,11 +9,24 @@ import CardActions from "@mui/material/CardActions";
 import Grid from "@mui/material/Grid";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
+import NewsModal from "./NewsModal";
 
 const LatestNews = ({ data }) => {
   const endOfArray = data.articles.length + 1;
   const newData = data.articles.slice(1, endOfArray);
   dayjs.extend(relativeTime);
+
+  const [newsModalOpen, setNewsModalOpen] = useState(false);
+  const [newsContent, setNewsContent] = useState({});
+
+  const cardClickHandle = (event) => {
+    setNewsContent({ url: event.target.id, description: event.target.alt });
+    setNewsModalOpen(true);
+  };
+
+  const handleModalClose = () => {
+    setNewsModalOpen(false);
+  };
 
   return (
     <Box sx={{ paddingTop: 10 }}>
@@ -39,12 +52,16 @@ const LatestNews = ({ data }) => {
             xl={4}
           >
             <Card sx={{ maxWidth: 345, boxShadow: 0 }}>
-              <CardActionArea>
+              <CardActionArea
+                id={index?.url}
+                onClick={cardClickHandle}
+              >
                 <CardMedia
                   component="img"
                   height="245"
+                  id={index?.url}
                   image={index?.urlToImage}
-                  alt={index?.urlToImage}
+                  alt={index?.description}
                 />
                 <CardContent>
                   <Typography
@@ -79,6 +96,11 @@ const LatestNews = ({ data }) => {
           </Grid>
         ))}
       </Grid>
+      <NewsModal
+        newsModalOpen={newsModalOpen}
+        newsContent={newsContent}
+        handleModalClose={handleModalClose}
+      />
     </Box>
   );
 };
