@@ -24,7 +24,7 @@ https://gfycat.com/tancarelesshuemul
 
 ## Link Live App
 
-https://dtsa4-49-final.web.app
+https://movies-dts4a.netlify.app/
 
 ## App's Description
 
