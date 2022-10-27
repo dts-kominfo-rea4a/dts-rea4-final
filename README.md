@@ -1,5 +1,15 @@
 # DTS REA4 Final Project
 
+Desc :
+Final project ini adalah movie app. Movie App ini memiliki fitur sbb :
+- register
+- login (menggunakan basic auth (email&passwd), gmail)
+- logout
+- feth data movie dari The Movie Database API (ada 2 kategori : upcoming dan now playing)
+- watchlist untuk menyimpan film yg disuka berdsarakan kategori. watchlist ini ditampilkan dalam bentuk table yg dapat disorting 
+
+Link live app : https://heroic-cajeta-3720fe.netlify.app/
+
 Ketentuan lengkap bisa dilihat di [Final Project Guidelines](https://docs.google.com/document/d/122KyWNQ4xxU4aFwWbM4vIfH7LM4AH2CZEZa3YsEHjCk). 
 
 ## Daftar pair
