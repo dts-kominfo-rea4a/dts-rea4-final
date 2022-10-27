@@ -1,7 +1,7 @@
 # Catatan Final Project DTS REA4A pair 8
 
 ## Preview
-preview.gif
+[![Preview](preview.gif)]
 
 ## Live APP
 https://newsportalrea4a-8.netlify.app
