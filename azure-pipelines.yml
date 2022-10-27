@@ -17,7 +17,7 @@ variables:
   vmImageName: 'windows-2019'
 
   # Working Directory
-  workingDirectory: 'MovieApp'
+  workingDirectory: '**'
 
 stages:
 - stage: Build
@@ -30,13 +30,22 @@ stages:
       vmImage: $(vmImageName)
 
     steps:
+    - task: UseDotNet@2
+      inputs:
+        packageType: 'sdk'
+        version: '6.x'
+    - task: DotNetCoreCLI@2
+      displayName: 'Restore project dependencies'
+      inputs:
+        command: 'restore'
+        projects: '**/*.csproj'
     - task: DotNetCoreCLI@2
       displayName: Build
       inputs:
         command: 'build'
         projects: |
           $(workingDirectory)/*.csproj
-        arguments: --output $(System.DefaultWorkingDirectory)/publish_output --configuration Release
+        arguments: --no-restore --output $(System.DefaultWorkingDirectory)/publish_output --configuration Release
 
     - task: ArchiveFiles@2
       displayName: 'Archive files'
