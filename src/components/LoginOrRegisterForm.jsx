@@ -15,7 +15,7 @@ const LoginOrRegisterForm = ({ loginOrRegister }) => {
     password: "",
   });
 
-  const [user,isLoading,error] = useAuthState(auth);
+  const [user,isLoading] = useAuthState(auth);
 
   const textFieldEmailOnChangeHandler = (event) => {
     setCredential({
