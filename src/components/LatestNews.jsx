@@ -1,4 +1,3 @@
-// import useNewsStore from "../store/news";
 import React, { useEffect, useState } from "react";
 import { Container,  } from "@mui/system";
 import { 
@@ -12,21 +11,21 @@ import {
     Grid,
     Paper,
  } from "@mui/material";
- import { styled } from '@mui/material/styles';
+import { styled } from '@mui/material/styles';
 import { Link, Outlet } from "react-router-dom";
 import PopUp from "./Popup";
 
- import TimeAgo from 'javascript-time-ago';
- import en from 'javascript-time-ago/locale/en';
- import useNewsStore,{
+import TimeAgo from 'javascript-time-ago';
+import en from 'javascript-time-ago/locale/en';
+import useNewsStore,{
   fetchNews, iniNews,
 } from '../store/news';
 
 
- TimeAgo.addLocale(en)
+TimeAgo.addLocale(en)
 
  // Create formatter (English).
- const timeAgo = new TimeAgo('en-US')
+const timeAgo = new TimeAgo('en-US')
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -36,10 +35,8 @@ const Item = styled(Paper)(({ theme }) => ({
   color: theme.palette.text.secondary,
 }));
 
-
-
-  const LatestNews = ({}) => {
-    const terapNews = useNewsStore();
+const LatestNews = ({}) => {
+const terapNews = useNewsStore();
     // const news = useNewsStore(iniNews);
   // const colors= useColorStore(selectColor);
   const [showPopup, setShowPopup] = useState(false);
@@ -74,7 +71,6 @@ const Item = styled(Paper)(({ theme }) => ({
             <Box sx={{ maxWidth: 345, minHeight:450}} >
 <Card>
 
-            <Link to={`/show/${news.url}`} >
             {/* <a 
             // href={news.url}
             >{news?.url} */}
@@ -84,6 +80,8 @@ const Item = styled(Paper)(({ theme }) => ({
             value={news?.url}
             // alt={news.summary}
             >
+            <Link to={`/show/${news.url}`} >
+
                 <CardMedia 
              sx={{borderRadius:'10px'}}
                             component="img" key={news}
@@ -105,8 +103,7 @@ const Item = styled(Paper)(({ theme }) => ({
                     {news.title}
                     
 
-                </Typography>
-                
+                </Typography>      
             </CardContent>
             <CardActions sx={{display:'flex', justifyContent:"space-between", justify:'flex-bottom'}}>
                 {/* <Button size="small" sx={{color:'text.secondary'}}>{news.dateLong}</Button> */}
@@ -123,22 +120,17 @@ const Item = styled(Paper)(({ theme }) => ({
             </Card>
             </Box>
             </Grid>
-            
-
-
-            
             ))}
             </Grid>
             <PopUp
-        showPopup={showPopup}
-        newsContent={newsContent}
-        popUpClose={popUpClose}
-      />
+              showPopup={showPopup}
+              newsContent={newsContent}
+              popUpClose={popUpClose}
+            />
             <Outlet/>
-            </Box>
-            
+            </Box>            
         </Container>
     );
   }
 
-  export default LatestNews;
+export default LatestNews;
