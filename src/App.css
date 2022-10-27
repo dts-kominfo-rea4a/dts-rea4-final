@@ -132,7 +132,7 @@ body {
 
 .button-section {
     display: flex;
-    justify-content: end;
+    justify-content: flex-end;
 }
 
 @media screen and (max-width: 1330px){
