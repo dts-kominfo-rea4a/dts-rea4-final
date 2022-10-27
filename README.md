@@ -1,6 +1,19 @@
 # DTS REA4 Final Project
 
-Ketentuan lengkap bisa dilihat di [Final Project Guidelines](https://docs.google.com/document/d/122KyWNQ4xxU4aFwWbM4vIfH7LM4AH2CZEZa3YsEHjCk). 
+Ketentuan lengkap bisa dilihat di [Final Project Guidelines](https://docs.google.com/document/d/122KyWNQ4xxU4aFwWbM4vIfH7LM4AH2CZEZa3YsEHjCk).
+
+## Dokumentasi
+
+<img src="weathergif.gif" width="480" height="360" />
+
+## Link Live App
+
+https://weather-dts.netlify.app
+
+## Fitur
+
+Api : Open Weather Api
+Css Framework : Tailwind
 
 ## Daftar pair
 
