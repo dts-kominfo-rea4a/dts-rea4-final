@@ -87,6 +87,12 @@ const Login = ({ loginOrRegister }) => {
               Sign up
             </Link>
           </Typography>
+          <Typography sx={{ mt: 3 }}>
+            Back to{" "}
+            <Link variant="subtitle2" component={RouterLink} to="/home">
+              Home?
+            </Link>
+          </Typography>
         </ContentStyle>
       </Container>
     </RootStyle>

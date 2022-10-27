@@ -55,6 +55,7 @@ export default function Actions({ matches }) {
 
   const logOutHandler = () => {
     signOutFromApp();
+    navigate("/home");
   };
 
   return (

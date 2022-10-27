@@ -12,6 +12,7 @@ import LoginOrRegisterForm from "./components/login";
 import Watchlist from "./components/watchlist";
 import ProtectedComponent from "./components/auth/ProtectedComponent";
 import Cart from "./components/cart";
+import Contact from "./components/contact";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -26,7 +27,45 @@ root.render(
           path="register"
           element={<LoginOrRegisterForm loginOrRegister={"register"} />}
         />
-        <Route
+
+        <Route path="/" element={<App />}>
+          <Route path="/home" element={<Banner />} />
+          <Route
+            path="/upcoming"
+            element={
+              <ProtectedComponent>
+                <UpcomingMovie />
+              </ProtectedComponent>
+            }
+          />
+          <Route
+            path="/movies"
+            element={
+              <ProtectedComponent>
+                <Movies />
+              </ProtectedComponent>
+            }
+          />
+          <Route
+            path="/watchlist"
+            element={
+              <ProtectedComponent>
+                <Watchlist />
+              </ProtectedComponent>
+            }
+          />
+          <Route
+            path="/cart"
+            element={
+              <ProtectedComponent>
+                <Cart />
+              </ProtectedComponent>
+            }
+          />
+          <Route path="/contact" element={<Contact />} />
+        </Route>
+
+        {/* <Route
           path="/"
           element={
             <ProtectedComponent>
@@ -39,7 +78,7 @@ root.render(
           <Route path="/movies" element={<Movies />} />
           <Route path="/watchlist" element={<Watchlist />} />
           <Route path="/cart" element={<Cart />} />
-        </Route>
+        </Route> */}
       </Routes>
     </BrowserRouter>
   </React.StrictMode>

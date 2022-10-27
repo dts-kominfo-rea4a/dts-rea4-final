@@ -16,6 +16,9 @@ export default function AppbarDekstop({ matches }) {
   const btnHomeOnClick = (e) => {
     navigate("/home");
   };
+  const btnContactOnClick = (e) => {
+    navigate("/contact");
+  };
   return (
     /*
     Appbar container
@@ -31,7 +34,9 @@ export default function AppbarDekstop({ matches }) {
             Now Playing
           </ListItemButton>
           <ListItemButton onClick={btnUpcomingOnClick}>Upcoming</ListItemButton>
-          <ListItemText primary="Contact Us" />
+          <ListItemButton onClick={btnContactOnClick}>
+            Contact Us
+          </ListItemButton>
           <ListItemButton>
             <SearchIcon />
           </ListItemButton>
