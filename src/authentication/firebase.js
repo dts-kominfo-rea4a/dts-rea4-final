@@ -1,5 +1,5 @@
+// Library
 import { initializeApp } from "firebase/app";
-
 import {
 	GoogleAuthProvider,
 	getAuth,
@@ -9,6 +9,7 @@ import {
 	signOut,
 } from "firebase/auth";
 
+// firebase config
 const firebaseConfig = {
 	apiKey: process.env.REACT_APP_API_FIREBASE,
 	authDomain: "dtskominfo-aaf6f.firebaseapp.com",
@@ -34,6 +35,7 @@ const signInWithGoogle = async () => {
 		alert(err.message);
 	}
 };
+
 const logInWithEmailAndPassword = async (email, password) => {
 	try {
 		await signInWithEmailAndPassword(auth, email, password);
@@ -52,9 +54,7 @@ const registerWithEmailAndPassword = async (email, password) => {
 	}
 };
 
-const logout = () => {
-	signOut(auth);
-};
+const logout = () => signOut(auth);
 
 export {
 	auth,

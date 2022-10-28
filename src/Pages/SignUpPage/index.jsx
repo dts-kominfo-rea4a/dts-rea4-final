@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+
+// Library
 import { useAuthState } from "react-firebase-hooks/auth";
 import { Link, useNavigate } from "react-router-dom";
 import {
@@ -7,6 +9,7 @@ import {
 	signInWithGoogle,
 } from "../../authentication/firebase";
 
+// Components
 import ErrorComponents from "../../components/ErrorComponents";
 
 const LoginPage = () => {

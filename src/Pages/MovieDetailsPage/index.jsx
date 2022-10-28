@@ -7,13 +7,12 @@ import { useParams } from "react-router-dom";
 import SliderComponents from "../../components/SliderComponents";
 import ErrorComponents from "../../components/ErrorComponents";
 
-// Api Fetch
-import { getSingleMovie } from "../../helper";
+// Helper
+import { getSingleMovie, IMAGE_BASE_URL_ORIGINAL } from "../../helper";
 
+// Assets
 import { Star, Clock, Calendar, VideoCamera } from "phosphor-react";
-import notFound from "./assets/not-found.png";
-
-const IMAGE_BASE_URL_ORIGINAL = `https://image.tmdb.org/t/p/original`;
+import notFound from "../../assets/not-found.png";
 
 const MovieDetailsPage = () => {
 	const { movieId } = useParams();

@@ -67,4 +67,14 @@ const navContent = [
 	},
 ];
 
-export { getMovies, getSingleMovie, getSearchedMovies, navContent };
+const IMAGE_BASE_URL = `https://image.tmdb.org/t/p/w300`;
+const IMAGE_BASE_URL_ORIGINAL = `https://image.tmdb.org/t/p/original`;
+
+export {
+	getMovies,
+	getSingleMovie,
+	getSearchedMovies,
+	navContent,
+	IMAGE_BASE_URL,
+	IMAGE_BASE_URL_ORIGINAL,
+};

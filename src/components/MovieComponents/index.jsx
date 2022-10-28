@@ -1,13 +1,14 @@
 import React from "react";
 
+// Library
 import { Link } from "react-router-dom";
 
 // Assets
 import { StarIcon } from "@heroicons/react/24/solid";
-import notFound from "./assets/not-found.png";
+import notFound from "../../assets/not-found.png";
 
-const IMAGE_BASE_URL = `https://image.tmdb.org/t/p/w300`;
-const IMAGE_BASE_URL_ORIGINAL = `https://image.tmdb.org/t/p/original`;
+// BASE URL
+import { IMAGE_BASE_URL, IMAGE_BASE_URL_ORIGINAL } from "../../helper";
 
 const HomeMovieListComponents = ({ movie, index }) => {
 	let imageIndex =

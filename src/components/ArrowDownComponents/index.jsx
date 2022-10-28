@@ -1,5 +1,6 @@
 import React from "react";
 
+// Assets
 import { ArrowDownCircleIcon } from "@heroicons/react/24/solid";
 
 const ArrowDownComponents = ({ onClickHandler }) => {

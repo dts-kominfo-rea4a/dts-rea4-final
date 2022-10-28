@@ -1,12 +1,12 @@
+// Library
 import { Outlet } from "react-router-dom";
-
 import { auth } from "../../authentication/firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 
+// Components
 import SideBarComponents from "../../components/SidebarComponents";
 import NavbarComponents from "../../components/NavbarComponents";
 import HeaderComponents from "../../components/HeaderComponents";
-
 import SpinnerComponents from "../../components/SpinnerComponents";
 import ErrorComponents from "../../components/ErrorComponents";
 

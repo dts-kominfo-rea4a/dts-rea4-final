@@ -3,7 +3,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-import notFound from "./assets/not-found.png";
+import notFound from "../../assets/not-found.png"
 
 import { Link } from "react-router-dom";
 const POSTER_SIZE = "https://image.tmdb.org/t/p/w300";

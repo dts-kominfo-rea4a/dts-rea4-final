@@ -1,5 +1,6 @@
 import React from "react";
 
+// Library
 import {
 	RouterProvider,
 	createBrowserRouter,
@@ -7,15 +8,16 @@ import {
 	Route,
 } from "react-router-dom";
 
-// !Routes Layout
+// Pages
 import RootLayout from "./Pages/RootLayout";
-
 import Homepage from "./Pages/HomePage";
 import SearchPage from "./Pages/SearchPage";
-import ErrorComponents from "./components/ErrorComponents";
 import MovieDetailsPage from "./Pages/MovieDetailsPage";
 import SignUpPage from "./Pages/SignUpPage";
 import LoginPage from "./Pages/Loginpage";
+
+// Components
+import ErrorComponents from "./components/ErrorComponents";
 
 const router = createBrowserRouter(
 	createRoutesFromElements(

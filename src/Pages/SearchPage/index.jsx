@@ -3,6 +3,7 @@ import React, { useState, useRef, useEffect } from "react";
 // Helper
 import { getSearchedMovies } from "../../helper";
 
+// Components
 import MovieListComponents from "../../components/MovieListComponents";
 import ErrorComponents from "../../components/ErrorComponents";
 

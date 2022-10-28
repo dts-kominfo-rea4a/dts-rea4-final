@@ -1,13 +1,13 @@
 // React
 import React, { useEffect, useState, useRef } from "react";
 
+// Helper
+import { getMovies } from "../../helper";
+
 // Components
 import MovieListComponents from "../../components/MovieListComponents";
 import ErrorComponents from "../../components/ErrorComponents";
 import SpinnerComponents from "../../components/SpinnerComponents";
-
-// Api Fetch
-import { getMovies } from "../../helper";
 
 const HomePage = () => {
 	const pageLoaded = useRef(true);

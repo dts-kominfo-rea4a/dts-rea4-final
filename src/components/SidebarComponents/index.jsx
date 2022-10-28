@@ -1,13 +1,13 @@
 import React from "react";
 
+// Library
 import { NavLink, Link } from "react-router-dom";
 
 // Helper
 import { navContent } from "../../helper";
 
-// Icon
+// Library
 import { Popcorn } from "phosphor-react";
-
 import { logout } from "../../authentication/firebase";
 
 const SideBarComponents = ({ user }) => {

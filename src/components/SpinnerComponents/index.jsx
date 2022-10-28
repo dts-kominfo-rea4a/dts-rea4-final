@@ -1,6 +1,6 @@
 import React from "react";
 
-// assets
+// Assets
 import { Spinner } from "phosphor-react";
 
 const SpinnerComponents = () => {
