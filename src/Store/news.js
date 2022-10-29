@@ -8,29 +8,27 @@ const sliceNews = (set) => ({
   //
   fetchNewsNyTimes: async () => {
     try {
-      const { data } = await axios.get("https://api.thenewsapi.com/v1/news/all?api_token=mTP770GIPDGoRx3m40L8GmUfDNJV61yBfluqzN12");
+      const { data } = await axios.get("https://content.guardianapis.com/search?api-key=test");
       console.log(data, "ini news Api");
-      set({ news: data.data });
+      set({ news: data.response });
     } catch (err) {
       console.log(err);
     }
   },
+  // get single data
   fetchSingleNews: async (id) => {
     try {
-      const data = await axios.get(`https://api.thenewsapi.com/v1/news/uuid/${id}?api_token=mTP770GIPDGoRx3m40L8GmUfDNJV61yBfluqzN12`);
-      set({ news: data.data });
-      console.log(data.data);
+      const data = await axios.get(`https://content.guardianapis.com/${id}?api-key=test`);
+      set({ news: data.response });
+      console.log(data.response);
     } catch (err) {
       console.log(err);
     }
   },
 });
-
 //"Hooks"
 const useNewsStore = create(sliceNews);
-
 //Selector/ Actions
-
 export const selectFetchNews = (state) => state.fetchNewsNyTimes;
 export const selectNewsApi = (state) => state.news;
 export const selectDetailNews = (state) => state.fetchSingleNews;

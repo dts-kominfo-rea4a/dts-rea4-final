@@ -1,12 +1,20 @@
 import React, { useState, useEffect } from "react";
 import Rectangle1 from "./Assets/Rectangle1.png";
 import useNewsStore, { selectFetchNews, selectNewsApi } from "../../Store/news";
-import { Typography, createTheme, ThemeProvider, Grid, Button } from "@mui/material";
+import { useNavigate } from "react-router-dom";
+import { Typography, createTheme, ThemeProvider, Grid, Button, Box } from "@mui/material";
 
 const HomePage = ({ id }) => {
   //select action
   const fetchNews = useNewsStore(selectFetchNews);
+  console.log(fetchNews);
   const news = useNewsStore(selectNewsApi);
+  console.log(news);
+
+  const navigate = useNavigate();
+  const clickDetailHandler = () => {
+    navigate(`/${id}`);
+  };
   useEffect(() => {
     fetchNews();
   }, [fetchNews]);
@@ -85,22 +93,21 @@ const HomePage = ({ id }) => {
       {/* Card Content */}
       <div>
         <div style={{ display: "flex", flexDirection: "row", flexWrap: "wrap" }}>
-          {news.map((berita) => (
+          {news?.results?.map((berita) => (
             <>
-              <div style={{ marginLeft: "3em", marginRight: "1em" }}>
-                <a href={`/${berita.uuid}`} style={{ textDecoration: "none", color: "black" }}>
+              <Box onClick={clickDetailHandler} style={{ textDecoration: "none", color: "black", cursor: "pointer" }}>
+                <div style={{ marginLeft: "3em", marginRight: "1em" }}>
                   <div style={{ width: "270px" }}>
-                    <img src={berita.image_url} alt="card1" width="270px" height="176px" />
                     <Typography variant="h5" fontFamily="Playfair-Display" fontSize="30px" textAlign="left" fontWeight="700" marginBottom="10px">
-                      {berita.title}
+                      {berita.webTitle}
                     </Typography>
                     <div style={{ display: "flex", justifyContent: "space-between" }}>
-                      <p style={{ margin: "5px" }}>{berita.published_at}</p>
-                      <p style={{ margin: "5px" }}>{berita.source}</p>
+                      <p style={{ margin: "5px" }}>{berita.webPublicationDate}</p>
+                      <p style={{ margin: "5px" }}>{berita.sectionName}</p>
                     </div>
                   </div>
-                </a>
-              </div>
+                </div>
+              </Box>
             </>
           ))}
         </div>
