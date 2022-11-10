@@ -3,11 +3,25 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import LoginPage from "./containers/LoginPage";
+import RegisterPage from "./containers/RegisterPage";
+import ProtectedComponent from "../src/components/ProtectedComponent";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={
+        <ProtectedComponent>
+        <App />
+        </ProtectedComponent>
+        } />
+        <Route path="login" element={<LoginPage />} />
+        <Route path="register" element={<RegisterPage />} />
+      </Routes>
+    </BrowserRouter>
   </React.StrictMode>
 );
 
