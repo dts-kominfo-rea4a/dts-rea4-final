@@ -27,7 +27,7 @@ root.render(
         <Route path="view/:type/:id" element={<View />} />
       </Routes>
       <div className="text-slate-50 text-sm text-center w-full py-6 font-semibold ">
-        <div>Created By Aditya Prasetyo & Bobby Putra Kurniawan</div>
+        <div>Created By Aditya Prasetyo for final project DTS kominfo</div>
       </div>
     </BrowserRouter>
   </React.StrictMode>
