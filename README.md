@@ -17,3 +17,18 @@ Contoh: `dts4a-01-final`
 ## Branching, commit
 
 Branch dapat sesuai dengan kebutuhan dan kesepakatan bersama dalam pair, namun hasil akhirnya harus di merge ke branch `main` dan di push ke Github. Pastikan hasil akhir kode sudah ter-push!
+
+## GIF
+
+https://gfycat.com/tancarelesshuemul
+
+## Link Live App
+
+https://movies-dts4a.netlify.app/
+
+## App's Description
+
+Movie App, menggunakan API: https://developers.themoviedb.org/3 styling menggunakan Tailwind.
+Fitur unik: user dapat menambahkan film kesukaan dan menghapusnya.
+Pada halaman Home, movie dipilih secara acak di bagian main.
+Terdapat tiga kategori film: Popular, Upcoming, Top Rated, dan Now playing.
